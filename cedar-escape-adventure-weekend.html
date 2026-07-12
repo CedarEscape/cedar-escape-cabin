@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adventure Seeker Weekend — Cedar Escape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E6;
+    --cream-deep: #EEE6D6;
+    --ink: #2B271F;
+    --forest: #37452F;
+    --forest-deep: #232D1D;
+    --brown: #6E4F37;
+    --taupe: #A9917A;
+    --gold: #C0973F;
+    --gold-bright: #D6B15C;
+    --line: rgba(43,39,31,0.14);
+    --radius: 2px;
+    --wrap: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  h1, h2, h3 { margin: 0; font-weight: 500; }
+  p { margin: 0; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(246,241,230,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+  }
+  .wordmark {
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--forest-deep);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .wordmark span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 34px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-gold {
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color: var(--forest-deep);
+  }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,151,63,0.35); }
+  .btn-outline {
+    background: transparent;
+    border-color: var(--forest-deep);
+    color: var(--forest-deep);
+  }
+  .btn-outline:hover { background: var(--forest-deep); color: var(--cream); }
+  .nav-cta { display: none; }
+  @media (min-width: 880px) { .nav-cta { display: inline-flex; } }
+  .nav-links { display: none; }
+  @media (min-width: 880px) { .nav-links { display: flex; } }
+  .burger { display: inline-flex; background: none; border: none; font-family: 'Cinzel',serif; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; color: var(--forest-deep); }
+  @media (min-width: 880px) { .burger { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(35,45,29,0.15) 0%, rgba(35,45,29,0.65) 78%, rgba(35,45,29,0.88) 100%),
+      radial-gradient(circle at 20% 20%, rgba(214,177,92,0.18), transparent 45%),
+      repeating-linear-gradient(120deg, #3d4a33 0px, #3d4a33 2px, #34412b 2px, #34412b 90px);
+    color: var(--cream);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.25), transparent 60%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 120px 32px 64px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+  }
+  .hero .eyebrow { color: var(--gold-bright); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(34px, 6vw, 68px);
+    line-height: 1.08;
+    margin: 18px 0 22px;
+    max-width: 780px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    max-width: 520px;
+    color: rgba(246,241,230,0.86);
+    margin-bottom: 34px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .photo-note {
+    position: absolute;
+    right: 32px;
+    top: 26px;
+    z-index: 2;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(246,241,230,0.55);
+    border: 1px solid rgba(246,241,230,0.3);
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    max-width: 200px;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* ---------- TRUST BAR ---------- */
+  .trust-bar {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 16px 0;
+  }
+  .trust-bar ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 0;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .trust-bar li { display: flex; align-items: center; }
+  .trust-bar li:not(:last-child)::after {
+    content: '·';
+    color: var(--gold);
+    margin: 0 22px;
+    font-size: 18px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 96px 0; }
+  .section-head { max-width: 640px; margin-bottom: 56px; }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.4vw, 42px);
+    margin-top: 14px;
+    color: var(--forest-deep);
+  }
+  .section-head p { margin-top: 16px; font-size: 16.5px; color: #4b453b; }
+
+  /* ---------- WHY US LEDGER ---------- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  @media (min-width: 900px) { .why-grid { grid-template-columns: 0.85fr 1.15fr; align-items: start; } }
+  .why-copy p { font-size: 16.5px; color: #4b453b; margin-top: 18px; }
+  .ledger {
+    border-top: 1px solid var(--line);
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .ledger-row.header {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .ledger-row .item { font-weight: 700; font-size: 15px; }
+  .ledger-row .hotel { color: #8a8073; font-size: 14.5px; }
+  .ledger-row .cedar { color: var(--forest-deep); font-size: 14.5px; font-weight: 500; }
+  .ledger-row .cedar::before { content: '✓ '; color: var(--gold); font-weight: 700; }
+
+  /* ---------- SIGNPOST (FOUR STANDARDS) ---------- */
+  .signpost-section { background: var(--cream-deep); }
+  .signpost {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .post-pole {
+    width: 10px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--brown), #4a3423);
+    border-radius: 2px;
+  }
+  .planks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    width: 100%;
+    margin-top: -6px;
+  }
+  @media (min-width: 800px) { .planks { grid-template-columns: repeat(4, 1fr); } }
+  .plank {
+    background: linear-gradient(155deg, #7a5a3f, #5c4229);
+    color: var(--cream);
+    padding: 22px 20px 24px;
+    border-radius: 3px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    position: relative;
+  }
+  .plank::before {
+    content: '';
+    position: absolute;
+    left: -8px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #5c4229;
+  }
+  .plank:nth-child(even)::before { display: none; }
+  .plank:nth-child(even)::after {
+    content: '';
+    position: absolute;
+    right: -8px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 9px solid #5c4229;
+  }
+  .plank .num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+  }
+  .plank h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    margin: 8px 0 10px;
+  }
+  .plank p { font-size: 13.8px; color: rgba(246,241,230,0.82); }
+
+  /* ---------- INVENTORY (EVERYTHING YOU NEED) ---------- */
+  .inventory-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 60px;
+  }
+  @media (min-width: 760px) { .inventory-grid { grid-template-columns: 1fr 1fr; } }
+  .inventory-list { list-style: none; margin: 0; padding: 0; }
+  .inventory-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 15.5px;
+  }
+  .inventory-list li span.tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    white-space: nowrap;
+  }
+
+  .amenity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .amenity-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+  .amenity-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 20px 20px 18px;
+  }
+  .amenity-card .cat {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .amenity-card ul { list-style:none; margin:0; padding:0; }
+  .amenity-card li { font-size: 15px; padding: 5px 0; color: var(--ink); }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 700px) { .area-grid { grid-template-columns: repeat(3, 1fr); } }
+  .area-item {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 18px 18px 16px;
+  }
+  .area-item .name { display:block; font-weight:700; font-size:15px; color:var(--forest-deep); margin-bottom:6px; }
+  .area-item .meta { display:block; font-family:'Cinzel', serif; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 700px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+  .frame {
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    border: 6px solid var(--cream);
+    box-shadow: 0 0 0 1px var(--line), 0 14px 24px rgba(43,39,31,0.14);
+    display: flex;
+    align-items: flex-end;
+  }
+  .frame .swatch {
+    position: absolute; inset: 0;
+  }
+  .frame img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .frame .cap {
+    position: relative;
+    z-index: 2;
+    color: var(--cream);
+    font-size: 12.5px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(35,45,29,0.72), transparent);
+    font-weight: 500;
+  }
+  .g1 .swatch { background: linear-gradient(155deg,#4d5a3e,#2b3624); }
+  .g2 .swatch { background: linear-gradient(155deg,#7a5a3f,#4a3423); }
+  .g3 .swatch { background: linear-gradient(155deg,#8a7355,#5c4229); }
+  .g4 .swatch { background: linear-gradient(155deg,#3a4530,#232d1d); }
+  .g5 .swatch { background: linear-gradient(155deg,#6b7a55,#3d4a33); }
+  .g6 .swatch { background: linear-gradient(155deg,#9c8562,#6e4f37); }
+  .g7 .swatch { background: linear-gradient(155deg,#524a3c,#2b271f); }
+  .g8 .swatch { background: linear-gradient(155deg,#5f6b4a,#37452f); }
+  .frame.pending .cap { font-style: italic; color: rgba(246,241,230,0.75); }
+  .frame.pending .swatch {
+    background: repeating-linear-gradient(45deg, #d9cfba, #d9cfba 8px, #ece4d2 8px, #ece4d2 16px);
+  }
+  .frame.pending .cap { background: linear-gradient(0deg, rgba(43,39,31,0.55), transparent); }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 760px) { .reviews-strip { grid-template-columns: repeat(3,1fr); } }
+  .review-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    padding: 26px 24px;
+    border-radius: 2px;
+  }
+  .review-card .stars { color: var(--gold); letter-spacing: 2px; font-size: 14px; }
+  .review-card p.quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16.5px;
+    margin: 14px 0 16px;
+    color: var(--forest-deep);
+  }
+  .review-card .who { font-size: 12.5px; color: var(--taupe); letter-spacing: 0.04em; text-transform: uppercase; font-family: 'Cinzel', serif; }
+  .reviews-note { margin-top: 20px; font-size: 12.5px; color: var(--taupe); font-style: italic; }
+
+  /* ---------- TRIP SIGNPOST NAV (SIGNATURE) ---------- */
+  .trailhead {
+    background: var(--forest-deep);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .trailhead .wrap { position: relative; z-index: 2; }
+  .trailhead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 90px);
+  }
+  .trailhead .section-head h2 { color: var(--cream); }
+  .trailhead .section-head .eyebrow { color: var(--gold-bright); }
+  .trailhead .section-head p { color: rgba(246,241,230,0.72); }
+
+  .signpost-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0 10px;
+  }
+  .sp-pole {
+    width: 14px;
+    height: 90px;
+    background: linear-gradient(180deg, #8a6a4a, #4a3423);
+    border-radius: 3px;
+    box-shadow: inset -3px 0 4px rgba(0,0,0,0.3);
+  }
+  .sp-arms {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+    max-width: 620px;
+    margin-top: -10px;
+  }
+  .sp-arm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(100deg, #8a6a4a, #6e4f37);
+    padding: 16px 26px;
+    border-radius: 3px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+    text-decoration: none;
+    color: var(--cream);
+    transform-origin: left center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sp-arm:nth-child(even) { transform-origin: right center; flex-direction: row-reverse; }
+  .sp-arm:hover { transform: rotate(-1.2deg) scale(1.015); box-shadow: 0 14px 26px rgba(0,0,0,0.32); }
+  .sp-arm:nth-child(even):hover { transform: rotate(1.2deg) scale(1.015); }
+  .sp-arm .label {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .sp-arm .mi {
+    font-size: 12px;
+    color: rgba(246,241,230,0.65);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+  @media (min-width: 760px) {
+    .sp-arms { max-width: 900px; }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { border-top: 1px solid rgba(246,241,230,0.0); }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-left: 20px;
+  }
+  .faq-item[open] summary::after { content: '–'; }
+  .faq-item .a { padding: 0 0 22px; color: #4b453b; font-size: 15px; max-width: 640px; }
+
+  /* ---------- BOOKING PANEL ---------- */
+  .book-panel {
+    background: var(--cream-deep);
+  }
+  .book-shell {
+    border: 1px solid var(--line);
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 6px;
+    box-shadow: 0 20px 40px rgba(43,39,31,0.08);
+  }
+  .book-shell .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .widget-slot {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--taupe);
+    font-style: italic;
+    font-size: 14px;
+    padding: 40px;
+    text-align: center;
+    background:
+      repeating-linear-gradient(135deg, rgba(169,145,122,0.05) 0 12px, transparent 12px 24px);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--forest-deep);
+    color: rgba(246,241,230,0.82);
+    padding: 70px 0 30px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(246,241,230,0.14);
+  }
+  @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+  footer .wordmark { color: var(--cream); }
+  footer h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 14px;
+  }
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li { margin-bottom: 9px; font-size: 14.5px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--gold-bright); }
+  .foot-bottom {
+    padding-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12.5px;
+    color: rgba(246,241,230,0.5);
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  .adv-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  @media (min-width: 700px) { .adv-cards { grid-template-columns: repeat(3, 1fr); } }
+  .adv-card {
+    background: linear-gradient(160deg, #5A5248, #332E27);
+    border-radius: 4px;
+    padding: 30px 26px 28px;
+    color: var(--cream);
+    box-shadow: 0 16px 30px rgba(51,46,39,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .adv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  }
+  .adv-card .icon { width: 38px; height: 38px; color: var(--gold-bright); margin-bottom: 18px; }
+  .adv-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 21px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .adv-card p { font-size: 14.5px; color: rgba(246,241,230,0.85); line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#stay">The Cabin</a></li>
+      <li><a href="index.html#weekends">Weekends</a></li>
+      <li><a href="index.html#area">Area Guide</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <a href="index.html#book" class="btn btn-gold nav-cta">Check Dates</a>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+
+<section class="hero" style="min-height:70vh;">
+  <div class="hero-inner" style="padding-top:100px;">
+    <div class="eyebrow">Adventure Seeker Weekend</div>
+    <h1 style="font-size:clamp(30px, 5vw, 54px);">Hike Shenandoah National Park. Come back to a hot tub, not a tent.</h1>
+    <p class="hero-sub">On-resort mountain biking, rappelling, and trails right outside the door — plus Shenandoah National Park close enough for a real day hike. You get the adventure without giving up a real bed and a shower at the end of the day.</p>
+    <div class="hero-actions" style="flex-wrap:wrap;">
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Mountain Biking On-Site</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Shenandoah National Park Nearby</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Rappelling & Trails On-Site</span>
+    </div>
+    <div class="hero-actions" style="margin-top:18px;">
+      <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="wrap">
+    <ul>
+      <li>5 Bedrooms · 9 Beds</li>
+      <li>Sleeps Up To 14</li>
+      <li>Hot Tub After The Trail</li>
+    </ul>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Why It Works</div>
+      <h2>Real adventure, without sleeping on the ground.</h2>
+      <p>A basecamp shouldn't mean a campsite. This house gets you a real shower, a real kitchen, and a hot tub for the end of a long trail day — without giving up any of the actual adventure.</p>
+    </div>
+    <div class="adv-cards">
+      <div class="adv-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 20l6-14 4 8 3-5 5 11z"/>
+        </svg>
+        <h3>On-Site & Off-Site Both Work</h3>
+        <p>Mountain bike or hike without leaving the resort, or drive into Shenandoah National Park for a real day hike — both are genuinely close.</p>
+      </div>
+      <div class="adv-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/>
+          <path d="M12 14v6M9 21h6"/>
+        </svg>
+        <h3>A Real Recovery Day</h3>
+        <p>Hot tub, movie room, and a real bed — the house does the recovering so you don't have to.</p>
+      </div>
+      <div class="adv-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6"/>
+          <path d="M2 18v2M22 18v2"/>
+          <path d="M2 12V8a2 2 0 012-2h4a2 2 0 012 2v2"/>
+          <path d="M12 12V9a2 2 0 012-2h4a2 2 0 012 2v3"/>
+        </svg>
+        <h3>Room For The Whole Group</h3>
+        <p>Five bedrooms and 9 beds — bring the whole hiking group without anyone sleeping in a car.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">On The Mountain</div>
+      <h2>Adventure without leaving the resort.</h2>
+      <p>Massanutten's own 6,000 acres cover a lot of ground on their own.</p>
+    </div>
+    <div class="reviews-strip reviews-strip-2">
+      <div class="review-card">
+        <p class="quote">A real Mountain Bike Park with terrain from mellow flow trails to steep, rocky lines — e-bike pedal-assist available if you want the climb taken out of it.</p>
+        <div class="who">Mountain Biking</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Two on-property hiking trails — Kaylor's Knob (moderate, 3.7 miles) and the Massanutten Ridge Trail (strenuous, 5.5 miles) — both with real payoff views.</p>
+        <div class="who">On-Resort Hiking</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Guided 38-foot and 58-foot rappels for the group members who want an adrenaline hit before dinner.</p>
+        <div class="who">Rappelling</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">A zip line and ropes course at the Family Adventure Park — weekends only, weather permitting.</p>
+        <div class="who">Zip Line & Ropes Course</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Beyond The Resort</div>
+      <h2>Shenandoah National Park is genuinely close.</h2>
+      <p>The Swift Run Gap entrance is roughly a 35-minute drive — close enough for a real day hike without losing half the day to driving.</p>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Skyline Drive, sections of the Appalachian Trail, waterfalls, and wildlife — all inside the park, a short drive away.</p>
+        <div class="who">Shenandoah National Park</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">A well-known cave system worth the trip — about 45 minutes from the house, closer to 35 from the resort's neighborhood entrance.</p>
+        <div class="who">Luray Caverns</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">On-resort trails close during hunting season (Nov 1–Jan 8, sunrise to sunset, closed Mon–Sat, open Sundays) — worth checking before you plan an on-property hike that time of year.</p>
+        <div class="who">Know Before You Go</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Sample Trip Flow</div>
+      <h2>An adventure weekend that still has a soft landing.</h2>
+      <p>A simple framework — not a schedule anyone has to follow.</p>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Arrive, unload the gear, and settle in before an early start tomorrow.</p>
+        <div class="who">Friday</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">A real day hike in Shenandoah National Park, then straight back to the hot tub — no tent to pack up.</p>
+        <div class="who">Saturday</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Mountain biking or a shorter on-resort trail before a slower drive home.</p>
+        <div class="who">Sunday</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Adventure Weekend FAQ</div>
+      <h2>Quick answers for planning your trip.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How far is Shenandoah National Park from the house?</summary>
+        <div class="a">The closest entrance (Swift Run Gap) is roughly a 35-minute drive — close enough for a full day hike without losing the morning to driving.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do we need to leave the resort for a real hike?</summary>
+        <div class="a">Not necessarily — there are two real trails on-property (Kaylor's Knob and the Massanutten Ridge Trail), plus Shenandoah National Park a short drive away if you want more.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is mountain biking available on-site?</summary>
+        <div class="a">Yes — Massanutten has its own Mountain Bike Park with terrain for a range of skill levels, plus e-bike pedal-assist if your group wants it.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="trailhead">
+  <div class="wrap" style="text-align:center;">
+    <div class="section-head" style="margin:0 auto 24px;max-width:560px;">
+      <div class="eyebrow">Ready For The Trail?</div>
+      <h2>Check dates before the good weekends book up.</h2>
+    </div>
+    <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Keep Planning</div>
+      <h2>More Cedar Escape weekend guides.</h2>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew. Owner-hosted, direct-booked, actually clean.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#stay">The Cabin</a></li>
+          <li><a href="index.html#weekends">Weekend Guides</a></li>
+          <li><a href="index.html#area">Area Guide</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Book Direct</h4>
+        <ul>
+          <li><a href="index.html#book">Check Dates & Pricing</a></li>
+          <li><a href="https://www.instagram.com/cedarescape_massanutten" target="_blank" rel="noopener">Instagram: @cedarescape_massanutten</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61574382076998" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#">Contact the Owner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cedar Escape · Massanutten Resort, VA</span>
+      <span>Booked directly. Hosted personally. No middleman.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('section');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
+</script>
+
+</body>
+</html>

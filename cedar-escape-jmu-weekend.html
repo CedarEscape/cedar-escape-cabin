@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cedar Escape JMU Weekend Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E6;
+    --cream-deep: #EEE6D6;
+    --ink: #2B271F;
+    --forest: #37452F;
+    --forest-deep: #232D1D;
+    --brown: #6E4F37;
+    --taupe: #A9917A;
+    --gold: #C0973F;
+    --gold-bright: #D6B15C;
+    --line: rgba(43,39,31,0.14);
+    --radius: 2px;
+    --wrap: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  h1, h2, h3 { margin: 0; font-weight: 500; }
+  p { margin: 0; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(246,241,230,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+  }
+  .wordmark {
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--forest-deep);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .wordmark span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 34px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-gold {
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color: var(--forest-deep);
+  }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,151,63,0.35); }
+  .btn-outline {
+    background: transparent;
+    border-color: var(--forest-deep);
+    color: var(--forest-deep);
+  }
+  .btn-outline:hover { background: var(--forest-deep); color: var(--cream); }
+  .nav-cta { display: none; }
+  @media (min-width: 880px) { .nav-cta { display: inline-flex; } }
+  .nav-links { display: none; }
+  @media (min-width: 880px) { .nav-links { display: flex; } }
+  .burger { display: inline-flex; background: none; border: none; font-family: 'Cinzel',serif; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; color: var(--forest-deep); }
+  @media (min-width: 880px) { .burger { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(35,45,29,0.15) 0%, rgba(35,45,29,0.65) 78%, rgba(35,45,29,0.88) 100%),
+      radial-gradient(circle at 20% 20%, rgba(214,177,92,0.18), transparent 45%),
+      repeating-linear-gradient(120deg, #3d4a33 0px, #3d4a33 2px, #34412b 2px, #34412b 90px);
+    color: var(--cream);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.25), transparent 60%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 120px 32px 64px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+  }
+  .hero .eyebrow { color: var(--gold-bright); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(34px, 6vw, 68px);
+    line-height: 1.08;
+    margin: 18px 0 22px;
+    max-width: 780px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    max-width: 520px;
+    color: rgba(246,241,230,0.86);
+    margin-bottom: 34px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .photo-note {
+    position: absolute;
+    right: 32px;
+    top: 26px;
+    z-index: 2;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(246,241,230,0.55);
+    border: 1px solid rgba(246,241,230,0.3);
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    max-width: 200px;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* ---------- TRUST BAR ---------- */
+  .trust-bar {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 16px 0;
+  }
+  .trust-bar ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 0;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .trust-bar li { display: flex; align-items: center; }
+  .trust-bar li:not(:last-child)::after {
+    content: '·';
+    color: var(--gold);
+    margin: 0 22px;
+    font-size: 18px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 96px 0; }
+  .section-head { max-width: 640px; margin-bottom: 56px; }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.4vw, 42px);
+    margin-top: 14px;
+    color: var(--forest-deep);
+  }
+  .section-head p { margin-top: 16px; font-size: 16.5px; color: #4b453b; }
+
+  /* ---------- WHY US LEDGER ---------- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  @media (min-width: 900px) { .why-grid { grid-template-columns: 0.85fr 1.15fr; align-items: start; } }
+  .why-copy p { font-size: 16.5px; color: #4b453b; margin-top: 18px; }
+  .ledger {
+    border-top: 1px solid var(--line);
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .ledger-row.header {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .ledger-row .item { font-weight: 700; font-size: 15px; }
+  .ledger-row .hotel { color: #8a8073; font-size: 14.5px; }
+  .ledger-row .cedar { color: var(--forest-deep); font-size: 14.5px; font-weight: 500; }
+  .ledger-row .cedar::before { content: '✓ '; color: var(--gold); font-weight: 700; }
+
+  /* ---------- SIGNPOST (FOUR STANDARDS) ---------- */
+  .signpost-section { background: var(--cream-deep); }
+  .signpost {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .post-pole {
+    width: 10px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--brown), #4a3423);
+    border-radius: 2px;
+  }
+  .planks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    width: 100%;
+    margin-top: -6px;
+  }
+  @media (min-width: 800px) { .planks { grid-template-columns: repeat(4, 1fr); } }
+  .plank {
+    background: linear-gradient(155deg, #7a5a3f, #5c4229);
+    color: var(--cream);
+    padding: 22px 20px 24px;
+    border-radius: 3px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    position: relative;
+  }
+  .plank::before {
+    content: '';
+    position: absolute;
+    left: -8px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #5c4229;
+  }
+  .plank:nth-child(even)::before { display: none; }
+  .plank:nth-child(even)::after {
+    content: '';
+    position: absolute;
+    right: -8px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 9px solid #5c4229;
+  }
+  .plank .num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+  }
+  .plank h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    margin: 8px 0 10px;
+  }
+  .plank p { font-size: 13.8px; color: rgba(246,241,230,0.82); }
+
+  /* ---------- INVENTORY (EVERYTHING YOU NEED) ---------- */
+  .inventory-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 60px;
+  }
+  @media (min-width: 760px) { .inventory-grid { grid-template-columns: 1fr 1fr; } }
+  .inventory-list { list-style: none; margin: 0; padding: 0; }
+  .inventory-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 15.5px;
+  }
+  .inventory-list li span.tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    white-space: nowrap;
+  }
+
+  .amenity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .amenity-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1000px) { .amenity-grid-4 { grid-template-columns: repeat(4, 1fr); } }
+  .amenity-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 20px 20px 18px;
+  }
+  .amenity-card .cat {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .amenity-card ul { list-style:none; margin:0; padding:0; }
+  .amenity-card li { font-size: 15px; padding: 5px 0; color: var(--ink); }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 700px) { .area-grid { grid-template-columns: repeat(3, 1fr); } }
+  .area-item {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 18px 18px 16px;
+  }
+  .area-item .name { display:block; font-weight:700; font-size:15px; color:var(--forest-deep); margin-bottom:6px; }
+  .area-item .meta { display:block; font-family:'Cinzel', serif; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 700px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+  .frame {
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    border: 6px solid var(--cream);
+    box-shadow: 0 0 0 1px var(--line), 0 14px 24px rgba(43,39,31,0.14);
+    display: flex;
+    align-items: flex-end;
+  }
+  .frame .swatch {
+    position: absolute; inset: 0;
+  }
+  .frame img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .frame .cap {
+    position: relative;
+    z-index: 2;
+    color: var(--cream);
+    font-size: 12.5px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(35,45,29,0.72), transparent);
+    font-weight: 500;
+  }
+  .g1 .swatch { background: linear-gradient(155deg,#4d5a3e,#2b3624); }
+  .g2 .swatch { background: linear-gradient(155deg,#7a5a3f,#4a3423); }
+  .g3 .swatch { background: linear-gradient(155deg,#8a7355,#5c4229); }
+  .g4 .swatch { background: linear-gradient(155deg,#3a4530,#232d1d); }
+  .g5 .swatch { background: linear-gradient(155deg,#6b7a55,#3d4a33); }
+  .g6 .swatch { background: linear-gradient(155deg,#9c8562,#6e4f37); }
+  .g7 .swatch { background: linear-gradient(155deg,#524a3c,#2b271f); }
+  .g8 .swatch { background: linear-gradient(155deg,#5f6b4a,#37452f); }
+  .frame.pending .cap { font-style: italic; color: rgba(246,241,230,0.75); }
+  .frame.pending .swatch {
+    background: repeating-linear-gradient(45deg, #d9cfba, #d9cfba 8px, #ece4d2 8px, #ece4d2 16px);
+  }
+  .frame.pending .cap { background: linear-gradient(0deg, rgba(43,39,31,0.55), transparent); }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 760px) { .reviews-strip { grid-template-columns: repeat(3,1fr); } }
+  .review-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    padding: 26px 24px;
+    border-radius: 2px;
+  }
+  .review-card .stars { color: var(--gold); letter-spacing: 2px; font-size: 14px; }
+  .review-card p.quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16.5px;
+    margin: 14px 0 16px;
+    color: var(--forest-deep);
+  }
+  .review-card .who { font-size: 12.5px; color: var(--taupe); letter-spacing: 0.04em; text-transform: uppercase; font-family: 'Cinzel', serif; }
+  .reviews-note { margin-top: 20px; font-size: 12.5px; color: var(--taupe); font-style: italic; }
+
+  /* ---------- TRIP SIGNPOST NAV (SIGNATURE) ---------- */
+  .trailhead {
+    background: var(--forest-deep);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .trailhead .wrap { position: relative; z-index: 2; }
+  .trailhead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 90px);
+  }
+  .trailhead .section-head h2 { color: var(--cream); }
+  .trailhead .section-head .eyebrow { color: var(--gold-bright); }
+  .trailhead .section-head p { color: rgba(246,241,230,0.72); }
+
+  .signpost-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0 10px;
+  }
+  .sp-pole {
+    width: 14px;
+    height: 90px;
+    background: linear-gradient(180deg, #8a6a4a, #4a3423);
+    border-radius: 3px;
+    box-shadow: inset -3px 0 4px rgba(0,0,0,0.3);
+  }
+  .sp-arms {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+    max-width: 620px;
+    margin-top: -10px;
+  }
+  .sp-arm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(100deg, #8a6a4a, #6e4f37);
+    padding: 16px 26px;
+    border-radius: 3px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+    text-decoration: none;
+    color: var(--cream);
+    transform-origin: left center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sp-arm:nth-child(even) { transform-origin: right center; flex-direction: row-reverse; }
+  .sp-arm:hover { transform: rotate(-1.2deg) scale(1.015); box-shadow: 0 14px 26px rgba(0,0,0,0.32); }
+  .sp-arm:nth-child(even):hover { transform: rotate(1.2deg) scale(1.015); }
+  .sp-arm .label {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .sp-arm .mi {
+    font-size: 12px;
+    color: rgba(246,241,230,0.65);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+  @media (min-width: 760px) {
+    .sp-arms { max-width: 900px; }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { border-top: 1px solid rgba(246,241,230,0.0); }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-left: 20px;
+  }
+  .faq-item[open] summary::after { content: '–'; }
+  .faq-item .a { padding: 0 0 22px; color: #4b453b; font-size: 15px; max-width: 640px; }
+
+  /* ---------- BOOKING PANEL ---------- */
+  .book-panel {
+    background: var(--cream-deep);
+  }
+  .book-shell {
+    border: 1px solid var(--line);
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 6px;
+    box-shadow: 0 20px 40px rgba(43,39,31,0.08);
+  }
+  .book-shell .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .widget-slot {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--taupe);
+    font-style: italic;
+    font-size: 14px;
+    padding: 40px;
+    text-align: center;
+    background:
+      repeating-linear-gradient(135deg, rgba(169,145,122,0.05) 0 12px, transparent 12px 24px);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--forest-deep);
+    color: rgba(246,241,230,0.82);
+    padding: 70px 0 30px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(246,241,230,0.14);
+  }
+  @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+  footer .wordmark { color: var(--cream); }
+  footer h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 14px;
+  }
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li { margin-bottom: 9px; font-size: 14.5px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--gold-bright); }
+  .foot-bottom {
+    padding-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12.5px;
+    color: rgba(246,241,230,0.5);
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#stay">The Cabin</a></li>
+      <li><a href="index.html#weekends">Weekends</a></li>
+      <li><a href="index.html#area">Area Guide</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <a href="index.html#book" class="btn btn-gold nav-cta">Check Dates</a>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+
+<section class="hero" style="min-height:64vh;">
+  <div class="hero-inner" style="padding-top:100px;">
+    <div class="eyebrow">JMU Family & Parents Weekend</div>
+    <h1 style="font-size:clamp(30px, 5vw, 54px);">Move-in day, parents weekend, or graduation — one house for the whole trip.</h1>
+    <p class="hero-sub">About 25 miles from JMU, with enough beds and space that grandparents, siblings, and the whole extended crew can actually stay together instead of splitting across two hotels off I-81.</p>
+    <div class="hero-actions">
+      <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="wrap">
+    <ul>
+      <li>25 Min From Campus</li>
+      <li>Sleeps Up To 14</li>
+      <li>Full Kitchen, No Restaurant Wait</li>
+      <li>Two Work Nooks For Remote Parents</li>
+    </ul>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Why Families Choose This House</div>
+      <h2>Everyone's already exhausted from the drive. Don't split the group up too.</h2>
+      <p>JMU weekends bring together people who don't normally share a roof — parents, grandparents, siblings, maybe an old family friend tagging along. One house means no coordinating three or four separate hotel check-ins, no "meet in the lobby at 9," and a kitchen table big enough for everyone to actually sit down together before the football game or the move-in truck.</p>
+    </div>
+    <div class="amenity-grid amenity-grid-4">
+      <div class="amenity-card">
+        <span class="cat">Room For Everyone</span>
+        <ul><li>5 bedrooms, 9 beds</li><li>Sleeps up to 14</li><li>Downstairs sleeper sofa</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">While The Parents Work</span>
+        <ul><li>Two dedicated work nooks</li><li>High-speed Wi-Fi</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">After The Campus Tour</span>
+        <ul><li>Pool table & poker table</li><li>Movie room</li><li>Hot tub</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Comfort & Convenience</span>
+        <ul><li>Washer & dryer</li><li>Central heating & mini-split A/C</li><li>Coffee & tea bar</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="wrap">
+    <ul>
+      <li>Downtown Dining ~25 Min</li>
+      <li>200+ Local Restaurants</li>
+      <li>Home Games, Fall</li>
+    </ul>
+  </div>
+</div>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Near Campus</div>
+      <h2>Where to go while you're in town.</h2>
+      <p>A short drive gets you to downtown Harrisonburg and back — enough time to eat well without cutting into the weekend.</p>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">A Harrisonburg institution since the 1940s, well-loved for a relaxed breakfast before a campus tour.</p>
+        <div class="who">The Little Grill</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">The most consistently recommended downtown dinner spot — farm-to-table, and a good pick for celebrating move-in day or graduation.</p>
+        <div class="who">Local Chop & Grill House</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">A fast, friendly drive-thru favorite with the JMU crowd — good for a quick stop on the way to or from campus.</p>
+        <div class="who">7 Brew Coffee</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Ranks at the top of nearly every "best coffee in Harrisonburg" list — a local favorite if you haven't tried it yet.</p>
+        <div class="who">Coffee Hound</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Pick up a cake to bring back to the house — a nice touch for celebrating a graduation or parents weekend.</p>
+        <div class="who">Nothing Bundt Cakes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Whatever Brings You To JMU</div>
+      <h2>One house, however many reasons you're coming.</h2>
+      <p>Different trips need different things. Here's how the house fits each one.</p>
+    </div>
+    <div class="amenity-grid amenity-grid-4">
+      <div class="amenity-card">
+        <span class="cat">Move-In Weekend</span>
+        <ul><li>9 beds for the whole helping crew</li><li>Full kitchen instead of takeout every meal</li><li>Space to unwind once the truck's unpacked</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Parents Weekend</span>
+        <ul><li>Grandparents and siblings all under one roof</li><li>Two work nooks if someone needs to duck out</li><li>Hot tub after a full day on campus</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Graduation</span>
+        <ul><li>Room for extended family in one place</li><li>Pick up a cake from Nothing Bundt for the celebration</li><li>Dinner out at Local Chop, then back for a toast</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Game Day</span>
+        <ul><li>Book early — fall weekends go fast</li><li>Grill going before kickoff</li><li>Pool table & movie room for the pregame</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">JMU Weekend FAQ</div>
+      <h2>Quick answers for planning your trip.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How far is Cedar Escape from JMU?</summary>
+        <div class="a">About 25 miles — roughly a 25-30 minute drive depending on traffic, which is common during home football weekends.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is this a good option for football weekends?</summary>
+        <div class="a">Yes — with 9 beds and space for up to 14, it's an easy way to host extended family or a group of friends for a home game without splitting across hotels. Just book early, since fall weekends go fast.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is there space for parents to work remotely during the trip?</summary>
+        <div class="a">Yes — two dedicated work nooks with high-speed Wi-Fi, so a parent can take a call without disrupting the rest of the group.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="trailhead">
+  <div class="wrap" style="text-align:center;">
+    <div class="section-head" style="margin:0 auto 24px;max-width:560px;">
+      <div class="eyebrow">Ready For Move-In, Parents Weekend, Or Graduation?</div>
+      <h2>Check dates before the good weekends book up.</h2>
+    </div>
+    <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Keep Planning</div>
+      <h2>More Cedar Escape weekend guides.</h2>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Four wineries, one house, no designated-driver headaches.</p><div class="who"><a href="wine-weekend.html" style="text-decoration:none;color:inherit;">Shenandoah Wine Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Shenandoah National Park hiking, mountain biking, and a hot tub waiting at the end of the trail.</p><div class="who"><a href="adventure-weekend.html" style="text-decoration:none;color:inherit;">Adventure Seeker Weekend →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew. Owner-hosted, direct-booked, actually clean.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#stay">The Cabin</a></li>
+          <li><a href="index.html#weekends">Weekend Guides</a></li>
+          <li><a href="index.html#area">Area Guide</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Book Direct</h4>
+        <ul>
+          <li><a href="index.html#book">Check Dates & Pricing</a></li>
+          <li><a href="https://www.instagram.com/cedarescape_massanutten" target="_blank" rel="noopener">Instagram: @cedarescape_massanutten</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61574382076998" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#">Contact the Owner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cedar Escape · Massanutten Resort, VA</span>
+      <span>Booked directly. Hosted personally. No middleman.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('section');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
+</script>
+
+</body>
+</html>

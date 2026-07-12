@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cedar Escape — Massanutten Resort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E6;
+    --cream-deep: #EEE6D6;
+    --ink: #2B271F;
+    --forest: #37452F;
+    --forest-deep: #232D1D;
+    --brown: #6E4F37;
+    --taupe: #A9917A;
+    --gold: #C0973F;
+    --gold-bright: #D6B15C;
+    --line: rgba(43,39,31,0.14);
+    --radius: 2px;
+    --wrap: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  h1, h2, h3 { margin: 0; font-weight: 500; }
+  p { margin: 0; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(246,241,230,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+  }
+  .wordmark {
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--forest-deep);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .wordmark span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 34px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-gold {
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color: var(--forest-deep);
+  }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,151,63,0.35); }
+  .btn-outline {
+    background: transparent;
+    border-color: var(--forest-deep);
+    color: var(--forest-deep);
+  }
+  .btn-outline:hover { background: var(--forest-deep); color: var(--cream); }
+  .nav-cta { display: none; }
+  @media (min-width: 880px) { .nav-cta { display: inline-flex; } }
+  .nav-links { display: none; }
+  @media (min-width: 880px) { .nav-links { display: flex; } }
+  .burger { display: inline-flex; background: none; border: none; font-family: 'Cinzel',serif; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; color: var(--forest-deep); }
+  @media (min-width: 880px) { .burger { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(35,45,29,0.15) 0%, rgba(35,45,29,0.65) 78%, rgba(35,45,29,0.88) 100%),
+      radial-gradient(circle at 20% 20%, rgba(214,177,92,0.18), transparent 45%),
+      repeating-linear-gradient(120deg, #3d4a33 0px, #3d4a33 2px, #34412b 2px, #34412b 90px);
+    color: var(--cream);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.25), transparent 60%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 120px 32px 64px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+  }
+  .hero .eyebrow { color: var(--gold-bright); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(34px, 6vw, 68px);
+    line-height: 1.08;
+    margin: 18px 0 22px;
+    max-width: 780px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    max-width: 520px;
+    color: rgba(246,241,230,0.86);
+    margin-bottom: 34px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .photo-note {
+    position: absolute;
+    right: 32px;
+    top: 26px;
+    z-index: 2;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(246,241,230,0.55);
+    border: 1px solid rgba(246,241,230,0.3);
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    max-width: 200px;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* ---------- TRUST BAR ---------- */
+  .trust-bar {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 16px 0;
+  }
+  .trust-bar ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 0;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .trust-bar li { display: flex; align-items: center; }
+  .trust-bar li:not(:last-child)::after {
+    content: '·';
+    color: var(--gold);
+    margin: 0 22px;
+    font-size: 18px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 96px 0; }
+  .section-head { max-width: 640px; margin-bottom: 56px; }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.4vw, 42px);
+    margin-top: 14px;
+    color: var(--forest-deep);
+  }
+  .section-head p { margin-top: 16px; font-size: 16.5px; color: #4b453b; }
+
+  /* ---------- WHY US LEDGER ---------- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  @media (min-width: 900px) { .why-grid { grid-template-columns: 0.85fr 1.15fr; align-items: start; } }
+  .why-copy p { font-size: 16.5px; color: #4b453b; margin-top: 18px; }
+  .ledger {
+    border-top: 1px solid var(--line);
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .ledger-row.header {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .ledger-row .item { font-weight: 700; font-size: 15px; }
+  .ledger-row .hotel { color: #8a8073; font-size: 14.5px; }
+  .ledger-row .cedar { color: var(--forest-deep); font-size: 14.5px; font-weight: 500; }
+  .ledger-row .cedar::before { content: '✓ '; color: var(--gold); font-weight: 700; }
+
+  /* ---------- SIGNPOST (FOUR STANDARDS) ---------- */
+  .signpost-section { background: var(--cream-deep); }
+  .signpost {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .post-pole {
+    width: 10px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--brown), #4a3423);
+    border-radius: 2px;
+  }
+  .planks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    width: 100%;
+    margin-top: -6px;
+  }
+  @media (min-width: 800px) { .planks { grid-template-columns: repeat(4, 1fr); } }
+  .plank {
+    background: linear-gradient(155deg, #7a5a3f, #5c4229);
+    color: var(--cream);
+    padding: 22px 20px 24px;
+    border-radius: 3px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    position: relative;
+  }
+  .plank::before {
+    content: '';
+    position: absolute;
+    left: -8px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #5c4229;
+  }
+  .plank:nth-child(even)::before { display: none; }
+  .plank:nth-child(even)::after {
+    content: '';
+    position: absolute;
+    right: -8px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 9px solid #5c4229;
+  }
+  .plank .num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+  }
+  .plank h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    margin: 8px 0 10px;
+  }
+  .plank p { font-size: 13.8px; color: rgba(246,241,230,0.82); }
+
+  /* ---------- INVENTORY (EVERYTHING YOU NEED) ---------- */
+  .inventory-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 60px;
+  }
+  @media (min-width: 760px) { .inventory-grid { grid-template-columns: 1fr 1fr; } }
+  .inventory-list { list-style: none; margin: 0; padding: 0; }
+  .inventory-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 15.5px;
+  }
+  .inventory-list li span.tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    white-space: nowrap;
+  }
+
+  .amenity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .amenity-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+  .amenity-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 20px 20px 18px;
+  }
+  .amenity-card .cat {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .amenity-card ul { list-style:none; margin:0; padding:0; }
+  .amenity-card li { font-size: 15px; padding: 5px 0; color: var(--ink); }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 700px) { .area-grid { grid-template-columns: repeat(3, 1fr); } }
+  .area-item {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 18px 18px 16px;
+  }
+  .area-item .name { display:block; font-weight:700; font-size:15px; color:var(--forest-deep); margin-bottom:6px; }
+  .area-item .meta { display:block; font-family:'Cinzel', serif; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 700px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+  .frame {
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    border: 6px solid var(--cream);
+    box-shadow: 0 0 0 1px var(--line), 0 14px 24px rgba(43,39,31,0.14);
+    display: flex;
+    align-items: flex-end;
+  }
+  .frame .swatch {
+    position: absolute; inset: 0;
+  }
+  .frame img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .frame .cap {
+    position: relative;
+    z-index: 2;
+    color: var(--cream);
+    font-size: 12.5px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(35,45,29,0.72), transparent);
+    font-weight: 500;
+  }
+  .g1 .swatch { background: linear-gradient(155deg,#4d5a3e,#2b3624); }
+  .g2 .swatch { background: linear-gradient(155deg,#7a5a3f,#4a3423); }
+  .g3 .swatch { background: linear-gradient(155deg,#8a7355,#5c4229); }
+  .g4 .swatch { background: linear-gradient(155deg,#3a4530,#232d1d); }
+  .g5 .swatch { background: linear-gradient(155deg,#6b7a55,#3d4a33); }
+  .g6 .swatch { background: linear-gradient(155deg,#9c8562,#6e4f37); }
+  .g7 .swatch { background: linear-gradient(155deg,#524a3c,#2b271f); }
+  .g8 .swatch { background: linear-gradient(155deg,#5f6b4a,#37452f); }
+  .frame.pending .cap { font-style: italic; color: rgba(246,241,230,0.75); }
+  .frame.pending .swatch {
+    background: repeating-linear-gradient(45deg, #d9cfba, #d9cfba 8px, #ece4d2 8px, #ece4d2 16px);
+  }
+  .frame.pending .cap { background: linear-gradient(0deg, rgba(43,39,31,0.55), transparent); }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 760px) { .reviews-strip { grid-template-columns: repeat(3,1fr); } }
+  .review-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    padding: 26px 24px;
+    border-radius: 2px;
+  }
+  .review-card .stars { color: var(--gold); letter-spacing: 2px; font-size: 14px; }
+  .review-card p.quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16.5px;
+    margin: 14px 0 16px;
+    color: var(--forest-deep);
+  }
+  .review-card .who { font-size: 12.5px; color: var(--taupe); letter-spacing: 0.04em; text-transform: uppercase; font-family: 'Cinzel', serif; }
+  .reviews-note { margin-top: 20px; font-size: 12.5px; color: var(--taupe); font-style: italic; }
+
+  /* ---------- TRIP SIGNPOST NAV (SIGNATURE) ---------- */
+  .trailhead {
+    background: var(--forest-deep);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .trailhead .wrap { position: relative; z-index: 2; }
+  .trailhead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 90px);
+  }
+  .trailhead .section-head h2 { color: var(--cream); }
+  .trailhead .section-head .eyebrow { color: var(--gold-bright); }
+  .trailhead .section-head p { color: rgba(246,241,230,0.72); }
+
+  .signpost-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0 10px;
+  }
+  .sp-pole {
+    width: 14px;
+    height: 90px;
+    background: linear-gradient(180deg, #8a6a4a, #4a3423);
+    border-radius: 3px;
+    box-shadow: inset -3px 0 4px rgba(0,0,0,0.3);
+  }
+  .sp-arms {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+    max-width: 620px;
+    margin-top: -10px;
+  }
+  .sp-arm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(100deg, #8a6a4a, #6e4f37);
+    padding: 16px 26px;
+    border-radius: 3px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+    text-decoration: none;
+    color: var(--cream);
+    transform-origin: left center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sp-arm:nth-child(even) { transform-origin: right center; flex-direction: row-reverse; }
+  .sp-arm:hover { transform: rotate(-1.2deg) scale(1.015); box-shadow: 0 14px 26px rgba(0,0,0,0.32); }
+  .sp-arm:nth-child(even):hover { transform: rotate(1.2deg) scale(1.015); }
+  .sp-arm .label {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .sp-arm .mi {
+    font-size: 12px;
+    color: rgba(246,241,230,0.65);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+  @media (min-width: 760px) {
+    .sp-arms { max-width: 900px; }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { border-top: 1px solid rgba(246,241,230,0.0); }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-left: 20px;
+  }
+  .faq-item[open] summary::after { content: '–'; }
+  .faq-item .a { padding: 0 0 22px; color: #4b453b; font-size: 15px; max-width: 640px; }
+
+  /* ---------- BOOKING PANEL ---------- */
+  .book-panel {
+    background: var(--cream-deep);
+  }
+  .book-shell {
+    border: 1px solid var(--line);
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 6px;
+    box-shadow: 0 20px 40px rgba(43,39,31,0.08);
+  }
+  .book-shell .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .widget-slot {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--taupe);
+    font-style: italic;
+    font-size: 14px;
+    padding: 40px;
+    text-align: center;
+    background:
+      repeating-linear-gradient(135deg, rgba(169,145,122,0.05) 0 12px, transparent 12px 24px);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--forest-deep);
+    color: rgba(246,241,230,0.82);
+    padding: 70px 0 30px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(246,241,230,0.14);
+  }
+  @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+  footer .wordmark { color: var(--cream); }
+  footer h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 14px;
+  }
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li { margin-bottom: 9px; font-size: 14.5px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--gold-bright); }
+  .foot-bottom {
+    padding-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12.5px;
+    color: rgba(246,241,230,0.5);
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="#stay">The Cabin</a></li>
+      <li><a href="#weekends">Weekends</a></li>
+      <li><a href="#area">Area Guide</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#book" class="btn btn-gold nav-cta">Check Dates</a>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="photo-note">Still decorating — real photos coming once the house is guest-ready</div>
+  <div class="hero-inner">
+    <div class="eyebrow">Massanutten Resort, Virginia</div>
+    <h1>Your private Massanutten escape — with room for every kind of weekend.</h1>
+    <p class="hero-sub">A five-bedroom, 9-bed mountain house near JMU, wineries, golf, skiing, and resort fun — with room to gather, space to recharge, and thoughtful details that make group travel feel less like logistics.</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn btn-gold">Check Dates & Pricing</a>
+      <a href="#weekends" class="btn btn-outline" style="border-color:rgba(246,241,230,0.5); color:var(--cream);">Plan Your Weekend</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="wrap">
+    <ul>
+      <li>Book Direct, No Middleman</li>
+      <li>Secure Hospitable Checkout</li>
+      <li>Owner-Hosted</li>
+      <li>Professionally Cleaned Every Stay</li>
+    </ul>
+  </div>
+</div>
+
+<section id="stay">
+  <div class="wrap">
+    <div class="why-copy" style="max-width:640px; margin:0 auto; text-align:center;">
+      <div class="eyebrow">Cedar Escape Was Made for Group Weekends</div>
+      <h2 class="section-head" style="margin: 14px auto 0;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">One house. One weekend. Everyone together.</span></h2>
+      <p style="margin-top:24px;">Group trips are easier when no one is split between hotel rooms, keycards, lobby meetups, and "where is everybody?" texts.</p>
+      <p style="margin-top:16px;">At Cedar Escape, you get five bedrooms, a full kitchen, gathering spaces, and room for the whole group to settle in — together, but not on top of each other.</p>
+      <p style="margin-top:16px;">Come for JMU, wineries, golf, skiing, or resort fun.</p>
+      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:22px; color:var(--forest-deep); margin-top:28px;">Stay somewhere that makes the weekend feel easy.</p>
+    </div>
+  </div>
+</section>
+
+<section class="signpost-section">
+  <div class="wrap">
+    <div class="section-head" style="margin: 0 auto 56px; text-align:center;">
+      <div class="eyebrow">Every Stay, Same Standard</div>
+      <h2>Four standards. No exceptions.</h2>
+    </div>
+    <div class="signpost">
+      <div class="post-pole"></div>
+      <div class="planks">
+        <div class="plank">
+          <div class="num">Standard 01</div>
+          <h3>Actually Clean</h3>
+          <p>Professionally cleaned and inspected between every single stay — not just tidied.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Standard 02</div>
+          <h3>Fully Stocked</h3>
+          <p>Coffee, basic pantry staples, and toiletries waiting when you walk in the door.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Standard 03</div>
+          <h3>Everything Works</h3>
+          <p>Hot tub, pool table, Peloton, VR — checked and ready.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Standard 04</div>
+          <h3>A Real Human</h3>
+          <p>Questions get answered by the owner, not a call center script.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Already Taken Care Of</div>
+      <h2><span style="font-family:'Playfair Display',serif;font-style:italic;">You bring the people. The rest is handled.</span></h2>
+      <p>If it's on this list, it's already at the house — from bunk beds for the kids to a poker table for after they're asleep.</p>
+    </div>
+    <div class="amenity-grid amenity-grid-3">
+      <div class="amenity-card">
+        <span class="cat">Outdoor</span>
+        <ul><li>Hot tub</li><li>Smoker grill</li><li>Patio seating</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Game Room</span>
+        <ul><li>Pool table</li><li>Poker table</li><li>VR headset</li><li>Movie room</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Fitness</span>
+        <ul><li>Peloton</li><li>Adjustable weight bench</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Family-Ready</span>
+        <ul><li>Bunk beds</li><li>High chair & toddler kitchenware</li><li>Pack n' play / travel crib</li><li>Toddler toilet seat</li><li>Gates & toys</li><li>Downstairs sleeper sofa</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Kitchen & Coffee</span>
+        <ul><li>Full kitchen</li><li>Coffee & tea bar</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Work & Connectivity</span>
+        <ul><li>Two dedicated work nooks</li><li>High-speed Wi-Fi</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Laundry</span>
+        <ul><li>Washer & dryer</li><li>Starter detergent provided</li></ul>
+      </div>
+      <div class="amenity-card">
+        <span class="cat">Comfort</span>
+        <ul><li>Central heating</li><li>Mini-split A/C in select rooms</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">A Look Inside</div>
+      <h2>Still finding its finish.</h2>
+      <p>Still decorating — real photos land once every room is guest-ready. Here's what's coming.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="frame pending"><div class="swatch"></div><div class="cap">Primary Bedroom</div></div>
+      <div class="frame pending"><div class="swatch"></div><div class="cap">Fitness Room</div></div>
+      <div class="frame pending"><div class="swatch"></div><div class="cap">Coffee & Tea Bar</div></div>
+      <div class="frame pending"><div class="swatch"></div><div class="cap">Deck Dining</div></div>
+      <div class="frame pending"><div class="swatch"></div><div class="cap">Grill & Patio</div></div>
+      <div class="frame pending"><div class="swatch"></div><div class="cap">Lounge Seating</div></div>
+      <div class="frame pending"><div class="swatch"></div><div class="cap">Game Room</div></div>
+      <div class="frame pending"><div class="swatch"></div><div class="cap">Spa Bath</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="trailhead" id="weekends">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 10px;text-align:center;max-width:560px;">
+      <div class="eyebrow">Pick Your Trail</div>
+      <h2>What kind of weekend is this?</h2>
+      <p>Same house, five very different trips. Pick the one you're actually planning.</p>
+    </div>
+    <div class="signpost-nav">
+      <div class="sp-pole"></div>
+      <div class="sp-arms">
+        <a href="#" class="sp-arm"><span class="label">Family Mountain Weekend</span><span class="mi">This way →</span></a>
+        <a href="#" class="sp-arm"><span class="label">Girls / Wine Weekend</span><span class="mi">← This way</span></a>
+        <a href="#" class="sp-arm"><span class="label">JMU Weekend</span><span class="mi">This way →</span></a>
+        <a href="#" class="sp-arm"><span class="label">Ski / Adventure Weekend</span><span class="mi">← This way</span></a>
+        <a href="#" class="sp-arm"><span class="label">Golf / Resort Weekend</span><span class="mi">This way →</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="area">
+  <div class="wrap">
+    <div class="why-grid">
+      <div>
+        <div class="eyebrow">The Ultimate Massanutten Weekend Guide</div>
+        <h2 class="section-head" style="margin-bottom:20px;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">The Valley, at your pace.</span></h2>
+        <p style="color:#4b453b;font-size:15.5px;">Wineries, hiking trails, golf, skiing in season, and JMU about 25 miles down the road. Full area guide coming with turn-by-turn favorites — not just a list of links.</p>
+      </div>
+      <div class="area-grid">
+        <div class="area-item"><span class="name">Massanutten Resort Activities</span><span class="meta">On-Site</span></div>
+        <div class="area-item"><span class="name">Local Wineries</span><span class="meta">15–25 Min</span></div>
+        <div class="area-item"><span class="name">Hiking Trails</span><span class="meta">Nearby</span></div>
+        <div class="area-item"><span class="name">Golf Courses</span><span class="meta">Nearby</span></div>
+        <div class="area-item"><span class="name">JMU Campus</span><span class="meta">~25 Mi</span></div>
+        <div class="area-item"><span class="name">Skiing (In Season)</span><span class="meta">On-Site</span></div>
+        <div class="area-item"><span class="name">Go-Karts, Bumper Cars & Zipline</span><span class="meta">On-Site, Weekends</span></div>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin:56px 0 32px;">
+      <div class="eyebrow">From the Owner</div>
+      <h2>A few of our favorites.</h2>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Swap in your go-to winery here — the one you'd actually send a group of eight to on a Saturday.</p>
+        <div class="who">Winery Pick</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Swap in your favorite trail — sunrise spot, easy loop, whatever it actually is.</p>
+        <div class="who">Hike Pick</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Swap in the restaurant or golf course you'd tell a friend to book, not just any nearby option.</p>
+        <div class="who">Local Pick</div>
+      </div>
+    </div>
+    <p class="reviews-note">Placeholder tiles — drop in your real picks whenever you're ready and these become the area guide's best feature.</p>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 36px;text-align:center;">
+      <div class="eyebrow">Plan Your Trip</div>
+      <h2>Weather, and things to book while you're here.</h2>
+      <p>Live local weather and a few bookable local experiences, right on the page.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr; gap:24px;">
+      <div class="book-shell">
+        <div class="top"><span>Local Weather</span><span>Massanutten, VA</span></div>
+        <div class="betterstr-weather-widget" data-width="100%" data-height="700px" data-uuid="4b298eac-5f66-4308-a689-4ad0340a38d3" data-units="imperial"></div>
+      </div>
+      <div class="book-shell">
+        <div class="top"><span>Local Activities & Tours</span><span>Powered by Viator</span></div>
+        <iframe src="https://api.betterstr.com/guidebook/viator.php?uuid=4b298eac-5f66-4308-a689-4ad0340a38d3&format=widget" width="100%" height="650px" frameborder="0" scrolling="yes" style="overflow:auto; display:block;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://api.betterstr.com/embed/weather-widget.js"></script>
+
+<section class="book-panel" id="book">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 36px;text-align:center;">
+      <div class="eyebrow">Direct Booking</div>
+      <h2>Check dates, see the real price.</h2>
+      <p>Live availability and pricing, straight from our booking system — no markup, no third-party fees.</p>
+    </div>
+    <div class="book-shell">
+      <div class="top"><span>Cedar Escape · Massanutten, VA</span><span>Secure Checkout</span></div>
+      <iframe id="booking-iframe" sandbox="allow-top-navigation allow-scripts allow-same-origin" style="width: 100%; height: 900px; border: none; display: block;" frameborder="0" src="https://booking.hospitable.com/widget/a23c8f9c-1465-4c6a-b17b-32990f37578d/2119232"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Good to Know</div>
+      <h2>Questions.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What's the bedroom count?<span></span></summary>
+        <div class="a">Five bedrooms across two floors, including a walkout basement, with 9 beds total between the bedrooms and bunk room. There's also a downstairs sleeper sofa on top of that, handy if you've got a young child you'd rather not put on a top bunk.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What's the max occupancy?</summary>
+        <div class="a">Sleeps up to 14 guests comfortably.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is it kid-friendly?</summary>
+        <div class="a">Yes — high chair, toddler kitchenware, a pack n' play, a toddler toilet seat, gates, and bunk beds are all on-site. The upper bunk is restricted to children 8 and older for safety.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What time is check-in and check-out?</summary>
+        <div class="a">Check-in is at 3:00 PM, check-out is at 11:00 AM.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Where do we park?</summary>
+        <div class="a">The driveway comfortably fits 3–4 cars. Show up with more, and free overflow parking's got you covered.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What's your cancellation policy?</summary>
+        <div class="a">Policy details are shown at checkout in the booking widget above, straight from our reservation system, before you pay anything.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Are pets allowed?</summary>
+        <div class="a">No, we're not able to accommodate pets at this time.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is smoking allowed?</summary>
+        <div class="a">No, Cedar Escape is a smoke-free property.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 44px;text-align:center;">
+      <div class="eyebrow">From the Guestbook</div>
+      <h2>What past crews said.</h2>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Exactly as described, and the hot tub alone was worth the trip. Already rebooking for next year.</p>
+        <div class="who">Family Weekend Group</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Ten of us, zero arguments about space. The game room settled that.</p>
+        <div class="who">Girls Weekend Group</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Owner responded in minutes when we asked about early check-in. Actual human, actual help.</p>
+        <div class="who">JMU Family Weekend</div>
+      </div>
+    </div>
+    <p class="reviews-note">Reviews sync automatically from Hospitable — new ones appear here without anyone editing this page.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew. Owner-hosted, direct-booked, actually clean.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#stay">The Cabin</a></li>
+          <li><a href="#weekends">Weekend Guides</a></li>
+          <li><a href="#area">Area Guide</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Book Direct</h4>
+        <ul>
+          <li><a href="#book">Check Dates & Pricing</a></li>
+          <li><a href="https://www.instagram.com/cedarescape_massanutten" target="_blank" rel="noopener">Instagram: @cedarescape_massanutten</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61574382076998" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#">Contact the Owner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cedar Escape · Massanutten Resort, VA</span>
+      <span>Booked directly. Hosted personally. No middleman.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('section');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
+</script>
+
+<script>
+  function getQueryParams(param) {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    return urlSearchParams.get(param);
+  }
+
+  function updateIframeSrc() {
+    const iframe = document.getElementById("booking-iframe");
+    if (!iframe) return;
+
+    const checkin = getQueryParams("checkin");
+    const checkout = getQueryParams("checkout");
+    const adults = getQueryParams("adults");
+    const children = getQueryParams("children");
+    const infants = getQueryParams("infants");
+    const pets = getQueryParams("pets");
+
+    if (!checkin && !checkout && !adults) return;
+
+    let newSrc = iframe.src;
+    newSrc += newSrc.includes("?") ? "&" : "?";
+    newSrc += `checkin=${checkin}&checkout=${checkout}&adults=${adults}&children=${children}&infants=${infants}&pets=${pets}`;
+
+    iframe.src = newSrc;
+  }
+
+  window.addEventListener("load", updateIframeSrc);
+</script>
+
+</body>
+</html>

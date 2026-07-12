@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cedar Escape JMU Weekend Guide</title>
+<title>Four-Season Massanutten Weekend — Cedar Escape</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -378,7 +378,6 @@
   }
   @media (min-width: 640px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 900px) { .amenity-grid-3 { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 1000px) { .amenity-grid-4 { grid-template-columns: repeat(4, 1fr); } }
   .amenity-card {
     background: var(--cream);
     border: 1px solid var(--line);
@@ -659,6 +658,49 @@
 
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in { opacity: 1; transform: none; }
+  .season-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 640px) { .season-cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .season-cards { grid-template-columns: repeat(4, 1fr); } }
+  .season-card {
+    border-radius: 4px;
+    padding: 28px 22px 24px;
+    color: var(--cream);
+    box-shadow: 0 14px 26px rgba(0,0,0,0.18);
+    position: relative;
+  }
+  .season-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  }
+  .season-card .icon { width: 34px; height: 34px; color: var(--gold-bright); margin-bottom: 16px; }
+  .season-card .season-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .season-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .season-card p { font-size: 13.8px; color: rgba(246,241,230,0.85); line-height: 1.5; }
+  .season-winter { background: linear-gradient(160deg, #4A6A7A, #26404C); }
+  .season-spring { background: linear-gradient(160deg, #5C8A5A, #2F4E2D); }
+  .season-summer { background: linear-gradient(160deg, #4A8FA6, #245868); }
+  .season-fall { background: linear-gradient(160deg, #A65D2F, #6B3A1B); }
 </style>
 </head>
 <body>
@@ -677,12 +719,17 @@
   </nav>
 </header>
 
-<section class="hero" style="min-height:64vh;">
+<section class="hero" style="min-height:70vh;">
   <div class="hero-inner" style="padding-top:100px;">
-    <div class="eyebrow">JMU Family & Parents Weekend</div>
-    <h1 style="font-size:clamp(30px, 5vw, 54px);">Move-in day, parents weekend, or graduation — one house for the whole trip.</h1>
-    <p class="hero-sub">About a 25-minute drive from JMU, with enough beds and space that grandparents, siblings, and the whole extended crew can actually stay together instead of splitting across two hotels off I-81.</p>
-    <div class="hero-actions">
+    <div class="eyebrow">Four-Season Massanutten Weekend</div>
+    <h1 style="font-size:clamp(30px, 5vw, 54px);">There's no wrong time of year to book this house.</h1>
+    <p class="hero-sub">Skiing in winter, the waterpark in summer, a mountain coaster whenever it's open — Massanutten is a genuine year-round resort, and Cedar Escape is home base no matter which season brought you here.</p>
+    <div class="hero-actions" style="flex-wrap:wrap;">
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Skiing In Winter</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Waterpark In Summer</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">6,000 Acres, Any Month</span>
+    </div>
+    <div class="hero-actions" style="margin-top:18px;">
       <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
     </div>
   </div>
@@ -691,10 +738,9 @@
 <div class="trust-bar">
   <div class="wrap">
     <ul>
-      <li>25 Min From Campus</li>
+      <li>5 Bedrooms · 9 Beds</li>
       <li>Sleeps Up To 14</li>
-      <li>Full Kitchen, No Restaurant Wait</li>
-      <li>Two Work Nooks For Remote Parents</li>
+      <li>Open Year-Round</li>
     </ul>
   </div>
 </div>
@@ -702,119 +748,91 @@
 <section>
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Why Families Choose This House</div>
-      <h2>Everyone's already exhausted from the drive. Don't split the group up too.</h2>
-      <p>JMU weekends bring together people who don't normally share a roof — parents, grandparents, siblings, maybe an old family friend tagging along. One house means no coordinating three or four separate hotel check-ins, no "meet in the lobby at 9," and a kitchen table big enough for everyone to actually sit down together before the football game or the move-in truck.</p>
+      <div class="eyebrow">One House, Every Season</div>
+      <h2>Massanutten doesn't close for the off-season — because there isn't one.</h2>
+      <p>Most mountain destinations pick a season. Massanutten runs 6,000 acres of activities all year, which means this house works just as well for a February ski trip as a July waterpark weekend.</p>
     </div>
-    <div class="amenity-grid amenity-grid-4">
-      <div class="amenity-card">
-        <span class="cat">Room For Everyone</span>
-        <ul><li>5 bedrooms, 9 beds</li><li>Sleeps up to 14</li><li>Downstairs sleeper sofa</li></ul>
+    <div class="season-cards">
+      <div class="season-card season-winter">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M4 7l16 10M20 7L4 17"/>
+        </svg>
+        <span class="season-label">Winter</span>
+        <h3>Skiing & Snow Tubing</h3>
+        <p>Virginia's only quad chairlift, a vertical drop over 1,100 feet, ski school for all ages, snow tubing, and ice skating.</p>
       </div>
-      <div class="amenity-card">
-        <span class="cat">While The Parents Work</span>
-        <ul><li>Two dedicated work nooks</li><li>High-speed Wi-Fi</li></ul>
+      <div class="season-card season-spring">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22V10M12 10c-4 0-6-2-6-6 4 0 6 2 6 6zM12 10c4 0 6-2 6-6-4 0-6 2-6 6z"/>
+        </svg>
+        <span class="season-label">Spring</span>
+        <h3>Wine Trail & Golf Season</h3>
+        <p>Wineries and golf courses hit their stride, and the Wednesday farmers market gets going for the season.</p>
       </div>
-      <div class="amenity-card">
-        <span class="cat">After The Campus Tour</span>
-        <ul><li>Pool table & poker table</li><li>Movie room</li><li>Hot tub</li></ul>
+      <div class="season-card season-summer">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 12h2M20 12h2M12 2v2M12 20v2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/>
+          <circle cx="12" cy="12" r="4.5"/>
+        </svg>
+        <span class="season-label">Summer</span>
+        <h3>Waterpark & Mountain Biking</h3>
+        <p>The award-winning Indoor/Outdoor WaterPark, a full Mountain Bike Park, and the new Mountain Mayhem coaster.</p>
       </div>
-      <div class="amenity-card">
-        <span class="cat">Comfort & Convenience</span>
-        <ul><li>Washer & dryer</li><li>Central heating & mini-split A/C</li><li>Coffee & tea bar</li></ul>
+      <div class="season-card season-fall">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2c-2 3-2 5 0 7-3 0-5 1-6 4 3 1 5 0 6-2 1 2 3 3 6 2-1-3-3-4-6-4 2-2 2-4 0-7z"/>
+          <path d="M12 13v9"/>
+        </svg>
+        <span class="season-label">Fall</span>
+        <h3>JMU Football & Foliage</h3>
+        <p>Home football weekends, cooler hiking weather, and the Blue Ridge putting on its best colors of the year.</p>
       </div>
     </div>
   </div>
 </section>
-
-<div class="trust-bar">
-  <div class="wrap">
-    <ul>
-      <li>Downtown Dining ~25 Min</li>
-      <li>200+ Local Restaurants</li>
-      <li>Home Games, Fall</li>
-    </ul>
-  </div>
-</div>
 
 <section style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Near Campus</div>
-      <h2>Where to go while you're in town.</h2>
-      <p>A short drive gets you to downtown Harrisonburg and back — enough time to eat well without cutting into the weekend.</p>
+      <div class="eyebrow">Year-Round, Regardless Of Season</div>
+      <h2>What's always open.</h2>
+      <p>Some of the resort's best features don't care what month it is.</p>
     </div>
     <div class="reviews-strip">
       <div class="review-card">
-        <p class="quote">A Harrisonburg institution since the 1940s, well-loved for a relaxed breakfast before a campus tour.</p>
-        <div class="who">The Little Grill</div>
+        <p class="quote">Two 18-hole courses, one Arnold Palmer-designed, both open year-round weather permitting.</p>
+        <div class="who">Golf</div>
       </div>
       <div class="review-card">
-        <p class="quote">The most consistently recommended downtown dinner spot — farm-to-table, and a good pick for celebrating move-in day or graduation.</p>
-        <div class="who">Local Chop & Grill House</div>
+        <p class="quote">Escape rooms, an arcade, a pool table, and a full day spa — good for a weather day in any season.</p>
+        <div class="who">Indoor Options</div>
       </div>
       <div class="review-card">
-        <p class="quote">A fast, friendly drive-thru favorite with the JMU crowd — good for a quick stop on the way to or from campus.</p>
-        <div class="who">7 Brew Coffee</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Ranks at the top of nearly every "best coffee in Harrisonburg" list — a local favorite if you haven't tried it yet.</p>
-        <div class="who">Coffee Hound</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Pick up a cake to bring back to the house — a nice touch for celebrating a graduation or parents weekend.</p>
-        <div class="who">Nothing Bundt Cakes</div>
+        <p class="quote">12 on-site dining locations, plus standing events like the Smoking Class and Grilling on the Deck.</p>
+        <div class="who">Dining</div>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="faq">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Whatever Brings You To JMU</div>
-      <h2>One house, however many reasons you're coming.</h2>
-      <p>Different trips need different things. Here's how the house fits each one.</p>
-    </div>
-    <div class="amenity-grid amenity-grid-4">
-      <div class="amenity-card">
-        <span class="cat">Move-In Weekend</span>
-        <ul><li>9 beds for the whole helping crew</li><li>Full kitchen instead of takeout every meal</li><li>Space to unwind once the truck's unpacked</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Parents Weekend</span>
-        <ul><li>Grandparents and siblings all under one roof</li><li>Two work nooks if someone needs to duck out</li><li>Hot tub after a full day on campus</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Graduation</span>
-        <ul><li>Room for extended family in one place</li><li>Pick up a cake from Nothing Bundt for the celebration</li><li>Dinner out at Local Chop, then back for a toast</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Game Day</span>
-        <ul><li>Book early — fall weekends go fast</li><li>Grill going before kickoff</li><li>Pool table & movie room for the pregame</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq" style="background:var(--cream-deep);">
-  <div class="wrap">
-    <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">JMU Weekend FAQ</div>
+      <div class="eyebrow">Four-Season FAQ</div>
       <h2>Quick answers for planning your trip.</h2>
     </div>
     <div class="faq-list">
       <details class="faq-item">
-        <summary>How far is Cedar Escape from JMU?</summary>
-        <div class="a">Roughly a 25-30 minute drive depending on traffic, which is common during home football weekends.</div>
+        <summary>Is Massanutten really open year-round?</summary>
+        <div class="a">Yes — skiing and snow tubing in winter, the waterpark and mountain biking in summer, and golf, spa, and dining options that run all year regardless of season.</div>
       </details>
       <details class="faq-item">
-        <summary>Is this a good option for football weekends?</summary>
-        <div class="a">Yes — with 9 beds and space for up to 14, it's an easy way to host extended family or a group of friends for a home game without splitting across hotels. Just book early, since fall weekends go fast.</div>
+        <summary>What's the best season to visit?</summary>
+        <div class="a">Depends entirely on what your group wants — winter for skiing, summer for the waterpark, fall for JMU football and foliage, spring for golf and the wine trail. The house works for all of them.</div>
       </details>
       <details class="faq-item">
-        <summary>Is there space for parents to work remotely during the trip?</summary>
-        <div class="a">Yes — two dedicated work nooks with high-speed Wi-Fi, so a parent can take a call without disrupting the rest of the group.</div>
+        <summary>Does the house have heating and A/C for any season?</summary>
+        <div class="a">Yes — central heating plus mini-split A/C in select rooms, so the house is comfortable whether you're booking a July weekend or a February ski trip.</div>
       </details>
     </div>
   </div>
@@ -823,7 +841,7 @@
 <section class="trailhead">
   <div class="wrap" style="text-align:center;">
     <div class="section-head" style="margin:0 auto 24px;max-width:560px;">
-      <div class="eyebrow">Ready For Move-In, Parents Weekend, Or Graduation?</div>
+      <div class="eyebrow">Any Season Works</div>
       <h2>Check dates before the good weekends book up.</h2>
     </div>
     <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
@@ -837,10 +855,11 @@
       <h2>More Cedar Escape weekend guides.</h2>
     </div>
     <div class="reviews-strip">
-      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="cedar-escape-family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">Four wineries, one house, no designated-driver headaches.</p><div class="who"><a href="cedar-escape-wine-weekend.html" style="text-decoration:none;color:inherit;">Shenandoah Wine Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="cedar-escape-golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">Shenandoah National Park hiking, mountain biking, and a hot tub waiting at the end of the trail.</p><div class="who"><a href="cedar-escape-adventure-weekend.html" style="text-decoration:none;color:inherit;">Adventure Seeker Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">JMU move-in, parents weekend, and graduation trips.</p><div class="who"><a href="jmu-weekend.html" style="text-decoration:none;color:inherit;">The Cedar Escape JMU Weekend Guide →</a></div></div>
+      <div class="review-card"><p class="quote">Four wineries, one house, no designated-driver headaches.</p><div class="who"><a href="wine-weekend.html" style="text-decoration:none;color:inherit;">Shenandoah Wine Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Shenandoah National Park hiking, mountain biking, and a hot tub waiting at the end of the trail.</p><div class="who"><a href="adventure-weekend.html" style="text-decoration:none;color:inherit;">Adventure Seeker Weekend →</a></div></div>
     </div>
   </div>
 </section>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cedar Escape JMU Weekend Guide</title>
+<title>Shenandoah Wine Weekend — Cedar Escape</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -301,7 +301,7 @@
     width: 100%;
     margin-top: -6px;
   }
-  @media (min-width: 800px) { .planks { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 800px) { .planks { grid-template-columns: repeat(3, 1fr); } }
   .plank {
     background: linear-gradient(155deg, #7a5a3f, #5c4229);
     color: var(--cream);
@@ -378,7 +378,6 @@
   }
   @media (min-width: 640px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 900px) { .amenity-grid-3 { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 1000px) { .amenity-grid-4 { grid-template-columns: repeat(4, 1fr); } }
   .amenity-card {
     background: var(--cream);
     border: 1px solid var(--line);
@@ -658,7 +657,45 @@
   }
 
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.in { opacity: 1; transform: none; }
+  .reveal.in { opacity: 1; transform: none; }  .wine-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  @media (min-width: 700px) { .wine-cards { grid-template-columns: repeat(3, 1fr); } }
+  .wine-card {
+    background: linear-gradient(160deg, #8C2F4E, #5C1830);
+    border-radius: 4px;
+    padding: 30px 26px 28px;
+    color: var(--cream);
+    box-shadow: 0 16px 30px rgba(92,24,48,0.28);
+    position: relative;
+    overflow: hidden;
+  }
+  .wine-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  }
+  .wine-card .icon {
+    width: 38px; height: 38px;
+    color: var(--gold-bright);
+    margin-bottom: 18px;
+  }
+  .wine-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 21px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .wine-card p {
+    font-size: 14.5px;
+    color: rgba(246,241,230,0.85);
+    line-height: 1.55;
+  }
 </style>
 </head>
 <body>
@@ -677,12 +714,17 @@
   </nav>
 </header>
 
-<section class="hero" style="min-height:64vh;">
+<section class="hero" style="min-height:70vh;">
   <div class="hero-inner" style="padding-top:100px;">
-    <div class="eyebrow">JMU Family & Parents Weekend</div>
-    <h1 style="font-size:clamp(30px, 5vw, 54px);">Move-in day, parents weekend, or graduation — one house for the whole trip.</h1>
-    <p class="hero-sub">About a 25-minute drive from JMU, with enough beds and space that grandparents, siblings, and the whole extended crew can actually stay together instead of splitting across two hotels off I-81.</p>
-    <div class="hero-actions">
+    <div class="eyebrow">Shenandoah Wine Weekend</div>
+    <h1 style="font-size:clamp(30px, 5vw, 54px);">A wine trail weekend that ends at a hot tub, not a hotel bar.</h1>
+    <p class="hero-sub">Four wineries within a short drive, a house big enough for the whole group, and nobody splitting a cab back to separate hotel rooms at the end of the night.</p>
+    <div class="hero-actions" style="flex-wrap:wrap;">
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">4 Wineries Nearby</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Spa On-Site</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">15–25 Min To Tasting Rooms</span>
+    </div>
+    <div class="hero-actions" style="margin-top:18px;">
       <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
     </div>
   </div>
@@ -691,10 +733,9 @@
 <div class="trust-bar">
   <div class="wrap">
     <ul>
-      <li>25 Min From Campus</li>
+      <li>5 Bedrooms · 9 Beds</li>
       <li>Sleeps Up To 14</li>
-      <li>Full Kitchen, No Restaurant Wait</li>
-      <li>Two Work Nooks For Remote Parents</li>
+      <li>Hot Tub & Game Room</li>
     </ul>
   </div>
 </div>
@@ -702,68 +743,64 @@
 <section>
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Why Families Choose This House</div>
-      <h2>Everyone's already exhausted from the drive. Don't split the group up too.</h2>
-      <p>JMU weekends bring together people who don't normally share a roof — parents, grandparents, siblings, maybe an old family friend tagging along. One house means no coordinating three or four separate hotel check-ins, no "meet in the lobby at 9," and a kitchen table big enough for everyone to actually sit down together before the football game or the move-in truck.</p>
+      <div class="eyebrow">Why It Works</div>
+      <h2>One house, not three hotel rooms.</h2>
+      <p>Wine weekends are better without the group splitting up after a day of tastings. One house means everyone lands in the same place — hot tub, game room, and a real living room instead of a hallway.</p>
     </div>
-    <div class="amenity-grid amenity-grid-4">
-      <div class="amenity-card">
-        <span class="cat">Room For Everyone</span>
-        <ul><li>5 bedrooms, 9 beds</li><li>Sleeps up to 14</li><li>Downstairs sleeper sofa</li></ul>
+    <div class="wine-cards">
+      <div class="wine-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6"/>
+          <path d="M2 18v2M22 18v2"/>
+          <path d="M2 12V8a2 2 0 012-2h4a2 2 0 012 2v2"/>
+          <path d="M12 12V9a2 2 0 012-2h4a2 2 0 012 2v3"/>
+        </svg>
+        <h3>Room For Everyone</h3>
+        <p>Five bedrooms and 9 beds — nobody's on an air mattress after a long day of tastings.</p>
       </div>
-      <div class="amenity-card">
-        <span class="cat">While The Parents Work</span>
-        <ul><li>Two dedicated work nooks</li><li>High-speed Wi-Fi</li></ul>
+      <div class="wine-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/>
+          <path d="M12 14v6M9 21h6"/>
+        </svg>
+        <h3>Somewhere To Land</h3>
+        <p>Hot tub and game room mean the night doesn't have to end just because the tasting room closed.</p>
       </div>
-      <div class="amenity-card">
-        <span class="cat">After The Campus Tour</span>
-        <ul><li>Pool table & poker table</li><li>Movie room</li><li>Hot tub</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Comfort & Convenience</span>
-        <ul><li>Washer & dryer</li><li>Central heating & mini-split A/C</li><li>Coffee & tea bar</li></ul>
+      <div class="wine-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z"/>
+          <circle cx="12" cy="13" r="3.5"/>
+        </svg>
+        <h3>Worth The Photo</h3>
+        <p>CrossKeys alone looks like a detour through Italy, then a golden-hour hot tub back at the house — bring a camera.</p>
       </div>
     </div>
   </div>
 </section>
-
-<div class="trust-bar">
-  <div class="wrap">
-    <ul>
-      <li>Downtown Dining ~25 Min</li>
-      <li>200+ Local Restaurants</li>
-      <li>Home Games, Fall</li>
-    </ul>
-  </div>
-</div>
 
 <section style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Near Campus</div>
-      <h2>Where to go while you're in town.</h2>
-      <p>A short drive gets you to downtown Harrisonburg and back — enough time to eat well without cutting into the weekend.</p>
+      <div class="eyebrow">Wine Country, Nearby</div>
+      <h2>Four wineries, all within a short drive.</h2>
+      <p>The Shenandoah Valley Wine Trail runs right through this area — CrossKeys, Bluestone, Brix & Columns, and White Oak/Purple WOLF are all official trail members, and several are close enough to visit two or three in a single day.</p>
     </div>
-    <div class="reviews-strip">
+    <div class="reviews-strip reviews-strip-2">
       <div class="review-card">
-        <p class="quote">A Harrisonburg institution since the 1940s, well-loved for a relaxed breakfast before a campus tour.</p>
-        <div class="who">The Little Grill</div>
+        <p class="quote">The name that comes up first when locals talk wine — Tuscan-style architecture that genuinely feels like a detour through Italy, plus a bistro on-site for Sunday brunch.</p>
+        <div class="who">CrossKeys Vineyards</div>
       </div>
       <div class="review-card">
-        <p class="quote">The most consistently recommended downtown dinner spot — farm-to-table, and a good pick for celebrating move-in day or graduation.</p>
-        <div class="who">Local Chop & Grill House</div>
+        <p class="quote">About 15 minutes from Massanutten Village — striking architecture, a 360-degree mountain view, and a bistro on-site.</p>
+        <div class="who">Brix & Columns Vineyards</div>
       </div>
       <div class="review-card">
-        <p class="quote">A fast, friendly drive-thru favorite with the JMU crowd — good for a quick stop on the way to or from campus.</p>
-        <div class="who">7 Brew Coffee</div>
+        <p class="quote">Award-winning estate wines and sweeping valley views, roughly 20 minutes away.</p>
+        <div class="who">Bluestone Vineyard</div>
       </div>
       <div class="review-card">
-        <p class="quote">Ranks at the top of nearly every "best coffee in Harrisonburg" list — a local favorite if you haven't tried it yet.</p>
-        <div class="who">Coffee Hound</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Pick up a cake to bring back to the house — a nice touch for celebrating a graduation or parents weekend.</p>
-        <div class="who">Nothing Bundt Cakes</div>
+        <p class="quote">Part lavender farm, part vineyard — a unique stop if your group wants something a little different.</p>
+        <div class="who">White Oak Lavender Farm & The Purple WOLF</div>
       </div>
     </div>
   </div>
@@ -772,49 +809,80 @@
 <section>
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Whatever Brings You To JMU</div>
-      <h2>One house, however many reasons you're coming.</h2>
-      <p>Different trips need different things. Here's how the house fits each one.</p>
+      <div class="eyebrow">While You're Here</div>
+      <h2>Worth booking ahead.</h2>
     </div>
-    <div class="amenity-grid amenity-grid-4">
-      <div class="amenity-card">
-        <span class="cat">Move-In Weekend</span>
-        <ul><li>9 beds for the whole helping crew</li><li>Full kitchen instead of takeout every meal</li><li>Space to unwind once the truck's unpacked</li></ul>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Book 1–2 weeks ahead if the group wants to fit in a massage or facial between tastings.</p>
+        <div class="who"><a href="https://www.massresort.com/relax/guide-to-the-spa/" target="_blank" rel="noopener" style="color:inherit;">The Spa at Massanutten →</a></div>
       </div>
-      <div class="amenity-card">
-        <span class="cat">Parents Weekend</span>
-        <ul><li>Grandparents and siblings all under one roof</li><li>Two work nooks if someone needs to duck out</li><li>Hot tub after a full day on campus</li></ul>
+      <div class="review-card">
+        <p class="quote">The resort runs its own Virginia wine tasting featuring CrossKeys wines — $35/person, 21+, souvenir glass included. Books up, so reserve ahead.</p>
+        <div class="who"><a href="https://www.massresort.com/dine/dining-events/wine-tasting/" target="_blank" rel="noopener" style="color:inherit;">Resort Wine Tasting →</a></div>
       </div>
-      <div class="amenity-card">
-        <span class="cat">Graduation</span>
-        <ul><li>Room for extended family in one place</li><li>Pick up a cake from Nothing Bundt for the celebration</li><li>Dinner out at Local Chop, then back for a toast</li></ul>
+      <div class="review-card">
+        <p class="quote">A four-course dinner paired with wines from a featured Virginia vineyard, Thursdays at the Conference Center. 21+.</p>
+        <div class="who"><a href="https://www.massresort.com/dine/dining-events/wine-dinner/" target="_blank" rel="noopener" style="color:inherit;">Wine Lovers Dinner →</a></div>
       </div>
-      <div class="amenity-card">
-        <span class="cat">Game Day</span>
-        <ul><li>Book early — fall weekends go fast</li><li>Grill going before kickoff</li><li>Pool table & movie room for the pregame</li></ul>
+      <div class="review-card">
+        <p class="quote">Yes, the wine slushies are real — the Artisan Galleries shop sells their Signature Sangria version, worth a stop.</p>
+        <div class="who">Artisan Galleries Wine Slushies</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Add the late checkout so nobody's rushing out after a slow last morning.</p>
+        <div class="who">Late Checkout Add-On</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Private wine-country transportation is a real, bookable option in this area — some services pick up directly from the house.</p>
+        <div class="who">Local Wine Tour & Driver Services</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="faq" style="background:var(--cream-deep);">
+<section style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">JMU Weekend FAQ</div>
+      <div class="eyebrow">Sample Trip Flow</div>
+      <h2>A wine weekend that doesn't feel rushed.</h2>
+      <p>A simple framework — not a schedule anyone has to follow.</p>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Arrive, settle in, and let the group claim the hot tub before a low-key first night.</p>
+        <div class="who">Friday</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">A late start, then Bluestone and White Oak/Purple WOLF for something a little different from the usual tasting room.</p>
+        <div class="who">Saturday</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">With the late checkout, there's no rush — Sunday brunch at CrossKeys, paired with one last tasting before the drive home.</p>
+        <div class="who">Sunday</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Wine Weekend FAQ</div>
       <h2>Quick answers for planning your trip.</h2>
     </div>
     <div class="faq-list">
       <details class="faq-item">
-        <summary>How far is Cedar Escape from JMU?</summary>
-        <div class="a">Roughly a 25-30 minute drive depending on traffic, which is common during home football weekends.</div>
+        <summary>How far are the wineries from the house?</summary>
+        <div class="a">Most are within a 10–25 minute drive, and several sit close enough together to visit more than one in the same day.</div>
       </details>
       <details class="faq-item">
-        <summary>Is this a good option for football weekends?</summary>
-        <div class="a">Yes — with 9 beds and space for up to 14, it's an easy way to host extended family or a group of friends for a home game without splitting across hotels. Just book early, since fall weekends go fast.</div>
+        <summary>Do we need a designated driver?</summary>
+        <div class="a">Yes — plan for a designated driver, same as any wine trip. If you'd rather not drive at all, private wine-country transportation is a real, bookable option in this area (Shenandoah Wine Tours, Shenandoah Shuttles, and Valley & Vine Transport all serve this region, and some pick up directly from the house).</div>
       </details>
       <details class="faq-item">
-        <summary>Is there space for parents to work remotely during the trip?</summary>
-        <div class="a">Yes — two dedicated work nooks with high-speed Wi-Fi, so a parent can take a call without disrupting the rest of the group.</div>
+        <summary>Is this trip kid-friendly, or more of an adults' weekend?</summary>
+        <div class="a">The house itself works for any group, kids included — same property we recommend for family trips. The wineries themselves, though, are generally a better fit for an adults-only group, which makes this page best suited to a girls' weekend or an adults' getaway.</div>
       </details>
     </div>
   </div>
@@ -823,7 +891,7 @@
 <section class="trailhead">
   <div class="wrap" style="text-align:center;">
     <div class="section-head" style="margin:0 auto 24px;max-width:560px;">
-      <div class="eyebrow">Ready For Move-In, Parents Weekend, Or Graduation?</div>
+      <div class="eyebrow">Ready For A Wine Weekend?</div>
       <h2>Check dates before the good weekends book up.</h2>
     </div>
     <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
@@ -837,10 +905,11 @@
       <h2>More Cedar Escape weekend guides.</h2>
     </div>
     <div class="reviews-strip">
-      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="cedar-escape-family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">Four wineries, one house, no designated-driver headaches.</p><div class="who"><a href="cedar-escape-wine-weekend.html" style="text-decoration:none;color:inherit;">Shenandoah Wine Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="cedar-escape-golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">Shenandoah National Park hiking, mountain biking, and a hot tub waiting at the end of the trail.</p><div class="who"><a href="cedar-escape-adventure-weekend.html" style="text-decoration:none;color:inherit;">Adventure Seeker Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">JMU move-in, parents weekend, and graduation trips.</p><div class="who"><a href="jmu-weekend.html" style="text-decoration:none;color:inherit;">The Cedar Escape JMU Weekend Guide →</a></div></div>
+      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Skiing, the waterpark, golf, or foliage — this house works any month.</p><div class="who"><a href="four-season-weekend.html" style="text-decoration:none;color:inherit;">Four-Season Massanutten Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Shenandoah National Park hiking, mountain biking, and a hot tub waiting at the end of the trail.</p><div class="who"><a href="adventure-weekend.html" style="text-decoration:none;color:inherit;">Adventure Seeker Weekend →</a></div></div>
     </div>
   </div>
 </section>

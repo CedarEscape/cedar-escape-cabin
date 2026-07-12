@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cedar Escape JMU Weekend Guide</title>
+<title>Adventure Seeker Weekend — Cedar Escape</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -378,7 +378,6 @@
   }
   @media (min-width: 640px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 900px) { .amenity-grid-3 { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 1000px) { .amenity-grid-4 { grid-template-columns: repeat(4, 1fr); } }
   .amenity-card {
     background: var(--cream);
     border: 1px solid var(--line);
@@ -659,6 +658,37 @@
 
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in { opacity: 1; transform: none; }
+  .adv-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  @media (min-width: 700px) { .adv-cards { grid-template-columns: repeat(3, 1fr); } }
+  .adv-card {
+    background: linear-gradient(160deg, #5A5248, #332E27);
+    border-radius: 4px;
+    padding: 30px 26px 28px;
+    color: var(--cream);
+    box-shadow: 0 16px 30px rgba(51,46,39,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .adv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  }
+  .adv-card .icon { width: 38px; height: 38px; color: var(--gold-bright); margin-bottom: 18px; }
+  .adv-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 21px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .adv-card p { font-size: 14.5px; color: rgba(246,241,230,0.85); line-height: 1.55; }
 </style>
 </head>
 <body>
@@ -677,12 +707,17 @@
   </nav>
 </header>
 
-<section class="hero" style="min-height:64vh;">
+<section class="hero" style="min-height:70vh;">
   <div class="hero-inner" style="padding-top:100px;">
-    <div class="eyebrow">JMU Family & Parents Weekend</div>
-    <h1 style="font-size:clamp(30px, 5vw, 54px);">Move-in day, parents weekend, or graduation — one house for the whole trip.</h1>
-    <p class="hero-sub">About a 25-minute drive from JMU, with enough beds and space that grandparents, siblings, and the whole extended crew can actually stay together instead of splitting across two hotels off I-81.</p>
-    <div class="hero-actions">
+    <div class="eyebrow">Adventure Seeker Weekend</div>
+    <h1 style="font-size:clamp(30px, 5vw, 54px);">Hike Shenandoah National Park. Come back to a hot tub, not a tent.</h1>
+    <p class="hero-sub">On-resort mountain biking, rappelling, and trails right outside the door — plus Shenandoah National Park close enough for a real day hike. You get the adventure without giving up a real bed and a shower at the end of the day.</p>
+    <div class="hero-actions" style="flex-wrap:wrap;">
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Mountain Biking On-Site</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Shenandoah National Park Nearby</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Rappelling & Trails On-Site</span>
+    </div>
+    <div class="hero-actions" style="margin-top:18px;">
       <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
     </div>
   </div>
@@ -691,10 +726,9 @@
 <div class="trust-bar">
   <div class="wrap">
     <ul>
-      <li>25 Min From Campus</li>
+      <li>5 Bedrooms · 9 Beds</li>
       <li>Sleeps Up To 14</li>
-      <li>Full Kitchen, No Restaurant Wait</li>
-      <li>Two Work Nooks For Remote Parents</li>
+      <li>Hot Tub After The Trail</li>
     </ul>
   </div>
 </div>
@@ -702,68 +736,63 @@
 <section>
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Why Families Choose This House</div>
-      <h2>Everyone's already exhausted from the drive. Don't split the group up too.</h2>
-      <p>JMU weekends bring together people who don't normally share a roof — parents, grandparents, siblings, maybe an old family friend tagging along. One house means no coordinating three or four separate hotel check-ins, no "meet in the lobby at 9," and a kitchen table big enough for everyone to actually sit down together before the football game or the move-in truck.</p>
+      <div class="eyebrow">Why It Works</div>
+      <h2>Real adventure, without sleeping on the ground.</h2>
+      <p>A basecamp shouldn't mean a campsite. This house gets you a real shower, a real kitchen, and a hot tub for the end of a long trail day — without giving up any of the actual adventure.</p>
     </div>
-    <div class="amenity-grid amenity-grid-4">
-      <div class="amenity-card">
-        <span class="cat">Room For Everyone</span>
-        <ul><li>5 bedrooms, 9 beds</li><li>Sleeps up to 14</li><li>Downstairs sleeper sofa</li></ul>
+    <div class="adv-cards">
+      <div class="adv-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 20l6-14 4 8 3-5 5 11z"/>
+        </svg>
+        <h3>On-Site & Off-Site Both Work</h3>
+        <p>Mountain bike or hike without leaving the resort, or drive into Shenandoah National Park for a real day hike — both are genuinely close.</p>
       </div>
-      <div class="amenity-card">
-        <span class="cat">While The Parents Work</span>
-        <ul><li>Two dedicated work nooks</li><li>High-speed Wi-Fi</li></ul>
+      <div class="adv-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/>
+          <path d="M12 14v6M9 21h6"/>
+        </svg>
+        <h3>A Real Recovery Day</h3>
+        <p>Hot tub, movie room, and a real bed — the house does the recovering so you don't have to.</p>
       </div>
-      <div class="amenity-card">
-        <span class="cat">After The Campus Tour</span>
-        <ul><li>Pool table & poker table</li><li>Movie room</li><li>Hot tub</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Comfort & Convenience</span>
-        <ul><li>Washer & dryer</li><li>Central heating & mini-split A/C</li><li>Coffee & tea bar</li></ul>
+      <div class="adv-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6"/>
+          <path d="M2 18v2M22 18v2"/>
+          <path d="M2 12V8a2 2 0 012-2h4a2 2 0 012 2v2"/>
+          <path d="M12 12V9a2 2 0 012-2h4a2 2 0 012 2v3"/>
+        </svg>
+        <h3>Room For The Whole Group</h3>
+        <p>Five bedrooms and 9 beds — bring the whole hiking group without anyone sleeping in a car.</p>
       </div>
     </div>
   </div>
 </section>
-
-<div class="trust-bar">
-  <div class="wrap">
-    <ul>
-      <li>Downtown Dining ~25 Min</li>
-      <li>200+ Local Restaurants</li>
-      <li>Home Games, Fall</li>
-    </ul>
-  </div>
-</div>
 
 <section style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Near Campus</div>
-      <h2>Where to go while you're in town.</h2>
-      <p>A short drive gets you to downtown Harrisonburg and back — enough time to eat well without cutting into the weekend.</p>
+      <div class="eyebrow">On The Mountain</div>
+      <h2>Adventure without leaving the resort.</h2>
+      <p>Massanutten's own 6,000 acres cover a lot of ground on their own.</p>
     </div>
-    <div class="reviews-strip">
+    <div class="reviews-strip reviews-strip-2">
       <div class="review-card">
-        <p class="quote">A Harrisonburg institution since the 1940s, well-loved for a relaxed breakfast before a campus tour.</p>
-        <div class="who">The Little Grill</div>
+        <p class="quote">A real Mountain Bike Park with terrain from mellow flow trails to steep, rocky lines — e-bike pedal-assist available if you want the climb taken out of it.</p>
+        <div class="who">Mountain Biking</div>
       </div>
       <div class="review-card">
-        <p class="quote">The most consistently recommended downtown dinner spot — farm-to-table, and a good pick for celebrating move-in day or graduation.</p>
-        <div class="who">Local Chop & Grill House</div>
+        <p class="quote">Two on-property hiking trails — Kaylor's Knob (moderate, 3.7 miles) and the Massanutten Ridge Trail (strenuous, 5.5 miles) — both with real payoff views.</p>
+        <div class="who">On-Resort Hiking</div>
       </div>
       <div class="review-card">
-        <p class="quote">A fast, friendly drive-thru favorite with the JMU crowd — good for a quick stop on the way to or from campus.</p>
-        <div class="who">7 Brew Coffee</div>
+        <p class="quote">Guided 38-foot and 58-foot rappels for the group members who want an adrenaline hit before dinner.</p>
+        <div class="who">Rappelling</div>
       </div>
       <div class="review-card">
-        <p class="quote">Ranks at the top of nearly every "best coffee in Harrisonburg" list — a local favorite if you haven't tried it yet.</p>
-        <div class="who">Coffee Hound</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Pick up a cake to bring back to the house — a nice touch for celebrating a graduation or parents weekend.</p>
-        <div class="who">Nothing Bundt Cakes</div>
+        <p class="quote">A zip line and ropes course at the Family Adventure Park — weekends only, weather permitting.</p>
+        <div class="who">Zip Line & Ropes Course</div>
       </div>
     </div>
   </div>
@@ -772,49 +801,69 @@
 <section>
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Whatever Brings You To JMU</div>
-      <h2>One house, however many reasons you're coming.</h2>
-      <p>Different trips need different things. Here's how the house fits each one.</p>
+      <div class="eyebrow">Beyond The Resort</div>
+      <h2>Shenandoah National Park is genuinely close.</h2>
+      <p>The Swift Run Gap entrance is roughly a 15-minute drive from the resort — close enough for a real day hike without losing half the day to driving.</p>
     </div>
-    <div class="amenity-grid amenity-grid-4">
-      <div class="amenity-card">
-        <span class="cat">Move-In Weekend</span>
-        <ul><li>9 beds for the whole helping crew</li><li>Full kitchen instead of takeout every meal</li><li>Space to unwind once the truck's unpacked</li></ul>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Skyline Drive, sections of the Appalachian Trail, waterfalls, and wildlife — all inside the park, a short drive away.</p>
+        <div class="who">Shenandoah National Park</div>
       </div>
-      <div class="amenity-card">
-        <span class="cat">Parents Weekend</span>
-        <ul><li>Grandparents and siblings all under one roof</li><li>Two work nooks if someone needs to duck out</li><li>Hot tub after a full day on campus</li></ul>
+      <div class="review-card">
+        <p class="quote">A well-known cave system worth the trip — about 45 minutes from the house, closer to 35 from the resort's neighborhood entrance.</p>
+        <div class="who">Luray Caverns</div>
       </div>
-      <div class="amenity-card">
-        <span class="cat">Graduation</span>
-        <ul><li>Room for extended family in one place</li><li>Pick up a cake from Nothing Bundt for the celebration</li><li>Dinner out at Local Chop, then back for a toast</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Game Day</span>
-        <ul><li>Book early — fall weekends go fast</li><li>Grill going before kickoff</li><li>Pool table & movie room for the pregame</li></ul>
+      <div class="review-card">
+        <p class="quote">On-resort trails close during hunting season (Nov 1–Jan 8, sunrise to sunset, closed Mon–Sat, open Sundays) — worth checking before you plan an on-property hike that time of year.</p>
+        <div class="who">Know Before You Go</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="faq" style="background:var(--cream-deep);">
+<section style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">JMU Weekend FAQ</div>
+      <div class="eyebrow">Sample Trip Flow</div>
+      <h2>An adventure weekend that still has a soft landing.</h2>
+      <p>A simple framework — not a schedule anyone has to follow.</p>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Arrive, unload the gear, and settle in before an early start tomorrow.</p>
+        <div class="who">Friday</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">A real day hike in Shenandoah National Park, then straight back to the hot tub — no tent to pack up.</p>
+        <div class="who">Saturday</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Mountain biking or a shorter on-resort trail before a slower drive home.</p>
+        <div class="who">Sunday</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Adventure Weekend FAQ</div>
       <h2>Quick answers for planning your trip.</h2>
     </div>
     <div class="faq-list">
       <details class="faq-item">
-        <summary>How far is Cedar Escape from JMU?</summary>
-        <div class="a">Roughly a 25-30 minute drive depending on traffic, which is common during home football weekends.</div>
+        <summary>How far is Shenandoah National Park from the house?</summary>
+        <div class="a">The closest entrance (Swift Run Gap) is roughly a 15-minute drive from the resort — close enough for a full day hike without losing the morning to driving.</div>
       </details>
       <details class="faq-item">
-        <summary>Is this a good option for football weekends?</summary>
-        <div class="a">Yes — with 9 beds and space for up to 14, it's an easy way to host extended family or a group of friends for a home game without splitting across hotels. Just book early, since fall weekends go fast.</div>
+        <summary>Do we need to leave the resort for a real hike?</summary>
+        <div class="a">Not necessarily — there are two real trails on-property (Kaylor's Knob and the Massanutten Ridge Trail), plus Shenandoah National Park a short drive away if you want more.</div>
       </details>
       <details class="faq-item">
-        <summary>Is there space for parents to work remotely during the trip?</summary>
-        <div class="a">Yes — two dedicated work nooks with high-speed Wi-Fi, so a parent can take a call without disrupting the rest of the group.</div>
+        <summary>Is mountain biking available on-site?</summary>
+        <div class="a">Yes — Massanutten has its own Mountain Bike Park with terrain for a range of skill levels, plus e-bike pedal-assist if your group wants it.</div>
       </details>
     </div>
   </div>
@@ -823,7 +872,7 @@
 <section class="trailhead">
   <div class="wrap" style="text-align:center;">
     <div class="section-head" style="margin:0 auto 24px;max-width:560px;">
-      <div class="eyebrow">Ready For Move-In, Parents Weekend, Or Graduation?</div>
+      <div class="eyebrow">Ready For The Trail?</div>
       <h2>Check dates before the good weekends book up.</h2>
     </div>
     <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
@@ -837,10 +886,9 @@
       <h2>More Cedar Escape weekend guides.</h2>
     </div>
     <div class="reviews-strip">
-      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="cedar-escape-family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">Four wineries, one house, no designated-driver headaches.</p><div class="who"><a href="cedar-escape-wine-weekend.html" style="text-decoration:none;color:inherit;">Shenandoah Wine Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="cedar-escape-golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">Shenandoah National Park hiking, mountain biking, and a hot tub waiting at the end of the trail.</p><div class="who"><a href="cedar-escape-adventure-weekend.html" style="text-decoration:none;color:inherit;">Adventure Seeker Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Skiing, the waterpark, golf, or foliage — this house works any month.</p><div class="who"><a href="four-season-weekend.html" style="text-decoration:none;color:inherit;">Four-Season Massanutten Weekend →</a></div></div>
     </div>
   </div>
 </section>

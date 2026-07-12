@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cedar Escape JMU Weekend Guide</title>
+<title>Family Mountain Weekend — Cedar Escape</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -378,7 +378,6 @@
   }
   @media (min-width: 640px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 900px) { .amenity-grid-3 { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 1000px) { .amenity-grid-4 { grid-template-columns: repeat(4, 1fr); } }
   .amenity-card {
     background: var(--cream);
     border: 1px solid var(--line);
@@ -468,6 +467,7 @@
     gap: 24px;
   }
   @media (min-width: 760px) { .reviews-strip { grid-template-columns: repeat(3,1fr); } }
+  @media (min-width: 640px) { .reviews-strip-2 { grid-template-columns: repeat(2,1fr) !important; } }
   .review-card {
     background: var(--cream);
     border: 1px solid var(--line);
@@ -677,13 +677,19 @@
   </nav>
 </header>
 
-<section class="hero" style="min-height:64vh;">
+<section class="hero" style="min-height:70vh;">
   <div class="hero-inner" style="padding-top:100px;">
-    <div class="eyebrow">JMU Family & Parents Weekend</div>
-    <h1 style="font-size:clamp(30px, 5vw, 54px);">Move-in day, parents weekend, or graduation — one house for the whole trip.</h1>
-    <p class="hero-sub">About a 25-minute drive from JMU, with enough beds and space that grandparents, siblings, and the whole extended crew can actually stay together instead of splitting across two hotels off I-81.</p>
-    <div class="hero-actions">
+    <div class="eyebrow">Family Weekend</div>
+    <h1 style="font-size:clamp(30px, 5vw, 54px);">More than a hotel room. A whole house for the whole family.</h1>
+    <p class="hero-sub">Grandparents, parents, kids, and whoever else is coming — one house, room to spread out, and everybody actually together instead of splitting across hotel floors.</p>
+    <div class="hero-actions" style="flex-wrap:wrap;">
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Golf & Spa On-Site</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Wineries 15–25 Min Away</span>
+      <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Farmers Market Wed Mornings</span>
+    </div>
+    <div class="hero-actions" style="margin-top:18px;">
       <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
+      <a href="#nearby" class="btn btn-outline" style="border-color:rgba(246,241,230,0.5); color:var(--cream);">See Nearby Ideas</a>
     </div>
   </div>
 </section>
@@ -691,79 +697,124 @@
 <div class="trust-bar">
   <div class="wrap">
     <ul>
-      <li>25 Min From Campus</li>
+      <li>5 Bedrooms · 9 Beds</li>
       <li>Sleeps Up To 14</li>
-      <li>Full Kitchen, No Restaurant Wait</li>
-      <li>Two Work Nooks For Remote Parents</li>
+      <li>Kid Gear Already Here</li>
+      <li>~25 Min From JMU</li>
     </ul>
   </div>
 </div>
+
+<section id="basecamp">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Your Massanutten Home Base</div>
+      <h2>Skip the two-hotel-rooms math.</h2>
+      <p>Family trips get complicated fast once you're coordinating multiple rooms, multiple keycards, and a group text that just says "meet in the lobby." Cedar Escape keeps everyone under one roof — bunk beds for the cousins, a bedroom for the grandparents, and a hot tub for after the kids are finally asleep.</p>
+    </div>
+    <div class="signpost">
+      <div class="post-pole"></div>
+      <div class="planks">
+        <div class="plank">
+          <div class="num">Why It Works 01</div>
+          <h3>Room For Everyone</h3>
+          <p>Five bedrooms and 9 beds mean nobody's sleeping on an air mattress in someone else's room.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Why It Works 02</div>
+          <h3>Slower Mornings</h3>
+          <p>Coffee at your own pace, not a lobby line — everyone wakes up on their own schedule.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Why It Works 03</div>
+          <h3>Nobody's Rushing Out</h3>
+          <p>Grab breakfast in, or head out together — either way, it's not a group decision made under a checkout deadline.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Why It Works 04</div>
+          <h3>Room To Spread Out</h3>
+          <p>Game room, movie room, and a hot tub mean the group doesn't have to do everything together, all the time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nearby" style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Nearby · Food & Wine</div>
+      <h2>Low-effort, high-reward.</h2>
+      <p>Family weekends move at a slower pace than most trips — nobody wants an ambitious itinerary with a toddler in tow.</p>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Grab a pizza for pickup and bring it back to the house — no waiting on a table with tired kids.</p>
+        <div class="who">Vito's Pizza</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Sunday brunch or a relaxed wine tasting, just outside Harrisonburg.</p>
+        <div class="who"><a href="https://crosskeysvineyards.com/bistro/" target="_blank" rel="noopener" style="color:inherit;">CrossKeys Vineyards →</a></div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Fresh produce, local vendors, and live music — Wednesday mornings, seasonal (May–Aug).</p>
+        <div class="who"><a href="https://www.massresort.com/play/farmers-market/" target="_blank" rel="noopener" style="color:inherit;">Massanutten Farmers Market →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Why Families Choose This House</div>
-      <h2>Everyone's already exhausted from the drive. Don't split the group up too.</h2>
-      <p>JMU weekends bring together people who don't normally share a roof — parents, grandparents, siblings, maybe an old family friend tagging along. One house means no coordinating three or four separate hotel check-ins, no "meet in the lobby at 9," and a kitchen table big enough for everyone to actually sit down together before the football game or the move-in truck.</p>
+      <div class="eyebrow">Nearby · Rainy Day & Older Kids</div>
+      <h2>For when the weather doesn't cooperate — or the kids aren't so little anymore.</h2>
+      <p>A couple of on-resort options that work well for families with older kids or a weather day to fill.</p>
     </div>
-    <div class="amenity-grid amenity-grid-4">
-      <div class="amenity-card">
-        <span class="cat">Room For Everyone</span>
-        <ul><li>5 bedrooms, 9 beds</li><li>Sleeps up to 14</li><li>Downstairs sleeper sofa</li></ul>
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">A fun challenge for the older kids — public sessions require ages 13+, but younger groups can book a private room.</p>
+        <div class="who"><a href="https://www.massresort.com/play/escape-rooms-VR/" target="_blank" rel="noopener" style="color:inherit;">Escape Room at Woodstone →</a></div>
       </div>
-      <div class="amenity-card">
-        <span class="cat">While The Parents Work</span>
-        <ul><li>Two dedicated work nooks</li><li>High-speed Wi-Fi</li></ul>
+      <div class="review-card">
+        <p class="quote">A rainy-afternoon go-to right on the resort — good for a range of ages.</p>
+        <div class="who">Woodstone / Diamond Jim's Arcade</div>
       </div>
-      <div class="amenity-card">
-        <span class="cat">After The Campus Tour</span>
-        <ul><li>Pool table & poker table</li><li>Movie room</li><li>Hot tub</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Comfort & Convenience</span>
-        <ul><li>Washer & dryer</li><li>Central heating & mini-split A/C</li><li>Coffee & tea bar</li></ul>
+      <div class="review-card">
+        <p class="quote">Or skip going out entirely — the movie room and game room cover a rainy afternoon just fine.</p>
+        <div class="who">Stay In</div>
       </div>
     </div>
   </div>
 </section>
-
-<div class="trust-bar">
-  <div class="wrap">
-    <ul>
-      <li>Downtown Dining ~25 Min</li>
-      <li>200+ Local Restaurants</li>
-      <li>Home Games, Fall</li>
-    </ul>
-  </div>
-</div>
 
 <section style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Near Campus</div>
-      <h2>Where to go while you're in town.</h2>
-      <p>A short drive gets you to downtown Harrisonburg and back — enough time to eat well without cutting into the weekend.</p>
+      <div class="eyebrow">Nearby · On The Resort</div>
+      <h2>Worth booking ahead.</h2>
+      <p>A few resort experiences that are better with a little advance planning.</p>
     </div>
-    <div class="reviews-strip">
+    <div class="reviews-strip reviews-strip-2">
       <div class="review-card">
-        <p class="quote">A Harrisonburg institution since the 1940s, well-loved for a relaxed breakfast before a campus tour.</p>
-        <div class="who">The Little Grill</div>
+        <p class="quote">Schedule a tee time on the mountain course for a round with a view.</p>
+        <div class="who"><a href="https://www.massresort.com/play/golf/" target="_blank" rel="noopener" style="color:inherit;">Mountain Greens Golf →</a></div>
       </div>
       <div class="review-card">
-        <p class="quote">The most consistently recommended downtown dinner spot — farm-to-table, and a good pick for celebrating move-in day or graduation.</p>
-        <div class="who">Local Chop & Grill House</div>
+        <p class="quote">Book 1–2 weeks ahead if you want to fit in a massage or facial while you're here.</p>
+        <div class="who"><a href="https://www.massresort.com/relax/guide-to-the-spa/" target="_blank" rel="noopener" style="color:inherit;">The Spa at Massanutten →</a></div>
       </div>
       <div class="review-card">
-        <p class="quote">A fast, friendly drive-thru favorite with the JMU crowd — good for a quick stop on the way to or from campus.</p>
-        <div class="who">7 Brew Coffee</div>
+        <p class="quote">Resort classes fill up — sign up in advance if there's one your group wants in on.</p>
+        <div class="who"><a href="https://www.massresort.com/play/activities/" target="_blank" rel="noopener" style="color:inherit;">Resort Activities & Classes →</a></div>
       </div>
       <div class="review-card">
-        <p class="quote">Ranks at the top of nearly every "best coffee in Harrisonburg" list — a local favorite if you haven't tried it yet.</p>
-        <div class="who">Coffee Hound</div>
+        <p class="quote">Go-karts, bumper cars, and two 18-hole mini golf courses — all at one spot.</p>
+        <div class="who">Massanutten Village Family Entertainment Center</div>
       </div>
       <div class="review-card">
-        <p class="quote">Pick up a cake to bring back to the house — a nice touch for celebrating a graduation or parents weekend.</p>
-        <div class="who">Nothing Bundt Cakes</div>
+        <p class="quote">A zip line and ropes course for the braver ones — weekends only, weather permitting.</p>
+        <div class="who"><a href="https://www.massresort.com/play/family-adventure-park/" target="_blank" rel="noopener" style="color:inherit;">Family Adventure Park →</a></div>
       </div>
     </div>
   </div>
@@ -772,26 +823,45 @@
 <section>
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Whatever Brings You To JMU</div>
-      <h2>One house, however many reasons you're coming.</h2>
-      <p>Different trips need different things. Here's how the house fits each one.</p>
+      <div class="eyebrow">Sample Trip Flow</div>
+      <h2>A family weekend that doesn't feel like logistics.</h2>
+      <p>A simple framework — not a schedule anyone has to follow.</p>
     </div>
-    <div class="amenity-grid amenity-grid-4">
+    <div class="reviews-strip">
+      <div class="review-card">
+        <p class="quote">Arrive, grab Vito's for pickup on the way in, and let the kids find the bunk room and pool table before bed.</p>
+        <div class="who">Friday</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">Slow breakfast, then split up — golf, the spa, or just time by the hot tub — before regrouping for dinner off the grill.</p>
+        <div class="who">Saturday</div>
+      </div>
+      <div class="review-card">
+        <p class="quote">With the late checkout, there's no rush — Sunday brunch at CrossKeys, then home whenever you're ready.</p>
+        <div class="who">Sunday</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="max-width:680px;">
+      <div class="eyebrow">Where You'll Stay</div>
+      <h2>Built for the whole family, not just the adults.</h2>
+    </div>
+    <div class="amenity-grid amenity-grid-3">
       <div class="amenity-card">
-        <span class="cat">Move-In Weekend</span>
-        <ul><li>9 beds for the whole helping crew</li><li>Full kitchen instead of takeout every meal</li><li>Space to unwind once the truck's unpacked</li></ul>
+        <span class="cat">For The Kids</span>
+        <ul><li>Bunk beds</li><li>High chair & toddler kitchenware</li><li>Pack n' play / travel crib</li><li>Toddler toilet seat</li><li>Gates & toys</li></ul>
       </div>
       <div class="amenity-card">
-        <span class="cat">Parents Weekend</span>
-        <ul><li>Grandparents and siblings all under one roof</li><li>Two work nooks if someone needs to duck out</li><li>Hot tub after a full day on campus</li></ul>
+        <span class="cat">For The Whole Group</span>
+        <ul><li>Coffee & tea bar</li><li>Washer & dryer</li><li>Downstairs sleeper sofa</li></ul>
       </div>
       <div class="amenity-card">
-        <span class="cat">Graduation</span>
-        <ul><li>Room for extended family in one place</li><li>Pick up a cake from Nothing Bundt for the celebration</li><li>Dinner out at Local Chop, then back for a toast</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Game Day</span>
-        <ul><li>Book early — fall weekends go fast</li><li>Grill going before kickoff</li><li>Pool table & movie room for the pregame</li></ul>
+        <span class="cat">Once The Kids Are Down</span>
+        <ul><li>Hot tub</li><li>Movie room</li></ul>
       </div>
     </div>
   </div>
@@ -800,21 +870,21 @@
 <section id="faq" style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">JMU Weekend FAQ</div>
+      <div class="eyebrow">Family Weekend FAQ</div>
       <h2>Quick answers for planning your trip.</h2>
     </div>
     <div class="faq-list">
       <details class="faq-item">
-        <summary>How far is Cedar Escape from JMU?</summary>
-        <div class="a">Roughly a 25-30 minute drive depending on traffic, which is common during home football weekends.</div>
+        <summary>Is Cedar Escape good for multi-generational trips?</summary>
+        <div class="a">Yes — five bedrooms and 9 beds mean grandparents, parents, and kids can each have their own space instead of sharing a hotel room.</div>
       </details>
       <details class="faq-item">
-        <summary>Is this a good option for football weekends?</summary>
-        <div class="a">Yes — with 9 beds and space for up to 14, it's an easy way to host extended family or a group of friends for a home game without splitting across hotels. Just book early, since fall weekends go fast.</div>
+        <summary>What's actually here for young kids?</summary>
+        <div class="a">A high chair, toddler kitchenware, a pack n' play, a toddler toilet seat, gates, and bunk beds (upper bunk restricted to age 8+).</div>
       </details>
       <details class="faq-item">
-        <summary>Is there space for parents to work remotely during the trip?</summary>
-        <div class="a">Yes — two dedicated work nooks with high-speed Wi-Fi, so a parent can take a call without disrupting the rest of the group.</div>
+        <summary>Is there room for the kids to have their own space?</summary>
+        <div class="a">Yes — the bunk room and downstairs sleeper sofa give kids somewhere separate from the adult bedrooms, plus a movie room and game room for their own hangout space.</div>
       </details>
     </div>
   </div>
@@ -823,7 +893,7 @@
 <section class="trailhead">
   <div class="wrap" style="text-align:center;">
     <div class="section-head" style="margin:0 auto 24px;max-width:560px;">
-      <div class="eyebrow">Ready For Move-In, Parents Weekend, Or Graduation?</div>
+      <div class="eyebrow">Ready To Get Everyone Together?</div>
       <h2>Check dates before the good weekends book up.</h2>
     </div>
     <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
@@ -837,10 +907,11 @@
       <h2>More Cedar Escape weekend guides.</h2>
     </div>
     <div class="reviews-strip">
-      <div class="review-card"><p class="quote">Grandparents, parents, and kids — one house instead of splitting hotel rooms.</p><div class="who"><a href="cedar-escape-family-weekend.html" style="text-decoration:none;color:inherit;">Family Mountain Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">Four wineries, one house, no designated-driver headaches.</p><div class="who"><a href="cedar-escape-wine-weekend.html" style="text-decoration:none;color:inherit;">Shenandoah Wine Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="cedar-escape-golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
-      <div class="review-card"><p class="quote">Shenandoah National Park hiking, mountain biking, and a hot tub waiting at the end of the trail.</p><div class="who"><a href="cedar-escape-adventure-weekend.html" style="text-decoration:none;color:inherit;">Adventure Seeker Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">JMU move-in, parents weekend, and graduation trips.</p><div class="who"><a href="jmu-weekend.html" style="text-decoration:none;color:inherit;">JMU Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Four wineries, one house, no designated-driver headaches.</p><div class="who"><a href="wine-weekend.html" style="text-decoration:none;color:inherit;">Shenandoah Wine Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">36 holes on the mountain, Arnold Palmer-designed course included.</p><div class="who"><a href="golf-weekend.html" style="text-decoration:none;color:inherit;">Massanutten Golf Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Skiing, the waterpark, golf, or foliage — this house works any month.</p><div class="who"><a href="four-season-weekend.html" style="text-decoration:none;color:inherit;">Four-Season Massanutten Weekend →</a></div></div>
+      <div class="review-card"><p class="quote">Shenandoah National Park hiking, mountain biking, and a hot tub waiting at the end of the trail.</p><div class="who"><a href="adventure-weekend.html" style="text-decoration:none;color:inherit;">Adventure Seeker Weekend →</a></div></div>
     </div>
   </div>
 </section>

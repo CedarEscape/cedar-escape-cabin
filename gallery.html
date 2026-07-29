@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cedar Escape — Massanutten Resort</title>
+<title>Full Photo Gallery — Cedar Escape</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -560,9 +560,6 @@
 
   /* ---------- FAQ ---------- */
   .faq-list { border-top: 1px solid rgba(246,241,230,0.0); }
-  .amenity-accordion { display:grid; grid-template-columns:1fr; column-gap:48px; }
-  @media (min-width:760px) { .amenity-accordion { grid-template-columns:1fr 1fr; } }
-  .amenity-accordion summary { font-family:'Cinzel', serif; font-size:14px; letter-spacing:0.04em; text-transform:uppercase; }
   .faq-item {
     border-bottom: 1px solid var(--line);
   }
@@ -717,380 +714,89 @@
 
 <header>
   <nav class="nav">
-    <a href="#" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
     <ul class="nav-links">
-      <li><a href="#stay">Stay</a></li>
-      <li><a href="#area">Explore</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#book">Book Direct</a></li>
+      <li><a href="index.html#stay">Stay</a></li>
+      <li><a href="index.html#area">Explore</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#book">Book Direct</a></li>
     </ul>
-    <a href="#book" class="btn btn-gold nav-cta">Check Dates</a>
+    <a href="index.html#book" class="btn btn-gold nav-cta">Check Dates</a>
     <button class="burger">MENU</button>
   </nav>
 </header>
 
-<section class="hero">
-  <img src="images/hero-poolroom.webp" alt="Game room at Cedar Escape" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
-  <div class="hero-inner" style="position:relative;z-index:2;">
-    <div class="eyebrow">Massanutten Resort, Virginia</div>
-    <h1>Bring the whole crew.</h1>
-    <p class="hero-sub">A five-bedroom mountain house near JMU, wineries, golf, and skiing — with room to gather and thoughtful details that make group travel feel less like logistics.</p>
-    <div class="hero-actions">
-      <a href="#book" class="btn btn-gold">Check Dates & Pricing</a>
-      <a href="#stay" class="btn btn-outline" style="border-color:rgba(246,241,230,0.5); color:var(--cream);">Explore the House</a>
-    </div>
-  </div>
-</section>
-
-<div class="icon-bar">
-  <div class="wrap">
-    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 18v2M21 18v2"/><path d="M3 13h18"/><path d="M7 13V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg><span>5 Bedrooms</span></div>
-    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><path d="M14.5 20c0-2.6 1.8-4.8 4-5.6"/></svg><span>Sleeps 14</span></div>
-    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19v-2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><path d="M2 19h20"/><path d="M8 6c-1 1-1 2 0 3s1 2 0 3"/><path d="M12 6c-1 1-1 2 0 3s1 2 0 3"/><path d="M16 6c-1 1-1 2 0 3s1 2 0 3"/></svg><span>Hot Tub*</span></div>
-    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 5 4h3l-2 4.5M9 8.5 11 4h3l-2 4.5M15 8.5 17 4h3l-2 4.5"/><rect x="3" y="8.5" width="18" height="11.5" rx="1.5"/></svg><span>Movie Lounge</span></div>
-    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="9" rx="4.5"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="16" cy="11" r="1"/><circle cx="18.5" cy="13.5" r="1"/></svg><span>Game Room</span></div>
-    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5"/><path d="M22 8v6"/></svg><span>Near JMU</span></div>
-  </div>
-  <div class="wrap" style="padding-top:6px;">
-    <p style="font-size:11.5px;color:var(--taupe);text-align:center;font-style:italic;">*Hot tub availability is not guaranteed.</p>
-  </div>
-</div>
-
 <div class="trust-bar">
   <div class="wrap">
     <ul>
-      <li>Book Direct, No Middleman</li>
-      <li>Secure Hospitable Checkout</li>
-      <li>Professionally Cleaned Every Stay</li>
+      <li><a href="index.html" style="color:inherit;">&larr; Back to Cedar Escape</a></li>
     </ul>
   </div>
 </div>
 
-<section style="padding-top:40px;">
-  <div class="wrap">
-    <div class="gpr-grid">
-      <div class="gpr-panel">
-        <img src="images/gather-movieroom.webp" alt="Movie room at Cedar Escape" loading="lazy">
-        <div class="label">Gather</div>
-        <div class="cap">Big spaces. Good food. Better company.</div>
-      </div>
-      <div class="gpr-panel dark">
-        <img src="images/photo-02.jpg" alt="Game room at Cedar Escape" loading="lazy">
-        <div class="label">Play</div>
-        <div class="cap">Movie nights, arcade battles, and friendly competition.</div>
-      </div>
-      <div class="gpr-panel">
-        <img src="images/reset-deck.webp" alt="Deck seating at Cedar Escape" loading="lazy">
-        <div class="label">Reset</div>
-        <div class="cap">Slow down. Breathe. You're on mountain time now.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="stay">
-  <div class="wrap">
-    <div class="why-copy" style="max-width:640px; margin:0 auto; text-align:center;">
-      <div class="eyebrow">Cedar Escape Was Made for Group Weekends</div>
-      <h2 class="section-head" style="margin: 14px auto 0;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">One house. One weekend. Everyone together.</span></h2>
-      <p style="margin-top:24px;">Group trips are easier when no one is split between hotel rooms, keycards, lobby meetups, and "where is everybody?" texts.</p>
-      <p style="margin-top:16px;">At Cedar Escape, you get five bedrooms, a full kitchen, gathering spaces, and room for the whole group to settle in — together, but not on top of each other.</p>
-      <p style="margin-top:16px;">Come for JMU, wineries, golf, skiing, or resort fun.</p>
-      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:22px; color:var(--forest-deep); margin-top:28px;">Stay somewhere that makes the weekend feel easy.</p>
-    </div>
-  </div>
-</section>
-
-<section class="signpost-section">
-  <div class="wrap">
-    <div class="section-head" style="margin: 0 auto 56px; text-align:center;">
-      <div class="eyebrow">Every Stay, Same Standard</div>
-      <h2>Four standards. No exceptions.</h2>
-    </div>
-    <div class="signpost">
-      <div class="post-pole"></div>
-      <div class="planks">
-        <div class="plank">
-          <div class="num">Standard 01</div>
-          <h3>Professionally Prepared</h3>
-          <p>Professionally cleaned and inspected between every single stay — not just tidied.</p>
-        </div>
-        <div class="plank">
-          <div class="num">Standard 02</div>
-          <h3>Fully Stocked</h3>
-          <p>Coffee, basic pantry staples, and toiletries waiting when you walk in the door.</p>
-        </div>
-        <div class="plank">
-          <div class="num">Standard 03</div>
-          <h3>Comfort Without the Guesswork</h3>
-          <p>Available amenities are inspected and prepared before each stay.</p>
-        </div>
-        <div class="plank">
-          <div class="num">Standard 04</div>
-          <h3>Thoughtful Support</h3>
-          <p>Questions are answered quickly, with personal attention whenever you need it.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
+<section >
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Already Taken Care Of</div>
-      <h2><span style="font-family:'Playfair Display',serif;font-style:italic;">You bring the people. The rest is handled.</span></h2>
-      <p>If it's on this list, it's already at the house — from bunk beds for the kids to a poker table for after they're asleep.</p>
+      <div class="eyebrow">A Look Inside</div>
+      <h2>See the whole house.</h2>
+      <p>A full look at every room, inside and out.</p>
     </div>
-    <div class="amenity-accordion">
-      <details class="faq-item">
-        <summary>Outdoor</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Hot tub (if available)</li><li>Smoker grill</li><li>Patio seating</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Game Room</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Pool table</li><li>Poker table</li><li>VR headset</li><li>Movie room</li><li>Arcade</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Fitness</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Peloton bike</li><li>Adjustable weight bench</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Family-Ready</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Bunk beds</li><li>High chair & toddler kitchenware</li><li>Pack n' play / travel crib</li><li>Toddler toilet seat</li><li>Gates & toys</li><li>Downstairs sleeper sofa</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Kitchen & Coffee</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Full kitchen</li><li>Coffee & tea bar</li><li>Toaster</li><li>Air fryer</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Work & Connectivity</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Two dedicated work nooks</li><li>High-speed Wi-Fi</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Laundry</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Washer & dryer</li><li>Starter detergent provided</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Comfort</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Central heating and cooling</li><li>Mini-split A/C in select rooms</li></ul></div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section class="trailhead" id="weekends">
-  <div class="wrap">
-    <div class="section-head" style="margin:0 auto 40px;text-align:center;max-width:560px;">
-      <div class="eyebrow">Pick Your Trail</div>
-      <h2>What kind of weekend is this?</h2>
-      <p>Same house, five very different trips. Pick the one you're actually planning.</p>
-    </div>
-    <div class="weekend-row">
-      <a href="cedar-escape-family-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-family.webp" alt="Family Mountain Weekend"></div>
-        <div class="label">Family Mountain<br>Weekend</div>
-      </a>
-      <a href="cedar-escape-wine-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-girls.webp" alt="Girls / Wine Weekend"></div>
-        <div class="label">Girls + Wine<br>Weekend</div>
-      </a>
-      <a href="cedar-escape-jmu-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-jmu.webp" alt="JMU Weekend"></div>
-        <div class="label">JMU<br>Weekend</div>
-      </a>
-      <a href="cedar-escape-adventure-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-adventure.webp" alt="Ski / Adventure Weekend"></div>
-        <div class="label">Adventure<br>Weekend</div>
-      </a>
-      <a href="cedar-escape-golf-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-golf.webp" alt="Golf / Resort Weekend"></div>
-        <div class="label">Golf<br>Getaway</div>
-      </a>
+    <div class="gallery-grid">
+      <div class="frame"><img src="images/photo-02.jpg" loading="lazy" alt="Cedar Escape property photo 2"></div>
+      <div class="frame"><img src="images/photo-03.jpg" loading="lazy" alt="Cedar Escape property photo 3"></div>
+      <div class="frame"><img src="images/photo-04.jpg" loading="lazy" alt="Cedar Escape property photo 4"></div>
+      <div class="frame"><img src="images/photo-05.jpg" loading="lazy" alt="Cedar Escape property photo 5"></div>
+      <div class="frame"><img src="images/photo-06.jpg" loading="lazy" alt="Cedar Escape property photo 6"></div>
+      <div class="frame"><img src="images/photo-07.jpg" loading="lazy" alt="Cedar Escape property photo 7"></div>
+      <div class="frame"><img src="images/photo-08.jpg" loading="lazy" alt="Cedar Escape property photo 8"></div>
+      <div class="frame"><img src="images/photo-09.jpg" loading="lazy" alt="Cedar Escape property photo 9"></div>
+      <div class="frame"><img src="images/photo-10.jpg" loading="lazy" alt="Cedar Escape property photo 10"></div>
+      <div class="frame"><img src="images/photo-11.jpg" loading="lazy" alt="Cedar Escape property photo 11"></div>
+      <div class="frame"><img src="images/photo-12.jpg" loading="lazy" alt="Cedar Escape property photo 12"></div>
+      <div class="frame"><img src="images/photo-13.jpg" loading="lazy" alt="Cedar Escape property photo 13"></div>
+      <div class="frame"><img src="images/photo-14.jpg" loading="lazy" alt="Cedar Escape property photo 14"></div>
+      <div class="frame"><img src="images/photo-15.jpg" loading="lazy" alt="Cedar Escape property photo 15"></div>
+      <div class="frame"><img src="images/photo-16.jpg" loading="lazy" alt="Cedar Escape property photo 16"></div>
+      <div class="frame"><img src="images/photo-17.jpg" loading="lazy" alt="Cedar Escape property photo 17"></div>
+      <div class="frame"><img src="images/photo-18.jpg" loading="lazy" alt="Cedar Escape property photo 18"></div>
+      <div class="frame"><img src="images/photo-19.jpg" loading="lazy" alt="Cedar Escape property photo 19"></div>
+      <div class="frame"><img src="images/photo-20.jpg" loading="lazy" alt="Cedar Escape property photo 20"></div>
+      <div class="frame"><img src="images/photo-21.jpg" loading="lazy" alt="Cedar Escape property photo 21"></div>
+      <div class="frame"><img src="images/photo-22.jpg" loading="lazy" alt="Cedar Escape property photo 22"></div>
+      <div class="frame"><img src="images/photo-23.jpg" loading="lazy" alt="Cedar Escape property photo 23"></div>
+      <div class="frame"><img src="images/photo-24.jpg" loading="lazy" alt="Cedar Escape property photo 24"></div>
+      <div class="frame"><img src="images/photo-25.jpg" loading="lazy" alt="Cedar Escape property photo 25"></div>
+      <div class="frame"><img src="images/photo-26.jpg" loading="lazy" alt="Cedar Escape property photo 26"></div>
+      <div class="frame"><img src="images/photo-27.jpg" loading="lazy" alt="Cedar Escape property photo 27"></div>
+      <div class="frame"><img src="images/photo-28.jpg" loading="lazy" alt="Cedar Escape property photo 28"></div>
+      <div class="frame"><img src="images/photo-29.jpg" loading="lazy" alt="Cedar Escape property photo 29"></div>
+      <div class="frame"><img src="images/photo-30.jpg" loading="lazy" alt="Cedar Escape property photo 30"></div>
+      <div class="frame"><img src="images/photo-31.jpg" loading="lazy" alt="Cedar Escape property photo 31"></div>
+      <div class="frame"><img src="images/photo-32.jpg" loading="lazy" alt="Cedar Escape property photo 32"></div>
+      <div class="frame"><img src="images/photo-33.jpg" loading="lazy" alt="Cedar Escape property photo 33"></div>
+      <div class="frame"><img src="images/photo-34.jpg" loading="lazy" alt="Cedar Escape property photo 34"></div>
+      <div class="frame"><img src="images/photo-35.jpg" loading="lazy" alt="Cedar Escape property photo 35"></div>
+      <div class="frame"><img src="images/photo-36.jpg" loading="lazy" alt="Cedar Escape property photo 36"></div>
+      <div class="frame"><img src="images/photo-37.jpg" loading="lazy" alt="Cedar Escape property photo 37"></div>
+      <div class="frame"><img src="images/photo-38.jpg" loading="lazy" alt="Cedar Escape property photo 38"></div>
+      <div class="frame"><img src="images/photo-39.jpg" loading="lazy" alt="Cedar Escape property photo 39"></div>
+      <div class="frame"><img src="images/photo-40.jpg" loading="lazy" alt="Cedar Escape property photo 40"></div>
+      <div class="frame"><img src="images/photo-41.jpg" loading="lazy" alt="Cedar Escape property photo 41"></div>
+      <div class="frame"><img src="images/photo-42.jpg" loading="lazy" alt="Cedar Escape property photo 42"></div>
+      <div class="frame"><img src="images/photo-43.jpg" loading="lazy" alt="Cedar Escape property photo 43"></div>
+      <div class="frame"><img src="images/photo-44.jpg" loading="lazy" alt="Cedar Escape property photo 44"></div>
+      <div class="frame"><img src="images/photo-45.jpg" loading="lazy" alt="Cedar Escape property photo 45"></div>
+      <div class="frame"><img src="images/photo-46.jpg" loading="lazy" alt="Cedar Escape property photo 46"></div>
+      <div class="frame"><img src="images/photo-47.jpg" loading="lazy" alt="Cedar Escape property photo 47"></div>
+      <div class="frame"><img src="images/photo-48.jpg" loading="lazy" alt="Cedar Escape property photo 48"></div>
     </div>
   </div>
 </section>
 
-<section id="gallery">
-  <div class="wrap">
-    <div class="inside-grid">
-      <div>
-        <div class="eyebrow">A Look Inside</div>
-        <h2 class="section-head" style="margin-bottom:0;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">Inside Cedar Escape.</span></h2>
-        <a href="gallery.html" class="btn btn-outline gallery-preview-btn">View All Photos</a>
-      </div>
-      <div class="inside-preview-grid">
-        <div class="frame"><img src="images/photo-02.jpg" loading="lazy" alt="Cedar Escape property photo 2"></div>
-        <div class="frame"><img src="images/photo-20.jpg" loading="lazy" alt="Cedar Escape property photo 20"></div>
-        <div class="frame"><img src="images/reset-deck.webp" loading="lazy" alt="Deck seating at Cedar Escape"></div>
-        <div class="frame"><img src="images/photo-35.jpg" loading="lazy" alt="Cedar Escape property photo 35"></div>
-        <div class="frame"><img src="images/photo-08.jpg" loading="lazy" alt="Cedar Escape property photo 8"></div>
-        <div class="frame"><img src="images/photo-13.jpg" loading="lazy" alt="Cedar Escape property photo 13"></div>
-        <div class="frame"><img src="images/photo-38.jpg" loading="lazy" alt="Cedar Escape property photo 38"></div>
-        <div class="frame"><img src="images/photo-40.jpg" loading="lazy" alt="Cedar Escape property photo 40"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<div class="testimonial-banner" id="reviews">
-  <div class="wrap">
-    <div class="section-head" style="text-align:center;margin:0 auto 8px;">
-      <div class="eyebrow" style="color:var(--gold-bright);">From the Guestbook</div>
-    </div>
-    <!-- REVIEWS:AUTO:START -->
-    <div class="quote-mark">"</div>
-    <p class="quote">Our stay at Cedar Escape was everything we hoped for and more!</p>
-    <div class="who">★★★★★ Felecia · July 2026</div>
-    <div class="reviews-more">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="quote">Our stay at Cedar Escape was everything we hoped for and more! From the moment we walked in, it truly felt like home. The cabin was beautiful, comfortable, and had something for everyone. We loved spending time playing pool, watching movies together in the movie room, and having a high chair available for our grandchild was such a thoughtful touch.
-
-There was so much to do around the resort that everyone, from the youngest to the oldest, had a great time. We also loved that it was only about 20 minutes from James Madison University, making it easy to explore the area while still enjoying the peace and beauty of the mountains.
-
-We’re already planning a trip back this winter to experience the skiing. I have already told my friends and family if they want to experience massanutten they have to stay at Cedar Escape. We highly recommend it and can’t wait to come back!</p>
-        <div class="who">Felecia — July 2026</div>
-      </div>
-    </div>
-      <!-- REVIEWS:AUTO:END -->
-  </div>
-</div>
-
-<section id="area">
-  <div class="wrap">
-    <div class="why-grid">
-      <div>
-        <div class="eyebrow">The Ultimate Massanutten Weekend Guide</div>
-        <h2 class="section-head" style="margin-bottom:20px;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">The Valley, at your pace.</span></h2>
-        <p style="color:#4b453b;font-size:15.5px;">Wineries, hiking trails, golf, skiing in season, and JMU about a 25-minute drive down the road.</p>
-      </div>
-      <div class="area-grid">
-        <div class="area-item"><span class="name">Massanutten Resort Activities</span><span class="meta">On-Site</span></div>
-        <div class="area-item"><span class="name">Local Wineries</span><span class="meta">15–25 Min</span></div>
-        <div class="area-item"><span class="name">Hiking Trails</span><span class="meta">Nearby</span></div>
-        <div class="area-item"><span class="name">Golf Courses</span><span class="meta">Nearby</span></div>
-        <div class="area-item"><span class="name">JMU Campus</span><span class="meta">~25 Min</span></div>
-        <div class="area-item"><span class="name">Skiing (In Season)</span><span class="meta">On-Site</span></div>
-        <div class="area-item"><span class="name">Go-Karts, Bumper Cars & Mini Golf</span><span class="meta">On-Site</span></div>
-        <div class="area-item"><span class="name">Zipline & Ropes Course</span><span class="meta">On-Site</span></div>
-      </div>
-    </div>
-
-    <div class="section-head" style="margin:56px 0 32px;">
-      <h2>A few of our favorites.</h2>
-    </div>
-    <div class="reviews-strip">
-      <div class="review-card">
-        <p class="quote">CrossKeys Vineyards — Tuscan-style architecture that feels like a detour through Italy, plus a bistro on-site. The one we'd actually send a group of eight to on a Saturday.</p>
-        <div class="who">Winery Pick</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">The Massanutten Storybook Trail — an easy, family-friendly hike with real payoff for the effort.</p>
-        <div class="who">Hike Pick</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--cream-deep);">
-  <div class="wrap">
-    <div class="section-head" style="margin-bottom:32px;">
-      <div class="eyebrow">Explore Local Favorites</div>
-    </div>
-    <div class="weekend-row" style="grid-template-columns:repeat(3,1fr);">
-      <div class="weekend-card" style="cursor:default;">
-        <div class="photo"><img src="images/photo-45.jpg" alt="Massanutten Resort"></div>
-        <div class="label">Massanutten Resort<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Skiing, golf, and resort activities — all on-site</span></div>
-      </div>
-      <div class="weekend-card" style="cursor:default;">
-        <div class="photo" style="background:linear-gradient(155deg,#4d5a3e,#2b3624);"></div>
-        <div class="label">Harrisonburg<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">A short drive to downtown and back, without cutting into the weekend</span></div>
-      </div>
-      <div class="weekend-card" style="cursor:default;">
-        <div class="photo"><img src="images/weekend-jmu.webp" alt="James Madison University"></div>
-        <div class="label">James Madison University<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">About a 25-minute drive from JMU</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="book-panel" id="book">
-  <div class="wrap">
-    <div class="section-head" style="margin:0 auto 36px;text-align:center;">
-      <div class="eyebrow">Direct Booking</div>
-      <p>Live availability and pricing, straight from our booking system — no markup, no third-party fees.</p>
-    </div>
-    <div class="book-shell">
-      <div class="top"><span>Cedar Escape · Massanutten, VA</span><span>Secure Checkout</span></div>
-      <iframe id="booking-iframe" sandbox="allow-top-navigation allow-scripts allow-same-origin" style="width: 100%; height: 900px; border: none; display: block;" frameborder="0" src="https://booking.hospitable.com/widget/a23c8f9c-1465-4c6a-b17b-32990f37578d/2119232"></iframe>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--cream-deep);">
-  <div class="wrap">
-    <div class="section-head" style="margin:0 auto 36px;text-align:center;">
-      <div class="eyebrow">Plan Your Trip</div>
-      <p>Live local weather and a few bookable local experiences.</p>
-    </div>
-    <div style="display:grid; grid-template-columns:1fr; gap:24px;">
-      <div class="book-shell">
-        <div class="top"><span>Local Weather</span><span>Massanutten, VA</span></div>
-        <div class="betterstr-weather-widget" data-width="100%" data-height="700px" data-uuid="4b298eac-5f66-4308-a689-4ad0340a38d3" data-units="imperial"></div>
-      </div>
-      <div class="book-shell">
-        <div class="top"><span>Local Activities & Tours</span><span>Powered by Viator</span></div>
-        <iframe src="https://api.betterstr.com/guidebook/viator.php?uuid=4b298eac-5f66-4308-a689-4ad0340a38d3&format=widget" width="100%" height="650px" frameborder="0" scrolling="yes" style="overflow:auto; display:block;"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-<script src="https://api.betterstr.com/embed/weather-widget.js"></script>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Good to Know</div>
-      <h2>Questions.</h2>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>What's the bedroom count?<span></span></summary>
-        <div class="a">Five bedrooms across two floors, including a walkout basement, with 9 beds total between the bedrooms and bunk room. There's also a downstairs sleeper sofa on top of that, handy if you've got a young child you'd rather not put on a top bunk.</div>
-      </details>
-      <details class="faq-item">
-        <summary>What's the max occupancy?</summary>
-        <div class="a">Sleeps up to 14 guests comfortably.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Is it kid-friendly?</summary>
-        <div class="a">Yes. We offer several family-friendly amenities including a high chair, Pack 'n Play, toddler diningware, child safety gates, and bunk beds. Please note that the property is not fully childproofed, and adult supervision is required at all times.</div>
-      </details>
-      <details class="faq-item">
-        <summary>What time is check-in and check-out?</summary>
-        <div class="a">Check-in is at 3:00 PM, check-out is at 11:00 AM.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Where do we park?</summary>
-        <div class="a">The driveway comfortably fits 3–4 cars. Show up with more, and free overflow parking's got you covered.</div>
-      </details>
-      <details class="faq-item">
-        <summary>What's your cancellation policy?</summary>
-        <div class="a">Cancellation terms are shown before you confirm your reservation. For added peace of mind, optional travel insurance is also available during checkout.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Are pets allowed?</summary>
-        <div class="a">No, we're not able to accommodate pets at this time.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Is smoking allowed?</summary>
-        <div class="a">No, Cedar Escape is a smoke-free property.</div>
-      </details>
-    </div>
+<section class="book-panel" id="book" style="padding-top:0;">
+  <div class="wrap" style="text-align:center;">
+    <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
   </div>
 </section>
 
@@ -1098,22 +804,22 @@ We’re already planning a trip back this winter to experience the skiing. I hav
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a href="#" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
         <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
       </div>
       <div>
         <h4>Explore</h4>
         <ul>
-          <li><a href="#stay">The Cabin</a></li>
-          <li><a href="#weekends">Weekend Guides</a></li>
-          <li><a href="#area">Area Guide</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="index.html#stay">The Cabin</a></li>
+          <li><a href="index.html#weekends">Weekend Guides</a></li>
+          <li><a href="index.html#area">Area Guide</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
         <h4>Book Direct</h4>
         <ul>
-          <li><a href="#book">Check Dates & Pricing</a></li>
+          <li><a href="index.html#book">Check Dates & Pricing</a></li>
           <li><a href="https://www.instagram.com/cedarescape_massanutten?utm_source=qr" target="_blank" rel="noopener">Instagram: @cedarescape_massanutten</a></li>
           <li><a href="https://www.facebook.com/share/19CkRSmUca/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
@@ -1125,45 +831,6 @@ We’re already planning a trip back this winter to experience the skiing. I hav
     </div>
   </div>
 </footer>
-
-<script>
-  const revealEls = document.querySelectorAll('section');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.08 });
-    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
-  }
-</script>
-
-<script>
-  function getQueryParams(param) {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    return urlSearchParams.get(param);
-  }
-
-  function updateIframeSrc() {
-    const iframe = document.getElementById("booking-iframe");
-    if (!iframe) return;
-
-    const checkin = getQueryParams("checkin");
-    const checkout = getQueryParams("checkout");
-    const adults = getQueryParams("adults");
-    const children = getQueryParams("children");
-    const infants = getQueryParams("infants");
-    const pets = getQueryParams("pets");
-
-    if (!checkin && !checkout && !adults) return;
-
-    let newSrc = iframe.src;
-    newSrc += newSrc.includes("?") ? "&" : "?";
-    newSrc += `checkin=${checkin}&checkout=${checkout}&adults=${adults}&children=${children}&infants=${infants}&pets=${pets}`;
-
-    iframe.src = newSrc;
-  }
-
-  window.addEventListener("load", updateIframeSrc);
-</script>
 
 </body>
 </html>

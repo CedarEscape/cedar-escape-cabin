@@ -684,11 +684,11 @@
   .weekend-row { display:grid; grid-template-columns: repeat(2,1fr); gap:16px; }
   @media (min-width:700px) { .weekend-row { grid-template-columns: repeat(3,1fr); } }
   @media (min-width:1000px) { .weekend-row { grid-template-columns: repeat(5,1fr); } }
-  .weekend-card { position:relative; aspect-ratio: 3/4; border-radius: var(--radius); overflow:hidden; display:flex; align-items:flex-end; text-decoration:none; box-shadow: 0 10px 22px rgba(43,39,31,0.14); transition: transform 0.2s ease; }
+  .weekend-card { display:flex; flex-direction:column; border-radius: var(--radius); overflow:hidden; text-decoration:none; box-shadow: 0 10px 22px rgba(43,39,31,0.14); transition: transform 0.2s ease; }
   .weekend-card:hover { transform: translateY(-3px); }
-  .weekend-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .weekend-card::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(35,45,29,0.88) 0%, transparent 60%); }
-  .weekend-card .label { position:relative; z-index:2; padding:16px; color:var(--cream); font-family:'Cinzel', serif; font-size:13.5px; letter-spacing:0.05em; text-transform:uppercase; font-weight:600; }
+  .weekend-card .photo { position:relative; aspect-ratio: 4/3; overflow:hidden; }
+  .weekend-card .photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .weekend-card .label { background: var(--forest-deep); color:var(--cream); padding:14px 12px; text-align:center; font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase; font-weight:600; line-height:1.4; }
 
   /* ---------- TESTIMONIAL BANNER ---------- */
   .testimonial-banner { background: var(--forest-deep); color: var(--cream); padding: 72px 0; text-align:center; }
@@ -697,6 +697,10 @@
   .testimonial-banner .who { font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-bright); margin-top:16px; }
 
   /* ---------- GALLERY PREVIEW ---------- */
+  .inside-grid { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
+  @media (min-width:860px) { .inside-grid { grid-template-columns: 0.7fr 1.3fr; } }
+  .inside-preview-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  .inside-preview-grid .frame { aspect-ratio:4/5; border-width:3px; }
   .gallery-preview-btn { margin-top:28px; }
 
 </style>
@@ -874,30 +878,52 @@
     </div>
     <div class="weekend-row">
       <a href="cedar-escape-family-weekend.html" class="weekend-card">
-        <img src="images/weekend-family.webp" alt="Family Mountain Weekend">
-        <div class="label">Family Mountain Weekend</div>
+        <div class="photo"><img src="images/weekend-family.webp" alt="Family Mountain Weekend"></div>
+        <div class="label">Family Mountain<br>Weekend</div>
       </a>
       <a href="cedar-escape-wine-weekend.html" class="weekend-card">
-        <img src="images/weekend-girls.webp" alt="Girls / Wine Weekend">
-        <div class="label">Girls / Wine Weekend</div>
+        <div class="photo"><img src="images/weekend-girls.webp" alt="Girls / Wine Weekend"></div>
+        <div class="label">Girls + Wine<br>Weekend</div>
       </a>
       <a href="cedar-escape-jmu-weekend.html" class="weekend-card">
-        <img src="images/weekend-jmu.webp" alt="JMU Weekend">
-        <div class="label">JMU Weekend</div>
+        <div class="photo"><img src="images/weekend-jmu.webp" alt="JMU Weekend"></div>
+        <div class="label">JMU<br>Weekend</div>
       </a>
       <a href="cedar-escape-adventure-weekend.html" class="weekend-card">
-        <img src="images/weekend-adventure.webp" alt="Ski / Adventure Weekend">
-        <div class="label">Ski / Adventure Weekend</div>
+        <div class="photo"><img src="images/weekend-adventure.webp" alt="Ski / Adventure Weekend"></div>
+        <div class="label">Adventure<br>Weekend</div>
       </a>
       <a href="cedar-escape-golf-weekend.html" class="weekend-card">
-        <img src="images/weekend-golf.webp" alt="Golf / Resort Weekend">
-        <div class="label">Golf / Resort Weekend</div>
+        <div class="photo"><img src="images/weekend-golf.webp" alt="Golf / Resort Weekend"></div>
+        <div class="label">Golf<br>Getaway</div>
       </a>
     </div>
   </div>
 </section>
 
 <section id="gallery">
+  <div class="wrap">
+    <div class="inside-grid">
+      <div>
+        <div class="eyebrow">A Look Inside</div>
+        <h2 class="section-head" style="margin-bottom:0;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">Inside Cedar Escape.</span></h2>
+        <a href="#gallery-full" class="btn btn-outline gallery-preview-btn">View All Photos</a>
+      </div>
+      <div class="inside-preview-grid">
+        <div class="frame"><img src="images/photo-02.jpg" loading="lazy" alt="Cedar Escape property photo 2"></div>
+        <div class="frame"><img src="images/photo-20.jpg" loading="lazy" alt="Cedar Escape property photo 20"></div>
+        <div class="frame"><img src="images/reset-deck-temp.webp" loading="lazy" alt="Deck seating at Cedar Escape"></div>
+        <div class="frame"><img src="images/photo-35.jpg" loading="lazy" alt="Cedar Escape property photo 35"></div>
+        <div class="frame"><img src="images/photo-08.jpg" loading="lazy" alt="Cedar Escape property photo 8"></div>
+        <div class="frame"><img src="images/photo-13.jpg" loading="lazy" alt="Cedar Escape property photo 13"></div>
+        <div class="frame"><img src="images/photo-38.jpg" loading="lazy" alt="Cedar Escape property photo 38"></div>
+        <div class="frame"><img src="images/photo-40.jpg" loading="lazy" alt="Cedar Escape property photo 40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery-full">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">A Look Inside</div>
@@ -959,12 +985,8 @@
 <div class="testimonial-banner">
   <div class="wrap">
     <div class="quote-mark">"</div>
-    <p class="quote">Our stay at Cedar Escape was everything we hoped for and more! From the moment we walked in, it truly felt like home. The cabin was beautiful, comfortable, and had something for everyone. We loved spending time playing pool, watching movies together in the movie room, and having a high chair available for our grandchild was such a thoughtful touch.
-
-There was so much to do around the resort that everyone, from the youngest to the oldest, had a great time. We also loved that it was only about 20 minutes from James Madison University, making it easy to explore the area while still enjoying the peace and beauty of the mountains.
-
-We're already planning a trip back this winter to experience the skiing. I have already told my friends and family if they want to experience massanutten they have to stay at Cedar Escape. We highly recommend it and can't wait to come back!</p>
-    <div class="who">★★★★★ Felecia — July 2026</div>
+    <p class="quote">It truly felt like home — and had something for everyone.</p>
+    <div class="who">★★★★★ Felecia · July 2026</div>
   </div>
 </div>
 
@@ -1003,6 +1025,28 @@ We're already planning a trip back this winter to experience the skiing. I have 
       <div class="review-card">
         <p class="quote">Swap in the restaurant or golf course you'd tell a friend to book, not just any nearby option.</p>
         <div class="who">Local Pick</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px;">
+      <div class="eyebrow">Explore Local Favorites</div>
+    </div>
+    <div class="weekend-row" style="grid-template-columns:repeat(3,1fr);">
+      <div class="weekend-card" style="cursor:default;">
+        <div class="photo"><img src="images/photo-45.jpg" alt="Massanutten Resort"></div>
+        <div class="label">Massanutten Resort<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Skiing, golf, and resort activities — all on-site</span></div>
+      </div>
+      <div class="weekend-card" style="cursor:default;">
+        <div class="photo" style="background:var(--cream);display:flex;align-items:center;justify-content:center;"><span style="font-family:'Cinzel',serif;color:var(--taupe);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding:20px;text-align:center;">Photo coming soon</span></div>
+        <div class="label">Harrisonburg<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">A short drive to downtown and back, without cutting into the weekend</span></div>
+      </div>
+      <div class="weekend-card" style="cursor:default;">
+        <div class="photo"><img src="images/weekend-jmu.webp" alt="James Madison University"></div>
+        <div class="label">James Madison University<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">About a 25-minute drive from JMU</span></div>
       </div>
     </div>
   </div>

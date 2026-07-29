@@ -680,6 +680,7 @@
   @media (min-width:860px) { .gpr-panel { aspect-ratio: 3/4; } }
   .gpr-panel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .gpr-panel::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(60,42,18,0.62) 0%, rgba(60,42,18,0.08) 55%, rgba(60,42,18,0.22) 100%); }
+  .gpr-panel.moody::before { background:linear-gradient(0deg, rgba(35,28,14,0.78) 0%, rgba(35,28,14,0.28) 50%, rgba(35,28,14,0.4) 100%); }
   .gpr-panel.dark::before { background:linear-gradient(0deg, rgba(20,16,10,0.86) 0%, rgba(20,16,10,0.25) 50%, rgba(20,16,10,0.4) 100%); }
   .gpr-panel .label { position:absolute; top:24px; left:24px; z-index:2; font-family:'Cinzel', serif; font-size:clamp(30px,4.4vw,44px); letter-spacing:0.06em; color:rgba(246,241,230,0.5); text-transform:uppercase; }
   .gpr-panel .cap { position:relative; z-index:2; padding:24px; color:var(--cream); font-size:15px; max-width:340px; }
@@ -770,8 +771,8 @@
 <section style="padding-top:40px;">
   <div class="wrap">
     <div class="gpr-grid">
-      <div class="gpr-panel">
-        <img src="images/gather-movieroom.webp" alt="Movie room at Cedar Escape" loading="lazy">
+      <div class="gpr-panel moody">
+        <img src="images/photo-20.jpg" alt="Great room at Cedar Escape" loading="lazy">
         <div class="label">Gather</div>
         <div class="cap">Big spaces. Good food. Better company.</div>
       </div>

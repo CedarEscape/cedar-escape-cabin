@@ -165,7 +165,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image:
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(35,45,29,0.15) 0%, rgba(35,45,29,0.65) 78%, rgba(35,45,29,0.88) 100%),
       radial-gradient(circle at 80% 30%, rgba(0,0,0,0.25), transparent 60%);
   }
   .hero-inner {
@@ -658,18 +660,57 @@
 
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- ICON FEATURE BAR ---------- */
+  .icon-bar { background: var(--cream); border-bottom: 1px solid var(--line); padding: 34px 0; }
+  .icon-bar .wrap { display:grid; grid-template-columns: repeat(2,1fr); gap:24px; }
+  @media (min-width:700px) { .icon-bar .wrap { grid-template-columns: repeat(3,1fr); } }
+  @media (min-width:980px) { .icon-bar .wrap { grid-template-columns: repeat(6,1fr); } }
+  .icon-item { display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; }
+  .icon-item svg { width:26px; height:26px; color:var(--gold); }
+  .icon-item span { font-family:'Cinzel', serif; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--forest-deep); font-weight:600; }
+
+  /* ---------- GATHER / PLAY / RESET ---------- */
+  .gpr-grid { display:grid; grid-template-columns:1fr; gap:2px; }
+  @media (min-width:860px) { .gpr-grid { grid-template-columns: repeat(3,1fr); } }
+  .gpr-panel { position:relative; aspect-ratio: 4/3; overflow:hidden; display:flex; align-items:flex-end; }
+  @media (min-width:860px) { .gpr-panel { aspect-ratio: 3/4; } }
+  .gpr-panel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .gpr-panel::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(35,45,29,0.82) 0%, rgba(35,45,29,0.15) 55%, rgba(35,45,29,0.35) 100%); }
+  .gpr-panel .label { position:absolute; top:24px; left:24px; z-index:2; font-family:'Cinzel', serif; font-size:clamp(30px,4.4vw,44px); letter-spacing:0.06em; color:rgba(246,241,230,0.5); text-transform:uppercase; }
+  .gpr-panel .cap { position:relative; z-index:2; padding:24px; color:var(--cream); font-size:15px; max-width:340px; }
+
+  /* ---------- WEEKEND PICKER CARDS ---------- */
+  .weekend-row { display:grid; grid-template-columns: repeat(2,1fr); gap:16px; }
+  @media (min-width:700px) { .weekend-row { grid-template-columns: repeat(3,1fr); } }
+  @media (min-width:1000px) { .weekend-row { grid-template-columns: repeat(5,1fr); } }
+  .weekend-card { position:relative; aspect-ratio: 3/4; border-radius: var(--radius); overflow:hidden; display:flex; align-items:flex-end; text-decoration:none; box-shadow: 0 10px 22px rgba(43,39,31,0.14); transition: transform 0.2s ease; }
+  .weekend-card:hover { transform: translateY(-3px); }
+  .weekend-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .weekend-card::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(35,45,29,0.88) 0%, transparent 60%); }
+  .weekend-card .label { position:relative; z-index:2; padding:16px; color:var(--cream); font-family:'Cinzel', serif; font-size:13.5px; letter-spacing:0.05em; text-transform:uppercase; font-weight:600; }
+
+  /* ---------- TESTIMONIAL BANNER ---------- */
+  .testimonial-banner { background: var(--forest-deep); color: var(--cream); padding: 72px 0; text-align:center; }
+  .testimonial-banner .quote-mark { font-family:'Playfair Display', serif; font-size:48px; color:var(--gold); line-height:1; }
+  .testimonial-banner p.quote { font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(17px,2vw,21px); max-width:760px; margin:16px auto; color:rgba(246,241,230,0.92); line-height:1.7; white-space:pre-line; }
+  .testimonial-banner .who { font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-bright); margin-top:16px; }
+
+  /* ---------- GALLERY PREVIEW ---------- */
+  .gallery-preview-btn { margin-top:28px; }
+
 </style>
-</head>
 <body>
 
 <header>
   <nav class="nav">
     <a href="#" class="wordmark">CEDAR <span>ESCAPE</span></a>
     <ul class="nav-links">
-      <li><a href="#stay">The Cabin</a></li>
-      <li><a href="#weekends">Weekends</a></li>
-      <li><a href="#area">Area Guide</a></li>
+      <li><a href="#stay">Stay</a></li>
+      <li><a href="#area">Explore</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="#book">Book Direct</a></li>
     </ul>
     <a href="#book" class="btn btn-gold nav-cta">Check Dates</a>
     <button class="burger">MENU</button>
@@ -677,8 +718,9 @@
 </header>
 
 <section class="hero">
-  <div class="photo-note">Still decorating — real photos coming once the house is guest-ready</div>
-  <div class="hero-inner">
+  <div class="photo-note">Temporary hero photo — will be swapped for a final exterior shot</div>
+  <img src="images/hero-exterior.webp" alt="Cedar Escape cabin exterior" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+  <div class="hero-inner" style="position:relative;z-index:2;">
     <div class="eyebrow">Massanutten Resort, Virginia</div>
     <h1>Your private Massanutten escape — with room for every kind of weekend.</h1>
     <p class="hero-sub">A five-bedroom, 9-bed mountain house near JMU, wineries, golf, skiing, and resort fun — with room to gather, space to recharge, and thoughtful details that make group travel feel less like logistics.</p>
@@ -689,18 +731,28 @@
   </div>
 </section>
 
+<div class="icon-bar">
+  <div class="wrap">
+    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 18v2M21 18v2"/><path d="M3 13h18"/><path d="M7 13V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg><span>5 Bedrooms</span></div>
+    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><path d="M14.5 20c0-2.6 1.8-4.8 4-5.6"/></svg><span>Sleeps 14</span></div>
+    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19v-2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><path d="M2 19h20"/><path d="M8 6c-1 1-1 2 0 3s1 2 0 3"/><path d="M12 6c-1 1-1 2 0 3s1 2 0 3"/><path d="M16 6c-1 1-1 2 0 3s1 2 0 3"/></svg><span>Hot Tub</span></div>
+    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 5 4h3l-2 4.5M9 8.5 11 4h3l-2 4.5M15 8.5 17 4h3l-2 4.5"/><rect x="3" y="8.5" width="18" height="11.5" rx="1.5"/></svg><span>Movie Room</span></div>
+    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="9" rx="4.5"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="16" cy="11" r="1"/><circle cx="18.5" cy="13.5" r="1"/></svg><span>Game Room</span></div>
+    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5"/><path d="M22 8v6"/></svg><span>~25 Min to JMU</span></div>
+  </div>
+</div>
+
 <div class="trust-bar">
   <div class="wrap">
     <ul>
       <li>Book Direct, No Middleman</li>
       <li>Secure Hospitable Checkout</li>
-      <li>Owner-Hosted</li>
       <li>Professionally Cleaned Every Stay</li>
     </ul>
   </div>
 </div>
 
-<section id="stay">
+<section id="stay" style="padding-bottom:0;">
   <div class="wrap">
     <div class="why-copy" style="max-width:640px; margin:0 auto; text-align:center;">
       <div class="eyebrow">Cedar Escape Was Made for Group Weekends</div>
@@ -709,6 +761,28 @@
       <p style="margin-top:16px;">At Cedar Escape, you get five bedrooms, a full kitchen, gathering spaces, and room for the whole group to settle in — together, but not on top of each other.</p>
       <p style="margin-top:16px;">Come for JMU, wineries, golf, skiing, or resort fun.</p>
       <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:22px; color:var(--forest-deep); margin-top:28px;">Stay somewhere that makes the weekend feel easy.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:40px;">
+  <div class="wrap">
+    <div class="gpr-grid">
+      <div class="gpr-panel">
+        <img src="images/photo-20.jpg" alt="Great room at Cedar Escape" loading="lazy">
+        <div class="label">Gather</div>
+        <div class="cap">Room to gather, space to recharge — big open living and dining space for the whole group.</div>
+      </div>
+      <div class="gpr-panel">
+        <img src="images/photo-02.jpg" alt="Game room at Cedar Escape" loading="lazy">
+        <div class="label">Play</div>
+        <div class="cap">Pool table, poker table, VR headset, movie room, and arcade — all part of the game room.</div>
+      </div>
+      <div class="gpr-panel">
+        <img src="images/reset-deck-temp.webp" alt="Deck seating at Cedar Escape" loading="lazy">
+        <div class="label">Reset</div>
+        <div class="cap">Hot tub (if available), smoker grill, and patio seating for slowing down at the end of the day.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -791,7 +865,39 @@
   </div>
 </section>
 
-<section>
+<section class="trailhead" id="weekends">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 40px;text-align:center;max-width:560px;">
+      <div class="eyebrow">Pick Your Trail</div>
+      <h2>What kind of weekend is this?</h2>
+      <p>Same house, five very different trips. Pick the one you're actually planning.</p>
+    </div>
+    <div class="weekend-row">
+      <a href="cedar-escape-family-weekend.html" class="weekend-card">
+        <img src="images/weekend-family.webp" alt="Family Mountain Weekend">
+        <div class="label">Family Mountain Weekend</div>
+      </a>
+      <a href="cedar-escape-wine-weekend.html" class="weekend-card">
+        <img src="images/weekend-girls.webp" alt="Girls / Wine Weekend">
+        <div class="label">Girls / Wine Weekend</div>
+      </a>
+      <a href="cedar-escape-jmu-weekend.html" class="weekend-card">
+        <img src="images/weekend-jmu.webp" alt="JMU Weekend">
+        <div class="label">JMU Weekend</div>
+      </a>
+      <a href="cedar-escape-adventure-weekend.html" class="weekend-card">
+        <img src="images/weekend-adventure.webp" alt="Ski / Adventure Weekend">
+        <div class="label">Ski / Adventure Weekend</div>
+      </a>
+      <a href="cedar-escape-golf-weekend.html" class="weekend-card">
+        <img src="images/weekend-golf.webp" alt="Golf / Resort Weekend">
+        <div class="label">Golf / Resort Weekend</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">A Look Inside</div>
@@ -850,25 +956,17 @@
   </div>
 </section>
 
-<section class="trailhead" id="weekends">
+<div class="testimonial-banner">
   <div class="wrap">
-    <div class="section-head" style="margin:0 auto 10px;text-align:center;max-width:560px;">
-      <div class="eyebrow">Pick Your Trail</div>
-      <h2>What kind of weekend is this?</h2>
-      <p>Same house, five very different trips. Pick the one you're actually planning.</p>
-    </div>
-    <div class="signpost-nav">
-      <div class="sp-pole"></div>
-      <div class="sp-arms">
-        <a href="cedar-escape-family-weekend.html" class="sp-arm"><span class="label">Family Mountain Weekend</span><span class="mi">This way →</span></a>
-        <a href="cedar-escape-wine-weekend.html" class="sp-arm"><span class="label">Girls / Wine Weekend</span><span class="mi">← This way</span></a>
-        <a href="cedar-escape-jmu-weekend.html" class="sp-arm"><span class="label">JMU Weekend</span><span class="mi">This way →</span></a>
-        <a href="cedar-escape-adventure-weekend.html" class="sp-arm"><span class="label">Ski / Adventure Weekend</span><span class="mi">← This way</span></a>
-        <a href="cedar-escape-golf-weekend.html" class="sp-arm"><span class="label">Golf / Resort Weekend</span><span class="mi">This way →</span></a>
-      </div>
-    </div>
+    <div class="quote-mark">"</div>
+    <p class="quote">Our stay at Cedar Escape was everything we hoped for and more! From the moment we walked in, it truly felt like home. The cabin was beautiful, comfortable, and had something for everyone. We loved spending time playing pool, watching movies together in the movie room, and having a high chair available for our grandchild was such a thoughtful touch.
+
+There was so much to do around the resort that everyone, from the youngest to the oldest, had a great time. We also loved that it was only about 20 minutes from James Madison University, making it easy to explore the area while still enjoying the peace and beauty of the mountains.
+
+We're already planning a trip back this winter to experience the skiing. I have already told my friends and family if they want to experience massanutten they have to stay at Cedar Escape. We highly recommend it and can't wait to come back!</p>
+    <div class="who">★★★★★ Felecia — July 2026</div>
   </div>
-</section>
+</div>
 
 <section id="area">
   <div class="wrap">
@@ -982,28 +1080,6 @@
         <summary>Is smoking allowed?</summary>
         <div class="a">No, Cedar Escape is a smoke-free property.</div>
       </details>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--cream-deep);">
-  <div class="wrap">
-    <div class="section-head" style="margin:0 auto 44px;text-align:center;">
-      <div class="eyebrow">From the Guestbook</div>
-      <h2>What past crews said.</h2>
-    </div>
-    <div class="reviews-strip" style="grid-template-columns:1fr;max-width:640px;margin:0 auto;">
-      <!-- REVIEWS:AUTO:START -->
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="quote">Our stay at Cedar Escape was everything we hoped for and more! From the moment we walked in, it truly felt like home. The cabin was beautiful, comfortable, and had something for everyone. We loved spending time playing pool, watching movies together in the movie room, and having a high chair available for our grandchild was such a thoughtful touch.
-
-There was so much to do around the resort that everyone, from the youngest to the oldest, had a great time. We also loved that it was only about 20 minutes from James Madison University, making it easy to explore the area while still enjoying the peace and beauty of the mountains.
-
-We’re already planning a trip back this winter to experience the skiing. I have already told my friends and family if they want to experience massanutten they have to stay at Cedar Escape. We highly recommend it and can’t wait to come back!</p>
-        <div class="who">Felecia — July 2026</div>
-      </div>
-      <!-- REVIEWS:AUTO:END -->
     </div>
   </div>
 </section>

@@ -40,18 +40,36 @@ def escape_html(text: str) -> str:
     return html.escape(text, quote=False)
 
 
+def first_sentence(text: str) -> str:
+    match = re.search(r'^.*?[.!?](?=\s|$)', text.strip())
+    return match.group(0).strip() if match else text.strip()
+
+
 def render_reviews(reviews) -> str:
-    cards = []
-    for name, date, comment in reviews:
-        who = f"{escape_html(name)} — {escape_html(date)}" if date else escape_html(name)
-        cards.append(
-            "      <div class=\"review-card\">\n"
-            "        <div class=\"stars\">★★★★★</div>\n"
-            f"        <p class=\"quote\">{escape_html(comment)}</p>\n"
-            f"        <div class=\"who\">{who}</div>\n"
-            "      </div>"
-        )
-    return "\n".join(cards)
+    featured_name, featured_date, featured_comment = reviews[0]
+    featured_who = f"★★★★★ {escape_html(featured_name)} · {escape_html(featured_date)}" if featured_date else f"★★★★★ {escape_html(featured_name)}"
+    parts = [
+        '    <div class="quote-mark">"</div>',
+        f'    <p class="quote">{escape_html(first_sentence(featured_comment))}</p>',
+        f'    <div class="who">{featured_who}</div>',
+    ]
+
+    if reviews:
+        more_cards = []
+        for name, date, comment in reviews:
+            who = f"{escape_html(name)} — {escape_html(date)}" if date else escape_html(name)
+            more_cards.append(
+                "      <div class=\"review-card\">\n"
+                "        <div class=\"stars\">★★★★★</div>\n"
+                f"        <p class=\"quote\">{escape_html(comment)}</p>\n"
+                f"        <div class=\"who\">{who}</div>\n"
+                "      </div>"
+            )
+        parts.append('    <div class="reviews-more">')
+        parts.extend(more_cards)
+        parts.append('    </div>')
+
+    return "\n".join(parts)
 
 
 def main():

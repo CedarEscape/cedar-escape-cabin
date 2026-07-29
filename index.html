@@ -695,6 +695,11 @@
   .testimonial-banner .quote-mark { font-family:'Playfair Display', serif; font-size:48px; color:var(--gold); line-height:1; }
   .testimonial-banner p.quote { font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(17px,2vw,21px); max-width:760px; margin:16px auto; color:rgba(246,241,230,0.92); line-height:1.7; white-space:pre-line; }
   .testimonial-banner .who { font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-bright); margin-top:16px; }
+  .reviews-more { max-width:900px; margin:40px auto 0; display:grid; grid-template-columns:1fr; gap:20px; }
+  @media (min-width:760px) { .reviews-more { grid-template-columns:repeat(2,1fr); } }
+  .reviews-more .review-card { background:rgba(246,241,230,0.06); border:1px solid rgba(246,241,230,0.15); border-top:3px solid var(--gold); text-align:left; }
+  .reviews-more .review-card .quote { color:rgba(246,241,230,0.85); }
+  .reviews-more .review-card .who { color:var(--gold-bright); }
 
   /* ---------- GALLERY PREVIEW ---------- */
   .inside-grid { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
@@ -982,11 +987,27 @@
   </div>
 </section>
 
-<div class="testimonial-banner">
+<div class="testimonial-banner" id="reviews">
   <div class="wrap">
+    <div class="section-head" style="text-align:center;margin:0 auto 8px;">
+      <div class="eyebrow" style="color:var(--gold-bright);">From the Guestbook</div>
+    </div>
+    <!-- REVIEWS:AUTO:START -->
     <div class="quote-mark">"</div>
-    <p class="quote">It truly felt like home — and had something for everyone.</p>
+    <p class="quote">Our stay at Cedar Escape was everything we hoped for and more!</p>
     <div class="who">★★★★★ Felecia · July 2026</div>
+    <div class="reviews-more">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Our stay at Cedar Escape was everything we hoped for and more! From the moment we walked in, it truly felt like home. The cabin was beautiful, comfortable, and had something for everyone. We loved spending time playing pool, watching movies together in the movie room, and having a high chair available for our grandchild was such a thoughtful touch.
+
+There was so much to do around the resort that everyone, from the youngest to the oldest, had a great time. We also loved that it was only about 20 minutes from James Madison University, making it easy to explore the area while still enjoying the peace and beauty of the mountains.
+
+We’re already planning a trip back this winter to experience the skiing. I have already told my friends and family if they want to experience massanutten they have to stay at Cedar Escape. We highly recommend it and can’t wait to come back!</p>
+        <div class="who">Felecia — July 2026</div>
+      </div>
+    </div>
+      <!-- REVIEWS:AUTO:END -->
   </div>
 </div>
 

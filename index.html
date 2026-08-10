@@ -147,6 +147,22 @@
   @media (min-width: 880px) { .nav-links { display: flex; } }
   .burger { display: inline-flex; background: none; border: none; font-family: 'Cinzel',serif; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; color: var(--forest-deep); }
   @media (min-width: 880px) { .burger { display: none; } }
+  @media (max-width: 879.98px) {
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 32px 24px;
+      gap: 16px;
+      box-shadow: 0 14px 24px rgba(43,39,31,0.14);
+      z-index: 49;
+    }
+  }
 
   /* ---------- HERO ---------- */
   .hero {
@@ -731,6 +747,22 @@
     <button class="burger">MENU</button>
   </nav>
 </header>
+<script>
+  document.querySelectorAll('.burger').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var nav = btn.closest('.nav');
+      var links = nav && nav.querySelector('.nav-links');
+      if (links) links.classList.toggle('open');
+    });
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      var links = a.closest('.nav-links');
+      if (links) links.classList.remove('open');
+    });
+  });
+</script>
+
 
 <section class="hero">
   <img src="images/hero-poolroom.webp" alt="Game room at Cedar Escape" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">

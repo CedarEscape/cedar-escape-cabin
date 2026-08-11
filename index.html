@@ -730,6 +730,83 @@
   .inside-preview-grid .frame { aspect-ratio:3/2; border-width:3px; }
   .gallery-preview-btn { margin-top:28px; }
 
+
+  /* ---------- CONTACT MODAL ---------- */
+  .contact-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(35,45,29,0.55);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .contact-modal-overlay.open { display: flex; }
+  .contact-modal {
+    position: relative;
+    background: var(--cream);
+    border-radius: 4px;
+    max-width: 480px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px 36px 36px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+  }
+  .contact-modal-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--taupe);
+    cursor: pointer;
+    padding: 6px 10px;
+  }
+  .contact-modal-close:hover { color: var(--forest-deep); }
+  .contact-modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--forest-deep);
+    margin: 10px 0 10px;
+  }
+  .contact-modal-sub { font-size: 14.5px; color: #4b453b; margin-bottom: 22px; }
+  .contact-form label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin: 16px 0 6px;
+  }
+  .contact-form label:first-of-type { margin-top: 0; }
+  .contact-form label .req { color: var(--gold); margin-left: 2px; }
+  .contact-form input, .contact-form textarea {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+    box-sizing: border-box;
+  }
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+  .contact-form textarea { resize: vertical; min-height: 90px; font-family: 'DM Sans', sans-serif; }
+  .contact-form-email-note { margin-top: 16px; font-size: 12.5px; color: var(--taupe); text-align: center; }
+  .contact-form-email-note a { color: var(--forest-deep); font-weight: 600; }
+  #contactFormSuccess { text-align: center; padding: 20px 0; }
+  #contactFormSuccess h3 { margin-top: 6px; }
+  #contactFormSuccess p { color: #4b453b; font-size: 15px; margin-top: 10px; }
 </style>
 <body>
 
@@ -742,6 +819,7 @@
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#book">Book Direct</a></li>
+      <li><a href="#" class="js-open-contact">Message Us</a></li>
     </ul>
     <a href="#book" class="btn btn-gold nav-cta">Check Dates</a>
     <button class="burger">MENU</button>
@@ -1167,6 +1245,7 @@ We’re already planning a trip back this winter to experience the skiing. I hav
         <h4>Book Direct</h4>
         <ul>
           <li><a href="#book">Check Dates & Pricing</a></li>
+          <li><a href="#" class="js-open-contact">Message Us</a></li>
           <li><a href="https://www.instagram.com/cedarescape_massanutten?utm_source=qr" target="_blank" rel="noopener">Instagram: @cedarescape_massanutten</a></li>
           <li><a href="https://www.facebook.com/share/19CkRSmUca/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
@@ -1216,6 +1295,93 @@ We’re already planning a trip back this winter to experience the skiing. I hav
   }
 
   window.addEventListener("load", updateIframeSrc);
+</script>
+
+
+<div class="contact-modal-overlay" id="contactModalOverlay">
+  <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <button type="button" class="contact-modal-close" aria-label="Close">&times;</button>
+    <div id="contactFormWrap">
+      <div class="eyebrow">Get In Touch</div>
+      <h3 id="contactModalTitle">Message Cedar Escape</h3>
+      <p class="contact-modal-sub">Have a question about your stay or an upcoming booking? Send us a note and we'll reply directly &mdash; no account needed.</p>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/cedarescape.cabin@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from Cedar Escape website">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label for="cf-name">Name <span class="req">*</span></label>
+        <input id="cf-name" type="text" name="Name" required>
+        <label for="cf-email">Email <span class="req">*</span></label>
+        <input id="cf-email" type="email" name="Email" required>
+        <label for="cf-phone">Phone (optional)</label>
+        <input id="cf-phone" type="tel" name="Phone">
+        <label for="cf-res">Reservation Dates / Confirmation # (optional)</label>
+        <input id="cf-res" type="text" name="Reservation Dates or Confirmation Number">
+        <label for="cf-message">Message <span class="req">*</span></label>
+        <textarea id="cf-message" name="Message" rows="4" required></textarea>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:22px;">Send Message</button>
+        <p class="contact-form-email-note">Prefer email? Reach us directly at <a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></p>
+      </form>
+    </div>
+    <div id="contactFormSuccess" style="display:none;">
+      <div class="eyebrow">Message Sent</div>
+      <h3>Thanks! Your message has been sent to Cedar Escape.</h3>
+      <p>We'll be in touch soon.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('contactModalOverlay');
+  if (!overlay) return;
+  var closeBtn = overlay.querySelector('.contact-modal-close');
+  var openers = document.querySelectorAll('.js-open-contact');
+  var form = document.getElementById('contactForm');
+  var formWrap = document.getElementById('contactFormWrap');
+  var success = document.getElementById('contactFormSuccess');
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  openers.forEach(function(el){ el.addEventListener('click', openModal); });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if (res.ok) {
+        formWrap.style.display = 'none';
+        success.style.display = 'block';
+        form.reset();
+      } else {
+        throw new Error('Submit failed');
+      }
+    }).catch(function(){
+      alert('Sorry, something went wrong sending your message. Please email us directly at cedarescape.cabin@gmail.com.');
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = originalText;
+    });
+  });
+})();
 </script>
 
 </body>

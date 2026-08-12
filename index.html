@@ -808,6 +808,162 @@
   #contactFormSuccess { text-align: center; padding: 20px 0; }
   #contactFormSuccess h3 { margin-top: 6px; }
   #contactFormSuccess p { color: #4b453b; font-size: 15px; margin-top: 10px; }
+
+  /* ---------- DIRECT BOOKING PROMO POPUP ---------- */
+  .promo-popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(35,45,29,0.55);
+    z-index: 90;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .promo-popup-overlay.show { display: flex; }
+  .promo-popup-overlay.in { opacity: 1; }
+  .promo-popup {
+    position: relative;
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    max-width: 400px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 7px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    transform: translateY(14px);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .promo-popup-overlay.in .promo-popup {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .promo-popup-frame {
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    padding: 34px 30px 28px;
+    text-align: center;
+  }
+  .promo-popup-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--forest-deep);
+    cursor: pointer;
+    padding: 6px 8px;
+    z-index: 2;
+  }
+  .promo-popup-close:hover { color: var(--gold); }
+  .promo-popup-word {
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--forest-deep);
+  }
+  .promo-popup-loc {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-top: 7px;
+  }
+  .promo-popup-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 18px auto;
+    max-width: 220px;
+  }
+  .promo-popup-divider span { flex: 1; height: 1px; background: var(--gold); }
+  .promo-popup-divider i {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .promo-popup-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--forest-deep);
+    font-weight: 600;
+  }
+  .promo-popup-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1.16;
+    color: var(--forest-deep);
+    margin: 12px 0 20px;
+  }
+  .promo-popup-rule {
+    height: 1px;
+    background: var(--line);
+    margin: 0 auto 20px;
+    max-width: 260px;
+  }
+  .promo-popup-save {
+    font-family: 'Cinzel', serif;
+    font-size: 12.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest-deep);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .promo-popup-code {
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    color: var(--forest-deep);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .promo-popup-btn {
+    display: block;
+    width: 100%;
+    background: var(--forest-deep);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 2px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .promo-popup-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(35,45,29,0.3); }
+  .promo-popup-note {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #4b453b;
+    margin-top: 16px;
+  }
+  @media (max-width: 480px) {
+    .promo-popup-headline { font-size: 27px; }
+    .promo-popup-frame { padding: 28px 20px 22px; }
+  }
 </style>
 <body>
 
@@ -1382,6 +1538,71 @@ We’re already planning a trip back this winter to experience the skiing. I hav
       btn.textContent = originalText;
     });
   });
+})();
+</script>
+
+<div class="promo-popup-overlay" id="promoPopupOverlay">
+  <div class="promo-popup">
+    <button type="button" class="promo-popup-close" id="promoPopupClose" aria-label="Close">&times;</button>
+    <div class="promo-popup-frame">
+      <div class="promo-popup-word">CEDAR ESCAPE</div>
+      <div class="promo-popup-loc">MASSANUTTEN, VIRGINIA</div>
+      <div class="promo-popup-divider"><span></span><i></i><span></span></div>
+      <div class="promo-popup-eyebrow">Direct Booking Perk</div>
+      <h3 class="promo-popup-headline">Book direct.<br>Stay longer.</h3>
+      <div class="promo-popup-rule"></div>
+      <div class="promo-popup-save">Save 15% on stays of 3+ nights</div>
+      <div class="promo-popup-code">FIRSTESCAPE</div>
+      <a href="#book" class="promo-popup-btn" id="promoPopupBtn">Check Your Dates</a>
+      <p class="promo-popup-note">Plus, skip the extra booking-platform fees.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('promoPopupOverlay');
+  if (!overlay) return;
+  var closeBtn = document.getElementById('promoPopupClose');
+  var ctaBtn = document.getElementById('promoPopupBtn');
+  var STORAGE_KEY = 'cedarPromoDismissed';
+  var shown = false;
+
+  if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+  function openPopup(){
+    if (shown) return;
+    shown = true;
+    overlay.classList.add('show');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ overlay.classList.add('in'); });
+    });
+  }
+  function closePopup(){
+    overlay.classList.remove('in');
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    setTimeout(function(){ overlay.classList.remove('show'); }, 350);
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  ctaBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closePopup(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.classList.contains('in')) closePopup(); });
+
+  var contactOpeners = document.querySelectorAll('.js-open-contact');
+  contactOpeners.forEach(function(el){
+    el.addEventListener('click', function(){
+      if (overlay.classList.contains('in')) closePopup();
+    });
+  });
+
+  window.addEventListener('scroll', function(){
+    if (shown) return;
+    var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    var pct = window.scrollY / scrollable;
+    if (pct >= 0.32) openPopup();
+  }, { passive: true });
 })();
 </script>
 

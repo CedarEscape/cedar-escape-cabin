@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guest Feedback — Cedar Escape</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E6;
+    --cream-deep: #EEE6D6;
+    --ink: #2B271F;
+    --forest: #37452F;
+    --forest-deep: #232D1D;
+    --brown: #6E4F37;
+    --taupe: #A9917A;
+    --gold: #C0973F;
+    --gold-bright: #D6B15C;
+    --line: rgba(43,39,31,0.14);
+    --radius: 2px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  p { margin: 0; }
+
+  .wrap { max-width: 620px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 28px 0 8px; text-align: center; }
+  .wordmark {
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--forest-deep);
+    text-decoration: none;
+  }
+  .wordmark span { color: var(--gold); }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .fb-hero { text-align: center; padding: 20px 0 12px; }
+  .fb-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(28px, 5.5vw, 40px);
+    line-height: 1.22;
+    color: var(--forest-deep);
+    margin: 14px 0 16px;
+  }
+  .fb-hero-sub {
+    font-size: 15.5px;
+    color: #4b453b;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .fb-form-section { padding: 28px 0 64px; }
+  .fb-form {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 3px;
+    padding: 32px 26px;
+    box-shadow: 0 20px 40px rgba(43,39,31,0.06);
+  }
+  .fb-field { margin-bottom: 26px; }
+  .fb-field label.fb-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15.5px;
+    color: var(--forest-deep);
+    margin-bottom: 8px;
+  }
+  .fb-field .req { color: var(--gold); margin-left: 2px; }
+  .fb-microcopy {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--taupe);
+    margin: -4px 0 8px;
+  }
+  .fb-form input[type="text"],
+  .fb-form input[type="email"],
+  .fb-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    padding: 12px 13px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .fb-form textarea { resize: vertical; min-height: 70px; }
+  .fb-form input:focus, .fb-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+  /* star rating */
+  .fb-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 2px;
+  }
+  .fb-stars input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .fb-stars label {
+    font-size: 38px;
+    line-height: 1;
+    color: var(--line);
+    cursor: pointer;
+    padding: 4px 2px;
+    transition: color 0.15s ease;
+  }
+  .fb-stars input:checked ~ label,
+  .fb-stars input:focus-visible ~ label,
+  .fb-stars label:hover,
+  .fb-stars label:hover ~ label {
+    color: var(--gold);
+  }
+
+  /* yes/no + attribution toggle cards */
+  .fb-toggle { display: flex; flex-direction: column; gap: 10px; }
+  .fb-toggle-opt {
+    display: flex; align-items: center; gap: 12px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 13px 15px;
+    cursor: pointer;
+    background: var(--cream);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .fb-toggle-opt input { accent-color: var(--forest-deep); width: 17px; height: 17px; flex-shrink: 0; }
+  .fb-toggle-opt span { font-size: 14.5px; color: var(--ink); }
+  .fb-toggle-opt:has(input:checked) { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 1px var(--gold); }
+
+  .fb-fineprint { font-size: 12.5px; color: var(--taupe); margin-top: 10px; line-height: 1.5; }
+
+  .fb-reveal { margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--line); }
+
+  .fb-divider { border: none; border-top: 1px solid var(--line); margin: 8px 0 30px; }
+
+  .fb-permission-block { background: var(--cream-deep); border-radius: 2px; padding: 22px 20px; margin-bottom: 28px; }
+
+  .fb-primary-note {
+    background: transparent;
+    border: 1px dashed var(--line);
+    border-radius: 2px;
+    padding: 16px 18px;
+    margin-bottom: 26px;
+  }
+  .fb-primary-note strong { display: block; font-size: 14px; color: var(--forest-deep); margin-bottom: 6px; }
+  .fb-primary-note p { font-size: 13.5px; color: #4b453b; line-height: 1.55; }
+
+  .fb-submit {
+    display: block;
+    width: 100%;
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color: var(--forest-deep);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .fb-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(192,151,63,0.35); }
+  .fb-submit:disabled { opacity: 0.6; cursor: default; transform: none; box-shadow: none; }
+
+  #fbThankYou {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 3px;
+    padding: 48px 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(43,39,31,0.06);
+  }
+  #fbThankYou h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(24px, 4.5vw, 32px);
+    color: var(--forest-deep);
+    margin: 0 0 14px;
+  }
+  #fbThankYou p { font-size: 16px; color: #4b453b; margin-bottom: 28px; }
+  .fb-explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--forest-deep);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 26px;
+    border-radius: var(--radius);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .fb-explore-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(35,45,29,0.28); }
+
+  footer { padding: 20px 0 40px; text-align: center; font-size: 12px; color: var(--taupe); }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+</header>
+
+<main class="wrap">
+  <section class="fb-hero">
+    <div class="eyebrow">Guest Feedback</div>
+    <h1>Not the one who booked?<br>We'd still love your take.</h1>
+    <p class="fb-hero-sub">You were part of the Cedar Escape experience too. Tell us what you loved — and anything that could make a future stay even better.</p>
+  </section>
+
+  <section class="fb-form-section">
+    <form id="feedbackForm" class="fb-form" action="https://formsubmit.co/cedarescape.cabin@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Guest Feedback Submission — Cedar Escape">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="Submission Date" id="fbSubmissionDate" value="">
+
+      <div class="fb-field">
+        <label class="fb-label" for="fb-name">First name <span class="req">*</span></label>
+        <input id="fb-name" type="text" name="First Name" required>
+      </div>
+
+      <div class="fb-field">
+        <label class="fb-label" for="fb-email">Email (optional)</label>
+        <p class="fb-microcopy">Only if you'd like to hear from us — never required.</p>
+        <input id="fb-email" type="email" name="Email">
+      </div>
+
+      <div class="fb-field">
+        <label class="fb-label" id="fb-stars-label">How would you rate your stay at Cedar Escape? <span class="req">*</span></label>
+        <div class="fb-stars" role="radiogroup" aria-labelledby="fb-stars-label">
+          <input type="radio" name="Star Rating (1-5)" value="5" id="fb-star-5" required><label for="fb-star-5">★</label>
+          <input type="radio" name="Star Rating (1-5)" value="4" id="fb-star-4" required><label for="fb-star-4">★</label>
+          <input type="radio" name="Star Rating (1-5)" value="3" id="fb-star-3" required><label for="fb-star-3">★</label>
+          <input type="radio" name="Star Rating (1-5)" value="2" id="fb-star-2" required><label for="fb-star-2">★</label>
+          <input type="radio" name="Star Rating (1-5)" value="1" id="fb-star-1" required><label for="fb-star-1">★</label>
+        </div>
+      </div>
+
+      <div class="fb-field">
+        <label class="fb-label" for="fb-loved">Want to tell us what you loved?</label>
+        <p class="fb-microcopy">Even a sentence or two is perfect.</p>
+        <textarea id="fb-loved" name="What They Loved" rows="3"></textarea>
+      </div>
+
+      <hr class="fb-divider">
+
+      <div class="fb-permission-block">
+        <label class="fb-label" id="fb-permission-label">Can we share your comments to help future guests discover Cedar Escape? <span class="req">*</span></label>
+        <div class="fb-toggle" role="radiogroup" aria-labelledby="fb-permission-label">
+          <label class="fb-toggle-opt">
+            <input type="radio" name="Permission to Share" value="YES" id="fb-permission-yes" required>
+            <span>Yes, you may share my comments.</span>
+          </label>
+          <label class="fb-toggle-opt">
+            <input type="radio" name="Permission to Share" value="NO" id="fb-permission-no" required>
+            <span>No, please keep my comments private.</span>
+          </label>
+        </div>
+        <p class="fb-fineprint">Selecting "yes" gives Cedar Escape permission to use your submitted comments on our website, social media, and marketing materials. Selecting "no" keeps everything you shared completely private — we just use it to make the house better.</p>
+
+        <div id="fbAttributionWrap" class="fb-reveal" hidden>
+          <label class="fb-label" id="fb-attribution-label">How would you like us to credit you?</label>
+          <div class="fb-toggle" role="radiogroup" aria-labelledby="fb-attribution-label">
+            <label class="fb-toggle-opt">
+              <input type="radio" name="Attribution Method" value="First name only">
+              <span>First name only</span>
+            </label>
+            <label class="fb-toggle-opt">
+              <input type="radio" name="Attribution Method" value="First name + hometown">
+              <span>First name + hometown</span>
+            </label>
+            <label class="fb-toggle-opt">
+              <input type="radio" name="Attribution Method" value="Anonymous Cedar Escape guest">
+              <span>Anonymous Cedar Escape guest</span>
+            </label>
+          </div>
+
+          <div id="fbHometownWrap" class="fb-reveal" hidden>
+            <label class="fb-label" for="fb-hometown">City / State</label>
+            <input id="fb-hometown" type="text" name="Hometown" placeholder="e.g. Richmond, VA">
+          </div>
+        </div>
+      </div>
+
+      <div class="fb-primary-note">
+        <strong>Are you the person who made the reservation?</strong>
+        <p>We'll send your official review request through the platform you booked with. We'd love for you to leave your review there instead — it helps Cedar Escape tremendously.</p>
+      </div>
+
+      <button type="submit" class="fb-submit">Send Feedback</button>
+    </form>
+
+    <div id="fbThankYou" hidden>
+      <div class="eyebrow">Thank You</div>
+      <h2>Thanks for being part of Cedar Escape.</h2>
+      <p>Maybe next time, you'll be the one making the reservation. 😉</p>
+      <a href="index.html" class="fb-explore-btn">Explore Cedar Escape</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Cedar Escape · Massanutten Resort, VA</span>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('feedbackForm');
+  var thankYou = document.getElementById('fbThankYou');
+
+  var yesRadio = document.getElementById('fb-permission-yes');
+  var noRadio = document.getElementById('fb-permission-no');
+  var attributionWrap = document.getElementById('fbAttributionWrap');
+  var attributionRadios = form.querySelectorAll('input[name="Attribution Method"]');
+  var hometownWrap = document.getElementById('fbHometownWrap');
+  var hometownInput = document.getElementById('fb-hometown');
+  var hometownRadio = form.querySelector('input[name="Attribution Method"][value="First name + hometown"]');
+
+  function updateAttributionVisibility(){
+    var show = yesRadio.checked;
+    attributionWrap.hidden = !show;
+    attributionRadios.forEach(function(r){ r.required = show; });
+    if (!show) {
+      attributionRadios.forEach(function(r){ r.checked = false; });
+      updateHometownVisibility();
+    }
+  }
+
+  function updateHometownVisibility(){
+    var show = hometownRadio && hometownRadio.checked;
+    hometownWrap.hidden = !show;
+    hometownInput.required = show;
+    if (!show) hometownInput.value = '';
+  }
+
+  yesRadio.addEventListener('change', updateAttributionVisibility);
+  noRadio.addEventListener('change', updateAttributionVisibility);
+  attributionRadios.forEach(function(r){ r.addEventListener('change', updateHometownVisibility); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('.fb-submit');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    document.getElementById('fbSubmissionDate').value = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if (res.ok) {
+        form.hidden = true;
+        thankYou.hidden = false;
+        thankYou.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        throw new Error('Submit failed');
+      }
+    }).catch(function(){
+      alert('Sorry, something went wrong sending your feedback. Please try again in a moment.');
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = originalText;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

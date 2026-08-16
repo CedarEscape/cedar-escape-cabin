@@ -47,19 +47,47 @@
       repeating-linear-gradient(120deg, #3d4a33 0px, #3d4a33 2px, #34412b 2px, #34412b 90px);
     color: var(--cream);
     overflow: hidden;
+    padding: 44px 0;
   }
-  .fb-hero-band .wrap { padding-top: 28px; padding-bottom: 40px; }
+  .fb-hero-band .wrap { padding-top: 0; padding-bottom: 0; }
 
-  header { padding: 0 0 8px; text-align: center; }
+  .fb-hero-card-wrap { position: relative; }
+  .fb-hero-card-wrap::before,
+  .fb-hero-card-wrap::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 84px;
+    height: 20px;
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    z-index: 0;
+  }
+  .fb-hero-card-wrap::before { left: -26px; transform: translateY(-50%) rotate(-7deg); }
+  .fb-hero-card-wrap::after { right: -26px; transform: translateY(-50%) rotate(7deg); }
+
+  .fb-hero-card {
+    position: relative;
+    z-index: 1;
+    background: var(--cream);
+    border: 2px solid var(--gold);
+    border-radius: 18px;
+    padding: 38px 30px 34px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+  }
+  .fb-hero-icon { display: block; margin: 0 auto 14px; }
+
+  header { padding: 0 0 6px; text-align: center; }
   .wordmark {
     font-family: 'Cinzel', serif;
     font-size: 19px;
     letter-spacing: 0.14em;
     font-weight: 600;
-    color: var(--gold-bright);
+    color: var(--gold);
     text-decoration: none;
   }
-  .wordmark span { color: var(--gold-bright); }
+  .wordmark span { color: var(--gold); }
 
   .eyebrow {
     font-family: 'Cinzel', serif;
@@ -69,22 +97,28 @@
     color: var(--gold);
     font-weight: 600;
   }
-  .fb-hero-band .eyebrow { color: var(--gold-bright); }
 
-  .fb-hero { text-align: center; padding: 20px 0 0; }
+  .fb-hero-eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 14px 0 6px; }
+  .fb-hero-eyebrow-row .rule { width: 30px; height: 1px; background: var(--gold); display: inline-block; }
+
+  .fb-hero-divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 10px auto; max-width: 200px; }
+  .fb-hero-divider span { flex: 1; height: 1px; background: var(--gold); }
+  .fb-hero-divider i { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); display: inline-block; flex-shrink: 0; }
+
+  .fb-hero { text-align: center; padding: 0; }
   .fb-hero h1 {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(28px, 5.5vw, 40px);
+    font-size: clamp(26px, 5vw, 38px);
     line-height: 1.22;
-    color: var(--cream);
-    margin: 14px 0 16px;
+    color: var(--forest-deep);
+    margin: 0;
   }
   .fb-hero-sub {
-    font-size: 15.5px;
-    color: rgba(246,241,230,0.86);
-    max-width: 480px;
+    font-size: 15px;
+    color: #4b453b;
+    max-width: 440px;
     margin: 0 auto;
   }
 
@@ -287,14 +321,23 @@
 
 <div class="fb-hero-band">
   <div class="wrap">
-    <header>
-      <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
-    </header>
-    <section class="fb-hero">
-      <div class="eyebrow">Guest Feedback</div>
-      <h1>Not the one who booked?<br>We'd still love your take.</h1>
-      <p class="fb-hero-sub">You were part of the Cedar Escape experience too. Tell us what you loved — and anything that could make a future stay even better.</p>
-    </section>
+    <div class="fb-hero-card-wrap">
+      <div class="fb-hero-card">
+        <svg class="fb-hero-icon" width="50" height="28" viewBox="0 0 50 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 26L15 7L23 17L32 3L48 26" stroke="#C0973F" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <header>
+          <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+        </header>
+        <div class="fb-hero-eyebrow-row"><span class="rule"></span><span class="eyebrow">Guest Feedback</span><span class="rule"></span></div>
+        <div class="fb-hero-divider"><span></span><i></i><span></span></div>
+        <section class="fb-hero">
+          <h1>Not the one who booked?<br>We'd still love your take.</h1>
+        </section>
+        <div class="fb-hero-divider"><span></span><i></i><span></span></div>
+        <p class="fb-hero-sub">You were part of the Cedar Escape experience too. Tell us what you loved — and anything that could make a future stay even better.</p>
+      </div>
+    </div>
   </div>
 </div>
 

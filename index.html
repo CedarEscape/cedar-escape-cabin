@@ -1524,13 +1524,18 @@ We’re already planning a trip back this winter to experience the skiing. I hav
       body: data,
       headers: { 'Accept': 'application/json' }
     }).then(function(res){
-      if (res.ok) {
+      var contentType = res.headers.get('content-type') || '';
+      if (!res.ok || contentType.indexOf('application/json') === -1) {
+        throw new Error('Unexpected response (not confirmed JSON success)');
+      }
+      return res.json().then(function(json){
+        if (!json || json.success === false) {
+          throw new Error('Submit not successful');
+        }
         formWrap.style.display = 'none';
         success.style.display = 'block';
         form.reset();
-      } else {
-        throw new Error('Submit failed');
-      }
+      });
     }).catch(function(){
       alert('Sorry, something went wrong sending your message. Please email us directly at cedarescape.cabin@gmail.com.');
     }).finally(function(){

@@ -214,13 +214,48 @@
     color: var(--forest-deep);
     margin: 0 0 14px;
   }
-  #fbThankYou p { font-size: 16px; color: #4b453b; margin-bottom: 28px; }
+  #fbThankYou p { font-size: 16px; color: #4b453b; margin-bottom: 24px; }
+  #fbThankYou p .fb-highlight { color: var(--gold); font-weight: 700; }
+
+  .fb-ty-eyebrow-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 6px; }
+  .fb-ty-eyebrow-row .rule { width: 34px; height: 1px; background: var(--gold); display: inline-block; }
+
+  .fb-ty-divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 6px auto 22px; max-width: 220px; }
+  .fb-ty-divider span { flex: 1; height: 1px; background: var(--gold); }
+  .fb-ty-divider i { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); display: inline-block; flex-shrink: 0; }
+
+  .fb-code-offer {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 12px;
+  }
+  .fb-code-outer {
+    max-width: 300px;
+    margin: 0 auto 28px;
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    padding: 5px;
+  }
+  .fb-code {
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 15px;
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 0.2em;
+    color: var(--forest-deep);
+    font-weight: 600;
+  }
   .fb-explore-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: var(--forest-deep);
     color: var(--cream);
+    border: 1px solid var(--gold);
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 13.5px;
@@ -334,10 +369,13 @@
     </form>
 
     <div id="fbThankYou" hidden>
-      <div class="eyebrow">Thank You</div>
+      <div class="fb-ty-eyebrow-row"><span class="rule"></span><span class="eyebrow">Thank You</span><span class="rule"></span></div>
       <h2>Thanks for being part of Cedar Escape.</h2>
-      <p>Maybe next time, you'll be the one making the reservation. 😉</p>
-      <a href="index.html" class="fb-explore-btn">Explore Cedar Escape</a>
+      <div class="fb-ty-divider"><span></span><i></i><span></span></div>
+      <p>Now you can be the one to book the fun.<br>Enjoy <span class="fb-highlight">10% off</span> a future stay of 3+ nights when you book direct.</p>
+      <div class="fb-code-offer">Book direct and save with code:</div>
+      <div class="fb-code-outer"><div class="fb-code">CANTWAIT10</div></div>
+      <a href="index.html#book" class="fb-explore-btn">Book the Fun &rarr;</a>
     </div>
   </section>
 </main>

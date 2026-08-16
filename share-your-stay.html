@@ -343,12 +343,7 @@
 
 <main class="wrap">
   <section class="fb-form-section">
-    <form id="feedbackForm" class="fb-form" action="https://formsubmit.co/cedarescape.cabin@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New Guest Feedback Submission — Cedar Escape">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="true">
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-      <input type="hidden" name="Submission Date" id="fbSubmissionDate" value="">
+    <form id="feedbackForm" class="fb-form">
 
       <div class="fb-field">
         <label class="fb-label" for="fb-name">First name <span class="req">*</span></label>
@@ -424,6 +419,7 @@
       </div>
 
       <button type="submit" class="fb-submit">Send Feedback</button>
+      <p class="fb-microcopy" style="text-align:center;margin-top:10px;">This opens your email app with everything filled in — just hit send.</p>
     </form>
 
     <div id="fbThankYou" hidden>
@@ -478,37 +474,42 @@
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var btn = form.querySelector('.fb-submit');
-    var originalText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
 
-    document.getElementById('fbSubmissionDate').value = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+    var name = document.getElementById('fb-name').value.trim();
+    var email = document.getElementById('fb-email').value.trim();
+    var starEl = form.querySelector('input[name="Star Rating (1-5)"]:checked');
+    var star = starEl ? starEl.value : '';
+    var loved = document.getElementById('fb-loved').value.trim();
+    var permissionEl = form.querySelector('input[name="Permission to Share"]:checked');
+    var permission = permissionEl ? permissionEl.value : '';
+    var attributionEl = form.querySelector('input[name="Attribution Method"]:checked');
+    var attribution = attributionEl ? attributionEl.value : '';
+    var hometown = hometownInput.value.trim();
+    var submissionDate = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
 
-    var data = new FormData(form);
-    fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(function(res){
-      var contentType = res.headers.get('content-type') || '';
-      if (!res.ok || contentType.indexOf('application/json') === -1) {
-        throw new Error('Unexpected response (not confirmed JSON success)');
-      }
-      return res.json().then(function(json){
-        if (!json || json.success === false) {
-          throw new Error('Submit not successful');
-        }
-        form.hidden = true;
-        thankYou.hidden = false;
-        thankYou.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    }).catch(function(){
-      alert('Sorry, something went wrong sending your feedback. Please try again in a moment, or email us directly at cedarescape.cabin@gmail.com.');
-    }).finally(function(){
-      btn.disabled = false;
-      btn.textContent = originalText;
-    });
+    var lines = [
+      'First Name: ' + name,
+      'Email: ' + (email || '(not provided)'),
+      'Star Rating (1-5): ' + star,
+      'What They Loved: ' + (loved || '(none)'),
+      'Permission to Share: ' + permission
+    ];
+    if (permission === 'YES') {
+      lines.push('Attribution Method: ' + (attribution || '(not chosen)'));
+      if (hometown) lines.push('Hometown: ' + hometown);
+    }
+    lines.push('Submission Date: ' + submissionDate);
+
+    var subject = 'New Guest Feedback — ' + (name || 'Guest');
+    var mailtoUrl = 'mailto:cedarescape.cabin@gmail.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(lines.join('\n'));
+
+    window.location.href = mailtoUrl;
+
+    form.hidden = true;
+    thankYou.hidden = false;
+    thankYou.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 })();
 </script>

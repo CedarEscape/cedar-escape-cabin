@@ -79,8 +79,11 @@ def main():
 
     reviews = fetch_reviews(source_html)
     if not reviews:
+        # Not a failure: the property may simply have no reviews live on the
+        # source page right now (e.g. between guests). Only a fetch/parse
+        # exception above should fail this job loudly.
         print("No reviews found on source page — leaving index.html untouched.")
-        sys.exit(1)
+        return
 
     new_block = render_reviews(reviews)
 

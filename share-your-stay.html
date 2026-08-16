@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guest Feedback — Cedar Escape</title>
+<title>Share Your Stay — Cedar Escape</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,16 +39,27 @@
 
   .wrap { max-width: 620px; margin: 0 auto; padding: 0 24px; }
 
-  header { padding: 28px 0 8px; text-align: center; }
+  .fb-hero-band {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(35,45,29,0.35) 0%, rgba(35,45,29,0.82) 100%),
+      radial-gradient(circle at 18% 15%, rgba(214,177,92,0.22), transparent 45%),
+      repeating-linear-gradient(120deg, #3d4a33 0px, #3d4a33 2px, #34412b 2px, #34412b 90px);
+    color: var(--cream);
+    overflow: hidden;
+  }
+  .fb-hero-band .wrap { padding-top: 28px; padding-bottom: 40px; }
+
+  header { padding: 0 0 8px; text-align: center; }
   .wordmark {
     font-family: 'Cinzel', serif;
     font-size: 19px;
     letter-spacing: 0.14em;
     font-weight: 600;
-    color: var(--forest-deep);
+    color: var(--gold-bright);
     text-decoration: none;
   }
-  .wordmark span { color: var(--gold); }
+  .wordmark span { color: var(--gold-bright); }
 
   .eyebrow {
     font-family: 'Cinzel', serif;
@@ -58,20 +69,21 @@
     color: var(--gold);
     font-weight: 600;
   }
+  .fb-hero-band .eyebrow { color: var(--gold-bright); }
 
-  .fb-hero { text-align: center; padding: 20px 0 12px; }
+  .fb-hero { text-align: center; padding: 20px 0 0; }
   .fb-hero h1 {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-weight: 500;
     font-size: clamp(28px, 5.5vw, 40px);
     line-height: 1.22;
-    color: var(--forest-deep);
+    color: var(--cream);
     margin: 14px 0 16px;
   }
   .fb-hero-sub {
     font-size: 15.5px;
-    color: #4b453b;
+    color: rgba(246,241,230,0.86);
     max-width: 480px;
     margin: 0 auto;
   }
@@ -133,7 +145,7 @@
   .fb-stars label {
     font-size: 38px;
     line-height: 1;
-    color: var(--line);
+    color: #ddceb0;
     cursor: pointer;
     padding: 4px 2px;
     transition: color 0.15s ease;
@@ -166,11 +178,11 @@
 
   .fb-divider { border: none; border-top: 1px solid var(--line); margin: 8px 0 30px; }
 
-  .fb-permission-block { background: var(--cream-deep); border-radius: 2px; padding: 22px 20px; margin-bottom: 28px; }
+  .fb-permission-block { background: var(--cream-deep); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 20px; margin-bottom: 28px; }
 
   .fb-primary-note {
-    background: transparent;
-    border: 1px dashed var(--line);
+    background: var(--cream-deep);
+    border: 1px dashed var(--taupe);
     border-radius: 2px;
     padding: 16px 18px;
     margin-bottom: 26px;
@@ -273,17 +285,20 @@
 </head>
 <body>
 
-<header>
-  <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
-</header>
+<div class="fb-hero-band">
+  <div class="wrap">
+    <header>
+      <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    </header>
+    <section class="fb-hero">
+      <div class="eyebrow">Guest Feedback</div>
+      <h1>Not the one who booked?<br>We'd still love your take.</h1>
+      <p class="fb-hero-sub">You were part of the Cedar Escape experience too. Tell us what you loved — and anything that could make a future stay even better.</p>
+    </section>
+  </div>
+</div>
 
 <main class="wrap">
-  <section class="fb-hero">
-    <div class="eyebrow">Guest Feedback</div>
-    <h1>Not the one who booked?<br>We'd still love your take.</h1>
-    <p class="fb-hero-sub">You were part of the Cedar Escape experience too. Tell us what you loved — and anything that could make a future stay even better.</p>
-  </section>
-
   <section class="fb-form-section">
     <form id="feedbackForm" class="fb-form" action="https://formsubmit.co/cedarescape.cabin@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New Guest Feedback Submission — Cedar Escape">

@@ -1,0 +1,38 @@
+name: Sync owner dashboard
+
+on:
+  schedule:
+    - cron: "0 13 * * 1" # weekly, Monday 9am US Eastern (13:00 UTC)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run dashboard sync
+        env:
+          HOSPITABLE_API_TOKEN: ${{ secrets.HOSPITABLE_API_TOKEN }}
+        run: python3 scripts/sync_dashboard.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "cedar-escape-bot"
+          git config user.email "actions@github.com"
+          if ! git diff --quiet -- owner-dashboard.html; then
+            git add owner-dashboard.html
+            git commit -m "Auto-refresh owner dashboard from Hospitable data"
+            git push
+          else
+            echo "No dashboard changes to commit."
+          fi

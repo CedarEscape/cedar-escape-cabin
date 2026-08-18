@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner Dashboard — Cedar Escape</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E6;
+    --cream-deep: #EEE6D6;
+    --ink: #2B271F;
+    --forest: #37452F;
+    --forest-deep: #232D1D;
+    --brown: #6E4F37;
+    --taupe: #A9917A;
+    --gold: #C0973F;
+    --gold-bright: #D6B15C;
+    --line: rgba(43,39,31,0.14);
+    --good: #3F6B4A;
+    --warn: #A9552C;
+    --radius: 3px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 26px 0;
+  }
+  .wordmark {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--gold-bright);
+    text-decoration: none;
+  }
+  header .subtitle { font-size: 13px; color: rgba(246,241,230,0.7); margin-top: 4px; }
+
+  main { padding: 36px 0 80px; }
+
+  .section { margin-bottom: 44px; }
+  .section-head { margin-bottom: 16px; }
+  .section-head .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--forest-deep);
+    margin: 6px 0 0;
+  }
+  .section-note { font-size: 13px; color: var(--taupe); margin-top: 8px; max-width: 640px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 8px; }
+  @media (max-width: 800px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
+  .stat-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 16px 16px 14px;
+  }
+  .stat-card .label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); }
+  .stat-card .value { font-size: 26px; font-weight: 700; color: var(--forest-deep); margin-top: 6px; }
+  .stat-card .sub { font-size: 12px; color: #6b6355; margin-top: 4px; }
+
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  th, td { text-align: left; padding: 11px 14px; font-size: 14px; border-bottom: 1px solid var(--line); }
+  th { font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--taupe); background: var(--cream-deep); }
+  tr:last-child td { border-bottom: none; }
+  td.num, th.num { text-align: right; }
+  tr.total td { font-weight: 700; background: var(--cream-deep); }
+
+  .callout {
+    background: var(--cream-deep);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    font-size: 14px;
+    margin-top: 16px;
+  }
+  .callout strong { color: var(--forest-deep); }
+
+  .checklist { list-style: none; margin: 0; padding: 0; }
+  .checklist li {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 13px 16px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+  }
+  .checklist li .n {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .howto { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+  .howto h3 { font-size: 14px; margin: 0 0 8px; color: var(--forest-deep); }
+  .howto ol { margin: 0 0 16px; padding-left: 20px; font-size: 13.5px; }
+  .howto ol:last-child { margin-bottom: 0; }
+  .howto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 700px) { .howto-grid { grid-template-columns: 1fr; } }
+
+  .log-table input, .log-table td { font-size: 13.5px; }
+  .badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .badge.direct { background: rgba(63,107,74,0.12); color: var(--good); }
+  .badge.airbnb { background: rgba(255,90,95,0.12); color: #C13939; }
+  .badge.booking { background: rgba(0,61,124,0.1); color: #003d7c; }
+  .badge.homeaway { background: rgba(0,140,152,0.1); color: #007b87; }
+
+  footer { padding: 24px 0 50px; text-align: center; font-size: 12px; color: var(--taupe); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="wordmark">CEDAR ESCAPE</a>
+    <div class="subtitle">Owner Dashboard — private, not linked from the public site · Data pulled from Hospitable, manually refreshed · Last updated Aug 18, 2026</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="callout">
+    <strong>Read this first:</strong> the business is brand-new — total sample size across everything below is under a dozen real bookings. Don't over-read any single number yet; watch how these trend as more data comes in. A couple of the "direct" bookings/inquiries were likely you testing the site, not real guests — noted where relevant.
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="eyebrow">Booking Funnel</div>
+      <h2>Are inquiries turning into bookings?</h2>
+      <p class="section-note">This is almost entirely a Booking.com picture — that's the only channel that reliably generates a separate "inquiry" record before booking in Hospitable's data. Airbnb bookings mostly come through instant "request to book" with no earlier inquiry stage, so they're not part of this funnel number.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="label">Booking.com Inquiries</div>
+        <div class="value">9</div>
+        <div class="sub">last ~10 weeks</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Converted to Booking</div>
+        <div class="value">1–3</div>
+        <div class="sub">exact count is fuzzy — see below</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Est. Conversion Rate</div>
+        <div class="value">~15–25%</div>
+        <div class="sub">most inquiries did not book</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Direct Inquiries</div>
+        <div class="value">1 of 1 booked</div>
+        <div class="sub">too small a sample to mean much yet</div>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>The one concrete, actionable finding:</strong> three separate Booking.com inquiries came in for the exact same Oct 2–4 dates, and only one turned into a reservation. That's a real signal that popular dates get contested and speed/responsiveness likely matters. Worth tracking whether faster responses correlate with winning those contested dates going forward.
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="eyebrow">Revenue</div>
+      <h2>What's actually coming in, by channel</h2>
+      <p class="section-note">"Net Revenue" is what's left after each platform's commission is already subtracted — this is the real, apples-to-apples comparison across channels.</p>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th class="num">Bookings</th>
+          <th class="num">Nights</th>
+          <th class="num">Net Revenue</th>
+          <th class="num">Avg / Booking</th>
+          <th class="num">Effective Fee %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge direct">Direct</span></td>
+          <td class="num">4</td>
+          <td class="num">8</td>
+          <td class="num">$458.70</td>
+          <td class="num">$114.68</td>
+          <td class="num">~0%*</td>
+        </tr>
+        <tr>
+          <td><span class="badge airbnb">Airbnb</span></td>
+          <td class="num">2</td>
+          <td class="num">6</td>
+          <td class="num">$3,648.03</td>
+          <td class="num">$1,824.02</td>
+          <td class="num">~13%</td>
+        </tr>
+        <tr>
+          <td><span class="badge booking">Booking.com</span></td>
+          <td class="num">2</td>
+          <td class="num">5</td>
+          <td class="num">$3,929.17</td>
+          <td class="num">$1,964.59</td>
+          <td class="num">~15%</td>
+        </tr>
+        <tr>
+          <td><span class="badge homeaway">VRBO</span></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">—</td>
+          <td class="num">—</td>
+          <td class="num">—</td>
+        </tr>
+        <tr class="total">
+          <td>Total</td>
+          <td class="num">8</td>
+          <td class="num">19</td>
+          <td class="num">$8,035.90</td>
+          <td class="num">$1,004.49</td>
+          <td class="num">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="section-note">*Direct's average is dragged way down by two heavily-discounted bookings (one was a near-zero comp stay with a promo code, possibly a content/marketing trade). Don't read "direct earns less" from this yet — it's a fee-rate story, not a demand story: direct keeps ~100% of what's charged, Airbnb keeps ~87%, Booking.com keeps ~85%.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="eyebrow">Guests</div>
+      <h2>Who's actually staying, and are they coming back</h2>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="label">Total Real Bookings</div>
+        <div class="value">8</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Total Nights Booked</div>
+        <div class="value">19</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Avg Group Size</div>
+        <div class="value">6.75</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Repeat Direct Guests</div>
+        <div class="value">1</div>
+        <div class="sub">Felecia M. — booked direct twice</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="eyebrow">Reviews</div>
+      <h2>Your biggest growth lever right now</h2>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="label">Total Reviews</div>
+        <div class="value">1</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Average Rating</div>
+        <div class="value">5.0</div>
+      </div>
+    </div>
+    <div class="callout">Both Airbnb and Booking.com's search ranking algorithms favor listings with more (and more recent) reviews. At 1 review, you're still in the phase where every single review meaningfully moves your visibility. The share-your-stay page and CANTWAIT10 flow exist specifically to accelerate this.</div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="eyebrow">Visibility</div>
+      <h2>How often are you actually being shown?</h2>
+      <p class="section-note">This is the one piece I genuinely cannot pull automatically — Airbnb and Booking.com don't expose search impressions/views through any API, only inside their own dashboards. Check these periodically and log the numbers below.</p>
+    </div>
+    <div class="howto-grid">
+      <div class="howto">
+        <h3>Airbnb — where to check</h3>
+        <ol>
+          <li>Log into Airbnb, go to your listing</li>
+          <li>Click <strong>Insights</strong> (left menu, under your listing)</li>
+          <li>Note: Search appearances, Page views, and Booking conversion rate for the trailing 30 days</li>
+        </ol>
+      </div>
+      <div class="howto">
+        <h3>Booking.com — where to check</h3>
+        <ol>
+          <li>Log into the Booking.com Extranet</li>
+          <li>Go to <strong>Analytics</strong> in the left sidebar</li>
+          <li>Note: Impressions, Page views, and your Genius/ranking tier status</li>
+        </ol>
+      </div>
+    </div>
+    <table style="margin-top:16px;">
+      <thead>
+        <tr>
+          <th>Date Checked</th>
+          <th>Channel</th>
+          <th class="num">Impressions</th>
+          <th class="num">Views</th>
+          <th class="num">Booking Conv. %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5" style="text-align:center;color:var(--taupe);font-style:italic;">No numbers logged yet — tell me what you see and I'll add it here.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="eyebrow">Action Plan</div>
+      <h2>Concrete levers to increase visibility</h2>
+      <p class="section-note">These are the factors Airbnb and Booking.com's own ranking algorithms are documented to reward. Not guesses — this is what actually moves the "how often are we shown" number.</p>
+    </div>
+    <ul class="checklist">
+      <li><span class="n">1</span> Respond to every inquiry fast — under an hour if possible. Both platforms factor response time directly into ranking, and the Oct 2–4 triple-inquiry above suggests speed may already be costing you contested dates.</li>
+      <li><span class="n">2</span> Keep the calendar wide open and accurate. Blocked/stale dates reduce how often you're surfaced in search.</li>
+      <li><span class="n">3</span> Turn on Instant Book wherever you're comfortable. Both algorithms favor frictionless booking.</li>
+      <li><span class="n">4</span> Actively request a review after every single stay. You're at 1 review — this is the highest-leverage action available right now.</li>
+      <li><span class="n">5</span> Respond publicly to every review (even the great one you have). Engagement signals matter to ranking and to future guests reading it.</li>
+      <li><span class="n">6</span> Re-check pricing against comparable Massanutten listings for weeks with low inquiry volume — underpricing and overpricing both suppress visibility differently (overpriced = filtered out of searches with a budget; underpriced = you sell out and stop appearing at all).</li>
+      <li><span class="n">7</span> Keep listing content (photos, description, amenities) fully filled out on every platform — incomplete listings are down-ranked on both Airbnb and Booking.com.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <span>Cedar Escape · Internal use only</span>
+</footer>
+
+</body>
+</html>

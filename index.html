@@ -722,6 +722,21 @@
   .weekend-card .photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .weekend-card .label { background: var(--forest-deep); color:var(--cream); padding:14px 12px; text-align:center; font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase; font-weight:600; line-height:1.4; }
 
+  .local-favorites-row { grid-template-columns: repeat(1,1fr); }
+  @media (min-width:640px) { .local-favorites-row { grid-template-columns: repeat(2,1fr); } }
+  @media (min-width:900px) { .local-favorites-row { grid-template-columns: repeat(3,1fr); } }
+  .local-favorites-row .weekend-card .label {
+    font-family: 'DM Sans', sans-serif;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  @media (min-width:900px) {
+    .local-favorites-row .weekend-card:last-child:nth-child(3n+1) { grid-column: 2; }
+  }
+
   /* ---------- TESTIMONIAL BANNER ---------- */
   .testimonial-banner { background: var(--forest-deep); color: var(--cream); padding: 72px 0; text-align:center; }
   .testimonial-banner .quote-mark { font-family:'Playfair Display', serif; font-size:48px; color:var(--gold); line-height:1; }
@@ -1273,34 +1288,34 @@
     <div class="section-head" style="margin-bottom:32px;">
       <div class="eyebrow">Explore Local Favorites</div>
     </div>
-    <div class="weekend-row" style="grid-template-columns:repeat(3,1fr);">
+    <div class="weekend-row local-favorites-row">
       <div class="weekend-card" style="cursor:default;">
         <div class="photo"><img src="images/photo-40.jpg" alt="Family activities near Cedar Escape"></div>
-        <div class="label">Family Activities<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Go-karts, mini golf, and resort fun for every age</span></div>
+        <div class="label">Go-karts, mini golf, and resort fun for every age</div>
       </div>
       <div class="weekend-card" style="cursor:default;">
         <div class="photo"><img src="images/photo-41.jpg" alt="Waterfalls near Cedar Escape"></div>
-        <div class="label">Waterfalls<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Scenic hikes to nearby falls in the Shenandoah Valley</span></div>
+        <div class="label">Scenic hikes to nearby falls in the Shenandoah Valley</div>
       </div>
       <div class="weekend-card" style="cursor:default;">
         <div class="photo"><img src="images/photo-42.jpg" alt="Excellent location near Harrisonburg and JMU"></div>
-        <div class="label">Excellent Location<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Minutes from Harrisonburg, JMU, and Shenandoah National Park</span></div>
+        <div class="label">Minutes from Harrisonburg, JMU, and Shenandoah National Park</div>
       </div>
       <div class="weekend-card" style="cursor:default;">
         <div class="photo"><img src="images/photo-43.jpg" alt="Nature and outdoors near Cedar Escape"></div>
-        <div class="label">Nature &amp; Outdoors<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Mountain views, trails, and lake days close by</span></div>
+        <div class="label">Mountain views, trails, and lake days close by</div>
       </div>
       <div class="weekend-card" style="cursor:default;">
         <div class="photo"><img src="images/photo-47.jpg" alt="Adventure activities near Cedar Escape"></div>
-        <div class="label">Adventure<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Water parks, kayaking, and hot air balloon rides</span></div>
+        <div class="label">Water parks, kayaking, and hot air balloon rides</div>
       </div>
       <div class="weekend-card" style="cursor:default;">
         <div class="photo"><img src="images/photo-48.jpg" alt="Arts and culture near Cedar Escape"></div>
-        <div class="label">Arts &amp; Culture<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Local theater and galleries in downtown Harrisonburg</span></div>
+        <div class="label">Local theater and galleries in downtown Harrisonburg</div>
       </div>
       <div class="weekend-card" style="cursor:default;">
         <div class="photo"><img src="images/wine.png" alt="Local wineries near Cedar Escape"></div>
-        <div class="label">Local Wineries<br><span style="font-weight:400;text-transform:none;font-size:11.5px;opacity:0.85;">Brix &amp; Columns, CrossKeys, Marceline, and The Purple Wolf, all nearby</span></div>
+        <div class="label">Brix &amp; Columns, CrossKeys, Marceline, and The Purple Wolf, all nearby</div>
       </div>
     </div>
   </div>

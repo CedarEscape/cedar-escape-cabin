@@ -637,6 +637,8 @@
     text-transform: uppercase;
     color: var(--taupe);
   }
+  .plan-trip-grid { display:grid; grid-template-columns:1fr; gap:20px; }
+  @media (min-width:800px) { .plan-trip-grid { grid-template-columns:repeat(2,1fr); } }
   .widget-slot {
     min-height: 420px;
     display: flex;
@@ -1345,14 +1347,14 @@
       <div class="eyebrow">Plan Your Trip</div>
       <p>Live local weather and a few bookable local experiences.</p>
     </div>
-    <div style="display:grid; grid-template-columns:1fr; gap:24px;">
+    <div class="plan-trip-grid">
       <div class="book-shell">
         <div class="top"><span>Local Weather</span><span>Massanutten, VA</span></div>
-        <div class="betterstr-weather-widget" data-width="100%" data-height="700px" data-uuid="4b298eac-5f66-4308-a689-4ad0340a38d3" data-units="imperial"></div>
+        <div class="betterstr-weather-widget" data-width="100%" data-height="420px" data-uuid="4b298eac-5f66-4308-a689-4ad0340a38d3" data-units="imperial"></div>
       </div>
       <div class="book-shell">
         <div class="top"><span>Local Activities & Tours</span><span>Powered by Viator</span></div>
-        <iframe src="https://api.betterstr.com/guidebook/viator.php?uuid=4b298eac-5f66-4308-a689-4ad0340a38d3&format=widget" width="100%" height="650px" frameborder="0" scrolling="yes" style="overflow:auto; display:block;"></iframe>
+        <iframe src="https://api.betterstr.com/guidebook/viator.php?uuid=4b298eac-5f66-4308-a689-4ad0340a38d3&format=widget" width="100%" height="420px" frameborder="0" scrolling="yes" style="overflow:auto; display:block;"></iframe>
       </div>
     </div>
   </div>

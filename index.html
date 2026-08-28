@@ -753,7 +753,8 @@
   /* ---------- GALLERY PREVIEW ---------- */
   .inside-grid { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
   @media (min-width:860px) { .inside-grid { grid-template-columns: 0.7fr 1.3fr; } }
-  .inside-preview-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  .inside-preview-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+  @media (min-width:640px) { .inside-preview-grid { grid-template-columns:repeat(4,1fr); } }
   .inside-preview-grid .frame { aspect-ratio:3/2; border-width:3px; }
   .gallery-preview-btn { margin-top:28px; }
 

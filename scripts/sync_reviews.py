@@ -13,8 +13,10 @@ from pathlib import Path
 
 SOURCE_URL = "https://cedarretreat.directstays.com/"
 INDEX_HTML = Path(__file__).resolve().parent.parent / "index.html"
-START_MARKER = "<!-- REVIEWS:AUTO:START -->"
-END_MARKER = "<!-- REVIEWS:AUTO:END -->"
+HERO_START = "<!-- REVIEWS:HERO:START -->"
+HERO_END = "<!-- REVIEWS:HERO:END -->"
+CARDS_START = "<!-- REVIEWS:CARDS:START -->"
+CARDS_END = "<!-- REVIEWS:CARDS:END -->"
 
 NAME_RE = re.compile(r'<div class="mb-1 font-medium ">(.*?)</div>', re.DOTALL)
 DATE_RE = re.compile(r'<div class="mt-3 mb-2 text-sm text-gray-500">\s*(.*?)\s*</div>', re.DOTALL)
@@ -45,7 +47,7 @@ def first_sentence(text: str) -> str:
     return match.group(0).strip() if match else text.strip()
 
 
-def render_reviews(reviews) -> str:
+def render_hero(reviews) -> str:
     featured_name, featured_date, featured_comment = reviews[0]
     featured_who = f"★★★★★ {escape_html(featured_name)} · {escape_html(featured_date)}" if featured_date else f"★★★★★ {escape_html(featured_name)}"
     parts = [
@@ -53,23 +55,31 @@ def render_reviews(reviews) -> str:
         f'    <p class="quote">{escape_html(first_sentence(featured_comment))}</p>',
         f'    <div class="who">{featured_who}</div>',
     ]
-
-    if reviews:
-        more_cards = []
-        for name, date, comment in reviews:
-            who = f"{escape_html(name)} — {escape_html(date)}" if date else escape_html(name)
-            more_cards.append(
-                "      <div class=\"review-card\">\n"
-                "        <div class=\"stars\">★★★★★</div>\n"
-                f"        <p class=\"quote\">{escape_html(comment)}</p>\n"
-                f"        <div class=\"who\">{who}</div>\n"
-                "      </div>"
-            )
-        parts.append('    <div class="reviews-more">')
-        parts.extend(more_cards)
-        parts.append('    </div>')
-
     return "\n".join(parts)
+
+
+def render_cards(reviews) -> str:
+    cards = []
+    for name, date, comment in reviews:
+        who = f"{escape_html(name)} — {escape_html(date)}" if date else escape_html(name)
+        cards.append(
+            "      <div class=\"review-card\">\n"
+            "        <div class=\"stars\">★★★★★</div>\n"
+            f"        <p class=\"quote quote-clamp\">{escape_html(comment)}</p>\n"
+            "        <button class=\"review-toggle\" type=\"button\">Read full review</button>\n"
+            f"        <div class=\"who\">{who}</div>\n"
+            "      </div>"
+        )
+    return "\n".join(cards)
+
+
+def replace_marker(site_html: str, start: str, end: str, inner: str, label: str) -> str:
+    pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
+    if not pattern.search(site_html):
+        print(f"Could not find {label} markers in index.html — aborting.")
+        sys.exit(1)
+    replacement = f"{start}\n{inner}\n      {end}"
+    return pattern.sub(replacement, site_html)
 
 
 def main():
@@ -85,18 +95,9 @@ def main():
         print("No reviews found on source page — leaving index.html untouched.")
         return
 
-    new_block = render_reviews(reviews)
-
     site_html = INDEX_HTML.read_text(encoding="utf-8")
-    pattern = re.compile(
-        re.escape(START_MARKER) + r".*?" + re.escape(END_MARKER), re.DOTALL
-    )
-    if not pattern.search(site_html):
-        print("Could not find REVIEWS:AUTO markers in index.html — aborting.")
-        sys.exit(1)
-
-    replacement = f"{START_MARKER}\n{new_block}\n      {END_MARKER}"
-    updated_html = pattern.sub(replacement, site_html)
+    updated_html = replace_marker(site_html, HERO_START, HERO_END, render_hero(reviews), "REVIEWS:HERO")
+    updated_html = replace_marker(updated_html, CARDS_START, CARDS_END, render_cards(reviews), "REVIEWS:CARDS")
 
     if updated_html == site_html:
         print(f"No changes — {len(reviews)} review(s) already up to date.")

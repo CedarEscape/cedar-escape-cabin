@@ -744,11 +744,16 @@
   .testimonial-banner .quote-mark { font-family:'Playfair Display', serif; font-size:48px; color:var(--gold); line-height:1; }
   .testimonial-banner p.quote { font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(17px,2vw,21px); max-width:760px; margin:16px auto; color:rgba(246,241,230,0.92); line-height:1.7; white-space:pre-line; }
   .testimonial-banner .who { font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-bright); margin-top:16px; }
-  .reviews-more { max-width:900px; margin:40px auto 0; display:grid; grid-template-columns:1fr; gap:20px; }
+  .reviews-more { max-width:900px; margin:40px auto 0; display:grid; grid-template-columns:1fr; gap:16px; }
   @media (min-width:760px) { .reviews-more { grid-template-columns:repeat(2,1fr); } }
-  .reviews-more .review-card { background:rgba(246,241,230,0.06); border:1px solid rgba(246,241,230,0.15); border-top:3px solid var(--gold); text-align:left; }
-  .reviews-more .review-card .quote { color:rgba(246,241,230,0.85); }
+  .reviews-more .review-card { background:rgba(246,241,230,0.06); border:1px solid rgba(246,241,230,0.15); border-top:3px solid var(--gold); text-align:left; padding:18px 20px; }
+  .reviews-more .review-card .stars { font-size:12px; }
+  .reviews-more .review-card .quote { color:rgba(246,241,230,0.85); font-size:13.5px; line-height:1.6; margin:10px 0 10px; }
   .reviews-more .review-card .who { color:var(--gold-bright); }
+  .quote-clamp { display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden; }
+  .review-card.expanded .quote-clamp { display:block; -webkit-line-clamp:unset; overflow:visible; }
+  .review-toggle { display:none; background:none; border:none; padding:0; margin:0 0 10px; font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:0.04em; color:var(--gold-bright); text-decoration:underline; cursor:pointer; }
+  .review-toggle.show { display:inline-block; }
 
   /* ---------- GALLERY PREVIEW ---------- */
   .inside-grid { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
@@ -1218,11 +1223,11 @@
         <div class="frame"><img src="images/vrbo/vrbo-01.jpg" loading="lazy" alt="Pool table at Cedar Escape"></div>
         <div class="frame"><img src="images/vrbo/vrbo-54.jpg" loading="lazy" alt="Guests playing VR and arcade games at Cedar Escape"></div>
         <div class="frame"><img src="images/vrbo/vrbo-07.jpg" loading="lazy" alt="Arcade cabinet at Cedar Escape"></div>
-        <div class="frame"><img src="images/vrbo/vrbo-06.jpg" loading="lazy" alt="Colorful game room at Cedar Escape"></div>
+        <div class="frame"><img src="images/vrbo/vrbo-08.jpg" loading="lazy" alt="VR headset at Cedar Escape"></div>
         <div class="frame"><img src="images/vrbo/vrbo-11.jpg" loading="lazy" alt="Indoor basketball hoop at Cedar Escape"></div>
         <div class="frame"><img src="images/vrbo/vrbo-29.jpg" loading="lazy" alt="Emerald Room bedroom at Cedar Escape"></div>
         <div class="frame"><img src="images/vrbo/vrbo-03.jpg" loading="lazy" alt="Movie room at Cedar Escape"></div>
-        <div class="frame"><img src="images/vrbo/vrbo-09.jpg" loading="lazy" alt="Home gym at Cedar Escape"></div>
+        <div class="frame"><img src="images/vrbo/vrbo-10.jpg" loading="lazy" alt="Home gym at Cedar Escape"></div>
       </div>
     </div>
   </div>
@@ -1235,25 +1240,27 @@
     <div class="section-head" style="text-align:center;margin:0 auto 8px;">
       <div class="eyebrow" style="color:var(--gold-bright);">From the Guestbook</div>
     </div>
-    <!-- REVIEWS:AUTO:START -->
+    <!-- REVIEWS:HERO:START -->
     <div class="quote-mark">"</div>
     <p class="quote">The host and hostess were amazingly welcoming and responsive for my group of nine with two different families!</p>
     <div class="who">★★★★★ Reshaud · August 2026</div>
+    <!-- REVIEWS:HERO:END -->
     <div class="reviews-more">
+      <!-- REVIEWS:CARDS:START -->
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p class="quote">The host and hostess were amazingly welcoming and responsive for my group of nine with two different families! Our biggest regret was only booking two nights and not more! The house and amenities were so comfortable and convenient to all that Massanutten Resort had to offer.</p>
+        <p class="quote quote-clamp">The host and hostess were amazingly welcoming and responsive for my group of nine with two different families! Our biggest regret was only booking two nights and not more! The house and amenities were so comfortable and convenient to all that Massanutten Resort had to offer.</p>
+        <button class="review-toggle" type="button">Read full review</button>
         <div class="who">Reshaud — August 2026</div>
       </div>
-    </div>
-      <!-- REVIEWS:AUTO:END -->
-    <div class="reviews-more" style="margin-top:20px;">
+      <!-- REVIEWS:CARDS:END -->
       <div class="review-card">
         <div style="display:flex;justify-content:space-between;align-items:center;">
           <div class="stars">★★★★★</div>
           <a href="https://g.page/r/Cb2bDoAfVzKJEAE" target="_blank" rel="noopener" style="font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:0.04em;color:rgba(246,241,230,0.55);border:1px solid rgba(246,241,230,0.25);border-radius:2px;padding:2px 7px;text-decoration:none;">via Google</a>
         </div>
-        <p class="quote">We truly enjoyed our stay at your charming place. It was wonderfully clean and exceptionally child-friendly, which made our family trip so much more relaxed. The atmosphere was very welcoming, and we appreciated the thoughtful touches throughout. We felt very much at home during our visit. We look forward to the possibility of returning in the future.</p>
+        <p class="quote quote-clamp">We truly enjoyed our stay at your charming place. It was wonderfully clean and exceptionally child-friendly, which made our family trip so much more relaxed. The atmosphere was very welcoming, and we appreciated the thoughtful touches throughout. We felt very much at home during our visit. We look forward to the possibility of returning in the future.</p>
+        <button class="review-toggle" type="button">Read full review</button>
         <div class="who">Alonje S. — Google review</div>
       </div>
       <div class="review-card">
@@ -1261,7 +1268,7 @@
           <div class="stars">★★★★★</div>
           <a href="https://g.page/r/Cb2bDoAfVzKJEAE" target="_blank" rel="noopener" style="font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:0.04em;color:rgba(246,241,230,0.55);border:1px solid rgba(246,241,230,0.25);border-radius:2px;padding:2px 7px;text-decoration:none;">via Google</a>
         </div>
-        <p class="quote">Staying at Cedar Escape Massanutten was an absolute highlight of our trip to Massanutten Resort! The location could not be better for accessing all the resort amenities, and the home itself was impeccably clean, spacious, and wonderfully family-friendly (having a high chair provided was a huge plus for families with little ones).
+        <p class="quote quote-clamp">Staying at Cedar Escape Massanutten was an absolute highlight of our trip to Massanutten Resort! The location could not be better for accessing all the resort amenities, and the home itself was impeccably clean, spacious, and wonderfully family-friendly (having a high chair provided was a huge plus for families with little ones).
 
 With 5 large bedrooms—including two set up with multiple beds—our group comfortably slept nine people with plenty of room to spare. The main floor living area is beautifully open, making it perfect whether you're entertaining the whole crew or just unwinding after a full day outdoors. On top of the central heat and AC, the owners thoughtfully installed individual mini-split units in the lower level, game room, and theater room, ensuring every single space stayed at the perfect temperature.
 
@@ -1270,6 +1277,7 @@ The amenities here are top-tier:
 •	Outdoor Living: A premium Traeger grill fully stocked with all the necessary cooking utensils, paired with tons of outdoor seating for sunny group meals.
 
 Even though we were only there for a weekend, we created unforgettable memories together. Cedar Escape Massanutten truly exceeded our expectations, and we will definitely book another stay!</p>
+        <button class="review-toggle" type="button">Read full review</button>
         <div class="who">Marcus S. — Google review</div>
       </div>
       <div class="review-card">
@@ -1277,7 +1285,8 @@ Even though we were only there for a weekend, we created unforgettable memories 
           <div class="stars">★★★★★</div>
           <a href="https://g.page/r/Cb2bDoAfVzKJEAE" target="_blank" rel="noopener" style="font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:0.04em;color:rgba(246,241,230,0.55);border:1px solid rgba(246,241,230,0.25);border-radius:2px;padding:2px 7px;text-decoration:none;">via Google</a>
         </div>
-        <p class="quote">What a wonderful weekend. From the moment we opened the door we felt all the love that was put into this place. All the kids could say when we walked in and throughout the house was "ooohhh" and "ahhhhh". We loved how the house was stocked with seasonings, paper products, and hand soap in the bathrooms (we normally dont see that in vacation homes!!). We felt like we were walking into a home versus a "hotel-like" house. Can't wait to book again!</p>
+        <p class="quote quote-clamp">What a wonderful weekend. From the moment we opened the door we felt all the love that was put into this place. All the kids could say when we walked in and throughout the house was "ooohhh" and "ahhhhh". We loved how the house was stocked with seasonings, paper products, and hand soap in the bathrooms (we normally dont see that in vacation homes!!). We felt like we were walking into a home versus a "hotel-like" house. Can't wait to book again!</p>
+        <button class="review-toggle" type="button">Read full review</button>
         <div class="who">Sholanda R. — Google review</div>
       </div>
     </div>
@@ -1286,6 +1295,20 @@ Even though we were only there for a weekend, we created unforgettable memories 
     </div>
   </div>
 </div>
+<script>
+  document.querySelectorAll('.reviews-more .review-card').forEach(function(card){
+    var quote = card.querySelector('.quote-clamp');
+    var toggle = card.querySelector('.review-toggle');
+    if (!quote || !toggle) return;
+    if (quote.scrollHeight > quote.clientHeight + 2) {
+      toggle.classList.add('show');
+    }
+    toggle.addEventListener('click', function(){
+      var expanded = card.classList.toggle('expanded');
+      toggle.textContent = expanded ? 'Show less' : 'Read full review';
+    });
+  });
+</script>
 
 <section id="area">
   <div class="wrap">

@@ -113,6 +113,11 @@
   .space-photos { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
   @media (min-width: 700px) { .space-photos { grid-template-columns: repeat(4,1fr); } }
   .space-note { font-size: 13px; color: var(--taupe); font-style: italic; margin-top: 10px; }
+  .on-dark { background: var(--forest-deep); }
+  .on-dark .section-head h2, .on-dark .space-item h3 { color: var(--cream); }
+  .on-dark .section-head p { color: rgba(246,241,230,0.72); }
+  .on-dark .eyebrow { color: var(--gold-bright); }
+  .on-dark .space-note { color: rgba(246,241,230,0.55); }
 
   .amenity-accordion { display:grid; grid-template-columns:1fr; column-gap:48px; }
   @media (min-width:760px) { .amenity-accordion { grid-template-columns:1fr 1fr; } }
@@ -207,7 +212,8 @@
 <header>
   <nav class="nav">
     <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
-    <ul class="nav-links">      <li><a href="stay.html" class="current">Stay</a></li>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>      <li><a href="stay.html" class="current">Stay</a></li>
       <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
       <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
       <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Check Availability</a></li>
@@ -257,7 +263,7 @@
       <p>The most common question before booking a group trip: where does everyone actually sleep? Here's exactly what each bedroom looks like, and which bathroom serves it.</p>
     </div>
 
-    <span class="level-tag">Main Level</span>
+    <span class="level-tag">Main Floor</span>
     <div class="room-block" style="padding-top:0;">
       <div class="room-head">
         <div class="room-title">Emerald Room</div>
@@ -303,7 +309,7 @@
       </div>
       <div class="room-bath">
         <div class="room-head">
-          <div class="room-title">Hall Bathroom (Blue)</div>
+          <div class="room-title">Main-Floor Hall Bathroom</div>
           <div class="room-meta">Walk-In Shower · Single Vanity</div>
         </div>
         <p class="room-desc">Serves both the Pine and Adventure Rooms — this isn't an en-suite to either one. A light blue bath with a walk-in shower and single vanity, just down the hall from both.</p>
@@ -313,7 +319,8 @@
       </div>
     </div>
 
-    <span class="level-tag">Lower Level</span>
+    <div style="background:var(--cream-deep);margin:0 -32px;padding:34px 32px 2px;border-radius:2px;">
+    <span class="level-tag">Basement / Lower Level</span>
     <div class="room-block" style="padding-top:0;">
       <div class="room-head">
         <div class="room-title">Mountain Room</div>
@@ -344,17 +351,17 @@
         </div>
       </div>
     </div>
-
-    <p class="space-note" style="text-align:center;margin-top:10px;">9 real beds plus a downstairs sleeper sofa, sleeping up to 14 comfortably.</p>
+    <p class="space-note" style="text-align:center;margin-top:10px;padding-bottom:32px;">9 real beds plus a downstairs sleeper sofa, sleeping up to 14 comfortably.</p>
+    </div>
   </div>
 </section>
 
-<section style="background:var(--cream-deep);">
+<section class="on-dark">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Where Everyone Hangs Out</div>
-      <h2>Nobody has to share a couch.</h2>
-      <p>Multiple gathering spaces mean the group doesn't have to do everything together, all the time.</p>
+      <h2>Room to spread out. Space to come together.</h2>
+      <p>Multiple gathering spaces give everyone room to do their own thing — and plenty of places to come back together.</p>
     </div>
     <div class="space-grid">
       <div class="space-item">
@@ -497,6 +504,7 @@
       <div>
         <h4>Quick Links</h4>
         <ul>
+          <li><a href="index.html">Home</a></li>
           <li><a href="stay.html">Stay</a></li>
           <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
           <li><a href="plan-your-trip.html">Plan Your Trip</a></li>

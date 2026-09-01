@@ -807,7 +807,7 @@
   .reviews-more .review-card .stars { font-size:12px; }
   .reviews-more .review-card .quote { color:rgba(246,241,230,0.85); font-size:13.5px; line-height:1.6; margin:10px 0 10px; }
   .reviews-more .review-card .who { color:var(--gold-bright); }
-  .quote-clamp { display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden; }
+  .quote-clamp { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
   .review-card.expanded .quote-clamp { display:block; -webkit-line-clamp:unset; overflow:visible; }
   .review-toggle { display:none; background:none; border:none; padding:0; margin:0 0 10px; font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:0.04em; color:var(--gold-bright); text-decoration:underline; cursor:pointer; }
   .review-toggle.show { display:inline-block; }
@@ -1059,7 +1059,8 @@
 <header>
   <nav class="nav">
     <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
-    <ul class="nav-links">      <li><a href="stay.html">Stay</a></li>
+    <ul class="nav-links">
+      <li><a href="index.html" class="current">Home</a></li>      <li><a href="stay.html">Stay</a></li>
       <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
       <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
       <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Check Availability</a></li>
@@ -1103,8 +1104,8 @@
     <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 18v2M21 18v2"/><path d="M3 13h18"/><path d="M7 13V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg><span>5 Bedrooms</span></div>
     <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><path d="M14.5 20c0-2.6 1.8-4.8 4-5.6"/></svg><span>Sleeps 14</span></div>
     <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7Z"/><path d="M4 10 6 4h12l2 6"/><path d="M9 4v6M15 4v6"/></svg><span>Full Kitchen</span></div>
-    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 5 4h3l-2 4.5M9 8.5 11 4h3l-2 4.5M15 8.5 17 4h3l-2 4.5"/><rect x="3" y="8.5" width="18" height="11.5" rx="1.5"/></svg><span>Movie Lounge</span></div>
-    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="9" rx="4.5"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="16" cy="11" r="1"/><circle cx="18.5" cy="13.5" r="1"/></svg><span>Game Rooms</span></div>
+    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 5 4h3l-2 4.5M9 8.5 11 4h3l-2 4.5M15 8.5 17 4h3l-2 4.5"/><rect x="3" y="8.5" width="18" height="11.5" rx="1.5"/></svg><span>Movie Room</span></div>
+    <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="9" rx="4.5"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="16" cy="11" r="1"/><circle cx="18.5" cy="13.5" r="1"/></svg><span>Game Spaces</span></div>
     <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5"/><path d="M22 8v6"/></svg><span>Near JMU</span></div>
   </div>
 
@@ -1207,10 +1208,9 @@
     <div class="inside-grid">
       <div>
         <div class="eyebrow">See What Cedar Escape Has to Offer</div>
-        <h2 class="section-head" style="margin-bottom:0;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">Spacious spaces. Cozy details.</span></h2>
-        <p style="margin-top:16px;font-size:15.5px;color:#4b453b;max-width:400px;">Everything you need for an unforgettable stay with your favorite people.</p>
+        <h2 class="section-head" style="margin-bottom:0;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">Room to gather. Space to unwind.</span></h2>
+        <p style="margin-top:16px;font-size:15.5px;color:#4b453b;max-width:400px;">See how Cedar Escape is set up for groups — from bedrooms and bathrooms to game spaces, workspaces and thoughtful extras already waiting when you arrive.</p>
         <a href="stay.html" class="btn btn-gold gallery-preview-btn">Explore Your Stay</a>
-        <a href="gallery.html" class="btn btn-outline gallery-preview-btn" style="margin-left:10px;">View All Photos</a>
       </div>
       <div class="teaser-mosaic">
         <div class="frame"><img src="images/vrbo/vrbo-16.jpg" loading="lazy" alt="Living room at Cedar Escape"></div>
@@ -1238,6 +1238,40 @@
     </div>
     <div style="text-align:center;margin-top:32px;">
       <a href="explore-massanutten.html" class="btn btn-gold">Explore Massanutten</a>
+    </div>
+  </div>
+</section>
+
+<section class="signpost-section">
+  <div class="wrap">
+    <div class="section-head" style="margin: 0 auto 56px; text-align:center;">
+      <div class="eyebrow">Every Stay, Same Standard</div>
+      <h2>Four standards. No exceptions.</h2>
+    </div>
+    <div class="signpost">
+      <div class="post-pole"></div>
+      <div class="planks">
+        <div class="plank">
+          <div class="num">Standard 01</div>
+          <h3>Professionally Prepared</h3>
+          <p>Professionally cleaned and inspected between every stay.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Standard 02</div>
+          <h3>Thoughtfully Stocked</h3>
+          <p>Coffee starter supplies, pantry basics, toiletries and household essentials are ready when you arrive.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Standard 03</div>
+          <h3>Ready to Enjoy</h3>
+          <p>Guest amenities are checked and prepared before each stay, so your vacation doesn't start with troubleshooting.</p>
+        </div>
+        <div class="plank">
+          <div class="num">Standard 04</div>
+          <h3>Responsive Support</h3>
+          <p>Questions are answered quickly, with personal attention when you need it.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1327,7 +1361,7 @@ Even though we were only there for a weekend, we created unforgettable memories 
     <div class="plan-steps-row">
       <div class="plan-step"><div class="n">1</div><h4>Reserve Popular Activities</h4><p>WaterPark, golf, and Spa passes.</p></div>
       <div class="plan-step"><div class="n">2</div><h4>Stock the Kitchen</h4><p>Plan your grocery stop before you arrive.</p></div>
-      <div class="plan-step"><div class="n">3</div><h4>Pack Smarter</h4><p>See exactly what's already provided.</p></div>
+      <div class="plan-step"><div class="n">3</div><h4>See What's Already Here</h4><p>Coffee supplies, family gear, linens and more are already waiting.</p></div>
       <div class="plan-step"><div class="n">4</div><h4>Get the Digital Guide</h4><p>Sent within 48 hours of booking.</p></div>
     </div>
     <div style="text-align:center;margin-top:32px;">
@@ -1364,6 +1398,7 @@ Even though we were only there for a weekend, we created unforgettable memories 
       <div>
         <h4>Quick Links</h4>
         <ul>
+          <li><a href="index.html">Home</a></li>
           <li><a href="stay.html">Stay</a></li>
           <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
           <li><a href="plan-your-trip.html">Plan Your Trip</a></li>

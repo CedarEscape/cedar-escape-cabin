@@ -207,10 +207,9 @@
 <header>
   <nav class="nav">
     <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
-    <ul class="nav-links">
-      <li><a href="stay.html" class="current">Stay</a></li>
-      <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
+    <ul class="nav-links">      <li><a href="stay.html" class="current">Stay</a></li>
       <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+      <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
       <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Check Availability</a></li>
       <li><a href="faq.html">FAQ</a></li>
     </ul>
@@ -264,9 +263,10 @@
         <div class="room-title">Emerald Room</div>
         <div class="room-meta">King-Size Bed · Sleeps 2</div>
       </div>
-      <p class="room-desc">Cedar Escape's primary suite — a rich emerald accent wall, a channel-tufted headboard, and its own private bathroom just steps away. Located on the main level, so no stairs between this room and the kitchen or living area.</p>
+      <p class="room-desc">Cedar Escape's primary suite — a rich emerald accent wall, a channel-tufted headboard, a built-in dual-monitor desk, and its own private bathroom just steps away. Located on the main level, so no stairs between this room and the kitchen or living area.</p>
       <div class="room-photos two-up">
         <div class="frame"><img src="images/vrbo/vrbo-29.jpg" loading="lazy" alt="Emerald Room bedroom at Cedar Escape"></div>
+        <div class="frame"><img src="images/vrbo/vrbo-30.jpg" loading="lazy" alt="Emerald Room workspace with dual monitors at Cedar Escape"></div>
       </div>
       <div class="room-bath">
         <div class="room-head">
@@ -281,8 +281,7 @@
       </div>
     </div>
 
-    <span class="level-tag">Upstairs</span>
-    <div class="room-block" style="padding-top:0;">
+    <div class="room-block">
       <div class="room-head">
         <div class="room-title">Pine Room</div>
         <div class="room-meta">Queen Bed · Sleeps 2</div>
@@ -398,15 +397,16 @@
           <div class="frame"><img src="images/vrbo/vrbo-07.jpg" loading="lazy" alt="Arcade cabinet at Cedar Escape"></div>
           <div class="frame"><img src="images/vrbo/vrbo-12.jpg" loading="lazy" alt="Poker table at Cedar Escape"></div>
           <div class="frame"><img src="images/vrbo/vrbo-55.jpg" loading="lazy" alt="Basketball arcade game and poker table at Cedar Escape"></div>
+          <div class="frame"><img src="images/vrbo/vrbo-08.jpg" loading="lazy" alt="VR headset at Cedar Escape"></div>
+          <div class="frame"><img src="images/vrbo/vrbo-54.jpg" loading="lazy" alt="Guests playing VR and arcade games at Cedar Escape"></div>
         </div>
       </div>
       <div class="space-item">
         <h3>Workspaces</h3>
         <div class="space-photos">
-          <div class="frame"><img src="images/vrbo/vrbo-30.jpg" loading="lazy" alt="Workspace with dual monitors at Cedar Escape"></div>
-          <div class="frame"><img src="images/vrbo/vrbo-34.jpg" loading="lazy" alt="Second workspace, inside the Pine Room, at Cedar Escape"></div>
+          <div class="frame"><img src="images/vrbo/vrbo-34.jpg" loading="lazy" alt="Workspace inside the Pine Room at Cedar Escape"></div>
         </div>
-        <p class="space-note">Two dedicated desk setups — one on the main level, one built into the Pine Room upstairs.</p>
+        <p class="space-note">Two dedicated desk setups — one built into the Emerald Room (see above), one built into the Pine Room.</p>
       </div>
       <div class="space-item">
         <h3>Fitness Area</h3>
@@ -689,7 +689,7 @@
     var scrollable = document.documentElement.scrollHeight - window.innerHeight;
     if (scrollable <= 0) return;
     var pct = window.scrollY / scrollable;
-    if (pct >= 0.32) openPopup();
+    if (pct >= 0.18) openPopup();
   }, { passive: true });
 })();
 </script>

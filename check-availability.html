@@ -74,7 +74,19 @@
   .section-head h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 3.2vw, 32px); margin-top: 12px; color: var(--forest-deep); }
   .section-head p { margin-top: 14px; font-size: 15px; color: #4b453b; }
 
-  .book-panel { background: var(--cream-deep); }
+  .book-panel { background: var(--cream-deep); padding: 0; }
+  .book-split { display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .book-split { grid-template-columns: 35% 65%; align-items: stretch; } }
+  .book-left { background: var(--forest-deep); color: var(--cream); padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+  .book-left .eyebrow { color: var(--gold-bright); }
+  .book-left h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px,2.6vw,30px); color: var(--cream); margin: 12px 0 14px; line-height: 1.2; }
+  .book-left p.sub { font-size: 14.5px; color: rgba(246,241,230,0.78); margin-bottom: 20px; }
+  .book-left ul { list-style: none; margin: 0; padding: 0; }
+  .book-left li { font-size: 14px; color: rgba(246,241,230,0.92); padding: 8px 0; border-top: 1px solid rgba(246,241,230,0.12); display: flex; gap: 10px; align-items: baseline; }
+  .book-left li:first-of-type { border-top: none; }
+  .book-left li::before { content: '✓'; color: var(--gold-bright); font-weight: 700; }
+  .book-right { background: var(--cream); padding: 30px; display: flex; align-items: center; }
+  .book-right .book-shell { width: 100%; box-shadow: 0 24px 50px rgba(43,39,31,0.12); border: 1px solid var(--line); border-top: 3px solid var(--gold); }
   .book-shell { border: 1px solid var(--line); background: var(--cream); border-radius: 3px; padding: 6px; box-shadow: 0 20px 40px rgba(43,39,31,0.08); max-width: 720px; margin: 0 auto; }
   .book-shell .top { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid var(--line); font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); }
   .book-shell .body { padding: 20px; }
@@ -213,16 +225,29 @@
 </section>
 
 <section class="book-panel" id="book">
-  <div class="wrap">
-    <div class="book-shell">
-      <div class="top"><span>Cedar Escape · Massanutten, VA</span><span>Secure Checkout</span></div>
-      <div class="body">
-        <script
-          src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js"
-          data-site-uuid="a23c8f9c-1465-4c6a-b17b-32990f37578d"
-          data-property-id="2443116"
-          data-theme="boutique">
-        </script>
+  <div class="book-split">
+    <div class="book-left">
+      <div class="eyebrow">Book Direct</div>
+      <h2>Pick your dates. We'll take it from here.</h2>
+      <p class="sub">Live availability, secure checkout and direct support from Cedar Escape.</p>
+      <ul>
+        <li>Booking direct is cheaper</li>
+        <li>Live availability</li>
+        <li>Secure Hospitable checkout</li>
+        <li>Questions go directly to us</li>
+      </ul>
+    </div>
+    <div class="book-right">
+      <div class="book-shell">
+        <div class="top"><span>Cedar Escape · Massanutten, VA</span><span>Secure Checkout</span></div>
+        <div class="body">
+          <script
+            src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js"
+            data-site-uuid="a23c8f9c-1465-4c6a-b17b-32990f37578d"
+            data-property-id="2443116"
+            data-theme="boutique">
+          </script>
+        </div>
       </div>
     </div>
   </div>

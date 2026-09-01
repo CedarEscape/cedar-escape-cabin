@@ -124,6 +124,8 @@
     transition: transform 0.25s ease;
   }
   .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links li.nav-check a { padding: 10px 20px; }
+  .nav-links li.nav-check a::after { display: none; }
 
   .btn {
     display: inline-flex;
@@ -161,6 +163,7 @@
     .nav-links.open {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       position: absolute;
       top: 100%;
       left: 0;
@@ -172,6 +175,19 @@
       box-shadow: 0 14px 24px rgba(43,39,31,0.14);
       z-index: 49;
     }
+    .nav-links.open li.nav-check { width: 100%; }
+    .nav-links.open li.nav-check a { display: block; text-align: center; }
+  }
+
+  .floating-message-btn { position: fixed; right: 24px; bottom: 24px; z-index: 60; background: var(--forest-deep); color: var(--cream); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 22px; border-radius: 30px; text-decoration: none; box-shadow: 0 10px 24px rgba(35,45,29,0.35); }
+  .floating-message-btn:hover { background: var(--gold); color: var(--forest-deep); }
+  @media (max-width: 879.98px) { .floating-message-btn { display: none; } }
+  .mobile-sticky-bar { display: none; }
+  @media (max-width: 879.98px) {
+    .mobile-sticky-bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; background: var(--cream); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 24px rgba(43,39,31,0.12); }
+    .mobile-sticky-bar .msg-btn { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; flex: none; border: 1px solid var(--forest-deep); border-radius: 2px; color: var(--forest-deep); text-decoration: none; font-size: 19px; }
+    .mobile-sticky-bar .btn { flex: 1; justify-content: center; }
+    body { padding-bottom: 74px; }
   }
 
   /* ---------- HERO ---------- */
@@ -808,13 +824,12 @@
   <nav class="nav">
     <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
     <ul class="nav-links">
-      <li><a href="index.html#stay">The Cabin</a></li>
-      <li><a href="index.html#weekends">Weekends</a></li>
-      <li><a href="index.html#area">Area Guide</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
-      <li><a href="#" class="js-open-contact">Message Us</a></li>
+      <li><a href="stay.html">Stay</a></li>
+      <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
+      <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Check Availability</a></li>
+      <li><a href="faq.html">FAQ</a></li>
     </ul>
-    <a href="index.html#book" class="btn btn-gold nav-cta">Check Dates</a>
     <button class="burger">MENU</button>
   </nav>
 </header>
@@ -846,7 +861,7 @@
       <span class="btn btn-outline" style="border-color:rgba(246,241,230,0.4); color:var(--cream); cursor:default;">Driving Range & Lessons</span>
     </div>
     <div class="hero-actions" style="margin-top:18px;">
-      <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
+      <a href="check-availability.html" class="btn btn-gold">Check Dates & Pricing</a>
     </div>
   </div>
 </section>
@@ -1027,7 +1042,7 @@
       <div class="eyebrow">Ready For A Golf Weekend?</div>
       <h2>Check dates before the good weekends book up.</h2>
     </div>
-    <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
+    <a href="check-availability.html" class="btn btn-gold">Check Dates & Pricing</a>
   </div>
 </section>
 
@@ -1054,20 +1069,22 @@
         <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h4>Quick Links</h4>
         <ul>
-          <li><a href="index.html#stay">The Cabin</a></li>
-          <li><a href="index.html#weekends">Weekend Guides</a></li>
-          <li><a href="index.html#area">Area Guide</a></li>
-          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="stay.html">Stay</a></li>
+          <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
+          <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="check-availability.html">Check Availability</a></li>
         </ul>
       </div>
       <div>
-        <h4>Book Direct</h4>
+        <h4>Contact</h4>
         <ul>
-          <li><a href="index.html#book">Check Dates & Pricing</a></li>
           <li><a href="#" class="js-open-contact">Message Us</a></li>
-          <li><a href="https://www.instagram.com/cedarescape_massanutten?utm_source=qr" target="_blank" rel="noopener">Instagram: @cedarescape_massanutten</a></li>
+          <li><a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></li>
+          <li><a href="tel:+12027345992">(202) 734-5992</a></li>
+          <li><a href="https://www.instagram.com/cedarescape_massanutten?utm_source=qr" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="https://www.facebook.com/share/19CkRSmUca/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
       </div>
@@ -1078,6 +1095,12 @@
     </div>
   </div>
 </footer>
+
+<a href="#" class="js-open-contact floating-message-btn">Message Us</a>
+<div class="mobile-sticky-bar">
+  <a href="#" class="js-open-contact msg-btn" aria-label="Message Us">✉</a>
+  <a href="check-availability.html" class="btn btn-gold">Check Availability</a>
+</div>
 
 <script>
   const revealEls = document.querySelectorAll('section');

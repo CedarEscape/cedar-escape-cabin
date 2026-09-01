@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MYXMHH20P0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MYXMHH20P0');
+</script>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="fluRb5pqQbRyoYBszjH6r6vUlKDnWXYRyJcgYh6-Ww0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Availability &amp; Book Direct | Cedar Escape</title>
+<meta name="description" content="See live availability and book Cedar Escape direct — no platform fees, secure checkout, and personal support from a host who lives here.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E6; --cream-deep: #EEE6D6; --ink: #2B271F; --forest: #37452F; --forest-deep: #232D1D;
+    --brown: #6E4F37; --taupe: #A9917A; --gold: #C0973F; --gold-bright: #D6B15C; --line: rgba(43,39,31,0.14);
+    --radius: 2px; --wrap: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+  .eyebrow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  h1, h2, h3 { margin: 0; font-weight: 500; }
+  p { margin: 0; }
+
+  header { position: sticky; top: 0; z-index: 50; background: rgba(246,241,230,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: var(--wrap); margin: 0 auto; gap: 20px; }
+  .wordmark { font-family: 'Cinzel', serif; font-size: 19px; letter-spacing: 0.14em; font-weight: 600; color: var(--forest-deep); text-decoration: none; white-space: nowrap; }
+  .wordmark span { color: var(--gold); }
+  .nav-links { display: none; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
+  @media (min-width: 880px) { .nav-links { display: flex; } }
+  .nav-links a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--ink); position: relative; padding-bottom: 4px; white-space: nowrap; }
+  .nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.current::after { transform: scaleX(1); }
+  .nav-links li.nav-check a { padding: 10px 20px; }
+  .nav-links li.nav-check a::after { display: none; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: 0.03em; text-decoration: none; padding: 12px 24px; border-radius: var(--radius); border: 1px solid transparent; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .btn-gold { background: linear-gradient(180deg, var(--gold-bright), var(--gold)); color: var(--forest-deep); }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,151,63,0.35); }
+  .btn-outline { background: transparent; border-color: var(--forest-deep); color: var(--forest-deep); }
+  .btn-outline:hover { background: var(--forest-deep); color: var(--cream); }
+  .btn-outline-cream { background: transparent; border-color: rgba(246,241,230,0.5); color: var(--cream); }
+  .btn-outline-cream:hover { background: var(--cream); color: var(--forest-deep); }
+  .burger { display: inline-flex; background: none; border: none; font-family: 'Cinzel',serif; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; color: var(--forest-deep); }
+  @media (min-width: 880px) { .burger { display: none; } }
+  @media (max-width: 879.98px) {
+    .nav-links.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--line); padding: 16px 32px 24px; gap: 16px; box-shadow: 0 14px 24px rgba(43,39,31,0.14); z-index: 49; }
+    .nav-links.open li.nav-check { width: 100%; }
+    .nav-links.open li.nav-check a { display: block; text-align: center; }
+  }
+
+  .page-hero { position: relative; min-height: 40vh; display: flex; align-items: flex-end; color: var(--cream); overflow: hidden; }
+  .page-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(35,45,29,0.3) 0%, rgba(35,45,29,0.72) 78%, rgba(35,45,29,0.9) 100%); }
+  .page-hero-inner { position: relative; z-index: 2; width: 100%; padding: 54px 32px 36px; max-width: var(--wrap); margin: 0 auto; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(28px, 4.4vw, 46px); line-height: 1.1; margin: 14px 0 14px; max-width: 620px; }
+  .page-hero p { font-size: 15.5px; max-width: 480px; color: rgba(246,241,230,0.88); }
+
+  section { padding: 72px 0; }
+  .section-head { max-width: 640px; margin: 0 auto 40px; text-align: center; }
+  .section-head h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 3.2vw, 32px); margin-top: 12px; color: var(--forest-deep); }
+  .section-head p { margin-top: 14px; font-size: 15px; color: #4b453b; }
+
+  .book-panel { background: var(--cream-deep); }
+  .book-shell { border: 1px solid var(--line); background: var(--cream); border-radius: 3px; padding: 6px; box-shadow: 0 20px 40px rgba(43,39,31,0.08); max-width: 720px; margin: 0 auto; }
+  .book-shell .top { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid var(--line); font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); }
+  .book-shell .body { padding: 20px; }
+
+  .why-grid-4 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+  @media (min-width: 700px) { .why-grid-4 { grid-template-columns: repeat(4,1fr); } }
+  .why-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 18px 18px; text-align: center; }
+  .why-card svg { width: 24px; height: 24px; color: var(--gold); margin-bottom: 10px; }
+  .why-card h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px; color: var(--forest-deep); margin-bottom: 6px; }
+  .why-card p { font-size: 12.5px; color: #5a5346; }
+
+  .fact-band { background: var(--forest-deep); padding: 28px 0; }
+  .fact-band .wrap { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+  @media (min-width: 700px) { .fact-band .wrap { grid-template-columns: repeat(3,1fr); } }
+  @media (min-width: 980px) { .fact-band .wrap { grid-template-columns: repeat(6,1fr); } }
+  .fact-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; color: var(--cream); }
+  .fact-item svg { width: 24px; height: 24px; color: var(--gold-bright); }
+  .fact-item span { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+
+  .good-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 760px) { .good-grid { grid-template-columns: repeat(3,1fr); } }
+  .good-card { background: var(--cream-deep); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 22px 20px; }
+  .good-card h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: var(--forest-deep); margin-bottom: 12px; }
+  .good-card ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: #4b453b; }
+  .good-card li { margin-bottom: 6px; }
+  .good-card .link { display: inline-block; margin-top: 12px; font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest-deep); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+  .contact-callout { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; background: var(--cream-deep); border-radius: 3px; overflow: hidden; }
+  @media (min-width: 760px) { .contact-callout { grid-template-columns: 1fr 1fr; } }
+  .contact-callout img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 220px; }
+  .contact-callout .body { padding: 30px 34px; }
+  .contact-callout h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: var(--forest-deep); margin: 10px 0 12px; }
+  .contact-callout p { font-size: 14.5px; color: #4b453b; }
+  .contact-callout .contacts { margin-top: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 14.5px; }
+  .contact-callout .contacts a { font-weight: 700; color: var(--forest-deep); text-decoration: none; }
+
+  footer { background: var(--forest-deep); color: rgba(246,241,230,0.82); padding: 70px 0 30px; }
+  .foot-grid { display: grid; grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(246,241,230,0.14); }
+  @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+  footer .wordmark { color: var(--cream); }
+  footer h4 { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 14px; }
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li { margin-bottom: 9px; font-size: 14.5px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--gold-bright); }
+  .foot-bottom { padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: rgba(246,241,230,0.5); }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .floating-message-btn { position: fixed; right: 24px; bottom: 24px; z-index: 60; background: var(--forest-deep); color: var(--cream); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 22px; border-radius: 30px; text-decoration: none; box-shadow: 0 10px 24px rgba(35,45,29,0.35); }
+  .floating-message-btn:hover { background: var(--gold); color: var(--forest-deep); }
+  @media (max-width: 879.98px) { .floating-message-btn { display: none; } }
+  .mobile-sticky-bar { display: none; }
+  @media (max-width: 879.98px) {
+    .mobile-sticky-bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; background: var(--cream); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 24px rgba(43,39,31,0.12); }
+    .mobile-sticky-bar .msg-btn { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; flex: none; border: 1px solid var(--forest-deep); border-radius: 2px; color: var(--forest-deep); text-decoration: none; font-size: 19px; }
+    .mobile-sticky-bar .btn { flex: 1; justify-content: center; }
+    body { padding-bottom: 74px; }
+  }
+
+  .contact-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(35,45,29,0.55); z-index: 100; align-items: center; justify-content: center; padding: 24px; }
+  .contact-modal-overlay.open { display: flex; }
+  .contact-modal { position: relative; background: var(--cream); border-radius: 4px; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 40px 36px 36px; box-shadow: 0 30px 60px rgba(0,0,0,0.35); }
+  .contact-modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 26px; line-height: 1; color: var(--taupe); cursor: pointer; padding: 6px 10px; }
+  .contact-modal-close:hover { color: var(--forest-deep); }
+  .contact-modal h3 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: 26px; color: var(--forest-deep); margin: 10px 0 10px; }
+  .contact-modal-sub { font-size: 14.5px; color: #4b453b; margin-bottom: 22px; }
+  .contact-form label { display: block; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); margin: 16px 0 6px; }
+  .contact-form label:first-of-type { margin-top: 0; }
+  .contact-form label .req { color: var(--gold); margin-left: 2px; }
+  .contact-form input, .contact-form textarea { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 2px; background: #fff; color: var(--ink); box-sizing: border-box; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .contact-form textarea { resize: vertical; min-height: 90px; font-family: 'DM Sans', sans-serif; }
+  .contact-form-email-note { margin-top: 16px; font-size: 12.5px; color: var(--taupe); text-align: center; }
+  .contact-form-email-note a { color: var(--forest-deep); font-weight: 600; }
+  #contactFormSuccess { text-align: center; padding: 20px 0; }
+  #contactFormSuccess h3 { margin-top: 6px; }
+  #contactFormSuccess p { color: #4b453b; font-size: 15px; margin-top: 10px; }
+
+  .promo-popup-overlay { display: none; position: fixed; inset: 0; background: rgba(35,45,29,0.55); z-index: 90; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.35s ease; }
+  .promo-popup-overlay.show { display: flex; }
+  .promo-popup-overlay.in { opacity: 1; }
+  .promo-popup { position: relative; background: var(--cream); border: 1px solid var(--gold); border-radius: 4px; max-width: 400px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 7px; box-shadow: 0 30px 60px rgba(0,0,0,0.35); transform: translateY(14px); opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease; }
+  .promo-popup-overlay.in .promo-popup { transform: translateY(0); opacity: 1; }
+  .promo-popup-frame { border: 1px solid var(--gold); border-radius: 3px; padding: 34px 30px 28px; text-align: center; }
+  .promo-popup-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 22px; line-height: 1; color: var(--forest-deep); cursor: pointer; padding: 6px 8px; z-index: 2; }
+  .promo-popup-close:hover { color: var(--gold); }
+  .promo-popup-word { font-family: 'Cinzel', serif; font-size: 19px; letter-spacing: 0.14em; font-weight: 600; color: var(--forest-deep); }
+  .promo-popup-loc { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.16em; color: var(--gold); font-weight: 600; margin-top: 7px; }
+  .promo-popup-divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 18px auto; max-width: 220px; }
+  .promo-popup-divider span { flex: 1; height: 1px; background: var(--gold); }
+  .promo-popup-divider i { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); display: inline-block; flex-shrink: 0; }
+  .promo-popup-eyebrow { font-family: 'Cinzel', serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--forest-deep); font-weight: 600; }
+  .promo-popup-headline { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 34px; line-height: 1.16; color: var(--forest-deep); margin: 12px 0 20px; }
+  .promo-popup-rule { height: 1px; background: var(--line); margin: 0 auto 20px; max-width: 260px; }
+  .promo-popup-save { font-family: 'Cinzel', serif; font-size: 12.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--forest-deep); font-weight: 600; margin-bottom: 18px; }
+  .promo-popup-code { border: 1px solid var(--gold); border-radius: 2px; padding: 12px; font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 0.2em; color: var(--forest-deep); font-weight: 600; margin-bottom: 18px; }
+  .promo-popup-btn { display: block; width: 100%; background: var(--forest-deep); color: var(--cream); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; padding: 15px 20px; border-radius: 2px; text-align: center; box-sizing: border-box; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .promo-popup-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(35,45,29,0.3); }
+  .promo-popup-note { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: #4b453b; margin-top: 16px; }
+  @media (max-width: 480px) { .promo-popup-headline { font-size: 27px; } .promo-popup-frame { padding: 28px 20px 22px; } }
+</style>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="stay.html">Stay</a></li>
+      <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
+      <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold current">Check Availability</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+<script>
+  document.querySelectorAll('.burger').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var nav = btn.closest('.nav');
+      var links = nav && nav.querySelector('.nav-links');
+      if (links) links.classList.toggle('open');
+    });
+  });
+</script>
+
+<section class="page-hero" style="padding:0;">
+  <img src="images/hero-poolroom.webp" alt="Game room at Cedar Escape">
+  <div class="page-hero-inner">
+    <div class="eyebrow" style="color:var(--gold-bright);">Book Direct</div>
+    <h1>Check Availability &amp; Book Direct</h1>
+    <p>Live availability, secure checkout, and no extra platform fees — straight from our booking system.</p>
+  </div>
+</section>
+
+<section class="book-panel" id="book">
+  <div class="wrap">
+    <div class="book-shell">
+      <div class="top"><span>Cedar Escape · Massanutten, VA</span><span>Secure Checkout</span></div>
+      <div class="body">
+        <script
+          src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js"
+          data-site-uuid="a23c8f9c-1465-4c6a-b17b-32990f37578d"
+          data-property-id="2443116"
+          data-theme="boutique">
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why Book Direct</div>
+      <h2>Skip the platform fees.</h2>
+    </div>
+    <div class="why-grid-4">
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.6-5 3.5 2.2 3.5 5 3.5 5 1.6 5 3.5-2.2 3.5-5 3.5-5-1.6-5-3.5"/></svg>
+        <h4>No Platform Fees</h4>
+        <p>Booking direct is cheaper — no added markup from a third-party site.</p>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h8M8 8h5M8 16h5" /><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+        <h4>Live Availability</h4>
+        <p>See real dates, straight from our own booking system.</p>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6.5V11c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6.5L12 3Z"/></svg>
+        <h4>Secure Checkout</h4>
+        <p>Your payment and information stay safe and secure.</p>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M4 15a2 2 0 0 0 2 2h1v-5H6a2 2 0 0 0-2 2Z"/><path d="M20 15a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Z"/></svg>
+        <h4>Personal Support</h4>
+        <p>Questions before or during your stay go straight to us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="fact-band">
+  <div class="wrap">
+    <div class="fact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 18v2M21 18v2"/><path d="M3 13h18"/><path d="M7 13V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg><span>5 Bedrooms</span></div>
+    <div class="fact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><path d="M14.5 20c0-2.6 1.8-4.8 4-5.6"/></svg><span>Sleeps 14</span></div>
+    <div class="fact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="10" rx="1.5"/><path d="M7 9V6a2 2 0 0 1 2-2h1"/><circle cx="16" cy="14" r="1.4"/></svg><span>3 Full Baths</span></div>
+    <div class="fact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 5 4h3l-2 4.5M9 8.5 11 4h3l-2 4.5M15 8.5 17 4h3l-2 4.5"/><rect x="3" y="8.5" width="18" height="11.5" rx="1.5"/></svg><span>Movie Room</span></div>
+    <div class="fact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="9" rx="4.5"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="16" cy="11" r="1"/><circle cx="18.5" cy="13.5" r="1"/></svg><span>Game Spaces</span></div>
+    <div class="fact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5"/></svg><span>Inside Massanutten Resort</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Good to Know</div>
+      <h2>Before you book.</h2>
+    </div>
+    <div class="good-grid">
+      <div class="good-card">
+        <h4>House Rules</h4>
+        <ul>
+          <li>No smoking inside the home</li>
+          <li>No pets</li>
+          <li>Quiet hours 10 PM – 7 AM</li>
+          <li>No parties or events</li>
+          <li>Primary guest must be 23+ to book</li>
+        </ul>
+      </div>
+      <div class="good-card">
+        <h4>Cancellation Highlights</h4>
+        <ul>
+          <li>100% refund within 48 hours of booking (if 7+ days before check-in)</li>
+          <li>100% refund 7+ days before check-in</li>
+          <li>50% refund at 5 days before check-in</li>
+        </ul>
+        <a href="faq.html" class="link">View Full FAQ →</a>
+      </div>
+      <div class="good-card">
+        <h4>Booking FAQs</h4>
+        <ul>
+          <li>When will I receive check-in info?</li>
+          <li>Is a security deposit required?</li>
+          <li>Do you offer travel insurance?</li>
+          <li>Can I add more guests later?</li>
+        </ul>
+        <a href="faq.html" class="link">View All FAQs →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="contact-callout">
+      <img src="images/vrbo/vrbo-16.jpg" alt="Living room fireplace at Cedar Escape">
+      <div class="body">
+        <div class="eyebrow">Questions Before You Book?</div>
+        <h3>We're here to help.</h3>
+        <p>Questions before you book? Message us — we're happy to answer anything about your stay, amenities, or the area.</p>
+        <div class="contacts">
+          <a href="tel:+12027345992">(202) 734-5992</a>
+          <a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a>
+          <a href="#" class="js-open-contact">Message Us →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="stay.html">Stay</a></li>
+          <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
+          <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="check-availability.html">Check Availability</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#" class="js-open-contact">Message Us</a></li>
+          <li><a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></li>
+          <li><a href="tel:+12027345992">(202) 734-5992</a></li>
+          <li><a href="https://www.instagram.com/cedarescape_massanutten?utm_source=qr" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/share/19CkRSmUca/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cedar Escape · Massanutten Resort, VA</span>
+      <span>Booked directly. No middleman.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="js-open-contact floating-message-btn">Message Us</a>
+<div class="mobile-sticky-bar">
+  <a href="#" class="js-open-contact msg-btn" aria-label="Message Us">✉</a>
+  <a href="#book" class="btn btn-gold">Check Availability</a>
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('section');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
+</script>
+
+<script>
+  function getQueryParams(param) {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    return urlSearchParams.get(param);
+  }
+  function updateIframeSrc() {
+    const iframe = document.getElementById("booking-iframe");
+    if (!iframe) return;
+    const checkin = getQueryParams("checkin");
+    const checkout = getQueryParams("checkout");
+    const adults = getQueryParams("adults");
+    const children = getQueryParams("children");
+    const infants = getQueryParams("infants");
+    const pets = getQueryParams("pets");
+    if (!checkin && !checkout && !adults) return;
+    let newSrc = iframe.src;
+    newSrc += newSrc.includes("?") ? "&" : "?";
+    newSrc += `checkin=${checkin}&checkout=${checkout}&adults=${adults}&children=${children}&infants=${infants}&pets=${pets}`;
+    iframe.src = newSrc;
+  }
+  window.addEventListener("load", updateIframeSrc);
+</script>
+
+<div class="contact-modal-overlay" id="contactModalOverlay">
+  <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <button type="button" class="contact-modal-close" aria-label="Close">&times;</button>
+    <div id="contactFormWrap">
+      <div class="eyebrow">Get In Touch</div>
+      <h3 id="contactModalTitle">Message Cedar Escape</h3>
+      <p class="contact-modal-sub">Have a question about your stay or an upcoming booking? Send us a note and we'll reply directly &mdash; no account needed.</p>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/cedarescape.cabin@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from Cedar Escape website">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label for="cf-name">Name <span class="req">*</span></label>
+        <input id="cf-name" type="text" name="Name" required>
+        <label for="cf-email">Email <span class="req">*</span></label>
+        <input id="cf-email" type="email" name="Email" required>
+        <label for="cf-phone">Phone (optional)</label>
+        <input id="cf-phone" type="tel" name="Phone">
+        <label for="cf-res">Reservation Dates / Confirmation # (optional)</label>
+        <input id="cf-res" type="text" name="Reservation Dates or Confirmation Number">
+        <label for="cf-message">Message <span class="req">*</span></label>
+        <textarea id="cf-message" name="Message" rows="4" required></textarea>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:22px;">Send Message</button>
+        <p class="contact-form-email-note">Prefer email? Reach us directly at <a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></p>
+      </form>
+    </div>
+    <div id="contactFormSuccess" style="display:none;">
+      <div class="eyebrow">Message Sent</div>
+      <h3>Thanks! Your message has been sent to Cedar Escape.</h3>
+      <p>We'll be in touch soon.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('contactModalOverlay');
+  if (!overlay) return;
+  var closeBtn = overlay.querySelector('.contact-modal-close');
+  var openers = document.querySelectorAll('.js-open-contact');
+  var form = document.getElementById('contactForm');
+  var formWrap = document.getElementById('contactFormWrap');
+  var success = document.getElementById('contactFormSuccess');
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  openers.forEach(function(el){ el.addEventListener('click', openModal); });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      var contentType = res.headers.get('content-type') || '';
+      if (!res.ok || contentType.indexOf('application/json') === -1) {
+        throw new Error('Unexpected response (not confirmed JSON success)');
+      }
+      return res.json().then(function(json){
+        if (!json || json.success === false) {
+          throw new Error('Submit not successful');
+        }
+        formWrap.style.display = 'none';
+        success.style.display = 'block';
+        form.reset();
+      });
+    }).catch(function(){
+      alert('Sorry, something went wrong sending your message. Please email us directly at cedarescape.cabin@gmail.com.');
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = originalText;
+    });
+  });
+})();
+</script>
+
+<div class="promo-popup-overlay" id="promoPopupOverlay">
+  <div class="promo-popup">
+    <button type="button" class="promo-popup-close" id="promoPopupClose" aria-label="Close">&times;</button>
+    <div class="promo-popup-frame">
+      <div class="promo-popup-word">CEDAR ESCAPE</div>
+      <div class="promo-popup-loc">MASSANUTTEN, VIRGINIA</div>
+      <div class="promo-popup-divider"><span></span><i></i><span></span></div>
+      <div class="promo-popup-eyebrow">Direct Booking Perk</div>
+      <h3 class="promo-popup-headline">Book direct.<br>Stay longer.</h3>
+      <div class="promo-popup-rule"></div>
+      <div class="promo-popup-save">Save 15% on stays of 3+ nights</div>
+      <div class="promo-popup-code">FIRSTESCAPE</div>
+      <a href="#book" class="promo-popup-btn" id="promoPopupBtn">Check Your Dates</a>
+      <p class="promo-popup-note">Plus, skip the extra booking-platform fees.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('promoPopupOverlay');
+  if (!overlay) return;
+  var closeBtn = document.getElementById('promoPopupClose');
+  var ctaBtn = document.getElementById('promoPopupBtn');
+  var STORAGE_KEY = 'cedarPromoDismissed';
+  var shown = false;
+
+  if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+  function openPopup(){
+    if (shown) return;
+    shown = true;
+    overlay.classList.add('show');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ overlay.classList.add('in'); });
+    });
+  }
+  function closePopup(){
+    overlay.classList.remove('in');
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    setTimeout(function(){ overlay.classList.remove('show'); }, 350);
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  ctaBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closePopup(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.classList.contains('in')) closePopup(); });
+
+  var contactOpeners = document.querySelectorAll('.js-open-contact');
+  contactOpeners.forEach(function(el){
+    el.addEventListener('click', function(){
+      if (overlay.classList.contains('in')) closePopup();
+    });
+  });
+
+  window.addEventListener('scroll', function(){
+    if (shown) return;
+    var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    var pct = window.scrollY / scrollable;
+    if (pct >= 0.32) openPopup();
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

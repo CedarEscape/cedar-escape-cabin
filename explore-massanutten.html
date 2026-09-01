@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MYXMHH20P0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MYXMHH20P0');
+</script>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="fluRb5pqQbRyoYBszjH6r6vUlKDnWXYRyJcgYh6-Ww0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Massanutten Resort &amp; Beyond | Cedar Escape</title>
+<meta name="description" content="Skiing, the WaterPark, golf, local wineries, hikes, and groceries near Cedar Escape — everything to plan a Massanutten Resort weekend, from a host who lives here.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E6; --cream-deep: #EEE6D6; --ink: #2B271F; --forest: #37452F; --forest-deep: #232D1D;
+    --brown: #6E4F37; --taupe: #A9917A; --gold: #C0973F; --gold-bright: #D6B15C; --line: rgba(43,39,31,0.14);
+    --radius: 2px; --wrap: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+  .eyebrow { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  h1, h2, h3 { margin: 0; font-weight: 500; }
+  p { margin: 0; }
+
+  header { position: sticky; top: 0; z-index: 50; background: rgba(246,241,230,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: var(--wrap); margin: 0 auto; gap: 20px; }
+  .wordmark { font-family: 'Cinzel', serif; font-size: 19px; letter-spacing: 0.14em; font-weight: 600; color: var(--forest-deep); text-decoration: none; white-space: nowrap; }
+  .wordmark span { color: var(--gold); }
+  .nav-links { display: none; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
+  @media (min-width: 880px) { .nav-links { display: flex; } }
+  .nav-links a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--ink); position: relative; padding-bottom: 4px; white-space: nowrap; }
+  .nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.current::after { transform: scaleX(1); }
+  .nav-links li.nav-check a { padding: 10px 20px; }
+  .nav-links li.nav-check a::after { display: none; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: 0.03em; text-decoration: none; padding: 12px 24px; border-radius: var(--radius); border: 1px solid transparent; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .btn-gold { background: linear-gradient(180deg, var(--gold-bright), var(--gold)); color: var(--forest-deep); }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,151,63,0.35); }
+  .btn-outline { background: transparent; border-color: var(--forest-deep); color: var(--forest-deep); }
+  .btn-outline:hover { background: var(--forest-deep); color: var(--cream); }
+  .btn-outline-cream { background: transparent; border-color: rgba(246,241,230,0.5); color: var(--cream); }
+  .btn-outline-cream:hover { background: var(--cream); color: var(--forest-deep); }
+  .burger { display: inline-flex; background: none; border: none; font-family: 'Cinzel',serif; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; color: var(--forest-deep); }
+  @media (min-width: 880px) { .burger { display: none; } }
+  @media (max-width: 879.98px) {
+    .nav-links.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--line); padding: 16px 32px 24px; gap: 16px; box-shadow: 0 14px 24px rgba(43,39,31,0.14); z-index: 49; }
+    .nav-links.open li.nav-check { width: 100%; }
+    .nav-links.open li.nav-check a { display: block; text-align: center; }
+  }
+
+  .page-hero { position: relative; min-height: 52vh; display: flex; align-items: flex-end; color: var(--cream); overflow: hidden; }
+  .page-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(35,45,29,0.25) 0%, rgba(35,45,29,0.7) 78%, rgba(35,45,29,0.9) 100%); }
+  .page-hero-inner { position: relative; z-index: 2; width: 100%; padding: 64px 32px 44px; max-width: var(--wrap); margin: 0 auto; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(30px, 5vw, 52px); line-height: 1.1; margin: 14px 0 18px; max-width: 700px; }
+  .page-hero p { font-size: 16px; max-width: 540px; color: rgba(246,241,230,0.88); margin-bottom: 26px; }
+  .page-hero .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  section { padding: 80px 0; }
+  .section-head { max-width: 640px; margin: 0 auto 44px; text-align: center; }
+  .section-head h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(26px, 3.4vw, 38px); margin-top: 12px; color: var(--forest-deep); }
+  .section-head p { margin-top: 14px; font-size: 15.5px; color: #4b453b; }
+
+  .amenity-grid-3 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 700px) { .amenity-grid-3 { grid-template-columns: repeat(2,1fr); } }
+  @media (min-width: 980px) { .amenity-grid-3 { grid-template-columns: repeat(5,1fr); } }
+  .amenity-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 20px 20px; text-align: center; }
+  .amenity-card svg { width: 26px; height: 26px; color: var(--gold); margin-bottom: 12px; }
+  .amenity-card h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: var(--forest-deep); margin-bottom: 8px; }
+  .amenity-card p { font-size: 13px; color: #5a5346; }
+
+  .pick-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
+  @media (min-width: 700px) { .pick-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (min-width: 1000px) { .pick-grid { grid-template-columns: repeat(5,1fr); } }
+  .pick-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; overflow: hidden; }
+  .pick-card .frame { aspect-ratio: 4/3; border: none; border-radius: 0; box-shadow: none; }
+  .pick-card .body { padding: 16px 18px 18px; }
+  .pick-card h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: var(--forest-deep); }
+  .pick-card .bf { font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); margin-top: 12px; }
+  .pick-card .bf-text { font-size: 13px; color: #4b453b; margin-top: 3px; }
+  .pick-card .tip { font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); margin-top: 12px; }
+  .pick-card .tip-text { font-size: 13px; color: #4b453b; margin-top: 3px; }
+
+  .grocery-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
+  @media (min-width: 760px) { .grocery-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (min-width: 1080px) { .grocery-grid { grid-template-columns: 1.15fr 1fr 1fr 1fr; } }
+  .grocery-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 22px 20px; }
+  .grocery-card.featured { background: var(--cream-deep); border-top-color: var(--forest-deep); }
+  .grocery-card .badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gold); background: rgba(192,151,63,0.14); border-radius: 20px; padding: 4px 10px; margin-bottom: 12px; }
+  .grocery-card.featured .badge { color: var(--forest-deep); background: rgba(35,45,29,0.1); }
+  .grocery-card h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--forest-deep); }
+  .grocery-card .addr { font-size: 12.5px; color: var(--taupe); margin-top: 6px; line-height: 1.5; }
+  .grocery-card .lbl { font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); margin-top: 14px; }
+  .grocery-card .lbl-text { font-size: 13px; color: #4b453b; margin-top: 3px; }
+  .grocery-card .directions-btn { display: inline-block; margin-top: 16px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 12px; color: var(--forest-deep); border: 1px solid var(--forest-deep); border-radius: 2px; padding: 8px 14px; text-decoration: none; }
+  .grocery-card .directions-btn:hover { background: var(--forest-deep); color: var(--cream); }
+  .grocery-card .inside-note { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); margin-top: 10px; }
+
+  .interest-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+  @media (min-width: 700px) { .interest-grid { grid-template-columns: repeat(3,1fr); } }
+  @media (min-width: 1000px) { .interest-grid { grid-template-columns: repeat(5,1fr); } }
+  .interest-card { display: flex; flex-direction: column; border-radius: var(--radius); overflow: hidden; text-decoration: none; box-shadow: 0 10px 22px rgba(43,39,31,0.14); transition: transform 0.2s ease; }
+  .interest-card:hover { transform: translateY(-3px); }
+  .interest-card .photo { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .interest-card .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .interest-card .label { background: var(--forest-deep); color: var(--cream); padding: 14px 12px; text-align: center; font-family: 'Cinzel', serif; font-size: 12.5px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+
+  .frame { aspect-ratio: 4/3; border-radius: 2px; position: relative; overflow: hidden; border: 5px solid var(--cream); box-shadow: 0 0 0 1px var(--line), 0 12px 20px rgba(43,39,31,0.12); background: var(--cream-deep); }
+  .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  .book-shell { border: 1px solid var(--line); background: var(--cream); border-radius: 3px; padding: 6px; box-shadow: 0 20px 40px rgba(43,39,31,0.08); }
+  .book-shell .top { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid var(--line); font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); }
+
+  .more-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 24px; }
+  @media (min-width: 700px) { .more-row { grid-template-columns: repeat(4,1fr); } }
+  .more-row .card { position: relative; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden; }
+  .more-row .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .more-row .card .cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 12px; color: var(--cream); font-size: 12.5px; font-weight: 600; background: linear-gradient(0deg, rgba(35,45,29,0.8), transparent); }
+
+  .area-context { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; max-width: 560px; }
+  .area-item { display: flex; justify-content: space-between; padding: 13px 18px; background: var(--cream); border: 1px solid var(--line); border-radius: 2px; font-size: 14.5px; }
+  .area-item .name { font-weight: 700; color: var(--forest-deep); }
+  .area-item .mi { font-family: 'Cinzel', serif; font-size: 11.5px; letter-spacing: 0.06em; color: var(--gold); }
+
+  .cta-band { background: var(--forest-deep); color: var(--cream); padding: 60px 0; text-align: center; }
+  .cta-band h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px,3vw,32px); color: var(--cream); }
+  .cta-band p { margin-top: 12px; color: rgba(246,241,230,0.75); }
+  .cta-band .actions { margin-top: 26px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  footer { background: var(--forest-deep); color: rgba(246,241,230,0.82); padding: 70px 0 30px; }
+  .foot-grid { display: grid; grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(246,241,230,0.14); }
+  @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+  footer .wordmark { color: var(--cream); }
+  footer h4 { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 14px; }
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li { margin-bottom: 9px; font-size: 14.5px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--gold-bright); }
+  .foot-bottom { padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: rgba(246,241,230,0.5); }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .floating-message-btn { position: fixed; right: 24px; bottom: 24px; z-index: 60; background: var(--forest-deep); color: var(--cream); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 22px; border-radius: 30px; text-decoration: none; box-shadow: 0 10px 24px rgba(35,45,29,0.35); }
+  .floating-message-btn:hover { background: var(--gold); color: var(--forest-deep); }
+  @media (max-width: 879.98px) { .floating-message-btn { display: none; } }
+  .mobile-sticky-bar { display: none; }
+  @media (max-width: 879.98px) {
+    .mobile-sticky-bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; background: var(--cream); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 24px rgba(43,39,31,0.12); }
+    .mobile-sticky-bar .msg-btn { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; flex: none; border: 1px solid var(--forest-deep); border-radius: 2px; color: var(--forest-deep); text-decoration: none; font-size: 19px; }
+    .mobile-sticky-bar .btn { flex: 1; justify-content: center; }
+    body { padding-bottom: 74px; }
+  }
+
+  .contact-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(35,45,29,0.55); z-index: 100; align-items: center; justify-content: center; padding: 24px; }
+  .contact-modal-overlay.open { display: flex; }
+  .contact-modal { position: relative; background: var(--cream); border-radius: 4px; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 40px 36px 36px; box-shadow: 0 30px 60px rgba(0,0,0,0.35); }
+  .contact-modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 26px; line-height: 1; color: var(--taupe); cursor: pointer; padding: 6px 10px; }
+  .contact-modal-close:hover { color: var(--forest-deep); }
+  .contact-modal h3 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: 26px; color: var(--forest-deep); margin: 10px 0 10px; }
+  .contact-modal-sub { font-size: 14.5px; color: #4b453b; margin-bottom: 22px; }
+  .contact-form label { display: block; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); margin: 16px 0 6px; }
+  .contact-form label:first-of-type { margin-top: 0; }
+  .contact-form label .req { color: var(--gold); margin-left: 2px; }
+  .contact-form input, .contact-form textarea { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 2px; background: #fff; color: var(--ink); box-sizing: border-box; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .contact-form textarea { resize: vertical; min-height: 90px; font-family: 'DM Sans', sans-serif; }
+  .contact-form-email-note { margin-top: 16px; font-size: 12.5px; color: var(--taupe); text-align: center; }
+  .contact-form-email-note a { color: var(--forest-deep); font-weight: 600; }
+  #contactFormSuccess { text-align: center; padding: 20px 0; }
+  #contactFormSuccess h3 { margin-top: 6px; }
+  #contactFormSuccess p { color: #4b453b; font-size: 15px; margin-top: 10px; }
+
+  .promo-popup-overlay { display: none; position: fixed; inset: 0; background: rgba(35,45,29,0.55); z-index: 90; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.35s ease; }
+  .promo-popup-overlay.show { display: flex; }
+  .promo-popup-overlay.in { opacity: 1; }
+  .promo-popup { position: relative; background: var(--cream); border: 1px solid var(--gold); border-radius: 4px; max-width: 400px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 7px; box-shadow: 0 30px 60px rgba(0,0,0,0.35); transform: translateY(14px); opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease; }
+  .promo-popup-overlay.in .promo-popup { transform: translateY(0); opacity: 1; }
+  .promo-popup-frame { border: 1px solid var(--gold); border-radius: 3px; padding: 34px 30px 28px; text-align: center; }
+  .promo-popup-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 22px; line-height: 1; color: var(--forest-deep); cursor: pointer; padding: 6px 8px; z-index: 2; }
+  .promo-popup-close:hover { color: var(--gold); }
+  .promo-popup-word { font-family: 'Cinzel', serif; font-size: 19px; letter-spacing: 0.14em; font-weight: 600; color: var(--forest-deep); }
+  .promo-popup-loc { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.16em; color: var(--gold); font-weight: 600; margin-top: 7px; }
+  .promo-popup-divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 18px auto; max-width: 220px; }
+  .promo-popup-divider span { flex: 1; height: 1px; background: var(--gold); }
+  .promo-popup-divider i { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); display: inline-block; flex-shrink: 0; }
+  .promo-popup-eyebrow { font-family: 'Cinzel', serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--forest-deep); font-weight: 600; }
+  .promo-popup-headline { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 34px; line-height: 1.16; color: var(--forest-deep); margin: 12px 0 20px; }
+  .promo-popup-rule { height: 1px; background: var(--line); margin: 0 auto 20px; max-width: 260px; }
+  .promo-popup-save { font-family: 'Cinzel', serif; font-size: 12.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--forest-deep); font-weight: 600; margin-bottom: 18px; }
+  .promo-popup-code { border: 1px solid var(--gold); border-radius: 2px; padding: 12px; font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 0.2em; color: var(--forest-deep); font-weight: 600; margin-bottom: 18px; }
+  .promo-popup-btn { display: block; width: 100%; background: var(--forest-deep); color: var(--cream); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; padding: 15px 20px; border-radius: 2px; text-align: center; box-sizing: border-box; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .promo-popup-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(35,45,29,0.3); }
+  .promo-popup-note { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: #4b453b; margin-top: 16px; }
+  @media (max-width: 480px) { .promo-popup-headline { font-size: 27px; } .promo-popup-frame { padding: 28px 20px 22px; } }
+</style>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="stay.html">Stay</a></li>
+      <li><a href="explore-massanutten.html" class="current">Explore Massanutten</a></li>
+      <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Check Availability</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+<script>
+  document.querySelectorAll('.burger').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var nav = btn.closest('.nav');
+      var links = nav && nav.querySelector('.nav-links');
+      if (links) links.classList.toggle('open');
+    });
+  });
+</script>
+
+<section class="page-hero" style="padding:0;">
+  <img src="images/reset-deck.webp" alt="Deck view of the Shenandoah Valley near Cedar Escape">
+  <div class="page-hero-inner">
+    <div class="eyebrow" style="color:var(--gold-bright);">Beyond the House</div>
+    <h1>Explore Massanutten + Beyond</h1>
+    <p>Stay inside the Massanutten Resort community, minutes from skiing, the WaterPark, golf, and a short drive from JMU, Harrisonburg, and Shenandoah National Park.</p>
+    <div class="hero-actions">
+      <a href="check-availability.html" class="btn btn-gold">Check Availability</a>
+      <a href="plan-your-trip.html" class="btn btn-outline-cream">Plan Your Trip</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Inside Massanutten Resort</div>
+      <h2>Everything the resort offers.</h2>
+      <p>Cedar Escape sits inside the Massanutten Resort community — a real booking advantage, not a claim that these are included with your stay. Resort activities are separate, paid passes.</p>
+    </div>
+    <div class="amenity-grid-3">
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1.6"/><path d="M14 9 8 21M8 14l3-2 3 3 3-1M4 21l4-6"/></svg>
+        <h4>Skiing</h4>
+        <p>Slopes right on the mountain, seasonal.</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c2-1.5 3-1.5 5 0s3 1.5 5 0 3-1.5 5 0 2 1.5 3 0"/><path d="M3 21c2-1.5 3-1.5 5 0s3 1.5 5 0 3-1.5 5 0 2 1.5 3 0"/><path d="M9 4v9M9 4l6 3-6 3"/></svg>
+        <h4>WaterPark</h4>
+        <p>Indoor/outdoor slides, Diamond Jim's Arcade, Splash's Bar &amp; Grill.</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4l11 5-11 3"/><circle cx="6" cy="21" r="1.5"/></svg>
+        <h4>Golf</h4>
+        <p>Mountain Greens and Woodstone Meadows, both 18 holes.</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7Z"/><path d="M4 10 6 4h12l2 6"/><path d="M9 4v6M15 4v6"/></svg>
+        <h4>Dining</h4>
+        <p>Base Camp, Campfire Grill, Splash's, Elevations Lounge, Kline's Dairy Bar.</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 12h4v9h8v-9h4L12 2Z"/></svg>
+        <h4>Adventure Park</h4>
+        <p>Zip-lining, tubing, chairlift rides, mountain biking, go-karts, mini golf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Cedar's Local Picks</div>
+      <h2>Where we'd actually send you.</h2>
+      <p>Not a directory — just the spots worth the drive.</p>
+    </div>
+    <div class="pick-grid">
+      <div class="pick-card">
+        <div class="frame"><img src="images/photo-48.jpg" loading="lazy" alt="Downtown Harrisonburg dining"></div>
+        <div class="body">
+          <h4>Restaurants</h4>
+          <div class="bf">Best For</div><div class="bf-text">A night off from cooking for the whole group.</div>
+          <div class="tip">Cedar Tip</div><div class="tip-text">Wood Grill Buffet in Harrisonburg is the easiest way to feed a big, hungry group — everyone finds something.</div>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="frame"><img src="images/wine.png" loading="lazy" alt="Local wineries near Cedar Escape"></div>
+        <div class="body">
+          <h4>Wineries + Breweries</h4>
+          <div class="bf">Best For</div><div class="bf-text">Wine plus lunch for a group, or a girls' weekend.</div>
+          <div class="tip">Cedar Tip</div><div class="tip-text">CrossKeys Vineyards' bistro simplifies planning. Brix &amp; Columns, Marceline, and The Purple Wolf are all nearby too.</div>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="frame"><img src="images/photo-40.jpg" loading="lazy" alt="Family activities near Cedar Escape"></div>
+        <div class="body">
+          <h4>Family Fun</h4>
+          <div class="bf">Best For</div><div class="bf-text">Kids who've had enough of the game room.</div>
+          <div class="tip">Cedar Tip</div><div class="tip-text">Go-karts, mini golf, Spin Zone bumper cars, and Real Escapes' VR experiences — all inside the resort.</div>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="frame"><img src="images/photo-41.jpg" loading="lazy" alt="Hiking trails near Cedar Escape"></div>
+        <div class="body">
+          <h4>Hikes + Views</h4>
+          <div class="bf">Best For</div><div class="bf-text">An easy morning out before everyone's back at the house.</div>
+          <div class="tip">Cedar Tip</div><div class="tip-text">The Massanutten Storybook Trail is family-friendly with real payoff. Shenandoah National Park is about 35 minutes for a bigger day.</div>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="frame"><img src="images/photo-42.jpg" loading="lazy" alt="JMU and downtown Harrisonburg near Cedar Escape"></div>
+        <div class="body">
+          <h4>JMU + Harrisonburg</h4>
+          <div class="bf">Best For</div><div class="bf-text">Game days, campus visits, and a coffee run into town.</div>
+          <div class="tip">Cedar Tip</div><div class="tip-text">7 Brew Coffee on the way in, then downtown Harrisonburg for local theater and galleries.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Groceries + Essentials</div>
+      <h2>Okay, once we get there — where do we buy what we need?</h2>
+      <p>Forgot something? Stocking the fridge? Here are our easiest stops for groceries, pharmacy needs, and those inevitable "we forgot it" items.</p>
+    </div>
+    <div class="grocery-grid">
+      <div class="grocery-card featured">
+        <div class="badge">Our Pick For a Full Grocery Run</div>
+        <h4>Food Lion — Elkton</h4>
+        <div class="addr">14811 Spotswood Trail<br>Elkton, VA 22827</div>
+        <div class="lbl">Best For</div><div class="lbl-text">Your main grocery run before settling in at Cedar Escape.</div>
+        <div class="lbl">Cedar Tip</div><div class="lbl-text">A convenient full grocery stop on the Elkton side of the mountain. If your group is cooking during the weekend, stock up here before everyone gets comfortable and nobody wants to leave again.</div>
+        <a href="https://maps.google.com/?q=Food+Lion,14811+Spotswood+Trail,Elkton,VA+22827" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
+      </div>
+      <div class="grocery-card">
+        <div class="badge">🥬 Groceries + Basics</div>
+        <h4>Walmart Neighborhood Market</h4>
+        <div class="addr">1942 Port Republic Rd<br>Harrisonburg, VA 22801</div>
+        <div class="lbl">Best For</div><div class="lbl-text">Groceries, household basics, pharmacy needs and everyday essentials in one stop.</div>
+        <div class="lbl">Cedar Tip</div><div class="lbl-text">The grocery-focused Walmart — easier for a food-and-essentials run than a full Supercenter. Pharmacy and fuel on-site too.</div>
+        <a href="https://maps.google.com/?q=Walmart+Neighborhood+Market,1942+Port+Republic+Rd,Harrisonburg,VA+22801" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
+      </div>
+      <div class="grocery-card">
+        <div class="badge">🎯 One-Stop Essentials</div>
+        <h4>Target — Harrisonburg</h4>
+        <div class="addr">1995 E Market St<br>Harrisonburg, VA 22801</div>
+        <div class="lbl">Best For</div><div class="lbl-text">The bigger "we forgot half our stuff" run — groceries, toiletries, kids' items, clothing, and travel essentials.</div>
+        <div class="lbl">Cedar Tip</div><div class="lbl-text">Especially useful for families — cover groceries, personal items, kids' needs, and pharmacy errands in one trip.</div>
+        <a href="https://maps.google.com/?q=Target,1995+E+Market+St,Harrisonburg,VA+22801" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
+        <div class="inside-note">Shares this location with CVS Pharmacy, below</div>
+      </div>
+      <div class="grocery-card">
+        <div class="badge">➕ Pharmacy</div>
+        <h4>CVS Pharmacy</h4>
+        <div class="addr">1995 E Market St<br>Harrisonburg, VA 22801</div>
+        <div class="lbl">Best For</div><div class="lbl-text">Prescriptions, medicine, first aid, toiletries and health essentials.</div>
+        <div class="lbl">Cedar Tip</div><div class="lbl-text">Located inside the Harrisonburg Target — combine a pharmacy stop with your Target run in one trip, not two.</div>
+        <a href="https://maps.google.com/?q=CVS+Pharmacy,1995+E+Market+St,Harrisonburg,VA+22801" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
+        <div class="inside-note">Inside Target</div>
+      </div>
+      <div class="grocery-card">
+        <div class="badge">🏔️ Inside the Resort</div>
+        <h4>The Market at Massanutten</h4>
+        <div class="addr">1850 Meadow Vista Lane<br>Massanutten, VA 22840</div>
+        <div class="lbl">Best For</div><div class="lbl-text">Quick essentials when you're already inside the resort.</div>
+        <div class="lbl">Cedar Tip</div><div class="lbl-text">Perfect for the small stuff you discover you need after arrival. Use this as the convenient resort option, not your primary full-house grocery run.</div>
+        <a href="https://maps.google.com/?q=The+Market+at+Massanutten,1850+Meadow+Vista+Lane,Massanutten,VA+22840" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Plan By Interest</div>
+      <h2>Same house, five different trips.</h2>
+    </div>
+    <div class="interest-grid">
+      <a href="cedar-escape-family-weekend.html" class="interest-card">
+        <div class="photo"><img src="images/weekend-family.webp" alt="Family Mountain Weekend"></div>
+        <div class="label">Family Trips</div>
+      </a>
+      <a href="cedar-escape-wine-weekend.html" class="interest-card">
+        <div class="photo"><img src="images/weekend-girls.webp" alt="Girls / Wine Weekend"></div>
+        <div class="label">Girls' Weekend</div>
+      </a>
+      <a href="cedar-escape-jmu-weekend.html" class="interest-card">
+        <div class="photo"><img src="images/weekend-jmu.webp" alt="JMU Weekend"></div>
+        <div class="label">JMU Visit</div>
+      </a>
+      <a href="cedar-escape-adventure-weekend.html" class="interest-card">
+        <div class="photo"><img src="images/weekend-adventure.webp" alt="Ski / Adventure Weekend"></div>
+        <div class="label">Outdoor Adventure</div>
+      </a>
+      <a href="cedar-escape-golf-weekend.html" class="interest-card">
+        <div class="photo"><img src="images/weekend-golf.webp" alt="Golf / Resort Weekend"></div>
+        <div class="label">Golf Weekend</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">More Things to Do</div>
+      <h2>Looking for even more?</h2>
+      <p>Our own picks come first. Beyond that, browse additional tours, attractions, and experiences throughout the Shenandoah Valley.</p>
+    </div>
+    <div class="more-row">
+      <div class="card"><img src="images/vrbo/vrbo-46.jpg" loading="lazy" alt="Massanutten WaterPark sign"><div class="cap">Massanutten WaterPark</div></div>
+      <div class="card"><img src="images/photo-43.jpg" loading="lazy" alt="Shenandoah National Park overlook"><div class="cap">Shenandoah National Park</div></div>
+      <div class="card"><img src="images/photo-47.jpg" loading="lazy" alt="Outdoor adventure near Cedar Escape"><div class="cap">Adventure &amp; Tours</div></div>
+      <div class="card"><img src="images/photo-48.jpg" loading="lazy" alt="Downtown Harrisonburg arts and culture"><div class="cap">Harrisonburg Arts &amp; Culture</div></div>
+    </div>
+    <div class="book-shell" style="margin-top:24px;">
+      <div class="top"><span>Local Activities &amp; Tours</span><span>Powered by Viator</span></div>
+      <iframe src="https://api.betterstr.com/guidebook/viator.php?uuid=4b298eac-5f66-4308-a689-4ad0340a38d3&format=widget" width="100%" height="420px" frameborder="0" scrolling="yes" style="overflow:auto; display:block;"></iframe>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Mountain Weather</div>
+      <h2>Plan around the mountain.</h2>
+      <p>Useful for skiing, WaterPark days, golf, hiking, and the drive up.</p>
+    </div>
+    <div class="book-shell">
+      <div class="top"><span>Local Weather</span><span>Massanutten, VA</span></div>
+      <div class="betterstr-weather-widget" data-width="100%" data-height="360px" data-uuid="4b298eac-5f66-4308-a689-4ad0340a38d3" data-units="imperial"></div>
+    </div>
+  </div>
+</section>
+<script src="https://api.betterstr.com/embed/weather-widget.js"></script>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" style="text-align:left;margin:0 0 20px;max-width:none;">
+      <div class="eyebrow">You're in the Perfect Spot</div>
+      <h2>Everything's close from here.</h2>
+    </div>
+    <div class="area-context">
+      <div class="area-item"><span class="name">JMU Campus</span><span class="mi">~25 Min</span></div>
+      <div class="area-item"><span class="name">Local Wineries</span><span class="mi">15–25 Min</span></div>
+      <div class="area-item"><span class="name">Shenandoah National Park</span><span class="mi">~35 Min</span></div>
+      <div class="area-item"><span class="name">Luray Caverns</span><span class="mi">~45 Min</span></div>
+      <div class="area-item"><span class="name">Skiing, WaterPark, Golf</span><span class="mi">On-Site</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Build your perfect Massanutten weekend.</h2>
+    <p>We'll handle the details. You make the memories.</p>
+    <div class="actions">
+      <a href="check-availability.html" class="btn btn-gold">Check Availability</a>
+      <a href="plan-your-trip.html" class="btn btn-outline-cream">Plan Your Trip</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="stay.html">Stay</a></li>
+          <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
+          <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="check-availability.html">Check Availability</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#" class="js-open-contact">Message Us</a></li>
+          <li><a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></li>
+          <li><a href="tel:+12027345992">(202) 734-5992</a></li>
+          <li><a href="https://www.instagram.com/cedarescape_massanutten?utm_source=qr" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/share/19CkRSmUca/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cedar Escape · Massanutten Resort, VA</span>
+      <span>Booked directly. No middleman.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="js-open-contact floating-message-btn">Message Us</a>
+<div class="mobile-sticky-bar">
+  <a href="#" class="js-open-contact msg-btn" aria-label="Message Us">✉</a>
+  <a href="check-availability.html" class="btn btn-gold">Check Availability</a>
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('section');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
+</script>
+
+<div class="contact-modal-overlay" id="contactModalOverlay">
+  <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <button type="button" class="contact-modal-close" aria-label="Close">&times;</button>
+    <div id="contactFormWrap">
+      <div class="eyebrow">Get In Touch</div>
+      <h3 id="contactModalTitle">Message Cedar Escape</h3>
+      <p class="contact-modal-sub">Have a question about your stay or an upcoming booking? Send us a note and we'll reply directly &mdash; no account needed.</p>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/cedarescape.cabin@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from Cedar Escape website">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label for="cf-name">Name <span class="req">*</span></label>
+        <input id="cf-name" type="text" name="Name" required>
+        <label for="cf-email">Email <span class="req">*</span></label>
+        <input id="cf-email" type="email" name="Email" required>
+        <label for="cf-phone">Phone (optional)</label>
+        <input id="cf-phone" type="tel" name="Phone">
+        <label for="cf-res">Reservation Dates / Confirmation # (optional)</label>
+        <input id="cf-res" type="text" name="Reservation Dates or Confirmation Number">
+        <label for="cf-message">Message <span class="req">*</span></label>
+        <textarea id="cf-message" name="Message" rows="4" required></textarea>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:22px;">Send Message</button>
+        <p class="contact-form-email-note">Prefer email? Reach us directly at <a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></p>
+      </form>
+    </div>
+    <div id="contactFormSuccess" style="display:none;">
+      <div class="eyebrow">Message Sent</div>
+      <h3>Thanks! Your message has been sent to Cedar Escape.</h3>
+      <p>We'll be in touch soon.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('contactModalOverlay');
+  if (!overlay) return;
+  var closeBtn = overlay.querySelector('.contact-modal-close');
+  var openers = document.querySelectorAll('.js-open-contact');
+  var form = document.getElementById('contactForm');
+  var formWrap = document.getElementById('contactFormWrap');
+  var success = document.getElementById('contactFormSuccess');
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  openers.forEach(function(el){ el.addEventListener('click', openModal); });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      var contentType = res.headers.get('content-type') || '';
+      if (!res.ok || contentType.indexOf('application/json') === -1) {
+        throw new Error('Unexpected response (not confirmed JSON success)');
+      }
+      return res.json().then(function(json){
+        if (!json || json.success === false) {
+          throw new Error('Submit not successful');
+        }
+        formWrap.style.display = 'none';
+        success.style.display = 'block';
+        form.reset();
+      });
+    }).catch(function(){
+      alert('Sorry, something went wrong sending your message. Please email us directly at cedarescape.cabin@gmail.com.');
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = originalText;
+    });
+  });
+})();
+</script>
+
+<div class="promo-popup-overlay" id="promoPopupOverlay">
+  <div class="promo-popup">
+    <button type="button" class="promo-popup-close" id="promoPopupClose" aria-label="Close">&times;</button>
+    <div class="promo-popup-frame">
+      <div class="promo-popup-word">CEDAR ESCAPE</div>
+      <div class="promo-popup-loc">MASSANUTTEN, VIRGINIA</div>
+      <div class="promo-popup-divider"><span></span><i></i><span></span></div>
+      <div class="promo-popup-eyebrow">Direct Booking Perk</div>
+      <h3 class="promo-popup-headline">Book direct.<br>Stay longer.</h3>
+      <div class="promo-popup-rule"></div>
+      <div class="promo-popup-save">Save 15% on stays of 3+ nights</div>
+      <div class="promo-popup-code">FIRSTESCAPE</div>
+      <a href="check-availability.html" class="promo-popup-btn" id="promoPopupBtn">Check Your Dates</a>
+      <p class="promo-popup-note">Plus, skip the extra booking-platform fees.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('promoPopupOverlay');
+  if (!overlay) return;
+  var closeBtn = document.getElementById('promoPopupClose');
+  var ctaBtn = document.getElementById('promoPopupBtn');
+  var STORAGE_KEY = 'cedarPromoDismissed';
+  var shown = false;
+
+  if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+  function openPopup(){
+    if (shown) return;
+    shown = true;
+    overlay.classList.add('show');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ overlay.classList.add('in'); });
+    });
+  }
+  function closePopup(){
+    overlay.classList.remove('in');
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    setTimeout(function(){ overlay.classList.remove('show'); }, 350);
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  ctaBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closePopup(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.classList.contains('in')) closePopup(); });
+
+  var contactOpeners = document.querySelectorAll('.js-open-contact');
+  contactOpeners.forEach(function(el){
+    el.addEventListener('click', function(){
+      if (overlay.classList.contains('in')) closePopup();
+    });
+  });
+
+  window.addEventListener('scroll', function(){
+    if (shown) return;
+    var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    var pct = window.scrollY / scrollable;
+    if (pct >= 0.32) openPopup();
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

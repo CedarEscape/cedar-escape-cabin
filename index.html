@@ -684,7 +684,9 @@
   .book-panel { background: var(--cream-deep); padding: 0; }
   .book-split { display: grid; grid-template-columns: 1fr; }
   @media (min-width: 900px) { .book-split { grid-template-columns: 35% 65%; align-items: stretch; } }
-  .book-left { background: linear-gradient(160deg, rgba(35,45,29,0.90), rgba(35,45,29,0.96)), url('images/reset-deck.webp') center/cover no-repeat; color: var(--cream); padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+  .book-left { background: var(--forest-deep); color: var(--cream); padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+  .book-left .thumb { width: 84px; height: 84px; border-radius: 4px; overflow: hidden; margin-top: 20px; border: 1px solid rgba(246,241,230,0.25); }
+  .book-left .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .book-left .eyebrow { color: var(--gold-bright); }
   .book-left h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px,2.6vw,30px); color: var(--cream); margin: 12px 0 14px; line-height: 1.2; }
   .book-left p.sub { font-size: 14.5px; color: rgba(246,241,230,0.78); margin-bottom: 20px; }
@@ -1399,6 +1401,7 @@
         <li>Secure Hospitable checkout</li>
         <li>Questions go directly to us</li>
       </ul>
+      <div class="thumb"><img src="images/reset-deck.webp" alt="Deck at Cedar Escape"></div>
     </div>
     <div class="book-right">
       <div class="book-shell">

@@ -156,12 +156,11 @@
   .grocery-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
   @media (min-width: 760px) { .grocery-grid { grid-template-columns: repeat(2,1fr); } }
   @media (min-width: 1080px) { .grocery-grid { grid-template-columns: 1.15fr 1fr 1fr 1fr; } }
-  .grocery-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 20px 20px 18px; }
+  .grocery-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 0 20px 18px; overflow: hidden; }
+  .logo-zone { height: 92px; display: flex; align-items: center; justify-content: center; background: #fff; margin: 0 -20px 16px; padding: 12px 24px; border-bottom: 1px solid var(--line); }
+  .logo-zone img { max-height: 54px; max-width: 82%; object-fit: contain; }
+  .grocery-card .badge { margin-top: 18px; }
   .brand-badge { display: inline-flex; align-items: center; justify-content: center; height: 30px; padding: 0 14px; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.01em; margin-bottom: 12px; }
-  .brand-badge.foodlion { background: #0A6E31; color: #FFCC33; }
-  .brand-badge.walmart { background: #0071CE; color: #FFC220; }
-  .brand-badge.target { background: #CC0000; color: #fff; }
-  .brand-badge.cvs { background: #CC0000; color: #fff; }
   .brand-badge.massanutten { background: var(--forest-deep); color: var(--gold-bright); }
   .grocery-card.featured { background: var(--cream-deep); border-top-color: var(--forest-deep); }
   .grocery-card .badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gold); background: rgba(192,151,63,0.14); border-radius: 20px; padding: 4px 10px; margin-bottom: 10px; }
@@ -617,8 +616,8 @@
     </div>
     <div class="grocery-grid">
       <div class="grocery-card featured">
+        <div class="logo-zone"><img src="images/logos/food-lion.png" alt="Food Lion logo"></div>
         <div class="badge">Our Pick For a Full Grocery Run</div>
-        <div class="brand-badge foodlion">FOOD LION</div>
         <h4>Food Lion — Elkton</h4>
         <div class="addr">14811 Spotswood Trail<br>Elkton, VA 22827</div>
         <div class="lbl">Best For</div><div class="lbl-text">Your main grocery run before settling in at Cedar Escape.</div>
@@ -626,16 +625,16 @@
         <a href="https://maps.google.com/?q=Food+Lion,14811+Spotswood+Trail,Elkton,VA+22827" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
       </div>
       <div class="grocery-card">
+        <div class="logo-zone"><img src="images/logos/walmart.svg" alt="Walmart logo"></div>
         <div class="badge">Groceries + Basics</div>
-        <div class="brand-badge walmart">WALMART</div>
         <h4>Walmart Neighborhood Market</h4>
         <div class="addr">1942 Port Republic Rd<br>Harrisonburg, VA 22801</div>
         <div class="lbl">Best For</div><div class="lbl-text">Groceries, household basics, pharmacy needs and everyday essentials.</div>
         <a href="https://maps.google.com/?q=Walmart+Neighborhood+Market,1942+Port+Republic+Rd,Harrisonburg,VA+22801" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
       </div>
       <div class="grocery-card">
+        <div class="logo-zone"><img src="images/logos/target.svg" alt="Target logo" style="max-height:60px;"></div>
         <div class="badge">One-Stop Essentials</div>
-        <div class="brand-badge target">TARGET</div>
         <h4>Target — Harrisonburg</h4>
         <div class="addr">1995 E Market St<br>Harrisonburg, VA 22801</div>
         <div class="lbl">Best For</div><div class="lbl-text">Groceries, kids' items, clothing and household necessities.</div>
@@ -643,8 +642,8 @@
         <div class="inside-note">Shares this location with CVS, below</div>
       </div>
       <div class="grocery-card">
+        <div class="logo-zone"><img src="images/logos/cvs-pharmacy.svg" alt="CVS Pharmacy logo"></div>
         <div class="badge">Pharmacy</div>
-        <div class="brand-badge cvs">CVS PHARMACY</div>
         <h4>CVS Pharmacy — Inside Target</h4>
         <div class="addr">1995 E Market St<br>Harrisonburg, VA 22801</div>
         <div class="lbl">Best For</div><div class="lbl-text">Prescriptions, medicine, first aid and health needs.</div>

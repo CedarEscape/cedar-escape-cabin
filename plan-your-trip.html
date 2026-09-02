@@ -108,6 +108,10 @@
   .after-item span { font-family: 'Cinzel', serif; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream); font-weight: 600; }
   .after-item p { font-size: 12px; color: rgba(246,241,230,0.65); }
   .after-note { text-align: center; margin-top: 30px; font-size: 13.5px; color: rgba(246,241,230,0.7); font-style: italic; }
+  .after-layout { display: flex; flex-direction: column-reverse; align-items: center; gap: 36px; }
+  @media (min-width: 960px) { .after-layout { flex-direction: row; align-items: flex-start; justify-content: center; gap: 56px; } }
+  .after-visual { flex: none; }
+  .after-visual img { width: 190px; max-width: 55vw; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35)); }
 
   .faq-item { border-bottom: 1px solid var(--line); }
   .faq-item summary { cursor: pointer; list-style: none; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 16px; }
@@ -343,15 +347,22 @@
       <h2 style="color:var(--cream);">Your digital guide has you covered.</h2>
       <p style="color:rgba(246,241,230,0.72);">Within 48 hours of booking, you'll receive a personalized digital guide with everything you need.</p>
     </div>
-    <div class="after-grid">
-      <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-8h6v8"/></svg><span>Arrival</span><p>Directions, check-in details, door code</p></div>
-      <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="1.5"/><circle cx="8" cy="13" r="1.4"/></svg><span>Parking</span><p>Where to park, capacity, overflow</p></div>
-      <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg><span>Wi-Fi Info</span><p>Network name and access details</p></div>
-      <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 15h6"/></svg><span>House Tips</span><p>Thermostat, fireplace, how things work</p></div>
-      <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5"/></svg><span>Local Picks</span><p>Our favorite restaurants, hikes, hidden gems</p></div>
-      <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M4 15a2 2 0 0 0 2 2h1v-5H6a2 2 0 0 0-2 2Z"/><path d="M20 15a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Z"/></svg><span>Support</span><p>We're just a message away</p></div>
+    <div class="after-layout">
+      <div>
+        <div class="after-grid">
+          <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-8h6v8"/></svg><span>Arrival</span><p>Directions, check-in details, door code</p></div>
+          <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="1.5"/><circle cx="8" cy="13" r="1.4"/></svg><span>Parking</span><p>Where to park, capacity, overflow</p></div>
+          <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg><span>Wi-Fi Info</span><p>Network name and access details</p></div>
+          <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 15h6"/></svg><span>House Tips</span><p>Thermostat, fireplace, how things work</p></div>
+          <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5"/></svg><span>Local Picks</span><p>Our favorite restaurants, hikes, hidden gems</p></div>
+          <div class="after-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M4 15a2 2 0 0 0 2 2h1v-5H6a2 2 0 0 0-2 2Z"/><path d="M20 15a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Z"/></svg><span>Support</span><p>We're just a message away</p></div>
+        </div>
+        <p class="after-note">No sensitive info is shared here. You'll receive everything you need once you book.</p>
+      </div>
+      <div class="after-visual">
+        <img src="images/digital-guide-mockup.svg" alt="Mockup preview of the Cedar Escape digital guide, showing arrival, Wi-Fi, local picks and support sections">
+      </div>
     </div>
-    <p class="after-note">No sensitive info is shared here. You'll receive everything you need once you book.</p>
   </div>
 </section>
 

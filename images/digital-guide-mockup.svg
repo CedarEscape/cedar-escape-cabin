@@ -1,0 +1,74 @@
+<svg viewBox="0 0 420 620" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#37452F"/>
+      <stop offset="100%" stop-color="#232D1D"/>
+    </linearGradient>
+    <clipPath id="screenClip">
+      <rect x="18" y="18" width="384" height="584" rx="34"/>
+    </clipPath>
+  </defs>
+
+  <!-- phone frame -->
+  <rect x="6" y="6" width="408" height="608" rx="46" fill="#12160F"/>
+  <rect x="18" y="18" width="384" height="584" rx="34" fill="#F6F1E6"/>
+
+  <g clip-path="url(#screenClip)">
+    <!-- header band -->
+    <rect x="18" y="18" width="384" height="230" fill="url(#skyGrad)"/>
+    <!-- mountain silhouette -->
+    <path d="M18 190 L110 100 L170 160 L230 70 L320 175 L402 130 L402 248 L18 248 Z" fill="#2B3524" opacity="0.9"/>
+    <path d="M18 210 L90 150 L150 195 L210 130 L280 200 L402 165 L402 248 L18 248 Z" fill="#1F2818"/>
+
+    <!-- status dots -->
+    <circle cx="376" cy="40" r="3" fill="#F6F1E6" opacity="0.5"/>
+    <circle cx="362" cy="40" r="3" fill="#F6F1E6" opacity="0.5"/>
+
+    <!-- wordmark -->
+    <text x="210" y="95" text-anchor="middle" font-family="Georgia, 'Playfair Display', serif" font-style="italic" font-size="30" fill="#F6F1E6">Cedar Escape</text>
+    <text x="210" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="11" letter-spacing="4" fill="#D6B15C">MASSANUTTEN, VA</text>
+
+    <line x1="170" y1="135" x2="250" y2="135" stroke="#D6B15C" stroke-width="1"/>
+
+    <text x="210" y="225" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="3" fill="#F6F1E6" opacity="0.85">YOUR DIGITAL GUIDE</text>
+
+    <!-- body: guide section cards -->
+    <g font-family="Arial, sans-serif">
+      <!-- card 1 -->
+      <rect x="38" y="270" width="344" height="66" rx="8" fill="#FFFFFF" stroke="#E5DCC8"/>
+      <circle cx="70" cy="303" r="16" fill="#EEE6D6"/>
+      <path d="M63 306 V297 l7 -5 l7 5 v9 h-4 v-6 h-6 v6 z" fill="none" stroke="#37452F" stroke-width="1.6" stroke-linejoin="round"/>
+      <text x="96" y="298" font-size="14" fill="#2B271F" font-weight="600">Arrival &amp; Check-In</text>
+      <text x="96" y="316" font-size="11.5" fill="#8a8272">Directions, parking, door code</text>
+
+      <!-- card 2 -->
+      <rect x="38" y="346" width="344" height="66" rx="8" fill="#FFFFFF" stroke="#E5DCC8"/>
+      <circle cx="70" cy="379" r="16" fill="#EEE6D6"/>
+      <path d="M61 382 a13 9 0 0 1 18 0 M64.5 379 a8 6 0 0 1 11 0 M68.5 376 a3 2 0 0 1 3 0" fill="none" stroke="#37452F" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="70" cy="386" r="1.4" fill="#37452F"/>
+      <text x="96" y="374" font-size="14" fill="#2B271F" font-weight="600">Wi-Fi &amp; House Tips</text>
+      <text x="96" y="392" font-size="11.5" fill="#8a8272">Network access, how things work</text>
+
+      <!-- card 3 -->
+      <rect x="38" y="422" width="344" height="66" rx="8" fill="#FFFFFF" stroke="#E5DCC8"/>
+      <circle cx="70" cy="455" r="16" fill="#EEE6D6"/>
+      <path d="M58 452 L70 460 L82 452" fill="none" stroke="#37452F" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M58 452 V464 H82 V452" fill="none" stroke="#37452F" stroke-width="1.6" stroke-linejoin="round"/>
+      <text x="96" y="450" font-size="14" fill="#2B271F" font-weight="600">Local Picks</text>
+      <text x="96" y="468" font-size="11.5" fill="#8a8272">Our favorite restaurants &amp; hikes</text>
+
+      <!-- card 4 -->
+      <rect x="38" y="498" width="344" height="66" rx="8" fill="#FFFFFF" stroke="#E5DCC8"/>
+      <circle cx="70" cy="531" r="16" fill="#EEE6D6"/>
+      <path d="M63 526 a7 7 0 0 1 14 0 v6 a2 2 0 0 1 -2 2 h-1 v-8 M63 532 v2 a2 2 0 0 0 2 2 h1 v-8" fill="none" stroke="#37452F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="96" y="526" font-size="14" fill="#2B271F" font-weight="600">Message Us Anytime</text>
+      <text x="96" y="544" font-size="11.5" fill="#8a8272">We're just a message away</text>
+    </g>
+
+    <!-- bottom safe-area -->
+    <rect x="150" y="586" width="120" height="5" rx="2.5" fill="#2B271F" opacity="0.25"/>
+  </g>
+
+  <!-- frame highlight -->
+  <rect x="18" y="18" width="384" height="584" rx="34" fill="none" stroke="#2B271F" stroke-opacity="0.08" stroke-width="1"/>
+</svg>

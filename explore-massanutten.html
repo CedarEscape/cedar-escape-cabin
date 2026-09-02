@@ -120,7 +120,10 @@
   .rest-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
   @media (min-width: 700px) { .rest-grid { grid-template-columns: repeat(2,1fr); } }
   @media (min-width: 1080px) { .rest-grid { grid-template-columns: repeat(3,1fr); } }
-  .rest-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 18px 20px 16px; }
+  .rest-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 18px 20px 16px; overflow: hidden; }
+  .rest-logo-zone { height: 88px; display: flex; align-items: center; justify-content: center; background: #fff; margin: -18px -20px 14px; padding: 10px 22px; border-bottom: 1px solid var(--line); }
+  .rest-logo-zone.dark { background: var(--forest-deep); }
+  .rest-logo-zone img { max-height: 58px; max-width: 82%; object-fit: contain; }
   .rest-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
   .rest-icon svg { width: 20px; height: 20px; color: var(--cream); }
   .rest-icon.c-burger { background: #B5502E; }
@@ -151,6 +154,9 @@
   .pour-col li a { font-weight: 700; font-size: 14.5px; color: var(--cream); text-decoration: none; }
   .pour-col li a:hover { color: var(--gold-bright); }
   .pour-col li .area { display: block; font-size: 12px; color: rgba(246,241,230,0.55); margin-top: 2px; }
+  .pour-col li.featured { display: flex; align-items: center; gap: 12px; }
+  .pour-col li.featured .logo-thumb { width: 32px; height: 32px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; flex: none; padding: 5px; }
+  .pour-col li.featured .logo-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
   /* ---------- GROCERIES ---------- */
   .grocery-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
@@ -438,7 +444,7 @@
           <div class="links"><a href="https://book.toasttab.com/r/hanks" target="_blank" rel="noopener">View Menu + Map</a></div>
         </div>
         <div class="rest-card">
-          <div class="rest-icon c-italian"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v8M5 2v5a2 2 0 0 0 4 0V2M17 2c-2 0-3 2-3 5s1 4 3 4M17 2v18"/></svg></div>
+          <div class="rest-logo-zone"><img src="images/logos/romanos.jpg" alt="Romano's Italian Bistro logo"></div>
           <h4>Romano's Italian Bistro</h4>
           <div class="meta">McGaheysville · ~1 min</div>
           <p class="desc">Italian favorites right across the highway.</p>
@@ -454,7 +460,7 @@
           <div class="links"><a href="https://order.toasttab.com/online/thirty3-s-burgers-11702-spotswood-trail-suite-5" target="_blank" rel="noopener">View Menu + Map</a></div>
         </div>
         <div class="rest-card">
-          <div class="rest-icon c-diner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13a3 3 0 0 1 0 6h-1M4 8v7a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8M4 8V5"/></svg></div>
+          <div class="rest-logo-zone"><img src="images/logos/thunderbird-cafe.png" alt="Thunderbird Cafe logo"></div>
           <h4>Thunderbird Cafe</h4>
           <div class="meta">McGaheysville · ~1 min</div>
           <p class="desc">A local roadside diner favorite with a Southern-comfort twist.</p>
@@ -503,7 +509,7 @@
       <div class="glabel">Worth the Drive</div>
       <div class="rest-grid">
         <div class="rest-card">
-          <div class="rest-icon c-steak"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14c-2-4 0-8 4-9 3-1 6 1 7 4 1 4-2 7-6 8-2 1-4 0-5-3Z"/><circle cx="9" cy="13" r="1"/></svg></div>
+          <div class="rest-logo-zone dark"><img src="images/logos/local-chop.webp" alt="LOCAL Chop &amp; Grill House logo"></div>
           <h4>LOCAL Chop &amp; Grill House</h4>
           <div class="meta">Downtown Harrisonburg · ~20 min</div>
           <p class="desc">Locally sourced steaks, chops, seasonal dishes and cocktails in downtown Harrisonburg.</p>
@@ -511,7 +517,7 @@
           <div class="links"><a href="https://www.localchops.com" target="_blank" rel="noopener">View Menu / Reservations</a></div>
         </div>
         <div class="rest-card">
-          <div class="rest-icon c-buffet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="7" rx="7" ry="2"/><ellipse cx="12" cy="13" rx="7" ry="2"/><ellipse cx="12" cy="19" rx="7" ry="2"/></svg></div>
+          <div class="rest-logo-zone"><img src="images/logos/wood-grill-buffet.png" alt="Wood Grill Buffet logo"></div>
           <h4>Wood Grill Buffet</h4>
           <div class="meta">Harrisonburg · ~20 min</div>
           <p class="desc">A large homestyle buffet with plenty of variety for a mixed-age group.</p>
@@ -560,7 +566,7 @@
         <div class="links"><a href="https://www.yelp.com/biz/hanks-grille-and-catering-mcgaheysville" target="_blank" rel="noopener">View Website</a></div>
       </div>
       <div class="rest-card">
-        <div class="rest-icon c-cafe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13a3 3 0 0 1 0 6h-1M4 8v7a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8M4 8V5"/></svg></div>
+        <div class="rest-logo-zone"><img src="images/logos/crossroads-cafe.png" alt="Crossroads Cafe &amp; Catering logo"></div>
         <h4>Crossroads Cafe &amp; Catering</h4>
         <div class="meta">Penn Laird · ~10 min</div>
         <p class="desc">Breakfast, lunch and event trays made fresh, plus made-from-scratch comfort food.</p>
@@ -582,7 +588,7 @@
         <div class="glabel">Wine</div>
         <ul>
           <li><a href="https://www.brixandcolumns.com/" target="_blank" rel="noopener">Brix &amp; Columns Vineyards</a><span class="area">Mount Crawford</span></li>
-          <li><a href="https://www.crosskeysvineyards.com/" target="_blank" rel="noopener">CrossKeys Vineyards</a><span class="area">Mt. Crawford</span></li>
+          <li class="featured"><div class="logo-thumb"><img src="images/logos/crosskeys-vineyards.png" alt="CrossKeys Vineyards logo"></div><div><a href="https://www.crosskeysvineyards.com/" target="_blank" rel="noopener">CrossKeys Vineyards</a><span class="area">Mt. Crawford</span></div></li>
           <li><a href="https://www.bluestonevineyard.com/" target="_blank" rel="noopener">Bluestone Vineyard</a><span class="area">Bridgewater</span></li>
           <li><a href="https://www.barrenridgevineyards.com/" target="_blank" rel="noopener">Barren Ridge Vineyards</a><span class="area">Fishersville</span></li>
           <li><a href="https://caveridgevineyard.com/" target="_blank" rel="noopener">Cave Ridge Vineyard</a><span class="area">Mt. Jackson</span></li>
@@ -598,8 +604,8 @@
       <div class="pour-col">
         <div class="glabel">Beer</div>
         <ul>
-          <li><a href="https://palefirebrewing.com/" target="_blank" rel="noopener">Pale Fire Brewing</a><span class="area">Downtown Harrisonburg</span></li>
-          <li><a href="https://www.brotherscraftbrewing.com/" target="_blank" rel="noopener">Brothers Craft Brewing</a><span class="area">Downtown Harrisonburg</span></li>
+          <li class="featured"><div class="logo-thumb"><img src="images/logos/pale-fire-brewing.png" alt="Pale Fire Brewing logo"></div><div><a href="https://palefirebrewing.com/" target="_blank" rel="noopener">Pale Fire Brewing</a><span class="area">Downtown Harrisonburg</span></div></li>
+          <li class="featured"><div class="logo-thumb" style="background:var(--forest-deep);"><img src="images/logos/feel-the-rain-brothers.png" alt="Feel the Rain Brothers Brew Co. logo"></div><div><a href="https://www.feeltherainbrothersbrewco.com/" target="_blank" rel="noopener">Feel the Rain Brothers Brew Co.</a><span class="area">Downtown Harrisonburg · formerly Brothers Craft Brewing</span></div></li>
           <li><span style="font-weight:700;color:var(--cream);">Shenandoah BeerWerks Trail</span><span class="area">Trail across the Valley</span></li>
         </ul>
       </div>

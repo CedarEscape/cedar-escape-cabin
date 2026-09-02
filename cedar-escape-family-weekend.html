@@ -345,11 +345,13 @@
   }
   @media (min-width: 800px) { .planks { grid-template-columns: repeat(4, 1fr); } }
   .plank {
-    background: linear-gradient(155deg, #7a5a3f, #5c4229);
-    color: var(--cream);
+    background: var(--cream);
+    color: var(--ink);
     padding: 22px 20px 24px;
     border-radius: 3px;
-    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    box-shadow: 0 12px 24px rgba(43,39,31,0.08);
     position: relative;
   }
   .plank::before {
@@ -360,7 +362,7 @@
     width: 0; height: 0;
     border-top: 9px solid transparent;
     border-bottom: 9px solid transparent;
-    border-right: 9px solid #5c4229;
+    border-right: 9px solid var(--cream);
   }
   .plank:nth-child(even)::before { display: none; }
   .plank:nth-child(even)::after {
@@ -371,22 +373,24 @@
     width: 0; height: 0;
     border-top: 9px solid transparent;
     border-bottom: 9px solid transparent;
-    border-left: 9px solid #5c4229;
+    border-left: 9px solid var(--cream);
   }
   .plank .num {
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 0.14em;
-    color: var(--gold-bright);
+    color: var(--gold);
     text-transform: uppercase;
+    font-weight: 600;
   }
   .plank h3 {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-size: 20px;
     margin: 8px 0 10px;
+    color: var(--forest-deep);
   }
-  .plank p { font-size: 13.8px; color: rgba(246,241,230,0.82); }
+  .plank p { font-size: 13.8px; color: #55503f; }
 
   /* ---------- INVENTORY (EVERYTHING YOU NEED) ---------- */
   .inventory-grid {

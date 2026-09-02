@@ -77,10 +77,10 @@
 
   .steps-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
   @media (min-width: 800px) { .steps-row { grid-template-columns: repeat(4,1fr); } }
-  .step-card { background: linear-gradient(155deg, #7a5a3f, #5c4229); color: var(--cream); padding: 22px 20px 24px; border-radius: 3px; box-shadow: 0 10px 22px rgba(0,0,0,0.18); }
-  .step-card .n { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em; color: var(--gold-bright); text-transform: uppercase; }
-  .step-card h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; margin: 8px 0 10px; }
-  .step-card p { font-size: 13.5px; color: rgba(246,241,230,0.82); }
+  .step-card { background: var(--cream); color: var(--ink); padding: 22px 20px 24px; border-radius: 3px; border: 1px solid var(--line); border-top: 3px solid var(--gold); box-shadow: 0 12px 24px rgba(43,39,31,0.08); }
+  .step-card .n { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; font-weight: 600; }
+  .step-card h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; margin: 8px 0 10px; color: var(--forest-deep); }
+  .step-card p { font-size: 13.5px; color: #55503f; }
 
   .prep-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
   @media (min-width: 760px) { .prep-grid { grid-template-columns: repeat(3,1fr); } }
@@ -239,25 +239,25 @@
     </div>
     <div class="steps-row">
       <div class="step-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--gold-bright);margin-bottom:8px;"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--forest-deep);margin-bottom:8px;"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg>
         <div class="n">Step 01</div>
         <h3>Reserve Popular Activities</h3>
         <p>WaterPark passes, golf tee times, the Spa (book 48 hours ahead), and Campfire Grill reservations for larger groups.</p>
       </div>
       <div class="step-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--gold-bright);margin-bottom:8px;"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.2a2 2 0 0 0 2 1.8h8.2a2 2 0 0 0 2-1.6L21 8H6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--forest-deep);margin-bottom:8px;"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.2a2 2 0 0 0 2 1.8h8.2a2 2 0 0 0 2-1.6L21 8H6"/></svg>
         <div class="n">Step 02</div>
         <h3>Stock the Kitchen</h3>
         <p>Plan your grocery stop — Food Lion in Elkton is our pick for a full run before you settle in.</p>
       </div>
       <div class="step-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--gold-bright);margin-bottom:8px;"><rect x="4" y="7" width="16" height="13" rx="1.5"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M9 12l2 2 4-4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--forest-deep);margin-bottom:8px;"><rect x="4" y="7" width="16" height="13" rx="1.5"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M9 12l2 2 4-4"/></svg>
         <div class="n">Step 03</div>
         <h3>See What's Already Here</h3>
         <p>Cedar Escape provides more than you'd expect. See exactly what's already at the house.</p>
       </div>
       <div class="step-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--gold-bright);margin-bottom:8px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5v-16Z"/><path d="M4 18a2.5 2.5 0 0 1 2.5-2.5H20"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--forest-deep);margin-bottom:8px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5v-16Z"/><path d="M4 18a2.5 2.5 0 0 1 2.5-2.5H20"/></svg>
         <div class="n">Step 04</div>
         <h3>Get the Digital Guide</h3>
         <p>Booked guests receive a detailed digital guide within 48 hours of booking.</p>

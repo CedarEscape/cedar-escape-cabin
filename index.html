@@ -234,7 +234,7 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    min-height: 68vh;
+    min-height: clamp(480px, 60vh, 600px);
     display: flex;
     align-items: flex-end;
     background:
@@ -250,14 +250,14 @@
     inset: 0;
     z-index: 1;
     background:
-      linear-gradient(180deg, rgba(35,45,29,0.15) 0%, rgba(35,45,29,0.65) 78%, rgba(35,45,29,0.88) 100%),
-      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.25), transparent 60%);
+      linear-gradient(180deg, rgba(35,45,29,0.05) 0%, rgba(35,45,29,0.42) 78%, rgba(35,45,29,0.66) 100%),
+      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.12), transparent 60%);
   }
   .hero-inner {
     position: relative;
     z-index: 2;
     width: 100%;
-    padding: 72px 32px 48px;
+    padding: 56px 32px 44px;
     max-width: var(--wrap);
     margin: 0 auto;
   }
@@ -388,11 +388,13 @@
   }
   @media (min-width: 800px) { .planks { grid-template-columns: repeat(4, 1fr); } }
   .plank {
-    background: linear-gradient(155deg, #7a5a3f, #5c4229);
-    color: var(--cream);
-    padding: 22px 20px 24px;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 24px 22px 22px;
     border-radius: 3px;
-    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    box-shadow: 0 12px 26px rgba(43,39,31,0.08);
     position: relative;
   }
   .plank::before {
@@ -403,7 +405,7 @@
     width: 0; height: 0;
     border-top: 9px solid transparent;
     border-bottom: 9px solid transparent;
-    border-right: 9px solid #5c4229;
+    border-right: 9px solid var(--cream);
   }
   .plank:nth-child(even)::before { display: none; }
   .plank:nth-child(even)::after {
@@ -414,22 +416,29 @@
     width: 0; height: 0;
     border-top: 9px solid transparent;
     border-bottom: 9px solid transparent;
-    border-left: 9px solid #5c4229;
+    border-left: 9px solid var(--cream);
   }
+  .plank .icon { width: 38px; height: 38px; border-radius: 50%; background: var(--cream-deep); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .plank .icon svg { width: 19px; height: 19px; color: var(--forest-deep); }
   .plank .num {
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 0.14em;
-    color: var(--gold-bright);
+    color: var(--gold);
     text-transform: uppercase;
+    font-weight: 600;
   }
   .plank h3 {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-size: 20px;
     margin: 8px 0 10px;
+    color: var(--forest-deep);
   }
-  .plank p { font-size: 13.8px; color: rgba(246,241,230,0.82); }
+  .plank p { font-size: 13.8px; color: #55503f; }
+  .standard-band { background: var(--forest-deep); padding: 32px 0; text-align: center; }
+  .standard-band .eyebrow { color: var(--gold-bright); }
+  .standard-band h2 { color: var(--cream); font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 3.2vw, 32px); margin-top: 10px; }
 
   /* ---------- INVENTORY (EVERYTHING YOU NEED) ---------- */
   .inventory-grid {
@@ -1148,6 +1157,38 @@
   </div>
 </div>
 
+<section class="trailhead" id="weekends">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 40px;text-align:center;max-width:560px;">
+      <div class="eyebrow">Perfect for Different Getaways</div>
+      <h2>What kind of weekend is this?</h2>
+      <p>Same house, five very different trips. Pick the one you're actually planning.</p>
+    </div>
+    <div class="weekend-row">
+      <a href="cedar-escape-family-weekend.html" class="weekend-card">
+        <div class="photo"><img src="images/weekend-family.webp" alt="Family Mountain Weekend"></div>
+        <div class="label">Family Mountain<br>Weekend</div>
+      </a>
+      <a href="cedar-escape-wine-weekend.html" class="weekend-card">
+        <div class="photo"><img src="images/weekend-girls.webp" alt="Girls / Wine Weekend"></div>
+        <div class="label">Girls + Wine<br>Weekend</div>
+      </a>
+      <a href="cedar-escape-jmu-weekend.html" class="weekend-card">
+        <div class="photo"><img src="images/weekend-jmu.webp" alt="JMU Weekend"></div>
+        <div class="label">JMU<br>Weekend</div>
+      </a>
+      <a href="cedar-escape-adventure-weekend.html" class="weekend-card">
+        <div class="photo"><img src="images/weekend-adventure.webp" alt="Ski / Adventure Weekend"></div>
+        <div class="label">Adventure<br>Weekend</div>
+      </a>
+      <a href="cedar-escape-golf-weekend.html" class="weekend-card">
+        <div class="photo"><img src="images/weekend-golf.webp" alt="Golf / Resort Weekend"></div>
+        <div class="label">Golf<br>Getaway</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="section-head" style="margin:0 auto 40px;text-align:center;">
@@ -1180,38 +1221,6 @@
         <h4>Work + Fitness</h4>
         <p>Dedicated workspaces, fast Wi-Fi, and a Peloton bike with free weights.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="trailhead" id="weekends">
-  <div class="wrap">
-    <div class="section-head" style="margin:0 auto 40px;text-align:center;max-width:560px;">
-      <div class="eyebrow">Perfect for Different Getaways</div>
-      <h2>What kind of weekend is this?</h2>
-      <p>Same house, five very different trips. Pick the one you're actually planning.</p>
-    </div>
-    <div class="weekend-row">
-      <a href="cedar-escape-family-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-family.webp" alt="Family Mountain Weekend"></div>
-        <div class="label">Family Mountain<br>Weekend</div>
-      </a>
-      <a href="cedar-escape-wine-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-girls.webp" alt="Girls / Wine Weekend"></div>
-        <div class="label">Girls + Wine<br>Weekend</div>
-      </a>
-      <a href="cedar-escape-jmu-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-jmu.webp" alt="JMU Weekend"></div>
-        <div class="label">JMU<br>Weekend</div>
-      </a>
-      <a href="cedar-escape-adventure-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-adventure.webp" alt="Ski / Adventure Weekend"></div>
-        <div class="label">Adventure<br>Weekend</div>
-      </a>
-      <a href="cedar-escape-golf-weekend.html" class="weekend-card">
-        <div class="photo"><img src="images/weekend-golf.webp" alt="Golf / Resort Weekend"></div>
-        <div class="label">Golf<br>Getaway</div>
-      </a>
     </div>
   </div>
 </section>
@@ -1255,31 +1264,34 @@
   </div>
 </section>
 
-<section class="signpost-section">
+<section class="signpost-section" style="padding-top:0;">
+  <div class="standard-band">
+    <div class="eyebrow">Every Stay, Same Standard</div>
+    <h2>Four standards. No exceptions.</h2>
+  </div>
   <div class="wrap">
-    <div class="section-head" style="margin: 0 auto 56px; text-align:center;">
-      <div class="eyebrow">Every Stay, Same Standard</div>
-      <h2>Four standards. No exceptions.</h2>
-    </div>
-    <div class="signpost">
-      <div class="post-pole"></div>
+    <div class="signpost" style="padding-top:44px;">
       <div class="planks">
         <div class="plank">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div class="num">Standard 01</div>
           <h3>Professionally Prepared</h3>
           <p>Professionally cleaned and inspected between every stay.</p>
         </div>
         <div class="plank">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13a3 3 0 0 1 0 6h-1M4 8v7a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8M4 8V5"/></svg></div>
           <div class="num">Standard 02</div>
           <h3>Thoughtfully Stocked</h3>
           <p>Coffee starter supplies, pantry basics, toiletries and household essentials are ready when you arrive.</p>
         </div>
         <div class="plank">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 12h4v9h8v-9h4L12 2Z"/></svg></div>
           <div class="num">Standard 03</div>
           <h3>Ready to Enjoy</h3>
           <p>Guest amenities are checked and prepared before each stay, so your vacation doesn't start with troubleshooting.</p>
         </div>
         <div class="plank">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
           <div class="num">Standard 04</div>
           <h3>Responsive Support</h3>
           <p>Questions are answered quickly, with personal attention when you need it.</p>
@@ -1379,10 +1391,10 @@
   <div class="book-split">
     <div class="book-left">
       <div class="eyebrow">Book Direct</div>
-      <h2>Pick your dates. We'll take it from here.</h2>
-      <p class="sub">Live availability, secure checkout and direct support from Cedar Escape — no markup, no third-party fees.</p>
+      <h2>Booking direct is cheaper.</h2>
+      <p class="sub">Skip third-party booking-platform fees and reserve directly with Cedar Escape.</p>
       <ul>
-        <li>Booking direct is cheaper</li>
+        <li>No markup, no platform fees</li>
         <li>Live availability</li>
         <li>Secure Hospitable checkout</li>
         <li>Questions go directly to us</li>

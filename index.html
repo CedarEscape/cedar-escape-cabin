@@ -672,9 +672,19 @@
   .faq-item .a { padding: 0 0 22px; color: #4b453b; font-size: 15px; max-width: 640px; }
 
   /* ---------- BOOKING PANEL ---------- */
-  .book-panel {
-    background: var(--cream-deep);
-  }
+  .book-panel { background: var(--cream-deep); padding: 0; }
+  .book-split { display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .book-split { grid-template-columns: 35% 65%; align-items: stretch; } }
+  .book-left { background: linear-gradient(160deg, rgba(35,45,29,0.90), rgba(35,45,29,0.96)), url('images/reset-deck.webp') center/cover no-repeat; color: var(--cream); padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+  .book-left .eyebrow { color: var(--gold-bright); }
+  .book-left h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px,2.6vw,30px); color: var(--cream); margin: 12px 0 14px; line-height: 1.2; }
+  .book-left p.sub { font-size: 14.5px; color: rgba(246,241,230,0.78); margin-bottom: 20px; }
+  .book-left ul { list-style: none; margin: 0; padding: 0; }
+  .book-left li { font-size: 14px; color: rgba(246,241,230,0.92); padding: 8px 0; border-top: 1px solid rgba(246,241,230,0.12); display: flex; gap: 10px; align-items: baseline; }
+  .book-left li:first-of-type { border-top: none; }
+  .book-left li::before { content: '✓'; color: var(--gold-bright); font-weight: 700; }
+  .book-right { background: var(--cream); padding: 30px; display: flex; align-items: center; }
+  .book-right .book-shell { width: 100%; box-shadow: 0 24px 50px rgba(43,39,31,0.12); border: 1px solid var(--line); border-top: 3px solid var(--gold); }
   .book-shell {
     border: 1px solid var(--line);
     background: var(--cream);
@@ -1063,7 +1073,7 @@
       <li><a href="index.html" class="current">Home</a></li>      <li><a href="stay.html">Stay</a></li>
       <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
       <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
-      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Check Availability</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Reserve</a></li>
       <li><a href="faq.html">FAQ</a></li>
     </ul>
     <button class="burger">MENU</button>
@@ -1371,19 +1381,30 @@ Even though we were only there for a weekend, we created unforgettable memories 
 </section>
 
 <section class="book-panel" id="book">
-  <div class="wrap">
-    <div class="section-head" style="margin:0 auto 36px;text-align:center;">
-      <div class="eyebrow">Direct Booking</div>
-      <p>Live availability and pricing, straight from our booking system — no markup, no third-party fees.</p>
+  <div class="book-split">
+    <div class="book-left">
+      <div class="eyebrow">Book Direct</div>
+      <h2>Pick your dates. We'll take it from here.</h2>
+      <p class="sub">Live availability, secure checkout and direct support from Cedar Escape — no markup, no third-party fees.</p>
+      <ul>
+        <li>Booking direct is cheaper</li>
+        <li>Live availability</li>
+        <li>Secure Hospitable checkout</li>
+        <li>Questions go directly to us</li>
+      </ul>
     </div>
-    <div class="book-shell" style="padding:20px;">
-      <div class="top"><span>Cedar Escape · Massanutten, VA</span><span>Secure Checkout</span></div>
-      <script
-        src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js"
-        data-site-uuid="a23c8f9c-1465-4c6a-b17b-32990f37578d"
-        data-property-id="2443116"
-        data-theme="boutique">
-      </script>
+    <div class="book-right">
+      <div class="book-shell">
+        <div class="top"><span>Cedar Escape · Massanutten, VA</span><span>Secure Checkout</span></div>
+        <div class="body">
+          <script
+            src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js"
+            data-site-uuid="a23c8f9c-1465-4c6a-b17b-32990f37578d"
+            data-property-id="2443116"
+            data-theme="boutique">
+          </script>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1403,7 +1424,7 @@ Even though we were only there for a weekend, we created unforgettable memories 
           <li><a href="explore-massanutten.html">Explore Massanutten</a></li>
           <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
           <li><a href="faq.html">FAQ</a></li>
-          <li><a href="check-availability.html">Check Availability</a></li>
+          <li><a href="check-availability.html">Reserve</a></li>
         </ul>
       </div>
       <div>
@@ -1427,7 +1448,7 @@ Even though we were only there for a weekend, we created unforgettable memories 
 <a href="#" class="js-open-contact floating-message-btn">Message Us</a>
 <div class="mobile-sticky-bar">
   <a href="#" class="js-open-contact msg-btn" aria-label="Message Us">✉</a>
-  <a href="check-availability.html" class="btn btn-gold">Check Availability</a>
+  <a href="check-availability.html" class="btn btn-gold">Reserve</a>
 </div>
 
 <script>

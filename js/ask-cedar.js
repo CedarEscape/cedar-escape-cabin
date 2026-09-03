@@ -57,7 +57,7 @@
   }
 
   function runSearch(query) {
-    var terms = query.toLowerCase().trim().split(/\s+/)
+    var terms = query.toLowerCase().replace(/[^a-z0-9\s]/g, " ").trim().split(/\s+/)
       .filter(function (t) { return t.length > 1 && STOPWORDS.indexOf(t) === -1; });
     if (!terms.length) return [];
     return INDEX

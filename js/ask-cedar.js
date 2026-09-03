@@ -35,19 +35,30 @@
     });
   }
 
+  var STOPWORDS = ["a","an","the","is","are","was","were","do","does","did","have","has","had",
+    "i","we","you","your","our","us","me","my","it","its","this","that","of","in","on","at","to",
+    "for","and","or","be","need","needs","should","can","could","would","get","gets","how","where",
+    "what","who","why","far","there","cedar","escape"];
+
+  function escRe(t) { return t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+
   function scoreEntry(entry, terms) {
-    var hay = (entry.title + " " + entry.snippet + " " + entry.keywords).toLowerCase();
+    var title = entry.title.toLowerCase();
+    var body = (entry.snippet + " " + entry.keywords).toLowerCase();
     var s = 0;
     terms.forEach(function (t) {
-      if (!t) return;
-      if (hay.indexOf(t) !== -1) s += 1;
-      if (entry.title.toLowerCase().indexOf(t) !== -1) s += 1;
+      var re = new RegExp("\\b" + escRe(t) + "\\b");
+      if (re.test(title)) s += 4;
+      else if (title.indexOf(t) !== -1) s += 1;
+      if (re.test(body)) s += 3;
+      else if (body.indexOf(t) !== -1) s += 1;
     });
     return s;
   }
 
   function runSearch(query) {
-    var terms = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    var terms = query.toLowerCase().trim().split(/\s+/)
+      .filter(function (t) { return t.length > 1 && STOPWORDS.indexOf(t) === -1; });
     if (!terms.length) return [];
     return INDEX
       .map(function (e) { return { entry: e, s: scoreEntry(e, terms) }; })

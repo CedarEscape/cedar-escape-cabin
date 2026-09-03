@@ -124,6 +124,8 @@
   .rest-logo-zone { height: 88px; display: flex; align-items: center; justify-content: center; background: #fff; margin: -18px -20px 14px; padding: 10px 22px; border-bottom: 1px solid var(--line); }
   .rest-logo-zone.dark { background: var(--forest-deep); }
   .rest-logo-zone img { max-height: 58px; max-width: 82%; object-fit: contain; }
+  .rest-photo-zone { height: 140px; margin: -18px -20px 14px; overflow: hidden; }
+  .rest-photo-zone img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .rest-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
   .rest-icon svg { width: 20px; height: 20px; color: var(--cream); }
   .rest-icon.c-burger { background: #B5502E; }
@@ -155,8 +157,10 @@
   .pour-col li a:hover { color: var(--gold-bright); }
   .pour-col li .area { display: block; font-size: 12px; color: rgba(246,241,230,0.55); margin-top: 2px; }
   .pour-col li.featured { display: flex; align-items: center; gap: 12px; }
-  .pour-col li.featured .logo-thumb { width: 32px; height: 32px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; flex: none; padding: 5px; }
+  .pour-col li.featured .logo-thumb { width: 32px; height: 32px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; flex: none; padding: 5px; overflow: hidden; }
   .pour-col li.featured .logo-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .pour-col li.featured .logo-thumb.photo { padding: 0; }
+  .pour-col li.featured .logo-thumb.photo img { width: 100%; height: 100%; object-fit: cover; }
 
   /* ---------- GROCERIES ---------- */
   .grocery-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
@@ -165,6 +169,8 @@
   .grocery-card { background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 0 20px 18px; overflow: hidden; }
   .logo-zone { height: 92px; display: flex; align-items: center; justify-content: center; background: #fff; margin: 0 -20px 16px; padding: 12px 24px; border-bottom: 1px solid var(--line); }
   .logo-zone img { max-height: 54px; max-width: 82%; object-fit: contain; }
+  .logo-zone.photo { padding: 0; }
+  .logo-zone.photo img { max-height: 100%; max-width: 100%; width: 100%; height: 100%; object-fit: cover; }
   .grocery-card .badge { margin-top: 18px; }
   .brand-badge { display: inline-flex; align-items: center; justify-content: center; height: 30px; padding: 0 14px; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.01em; margin-bottom: 12px; }
   .brand-badge.massanutten { background: var(--forest-deep); color: var(--gold-bright); }
@@ -436,7 +442,7 @@
       <div class="glabel">Close to Cedar Escape</div>
       <div class="rest-grid">
         <div class="rest-card">
-          <div class="rest-icon c-grill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v8M5 2v5a2 2 0 0 0 4 0V2M17 2c-2 0-3 2-3 5s1 4 3 4M17 2v18"/></svg></div>
+          <div class="rest-photo-zone"><img src="images/local-biz/hanks-grille.jpg" alt="Food spread at Hank's Grille"></div>
           <h4>Hank's Grille</h4>
           <div class="meta">McGaheysville · ~1 min</div>
           <p class="desc">Family friendly and the closest sit-down meal to the house.</p>
@@ -452,7 +458,7 @@
           <div class="links"><a href="https://romanositalianbistro.com/" target="_blank" rel="noopener">View Menu + Map</a></div>
         </div>
         <div class="rest-card">
-          <div class="rest-icon c-burger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16M4 14h16M6 10a6 4 0 0 1 12 0M6 14a1 1 0 0 0 0 3h12a1 1 0 0 0 0-3"/></svg></div>
+          <div class="rest-photo-zone"><img src="images/local-biz/thirstys.jpg" alt="Burger and fries at Thirsty's Burgers"></div>
           <h4>Thirsty's Burgers</h4>
           <div class="meta">McGaheysville area · ~5 min</div>
           <p class="desc">Burgers, shakes and good vibes after a day on the hill.</p>
@@ -468,7 +474,7 @@
           <div class="links"><a href="https://www.facebook.com/ThunderbirdCafe/" target="_blank" rel="noopener">View Menu + Map</a></div>
         </div>
         <div class="rest-card">
-          <div class="rest-icon c-mex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6c2-2 5-2 6 0 3-1 6 1 6 5 0 5-4 9-8 9s-6-4-6-8c0-3 1-5 2-6Z"/></svg></div>
+          <div class="rest-photo-zone"><img src="images/local-biz/santa-fe.jpg" alt="Plate at Santa Fe Mexican Grille"></div>
           <h4>Santa Fe Mexican Grille</h4>
           <div class="meta">McGaheysville · ~1 min</div>
           <p class="desc">Tex-Mex favorites right in the village.</p>
@@ -482,21 +488,21 @@
       <div class="glabel">On the Resort</div>
       <div class="rest-grid">
         <div class="rest-card">
-          <div class="rest-icon c-lodge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 4-3 5-3 9a3 3 0 0 0 6 0c0-2-1-3-1-3 2 1 3 3 3 5a5 5 0 0 1-10 0c0-6 5-6 5-11Z"/></svg></div>
+          <div class="rest-photo-zone"><img src="images/local-biz/campfire-grill.jpg" alt="Deck seating at Campfire Grill"></div>
           <h4>Campfire Grill</h4>
           <div class="meta">Massanutten Resort</div>
           <p class="desc">Sit-down restaurant with a mountain-lodge atmosphere. Reservations are strongly recommended for larger groups.</p>
           <div class="bf"><b>Best For</b><br>A proper group dinner without leaving the resort.</div>
         </div>
         <div class="rest-card">
-          <div class="rest-icon c-lodge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 4-3 5-3 9a3 3 0 0 0 6 0c0-2-1-3-1-3 2 1 3 3 3 5a5 5 0 0 1-10 0c0-6 5-6 5-11Z"/></svg></div>
+          <div class="rest-photo-zone"><img src="images/local-biz/base-camp.jpg" alt="Deck seating at Base Camp"></div>
           <h4>Base Camp</h4>
           <div class="meta">Massanutten Resort</div>
           <p class="desc">Casual pub-style food near the ski area.</p>
           <div class="bf"><b>Best For</b><br>Quick apres-ski food.</div>
         </div>
         <div class="rest-card">
-          <div class="rest-icon c-water"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div>
+          <div class="rest-photo-zone"><img src="images/local-biz/splashs.jpg" alt="Entrance to Splash's Bar &amp; Grill"></div>
           <h4>Splash's Bar &amp; Grill</h4>
           <div class="meta">Massanutten WaterPark</div>
           <p class="desc">Casual meals and drinks right at the WaterPark.</p>
@@ -525,7 +531,7 @@
           <div class="links"><a href="https://woodgrillbuffetva.com" target="_blank" rel="noopener">View Menu + Map</a></div>
         </div>
         <div class="rest-card">
-          <div class="rest-icon c-pizza"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 20h18L12 3Z"/><circle cx="12" cy="14" r="1"/><circle cx="10" cy="17" r="1"/></svg></div>
+          <div class="rest-photo-zone"><img src="images/local-biz/vitos.jpg" alt="Pizza from Vito's Pizza Pie"></div>
           <h4>Vito's Pizza Pie</h4>
           <div class="meta">Penn Laird · ~10 min</div>
           <p class="desc">Pizza, subs and pasta — an easy group-friendly option when everyone wants something familiar.</p>
@@ -558,7 +564,7 @@
     </div>
     <div class="rest-grid">
       <div class="rest-card">
-        <div class="rest-icon c-grill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="4" rx="1"/><path d="M5 13v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"/></svg></div>
+        <div class="rest-photo-zone"><img src="images/local-biz/hanks-catering.jpg" alt="Catering spread from Hank's Grille &amp; Catering"></div>
         <h4>Hank's Grille &amp; Catering</h4>
         <div class="meta">McGaheysville</div>
         <p class="desc">Trays and group meals that make arrival night easy.</p>
@@ -587,7 +593,7 @@
       <div class="pour-col">
         <div class="glabel">Wine</div>
         <ul>
-          <li><a href="https://www.brixandcolumns.com/" target="_blank" rel="noopener">Brix &amp; Columns Vineyards</a><span class="area">Mount Crawford</span></li>
+          <li class="featured"><div class="logo-thumb photo"><img src="images/local-biz/brix-columns.jpg" alt="Brix &amp; Columns Vineyards"></div><div><a href="https://www.brixandcolumns.com/" target="_blank" rel="noopener">Brix &amp; Columns Vineyards</a><span class="area">Mount Crawford</span></div></li>
           <li class="featured"><div class="logo-thumb"><img src="images/logos/crosskeys-vineyards.png" alt="CrossKeys Vineyards logo"></div><div><a href="https://www.crosskeysvineyards.com/" target="_blank" rel="noopener">CrossKeys Vineyards</a><span class="area">Mt. Crawford</span></div></li>
           <li><a href="https://www.bluestonevineyard.com/" target="_blank" rel="noopener">Bluestone Vineyard</a><span class="area">Bridgewater</span></li>
           <li><a href="https://www.barrenridgevineyards.com/" target="_blank" rel="noopener">Barren Ridge Vineyards</a><span class="area">Fishersville</span></li>
@@ -658,8 +664,8 @@
         <div class="inside-note">Inside Target</div>
       </div>
       <div class="grocery-card">
+        <div class="logo-zone photo"><img src="images/local-biz/market-at-massanutten.jpg" alt="The Market at Massanutten Station storefront"></div>
         <div class="badge">Inside Massanutten</div>
-        <div class="brand-badge massanutten">MASSANUTTEN</div>
         <h4>The Market at Massanutten</h4>
         <div class="addr">1850 Meadow Vista Lane<br>Massanutten, VA 22840</div>
         <div class="lbl">Best For</div><div class="lbl-text">Quick resort essentials &amp; small items.</div>

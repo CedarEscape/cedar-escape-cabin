@@ -122,6 +122,9 @@
     .room-profile { grid-template-columns: 1fr 1fr; gap: 44px; }
     .room-profile.reverse .rp-media { order: 2; }
     .room-profile.reverse .rp-info { order: 1; }
+    .rp-media { max-width: 400px; }
+    .rp-media:not(.single) { max-width: 460px; }
+    .room-profile.reverse .rp-media { margin-left: auto; }
   }
   .rp-media { display: flex; gap: 12px; align-items: flex-end; }
   .rp-media .frame.main { flex: 2; }
@@ -147,8 +150,9 @@
   .on-dark .eyebrow { color: var(--gold-bright); }
   .on-dark .space-note { color: rgba(246,241,230,0.55); }
 
-  .amenity-accordion { display:grid; grid-template-columns:1fr; column-gap:48px; }
-  @media (min-width:760px) { .amenity-accordion { grid-template-columns:1fr 1fr; } }
+  .amenity-accordion { display:block; }
+  .amenity-col { display:block; }
+  @media (min-width:760px) { .amenity-accordion { display:flex; align-items:flex-start; gap:48px; } .amenity-col { flex:1; min-width:0; } }
   .amenity-accordion summary { font-family:'Playfair Display', serif; font-style: italic; font-size: 18px; letter-spacing: normal; text-transform: none; color: var(--forest-deep); transition: color 0.15s ease; }
   .amenity-accordion summary:hover { color: var(--forest); }
   .faq-item { border-bottom: 1px solid var(--line); }
@@ -547,34 +551,38 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Already Taken Care Of</div>
-      <h2>Pack less. We've thought of the little stuff.</h2>
-      <p>If it's on this list, it's already at the house.</p>
+      <h2>More waiting for you. Less to bring with you.</h2>
+      <p>From coffee supplies to family gear and laundry basics, here's what's already at the house.</p>
     </div>
     <div class="amenity-accordion">
-      <details class="faq-item" open>
-        <summary>Kitchen + Coffee</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Full kitchen — cookware, dishes, and utensils</li><li>Dishwasher</li><li>Air fryer &amp; indoor griddle</li><li>Keurig K-Duo, starter K-pods, creamer &amp; filters</li><li>Traeger grill with complimentary pellets and grill tools</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Family Gear</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>High chair</li><li>Pack 'n Play / travel crib</li><li>Linens/sheet for the Pack 'n Play</li><li>Kids plates &amp; cups</li><li>Sippy cups &amp; lids</li><li>Child-size forks, knives &amp; spoons</li><li>Baby bibs</li><li>Toddler toilet seat</li><li>Safety gates</li><li>Kids toys</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Entertainment</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Movie room</li><li>Pool table &amp; poker table</li><li>Arcade cabinet</li><li>VR headset</li><li>Indoor basketball game</li><li>Board games</li><li>Smart TVs</li><li>Giant yard games</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Work + Fitness</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Two dedicated workspaces</li><li>High-speed Wi-Fi</li><li>Peloton bike</li><li>Adjustable weight bench</li><li>Free weights</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Comfort + Convenience</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Central heating and cooling, plus mini-split A/C in select rooms</li><li>Gas fireplace</li><li>Towels, linens &amp; starter toiletries</li><li>Hair dryer</li><li>Iron &amp; ironing board</li><li>Keyless entry</li><li>Driveway parking for 3–4 cars, plus free overflow</li></ul></div>
-      </details>
-      <details class="faq-item">
-        <summary>Laundry + Household Basics</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Washer &amp; dryer</li><li>Starter laundry supplies / complimentary laundry pods</li><li>Dishwasher tablets</li><li>Trash bags</li><li>Paper towels</li><li>Basic cleaning supplies</li></ul></div>
-      </details>
+      <div class="amenity-col">
+        <details class="faq-item" open>
+          <summary>Kitchen + Coffee</summary>
+          <div class="a"><ul style="margin:0;padding-left:20px;"><li>Full kitchen — cookware, dishes &amp; utensils</li><li>Dishwasher</li><li>Air fryer</li><li>Indoor griddle</li><li>Keurig K-Duo</li><li>Starter K-pods</li><li>Shelf-stable creamer</li><li>Carafe filters</li><li>Starter seasonings / small pantry basics</li><li>Traeger grill</li><li>Complimentary pellets</li><li>Grill tools</li></ul></div>
+        </details>
+        <details class="faq-item">
+          <summary>Entertainment</summary>
+          <div class="a"><ul style="margin:0;padding-left:20px;"><li>Movie room</li><li>Pool table &amp; poker table</li><li>Arcade cabinet</li><li>VR headset</li><li>Indoor basketball game</li><li>Board games</li><li>Smart TVs</li><li>Giant yard games</li></ul></div>
+        </details>
+        <details class="faq-item">
+          <summary>Comfort + Convenience</summary>
+          <div class="a"><ul style="margin:0;padding-left:20px;"><li>Central heating and cooling, plus mini-split A/C in select rooms</li><li>Gas fireplace</li><li>Towels &amp; linens</li><li>Starter toiletries</li><li>Hair dryer</li><li>Iron &amp; ironing board</li><li>Keyless entry</li><li>Driveway parking, plus free overflow parking</li></ul></div>
+        </details>
+      </div>
+      <div class="amenity-col">
+        <details class="faq-item">
+          <summary>Family Gear</summary>
+          <div class="a"><ul style="margin:0;padding-left:20px;"><li>High chair</li><li>Pack 'n Play / travel crib</li><li>Pack 'n Play sheet/linens</li><li>Kids plates &amp; cups</li><li>Sippy cups &amp; lids</li><li>Child-size forks, knives &amp; spoons</li><li>Baby bibs</li><li>Toddler toilet seat</li><li>Safety gates</li><li>Kids toys</li></ul></div>
+        </details>
+        <details class="faq-item">
+          <summary>Work + Fitness</summary>
+          <div class="a"><ul style="margin:0;padding-left:20px;"><li>Two dedicated workspaces</li><li>High-speed Wi-Fi</li><li>Peloton bike</li><li>Free weights</li><li>Adjustable weight bench</li></ul></div>
+        </details>
+        <details class="faq-item">
+          <summary>Laundry + Household Basics</summary>
+          <div class="a"><ul style="margin:0;padding-left:20px;"><li>Washer &amp; dryer</li><li>Starter laundry supplies / complimentary laundry pods</li><li>Dishwasher tablets</li><li>Trash bags</li><li>Paper towels</li><li>Basic cleaning supplies</li></ul></div>
+        </details>
+      </div>
     </div>
   </div>
 </section>

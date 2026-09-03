@@ -259,7 +259,7 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    min-height: clamp(480px, 60vh, 600px);
+    min-height: clamp(460px, 57vh, 540px);
     display: flex;
     align-items: flex-end;
     background:
@@ -277,6 +277,9 @@
     background:
       linear-gradient(180deg, rgba(35,45,29,0.05) 0%, rgba(35,45,29,0.42) 78%, rgba(35,45,29,0.66) 100%),
       radial-gradient(circle at 80% 30%, rgba(0,0,0,0.12), transparent 60%);
+  }
+  @media (max-width: 700px) {
+    .hero { min-height: clamp(420px, 68vh, 480px); }
   }
   .hero-inner {
     position: relative;
@@ -1426,7 +1429,6 @@
         <li>Secure Hospitable checkout</li>
         <li>Questions go directly to us</li>
       </ul>
-      <div class="thumb"><img src="images/reset-deck.webp" alt="Deck at Cedar Escape"></div>
     </div>
     <div class="book-right">
       <div class="book-shell">

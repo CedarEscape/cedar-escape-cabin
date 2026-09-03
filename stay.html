@@ -155,6 +155,29 @@
   .floating-message-btn:hover { background: var(--gold); color: var(--forest-deep); }
   @media (max-width: 879.98px) { .floating-message-btn { display: none; } }
 
+  .ask-cedar-btn { position: fixed; right: 24px; bottom: 24px; z-index: 62; background: var(--forest-deep); color: var(--cream); font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 22px; border-radius: 30px; border: none; cursor: pointer; box-shadow: 0 10px 24px rgba(35,45,29,0.35); display: inline-flex; align-items: center; gap: 8px; }
+  .ask-cedar-btn:hover { background: var(--gold); color: var(--forest-deep); }
+  .ask-cedar-btn svg { width: 15px; height: 15px; flex: none; }
+  @media (max-width: 879.98px) { .ask-cedar-btn { display: none; } }
+  .ask-cedar-panel { position: fixed; right: 24px; bottom: 90px; z-index: 63; width: 340px; max-width: calc(100vw - 32px); max-height: 70vh; display: flex; flex-direction: column; background: var(--cream); border-radius: 6px; box-shadow: 0 24px 60px rgba(35,45,29,0.35); border: 1px solid var(--line); border-top: 3px solid var(--gold); overflow: hidden; }
+  @media (max-width: 879.98px) { .ask-cedar-panel { right: 16px; left: 16px; width: auto; bottom: 84px; } }
+  .ac-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 18px 18px 14px; background: var(--forest-deep); flex: none; }
+  .ac-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: var(--cream); }
+  .ac-sub { font-size: 12px; color: rgba(246,241,230,0.72); margin-top: 4px; line-height: 1.4; }
+  .ac-close { background: none; border: none; color: var(--cream); font-size: 22px; line-height: 1; cursor: pointer; padding: 0 2px; flex: none; }
+  .ac-input { width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid var(--line); padding: 14px 18px; font-size: 14px; font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); outline: none; flex: none; }
+  .ac-input:focus { background: var(--cream-deep); }
+  .ac-results { overflow-y: auto; padding: 6px 0; flex: 1; }
+  .ac-hint { padding: 16px 18px; font-size: 12.5px; color: var(--taupe); font-style: italic; margin: 0; }
+  .ac-result { display: block; padding: 10px 18px; text-decoration: none; border-bottom: 1px solid var(--line); }
+  .ac-result:hover { background: var(--cream-deep); }
+  .ac-result-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14.5px; color: var(--forest-deep); }
+  .ac-result-snippet { font-size: 12px; color: #5a5346; margin-top: 2px; line-height: 1.4; }
+  .ac-footer { padding: 12px 18px; border-top: 1px solid var(--line); font-size: 12.5px; color: #5a5346; text-align: center; flex: none; }
+  .ac-msg-link { color: var(--forest-deep); font-weight: 700; text-decoration: underline; }
+  .mobile-sticky-bar .ask-btn { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; flex: none; border: 1px solid var(--forest-deep); border-radius: 2px; color: var(--forest-deep); background: none; cursor: pointer; }
+  .mobile-sticky-bar .ask-btn svg { width: 19px; height: 19px; }
+
   .mobile-sticky-bar { display: none; }
   @media (max-width: 879.98px) {
     .mobile-sticky-bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; background: var(--cream); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 24px rgba(43,39,31,0.12); }
@@ -533,10 +556,29 @@
 </footer>
 
 <a href="#" class="js-open-contact floating-message-btn">Message Us</a>
+<button id="askCedarBtn" class="ask-cedar-btn" type="button" aria-label="Ask Cedar" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-9 9 8.9 8.9 0 0 0 1.2 4.5L3 21l4.7-1.1A9 9 0 1 0 12 3Z"/><path d="M8 10h8M8 13h5"/></svg>
+  <span>Ask Cedar</span>
+</button>
+<div id="askCedarPanel" class="ask-cedar-panel" hidden>
+  <div class="ac-head">
+    <div>
+      <div class="ac-title">Ask Cedar</div>
+      <p class="ac-sub">Instant answers about Cedar Escape, booking, amenities, Massanutten and planning your trip.</p>
+    </div>
+    <button id="askCedarClose" class="ac-close" type="button" aria-label="Close">&times;</button>
+  </div>
+  <input id="askCedarInput" class="ac-input" type="text" placeholder="What can we help with?" autocomplete="off">
+  <div id="askCedarResults" class="ac-results"></div>
+  <div class="ac-footer">Still need help? <a href="#" class="js-open-contact ac-msg-link">Message Us &rarr;</a></div>
+</div>
 <div class="mobile-sticky-bar">
-  <a href="#" class="js-open-contact msg-btn" aria-label="Message Us">✉</a>
+  <button id="askCedarMobileBtn" class="ask-btn" type="button" aria-label="Ask Cedar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-9 9 8.9 8.9 0 0 0 1.2 4.5L3 21l4.7-1.1A9 9 0 1 0 12 3Z"/><path d="M8 10h8M8 13h5"/></svg>
+  </button>
   <a href="check-availability.html" class="btn btn-gold">Reserve</a>
 </div>
+<script src="js/ask-cedar.js"></script>
 
 <script>
   const revealEls = document.querySelectorAll('section');

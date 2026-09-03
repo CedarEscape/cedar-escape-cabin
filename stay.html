@@ -80,6 +80,10 @@
   .page-hero .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
   .fact-band { background: var(--forest-deep); padding: 28px 0; }
+  .tour-jump { background: var(--cream); border-bottom: 1px solid var(--line); padding: 14px 0; }
+  .tour-jump .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: center; }
+  .tour-jump a { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--forest-deep); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color 0.15s ease, color 0.15s ease; }
+  .tour-jump a:hover { color: var(--gold); border-color: var(--gold); }
   .fact-band .wrap { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
   @media (min-width: 700px) { .fact-band .wrap { grid-template-columns: repeat(3,1fr); } }
   @media (min-width: 980px) { .fact-band .wrap { grid-template-columns: repeat(6,1fr); } }
@@ -134,7 +138,6 @@
   .space-grid { display: grid; grid-template-columns: 1fr; gap: 44px; }
   .space-item h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--forest-deep); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
   .space-item h3 svg { width: 19px; height: 19px; color: var(--gold-bright); flex: none; }
-  .amenity-accordion summary svg { width: 16px; height: 16px; color: var(--gold); vertical-align: -3px; margin-right: 8px; flex: none; }
   .space-photos { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
   @media (min-width: 700px) { .space-photos { grid-template-columns: repeat(4,1fr); } }
   .space-note { font-size: 13px; color: var(--taupe); font-style: italic; margin-top: 10px; }
@@ -146,13 +149,15 @@
 
   .amenity-accordion { display:grid; grid-template-columns:1fr; column-gap:48px; }
   @media (min-width:760px) { .amenity-accordion { grid-template-columns:1fr 1fr; } }
-  .amenity-accordion summary { font-family:'Cinzel', serif; font-size:14px; letter-spacing:0.04em; text-transform:uppercase; }
+  .amenity-accordion summary { font-family:'Playfair Display', serif; font-style: italic; font-size: 18px; letter-spacing: normal; text-transform: none; color: var(--forest-deep); transition: color 0.15s ease; }
+  .amenity-accordion summary:hover { color: var(--forest); }
   .faq-item { border-bottom: 1px solid var(--line); }
   .faq-item summary { cursor: pointer; list-style: none; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 16px; }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold); margin-left: 20px; }
   .faq-item[open] summary::after { content: '–'; }
   .faq-item .a { padding: 0 0 22px; color: #4b453b; font-size: 15px; max-width: 640px; }
+  .amenity-accordion .faq-item[open] { border-bottom-color: var(--gold); }
 
   .closer-mosaic { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
   @media (min-width: 700px) { .closer-mosaic { grid-template-columns: repeat(4,1fr); } }
@@ -305,6 +310,15 @@
   </div>
 </div>
 
+<div class="tour-jump">
+  <div class="wrap">
+    <a href="#sleeps">Sleeping Spaces</a>
+    <a href="#gather">Gathering Spaces</a>
+    <a href="#included">What's Included</a>
+    <a href="#archive">Photo Archive</a>
+  </div>
+</div>
+
 <section id="sleeps">
   <div class="wrap">
     <div class="section-head">
@@ -449,7 +463,7 @@
   </div>
 </section>
 
-<section class="on-dark">
+<section id="gather" class="on-dark">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Where Everyone Hangs Out</div>
@@ -529,7 +543,7 @@
   </div>
 </section>
 
-<section>
+<section id="included">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Already Taken Care Of</div>
@@ -538,30 +552,34 @@
     </div>
     <div class="amenity-accordion">
       <details class="faq-item" open>
-        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13a3 3 0 0 1 0 6h-1M4 8v7a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8M4 8V5"/></svg>Kitchen + Coffee</summary>
+        <summary>Kitchen + Coffee</summary>
         <div class="a"><ul style="margin:0;padding-left:20px;"><li>Full kitchen — cookware, dishes, and utensils</li><li>Dishwasher</li><li>Air fryer &amp; indoor griddle</li><li>Keurig K-Duo, starter K-pods, creamer &amp; filters</li><li>Traeger grill with complimentary pellets and grill tools</li></ul></div>
       </details>
       <details class="faq-item">
-        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><path d="M14.5 20c0-2.6 1.8-4.8 4-5.6"/></svg>Family Gear</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>High chair &amp; toddler dinnerware</li><li>Pack 'n Play / travel crib</li><li>Toddler toilet seat</li><li>Safety gates &amp; toys</li><li>Downstairs sleeper sofa</li></ul></div>
+        <summary>Family Gear</summary>
+        <div class="a"><ul style="margin:0;padding-left:20px;"><li>High chair</li><li>Pack 'n Play / travel crib</li><li>Linens/sheet for the Pack 'n Play</li><li>Kids plates &amp; cups</li><li>Sippy cups &amp; lids</li><li>Child-size forks, knives &amp; spoons</li><li>Baby bibs</li><li>Toddler toilet seat</li><li>Safety gates</li><li>Kids toys</li></ul></div>
       </details>
       <details class="faq-item">
-        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 5 4h3l-2 4.5M9 8.5 11 4h3l-2 4.5M15 8.5 17 4h3l-2 4.5"/><rect x="3" y="8.5" width="18" height="11.5" rx="1.5"/></svg>Entertainment</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Movie room</li><li>Pool table &amp; poker table</li><li>Arcade cabinet</li><li>VR headset</li><li>Indoor basketball game</li><li>Board games</li></ul></div>
+        <summary>Entertainment</summary>
+        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Movie room</li><li>Pool table &amp; poker table</li><li>Arcade cabinet</li><li>VR headset</li><li>Indoor basketball game</li><li>Board games</li><li>Smart TVs</li><li>Giant yard games</li></ul></div>
       </details>
       <details class="faq-item">
-        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>Work + Fitness</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Two dedicated workspaces</li><li>High-speed Wi-Fi</li><li>Peloton bike</li><li>Adjustable weight bench</li></ul></div>
+        <summary>Work + Fitness</summary>
+        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Two dedicated workspaces</li><li>High-speed Wi-Fi</li><li>Peloton bike</li><li>Adjustable weight bench</li><li>Free weights</li></ul></div>
       </details>
       <details class="faq-item">
-        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Comfort + Convenience</summary>
-        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Washer &amp; dryer, starter detergent</li><li>Central heating and cooling, plus mini-split A/C in select rooms</li><li>Towels, linens &amp; starter toiletries</li><li>Iron &amp; ironing board</li><li>Keyless entry</li><li>Driveway parking for 3–4 cars, plus free overflow</li></ul></div>
+        <summary>Comfort + Convenience</summary>
+        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Central heating and cooling, plus mini-split A/C in select rooms</li><li>Gas fireplace</li><li>Towels, linens &amp; starter toiletries</li><li>Hair dryer</li><li>Iron &amp; ironing board</li><li>Keyless entry</li><li>Driveway parking for 3–4 cars, plus free overflow</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary>Laundry + Household Basics</summary>
+        <div class="a"><ul style="margin:0;padding-left:20px;"><li>Washer &amp; dryer</li><li>Starter laundry supplies / complimentary laundry pods</li><li>Dishwasher tablets</li><li>Trash bags</li><li>Paper towels</li><li>Basic cleaning supplies</li></ul></div>
       </details>
     </div>
   </div>
 </section>
 
-<section style="background:var(--cream-deep);">
+<section id="archive" style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">A Closer Look</div>

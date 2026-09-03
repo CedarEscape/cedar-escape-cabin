@@ -228,7 +228,7 @@
   .resort-strip .head { text-align:center; font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:26px; }
 
   /* ---------- WORKS FOR GROUPS ---------- */
-  .works-band { background: var(--forest-deep); }
+  .works-band { background: var(--forest-deep); padding: 76px 0; border-top: 1px solid var(--gold); }
   .works-grid { display:grid; grid-template-columns:1fr; gap:36px; text-align:center; }
   @media (min-width:700px) { .works-grid { grid-template-columns:repeat(2,1fr); } }
   @media (min-width:980px) { .works-grid { grid-template-columns:repeat(5,1fr); gap:20px; } }
@@ -610,20 +610,15 @@
 
   /* ---------- TRIP SIGNPOST NAV (SIGNATURE) ---------- */
   .trailhead {
-    background: var(--forest-deep);
-    color: var(--cream);
+    background: var(--cream);
+    color: var(--ink);
     position: relative;
     overflow: hidden;
+    padding: 72px 0;
+    border-top: 1px solid var(--gold);
   }
   .trailhead .wrap { position: relative; z-index: 2; }
-  .trailhead::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 90px);
-  }
-  .trailhead .section-head h2 { color: var(--cream); }
-  .trailhead .section-head .eyebrow { color: var(--gold-bright); }
-  .trailhead .section-head p { color: rgba(246,241,230,0.72); }
+  .trailhead .section-head h2 { color: var(--forest-deep); }
 
   .signpost-nav {
     display: flex;

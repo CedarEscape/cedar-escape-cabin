@@ -204,13 +204,14 @@
   .resort-strip .head { text-align:center; font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:26px; }
 
   /* ---------- WORKS FOR GROUPS ---------- */
-  .works-grid { display:grid; grid-template-columns:1fr; gap:16px; }
+  .works-band { background: var(--forest-deep); }
+  .works-grid { display:grid; grid-template-columns:1fr; gap:36px; text-align:center; }
   @media (min-width:700px) { .works-grid { grid-template-columns:repeat(2,1fr); } }
-  @media (min-width:980px) { .works-grid { grid-template-columns:repeat(5,1fr); } }
-  .works-card { background: var(--cream); border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:2px; padding:22px 18px 18px; text-align:center; }
-  .works-card svg { width:24px; height:24px; color:var(--gold); margin-bottom:10px; }
-  .works-card h4 { font-family:'Playfair Display', serif; font-style:italic; font-size:16px; color:var(--forest-deep); margin-bottom:6px; }
-  .works-card p { font-size:12.5px; color:#5a5346; }
+  @media (min-width:980px) { .works-grid { grid-template-columns:repeat(5,1fr); gap:20px; } }
+  .works-card { display:flex; flex-direction:column; align-items:center; }
+  .works-card svg { width:38px; height:38px; color:var(--gold-bright); margin-bottom:16px; }
+  .works-card h4 { font-family:'Playfair Display', serif; font-style:italic; font-size:19px; color:var(--cream); margin-bottom:8px; }
+  .works-card p { font-size:13px; color:rgba(246,241,230,0.7); max-width:210px; }
 
   /* ---------- TEASER SECTIONS ---------- */
   .teaser-split { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
@@ -1191,11 +1192,11 @@
   </div>
 </section>
 
-<section>
+<section class="works-band">
   <div class="wrap">
-    <div class="section-head" style="margin:0 auto 40px;text-align:center;">
-      <div class="eyebrow">Made for Group Weekends</div>
-      <h2>Why Cedar Escape works for groups.</h2>
+    <div class="section-head" style="margin:0 auto 48px;text-align:center;">
+      <div class="eyebrow" style="color:var(--gold-bright);">Made for Group Weekends</div>
+      <h2 style="color:var(--cream);">Why Cedar Escape works for groups.</h2>
     </div>
     <div class="works-grid">
       <div class="works-card">

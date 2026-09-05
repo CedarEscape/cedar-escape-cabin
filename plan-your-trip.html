@@ -82,8 +82,8 @@
   .step-card h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; margin: 8px 0 10px; color: var(--forest-deep); }
   .step-card p { font-size: 13.5px; color: #55503f; }
 
-  .prep-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  @media (min-width: 760px) { .prep-grid { grid-template-columns: repeat(3,1fr); } }
+  .prep-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 780px; margin: 0 auto; }
+  @media (min-width: 760px) { .prep-grid { grid-template-columns: repeat(2,1fr); } }
   .prep-card { background: var(--cream-deep); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 22px 20px; }
   .prep-card h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--forest-deep); margin-bottom: 12px; }
   .prep-card ul { margin: 0; padding-left: 18px; font-size: 14px; color: #4b453b; }
@@ -93,9 +93,8 @@
   .family-fun { background: #E9EEE0; padding: 64px 0; }
   .family-fun-wrap { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
   @media (min-width: 860px) { .family-fun-wrap { grid-template-columns: 38% 1fr; gap: 48px; } }
-  .family-fun-media { position: relative; border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; }
-  .family-fun-media::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 46px); }
-  .family-fun-media svg { position: relative; width: 96px; height: 96px; color: var(--gold-bright); opacity: 0.9; }
+  .family-fun-media { position: relative; border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; }
+  .family-fun-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .family-fun-info .eyebrow { color: var(--forest); }
   .family-fun-info h2 { margin-top: 8px; }
   .family-fun-info > p { margin-top: 14px; max-width: 560px; color: #414c39; }
@@ -325,17 +324,6 @@
         <a href="explore-massanutten.html" class="link">Explore Massanutten →</a>
       </div>
       <div class="prep-card">
-        <h3>Groceries &amp; Essentials</h3>
-        <ul>
-          <li>Order groceries in advance, or plan your stop</li>
-          <li>Food Lion in Elkton for a full run</li>
-          <li>Target &amp; Walmart Neighborhood Market in Harrisonburg</li>
-          <li>The Market at Massanutten for last-minute basics</li>
-        </ul>
-        <p style="font-size:13px;color:var(--taupe);font-style:italic;margin-top:12px;">Prefer to skip the grocery stop? Schedule a Walmart grocery delivery for around your arrival time so you can unload, settle in, and have the fridge stocked without making another trip.</p>
-        <a href="explore-massanutten.html#groceries" class="link">See Groceries + Essentials →</a>
-      </div>
-      <div class="prep-card">
         <h3>Seasonal Planning</h3>
         <ul>
           <li>Check the weather before you pack</li>
@@ -352,7 +340,7 @@
 <section class="family-fun">
   <div class="wrap family-fun-wrap">
     <div class="family-fun-media">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7h10M5 12h14M7 17h10"/><circle cx="12" cy="3" r="1.4" fill="currentColor" stroke="none"/></svg>
+      <img src="images/massanutten-chairlift.webp" loading="lazy" alt="Scenic chairlift ride over the mountains at Massanutten Resort">
     </div>
     <div class="family-fun-info">
       <div class="eyebrow">For Families</div>
@@ -377,6 +365,24 @@
       </div>
       <a href="https://www.massresort.com/explore/our-resort/#page-395" target="_blank" rel="noopener" class="btn btn-outline">Explore Resort Recreation →</a>
       <p class="disclaimer">Resort amenities, hours, fees and availability are managed separately by Massanutten Resort.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="prep-grid" style="max-width:480px;">
+      <div class="prep-card">
+        <h3>Groceries &amp; Essentials</h3>
+        <ul>
+          <li>Order groceries in advance, or plan your stop</li>
+          <li>Food Lion in Elkton for a full run</li>
+          <li>Target &amp; Walmart Neighborhood Market in Harrisonburg</li>
+          <li>The Market at Massanutten for last-minute basics</li>
+        </ul>
+        <p style="font-size:13px;color:var(--taupe);font-style:italic;margin-top:12px;">Prefer to skip the grocery stop? Schedule a Walmart grocery delivery for around your arrival time so you can unload, settle in, and have the fridge stocked without making another trip.</p>
+        <a href="explore-massanutten.html#groceries" class="link">See Groceries + Essentials →</a>
+      </div>
     </div>
   </div>
 </section>

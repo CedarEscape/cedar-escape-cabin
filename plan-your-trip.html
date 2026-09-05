@@ -84,9 +84,11 @@
 
   .prep-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 780px; margin: 0 auto; }
   @media (min-width: 760px) { .prep-grid { grid-template-columns: repeat(2,1fr); } }
-  .prep-card { background: var(--cream-deep); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 22px 20px; overflow: hidden; }
-  .prep-card-photo { height: 130px; margin: -22px -22px 18px; }
-  .prep-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .prep-card { background: var(--cream-deep); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 22px 20px; }
+  .groceries-wrap { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
+  @media (min-width: 760px) { .groceries-wrap { grid-template-columns: 1fr 38%; gap: 40px; } }
+  .groceries-photo { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; }
+  .groceries-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .prep-card h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--forest-deep); margin-bottom: 12px; }
   .prep-card ul { margin: 0; padding-left: 18px; font-size: 14px; color: #4b453b; }
   .prep-card li { margin-bottom: 6px; }
@@ -373,9 +375,8 @@
 
 <section style="background:var(--cream-deep);">
   <div class="wrap">
-    <div class="prep-grid" style="max-width:480px;">
+    <div class="groceries-wrap">
       <div class="prep-card">
-        <div class="prep-card-photo"><img src="images/local-biz/food-lion.jpg" loading="lazy" alt="Food Lion storefront in Elkton, VA"></div>
         <h3>Groceries &amp; Essentials</h3>
         <ul>
           <li>Order groceries in advance, or plan your stop</li>
@@ -386,6 +387,7 @@
         <p style="font-size:13px;color:var(--taupe);font-style:italic;margin-top:12px;">Prefer to skip the grocery stop? Schedule a Walmart grocery delivery for around your arrival time so you can unload, settle in, and have the fridge stocked without making another trip.</p>
         <a href="explore-massanutten.html#groceries" class="link">See Groceries + Essentials →</a>
       </div>
+      <div class="groceries-photo"><img src="images/local-biz/food-lion.jpg" loading="lazy" alt="Food Lion storefront in Elkton, VA"></div>
     </div>
   </div>
 </section>

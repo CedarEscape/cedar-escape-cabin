@@ -82,8 +82,6 @@
   .step-card h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; margin: 8px 0 10px; color: var(--forest-deep); }
   .step-card p { font-size: 13.5px; color: #55503f; }
 
-  .prep-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 780px; margin: 0 auto; }
-  @media (min-width: 760px) { .prep-grid { grid-template-columns: repeat(2,1fr); } }
   .prep-card { background: var(--cream-deep); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 2px; padding: 22px 22px 20px; }
   .groceries-wrap { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
   @media (min-width: 760px) { .groceries-wrap { grid-template-columns: 1fr 38%; gap: 40px; } }
@@ -93,6 +91,17 @@
   .prep-card ul { margin: 0; padding-left: 18px; font-size: 14px; color: #4b453b; }
   .prep-card li { margin-bottom: 6px; }
   .prep-card .link { display: inline-block; margin-top: 14px; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest-deep); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+  .practical-wrap { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+  @media (min-width: 860px) { .practical-wrap { grid-template-columns: 1.15fr 1fr; gap: 48px; } }
+  .practical-media { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; }
+  .practical-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .practical-block { padding: 22px 0; border-top: 1px solid var(--line); }
+  .practical-block:first-of-type { border-top: none; padding-top: 0; }
+  .practical-block h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: var(--forest-deep); margin-bottom: 10px; }
+  .practical-block ul { margin: 0; padding-left: 18px; font-size: 14px; color: #4b453b; }
+  .practical-block li { margin-bottom: 6px; }
+  .practical-block .link { display: inline-block; margin-top: 12px; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest-deep); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
 
   .family-fun { background: #E9EEE0; padding: 64px 0; }
   .family-fun-wrap { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
@@ -310,13 +319,13 @@
 </section>
 
 <section style="background:var(--cream-deep);">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">What to Do Before You Arrive</div>
-      <h2>The practical stuff, sorted.</h2>
-    </div>
-    <div class="prep-grid">
-      <div class="prep-card">
+  <div class="wrap practical-wrap">
+    <div class="practical-info">
+      <div class="section-head" style="margin-bottom:8px;">
+        <div class="eyebrow">What to Do Before You Arrive</div>
+        <h2>The practical stuff, sorted.</h2>
+      </div>
+      <div class="practical-block">
         <h3>Book Resort Activities</h3>
         <ul>
           <li>Reserve WaterPark passes</li>
@@ -327,7 +336,7 @@
         </ul>
         <a href="explore-massanutten.html" class="link">Explore Massanutten →</a>
       </div>
-      <div class="prep-card">
+      <div class="practical-block">
         <h3>Seasonal Planning</h3>
         <ul>
           <li>Check the weather before you pack</li>
@@ -338,13 +347,16 @@
         <a href="explore-massanutten.html#weather" class="link">See Mountain Weather →</a>
       </div>
     </div>
+    <div class="practical-media">
+      <img src="images/massanutten-chairlift.webp" loading="lazy" alt="Scenic chairlift ride over the mountains at Massanutten Resort">
+    </div>
   </div>
 </section>
 
 <section class="family-fun">
   <div class="wrap family-fun-wrap">
     <div class="family-fun-media">
-      <img src="images/massanutten-chairlift.webp" loading="lazy" alt="Scenic chairlift ride over the mountains at Massanutten Resort">
+      <img src="images/massanutten-playground.webp" loading="lazy" alt="Kids playing on the playground at Massanutten Resort, with the lake and mountains in the background">
     </div>
     <div class="family-fun-info">
       <div class="eyebrow">For Families</div>

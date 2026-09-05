@@ -90,6 +90,22 @@
   .prep-card li { margin-bottom: 6px; }
   .prep-card .link { display: inline-block; margin-top: 14px; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest-deep); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
 
+  .family-fun { background: #E9EEE0; padding: 64px 0; }
+  .family-fun-wrap { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+  @media (min-width: 860px) { .family-fun-wrap { grid-template-columns: 38% 1fr; gap: 48px; } }
+  .family-fun-media { position: relative; border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; }
+  .family-fun-media::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 46px); }
+  .family-fun-media svg { position: relative; width: 96px; height: 96px; color: var(--gold-bright); opacity: 0.9; }
+  .family-fun-info .eyebrow { color: var(--forest); }
+  .family-fun-info h2 { margin-top: 8px; }
+  .family-fun-info > p { margin-top: 14px; max-width: 560px; color: #414c39; }
+  .ffq-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 26px 0 22px; }
+  @media (min-width: 560px) { .ffq-grid { grid-template-columns: repeat(3,1fr); } }
+  .ffq-item svg { width: 24px; height: 24px; color: var(--forest); margin-bottom: 8px; }
+  .ffq-item h4 { font-family: 'Cinzel', serif; font-size: 12.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--forest-deep); margin-bottom: 6px; }
+  .ffq-item p { font-size: 13.5px; color: #4b5643; margin: 0; }
+  .family-fun-info .disclaimer { font-size: 11.5px; color: #6b7360; font-style: italic; margin-top: 14px; }
+
   .pack-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
   @media (min-width: 640px) { .pack-grid { grid-template-columns: repeat(2,1fr); } }
   @media (min-width: 980px) { .pack-grid { grid-template-columns: repeat(4,1fr); } }
@@ -329,6 +345,38 @@
         </ul>
         <a href="explore-massanutten.html#weather" class="link">See Mountain Weather →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="family-fun">
+  <div class="wrap family-fun-wrap">
+    <div class="family-fun-media">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7h10M5 12h14M7 17h10"/><circle cx="12" cy="3" r="1.4" fill="currentColor" stroke="none"/></svg>
+    </div>
+    <div class="family-fun-info">
+      <div class="eyebrow">For Families</div>
+      <h2>Easy family fun around the resort.</h2>
+      <p>Need something simple between the bigger plans? Massanutten has lower-key recreation around the resort, including playgrounds, courts, trails and other outdoor options that are great when you don't want to plan a whole outing.</p>
+      <div class="ffq-grid">
+        <div class="ffq-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7h10M5 12h14M7 17h10"/></svg>
+          <h4>Playgrounds</h4>
+          <p>An easy stop when the kids need to burn off some energy.</p>
+        </div>
+        <div class="ffq-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg>
+          <h4>Courts + Outdoor Recreation</h4>
+          <p>Basketball, tennis, volleyball and other recreation are available around the resort.</p>
+        </div>
+        <div class="ffq-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 10 5l4 9 3-4 3 10"/></svg>
+          <h4>Trails + More</h4>
+          <p>Good for a quick walk, bike ride or some outside time between activities.</p>
+        </div>
+      </div>
+      <a href="https://www.massresort.com/explore/our-resort/#page-395" target="_blank" rel="noopener" class="btn btn-outline">Explore Resort Recreation →</a>
+      <p class="disclaimer">Resort amenities, hours, fees and availability are managed separately by Massanutten Resort.</p>
     </div>
   </div>
 </section>

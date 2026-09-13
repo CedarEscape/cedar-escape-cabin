@@ -1137,6 +1137,7 @@
       <h3 id="contactModalTitle">Message Cedar Escape</h3>
       <p class="contact-modal-sub">Have a question about your stay or an upcoming booking? Send us a note and we'll reply directly &mdash; no account needed.</p>
       <form class="contact-form" id="contactForm" action="https://formsubmit.co/cedarescape.cabin@gmail.com" method="POST">
+        <input type="hidden" name="_next" id="cf-next" value="">
         <input type="hidden" name="_subject" value="New message from Cedar Escape website">
         <input type="hidden" name="_template" value="table">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
@@ -1171,6 +1172,10 @@
   var form = document.getElementById('contactForm');
   var formWrap = document.getElementById('contactFormWrap');
   var success = document.getElementById('contactFormSuccess');
+  var nextField = document.getElementById('cf-next');
+  if (nextField) {
+    nextField.value = location.origin + location.pathname + '?contact=sent';
+  }
 
   function openModal(e){
     if (e) e.preventDefault();
@@ -1186,36 +1191,22 @@
   overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
+  // FormSubmit occasionally shows an interactive spam check that a background
+  // fetch() can never get past, so we submit as a real page navigation (with
+  // _next bringing the visitor back here) instead of AJAX. On return, show
+  // the same success state the modal always used.
+  if (location.search.indexOf('contact=sent') !== -1) {
+    openModal();
+    formWrap.style.display = 'none';
+    success.style.display = 'block';
+    var cleanUrl = location.origin + location.pathname;
+    history.replaceState(null, '', cleanUrl);
+  }
+
+  form.addEventListener('submit', function(){
     var btn = form.querySelector('button[type="submit"]');
-    var originalText = btn.textContent;
     btn.disabled = true;
     btn.textContent = 'Sending…';
-    var data = new FormData(form);
-    fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(function(res){
-      var contentType = res.headers.get('content-type') || '';
-      if (!res.ok || contentType.indexOf('application/json') === -1) {
-        throw new Error('Unexpected response (not confirmed JSON success)');
-      }
-      return res.json().then(function(json){
-        if (!json || json.success === false) {
-          throw new Error('Submit not successful');
-        }
-        formWrap.style.display = 'none';
-        success.style.display = 'block';
-        form.reset();
-      });
-    }).catch(function(){
-      alert('Sorry, something went wrong sending your message. Please email us directly at cedarescape.cabin@gmail.com.');
-    }).finally(function(){
-      btn.disabled = false;
-      btn.textContent = originalText;
-    });
   });
 })();
 </script>

@@ -87,6 +87,25 @@ CATEGORY_ICONS = {
     "default": '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
 }
 
+# Manually-maintained image map (see item 14 of the original spec): only
+# real, properly-licensed photos go here, matched by a lowercase substring
+# of the event title. No automated scraping of Massanutten's own event
+# photography. Falls back to a category icon when nothing matches.
+TITLE_IMAGES = {
+    "fall festival": {
+        "src": "images/fall-fest-mood.webp",
+        "alt": "A pumpkin patch in autumn",
+    },
+}
+
+
+def image_for_title(title: str):
+    t = title.lower()
+    for key, info in TITLE_IMAGES.items():
+        if key in t:
+            return info
+    return None
+
 SUMMARY_TEMPLATES = [
     (("spartan", "race"), "{title} brings obstacle racing to the mountain{when} — expect extra energy (and traffic) around the resort."),
     (("festival",), "{title} brings local music, food and vendors to the mountain{when}."),
@@ -259,14 +278,21 @@ def escape_html(text: str) -> str:
 
 
 def render_featured(event) -> str:
-    icon_path = CATEGORY_ICONS.get(event.get("category", "default"), CATEGORY_ICONS["default"])
     when = escape_html(event["when_display"])
     time_part = f" &nbsp;|&nbsp; {escape_html(event['time_display'])}" if event.get("time_display") else ""
     attrs_html = "".join(f"<span>{escape_html(a)}</span>" for a in event.get("attrs", []))
+    image = image_for_title(event["title"])
+    if image:
+        media_html = f'        <img src="{image["src"]}" alt="{escape_html(image["alt"])}" loading="lazy">\n'
+        media_class = "fe-media fe-media-photo"
+    else:
+        icon_path = CATEGORY_ICONS.get(event.get("category", "default"), CATEGORY_ICONS["default"])
+        media_html = f'        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">{icon_path}</svg>\n'
+        media_class = "fe-media"
     return (
         '    <div class="featured-event">\n'
-        '      <div class="fe-media">\n'
-        f'        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">{icon_path}</svg>\n'
+        f'      <div class="{media_class}">\n'
+        f'{media_html}'
         '      </div>\n'
         '      <div class="fe-body">\n'
         '        <div class="fe-eyebrow">Featured Event</div>\n'

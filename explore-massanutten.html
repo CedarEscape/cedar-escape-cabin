@@ -113,8 +113,9 @@
 
   .featured-event { display: grid; grid-template-columns: 1fr; gap: 0; background: rgba(246,241,230,0.04); border: 1px solid rgba(246,241,230,0.14); border-radius: 3px; overflow: hidden; margin-bottom: 40px; }
   @media (min-width: 800px) { .featured-event { grid-template-columns: 42% 1fr; } }
-  .featured-event .fe-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; }
+  .featured-event .fe-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .featured-event .fe-media svg { width: 72px; height: 72px; color: var(--gold-bright); opacity: 0.85; }
+  .featured-event .fe-media-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   @media (min-width: 800px) { .featured-event .fe-media { aspect-ratio: auto; } }
   .featured-event .fe-body { padding: 30px 30px 32px; }
   .featured-event .fe-eyebrow { font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-bright); }
@@ -468,8 +469,8 @@
 
     <!-- EVENTS:AUTO:START -->
     <div class="featured-event">
-      <div class="fe-media">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/><path d="M4 10h16"/></svg>
+      <div class="fe-media fe-media-photo">
+        <img src="images/fall-fest-mood.webp" alt="A pumpkin patch in autumn" loading="lazy">
       </div>
       <div class="fe-body">
         <div class="fe-eyebrow">Featured Event</div>

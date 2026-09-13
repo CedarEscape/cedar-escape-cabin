@@ -102,6 +102,44 @@
   .callout-strip p { font-size: 13px; color: #5a5346; margin-top: 3px; }
   .callout-strip .sub { font-size: 11px; color: var(--taupe); margin-top: 6px; }
 
+  /* ---------- WHAT'S HAPPENING (LIVE EVENTS) ---------- */
+  .happening-section { background: var(--forest-deep); padding: 80px 0; position: relative; overflow: hidden; }
+  .happening-section::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 48px); }
+  .happening-section .wrap { position: relative; z-index: 1; }
+  .happening-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
+  .happening-head h2 { color: var(--cream); font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(26px,3vw,34px); margin-top: 8px; }
+  .happening-head p { color: rgba(246,241,230,0.72); margin-top: 8px; font-size: 14.5px; }
+  .happening-head .tag { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246,241,230,0.5); white-space: nowrap; }
+
+  .featured-event { display: grid; grid-template-columns: 1fr; gap: 0; background: rgba(246,241,230,0.04); border: 1px solid rgba(246,241,230,0.14); border-radius: 3px; overflow: hidden; margin-bottom: 40px; }
+  @media (min-width: 800px) { .featured-event { grid-template-columns: 42% 1fr; } }
+  .featured-event .fe-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; }
+  .featured-event .fe-media svg { width: 72px; height: 72px; color: var(--gold-bright); opacity: 0.85; }
+  @media (min-width: 800px) { .featured-event .fe-media { aspect-ratio: auto; } }
+  .featured-event .fe-body { padding: 30px 30px 32px; }
+  .featured-event .fe-eyebrow { font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-bright); }
+  .featured-event h3 { color: var(--cream); font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(22px,2.6vw,28px); margin: 8px 0 6px; }
+  .featured-event .fe-when { font-size: 13.5px; color: rgba(246,241,230,0.78); display: flex; align-items: center; gap: 7px; }
+  .featured-event .fe-when svg { width: 14px; height: 14px; color: var(--gold-bright); flex: none; }
+  .featured-event .fe-desc { font-size: 14.5px; color: rgba(246,241,230,0.86); margin-top: 14px; max-width: 480px; }
+  .fe-attrs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .fe-attrs span { font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(246,241,230,0.85); border: 1px solid rgba(246,241,230,0.28); border-radius: 20px; padding: 5px 11px; }
+  .featured-event .fe-cta { display: inline-block; margin-top: 20px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13px; color: var(--forest-deep); background: linear-gradient(180deg, var(--gold-bright), var(--gold)); border-radius: 2px; padding: 11px 22px; text-decoration: none; }
+
+  .coming-up-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 16px; }
+  .coming-up-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 600px) { .coming-up-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (min-width: 1000px) { .coming-up-grid { grid-template-columns: repeat(4,1fr); } }
+  .cu-card { background: rgba(246,241,230,0.04); border: 1px solid rgba(246,241,230,0.12); border-radius: 2px; padding: 18px 18px 16px; }
+  .cu-card .cu-when { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-bright); }
+  .cu-card h4 { color: var(--cream); font-family: 'Playfair Display', serif; font-style: italic; font-size: 16.5px; margin: 6px 0 8px; }
+  .cu-card p { font-size: 12.5px; color: rgba(246,241,230,0.75); }
+  .cu-card .cu-go { display: inline-block; margin-top: 10px; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid var(--gold-bright); padding-bottom: 2px; }
+
+  .happening-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(246,241,230,0.14); }
+  .happening-footer .full-cal { font-family: 'Cinzel', serif; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid var(--gold-bright); padding-bottom: 2px; }
+  .happening-footer .updated { font-size: 11px; color: rgba(246,241,230,0.4); font-style: italic; }
+
   /* ---------- VALLEY DESTINATION CARDS ---------- */
   .valley-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
   @media (min-width: 760px) { .valley-grid { grid-template-columns: repeat(3,1fr); } }
@@ -414,6 +452,75 @@
       <a href="https://www.massresort.com/explore/entertainment-dining-calendar/" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;">View Events Calendar</a>
     </div>
     <p class="sub" style="text-align:right;font-size:11px;color:var(--taupe);margin-top:6px;">Opens Massanutten's Activities &amp; Events Calendar ↗</p>
+  </div>
+</section>
+
+<section class="happening-section" id="happening">
+  <div class="wrap">
+    <div class="happening-head">
+      <div>
+        <div class="eyebrow" style="color:var(--gold-bright);">What's Happening at Massanutten</div>
+        <h2>See what's coming up on the mountain.</h2>
+        <p>Live events. Seasonal fun. Something for everyone.</p>
+      </div>
+    </div>
+
+    <!-- EVENTS:AUTO:START -->
+    <div class="featured-event">
+      <div class="fe-media">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/><path d="M4 10h16"/></svg>
+      </div>
+      <div class="fe-body">
+        <div class="fe-eyebrow">Featured Event</div>
+        <h3>Fall Festival</h3>
+        <div class="fe-when">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          Saturday, October 10, 2026 &nbsp;|&nbsp; 11:30 AM &ndash; 6:00 PM
+        </div>
+        <p class="fe-desc">Local musicians, food trucks and artisan vendors take over the slopes for a Shenandoah Valley fall celebration &mdash; a good one to plan around if your trip lines up with it.</p>
+        <div class="fe-attrs">
+          <span>Live Music</span>
+          <span>Food + Drinks</span>
+          <span>Local Artisans</span>
+          <span>Family Fun</span>
+        </div>
+        <a href="https://www.massresort.com/play/live-events/fall-festival/" target="_blank" rel="noopener" class="fe-cta">See Official Details →</a>
+      </div>
+    </div>
+
+    <div class="coming-up-label">Coming Up on the Mountain</div>
+    <div class="coming-up-grid">
+      <div class="cu-card">
+        <div class="cu-when">Oct 24 &ndash; 25</div>
+        <h4>Virginia Spartan Race Weekend</h4>
+        <p>Obstacle race weekend takes over the mountain &mdash; expect extra energy (and traffic) on the resort roads.</p>
+        <a href="https://www.massresort.com/play/live-events/virginia-spartan-race/" target="_blank" rel="noopener" class="cu-go">See Details →</a>
+      </div>
+      <div class="cu-card">
+        <div class="cu-when">Fridays &nbsp;|&nbsp; 7&ndash;10 PM</div>
+        <h4>Friday Live Music</h4>
+        <p>Acoustic sets from local performers at Base Camp. Free to attend.</p>
+        <a href="https://www.massresort.com/play/live-events/summer-concert-series/" target="_blank" rel="noopener" class="cu-go">See Details →</a>
+      </div>
+      <div class="cu-card">
+        <div class="cu-when">Saturdays &nbsp;|&nbsp; 7&ndash;10 PM</div>
+        <h4>Saturday Live Music</h4>
+        <p>Rotating local acts keep the weekend going at Base Camp. Free to attend.</p>
+        <a href="https://www.massresort.com/play/live-events/summer-concert-series/" target="_blank" rel="noopener" class="cu-go">See Details →</a>
+      </div>
+      <div class="cu-card">
+        <div class="cu-when">Sundays &nbsp;|&nbsp; 6&ndash;9 PM</div>
+        <h4>Sunday Live Music</h4>
+        <p>Wind the weekend down with live acoustic music at Base Camp. Free to attend.</p>
+        <a href="https://www.massresort.com/play/live-events/summer-concert-series/" target="_blank" rel="noopener" class="cu-go">See Details →</a>
+      </div>
+    </div>
+
+    <div class="happening-footer">
+      <a href="https://www.massresort.com/play/live-events/" target="_blank" rel="noopener" class="full-cal">See the Full Massanutten Event Calendar →</a>
+      <span class="updated">Updated from Massanutten Resort · Sept. 13</span>
+    </div>
+    <!-- EVENTS:AUTO:END -->
   </div>
 </section>
 

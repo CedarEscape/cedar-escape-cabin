@@ -1,0 +1,36 @@
+name: Sync Massanutten events
+
+on:
+  schedule:
+    - cron: "0 12,0 * * *" # twice daily -- 8am and 8pm US Eastern (12:00 and 00:00 UTC)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run events sync
+        run: python3 scripts/sync_events.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "cedar-escape-bot"
+          git config user.email "actions@github.com"
+          if ! git diff --quiet -- explore-massanutten.html data/massanutten-events.json; then
+            git add explore-massanutten.html data/massanutten-events.json
+            git commit -m "Auto-sync Massanutten events"
+            git push
+          else
+            echo "No event changes to commit."
+          fi

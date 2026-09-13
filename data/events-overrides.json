@@ -1,0 +1,32 @@
+{
+  "_instructions": "This file controls the 'What's Happening at Massanutten' section on explore-massanutten.html without touching any site code. It's read every time scripts/sync_events.py runs (about every 12 hours). featured: the exact title of one event (from a real Massanutten event or from customEvents below) to always show as the Featured Event, or null to let it auto-pick the next upcoming one. hidden: a list of event titles (exact match, case-insensitive) to never show, even if Massanutten still lists them. customEvents: fully manual events you add yourself (a local festival, a JMU game day, etc) -- each one needs title, when_display (e.g. 'October 24-25, 2026'), time_display (optional, e.g. '7-10 PM'), summary (one sentence, no need to link anywhere official), source_url (where 'See Details' should go), and optionally attrs (a short list of tags like ['Live Music','Family Fun'] -- only used on the Featured Event card). priority: optional, only needed if you want to force a specific display order -- lower numbers show first; anything not listed here just sorts by date automatically.",
+  "featured": null,
+  "hidden": [],
+  "priority": {},
+  "customEvents": [
+    {
+      "title": "Friday Live Music",
+      "when_display": "Fridays",
+      "time_display": "7-10 PM",
+      "summary": "Acoustic sets from local performers at Base Camp. Free to attend.",
+      "source_url": "https://www.massresort.com/play/live-events/summer-concert-series/",
+      "category": "music"
+    },
+    {
+      "title": "Saturday Live Music",
+      "when_display": "Saturdays",
+      "time_display": "7-10 PM",
+      "summary": "Rotating local acts keep the weekend going at Base Camp. Free to attend.",
+      "source_url": "https://www.massresort.com/play/live-events/summer-concert-series/",
+      "category": "music"
+    },
+    {
+      "title": "Sunday Live Music",
+      "when_display": "Sundays",
+      "time_display": "6-9 PM",
+      "summary": "Wind the weekend down with live acoustic music at Base Camp. Free to attend.",
+      "source_url": "https://www.massresort.com/play/live-events/summer-concert-series/",
+      "category": "music"
+    }
+  ]
+}

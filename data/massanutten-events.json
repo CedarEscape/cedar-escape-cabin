@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Fall Festival",
+    "start_date": "2026-10-10",
+    "end_date": "2026-10-10",
+    "when_display": "Saturday, October 10, 2026",
+    "time_display": "11:30 AM - 6:00 PM",
+    "summary": "Fall Festival brings local music, food and vendors to the mountain on Saturday, October 10, 2026.",
+    "category": "festival",
+    "attrs": [
+      "Live Music",
+      "Food + Drinks",
+      "Local Artisans"
+    ],
+    "source_url": "https://www.massresort.com/play/live-events/fall-festival/",
+    "last_verified": "2026-09-13"
+  },
+  {
+    "title": "Virginia Spartan Race",
+    "start_date": "2026-10-24",
+    "end_date": "2026-10-25",
+    "when_display": "October 24\u201325, 2026",
+    "time_display": "",
+    "summary": "Virginia Spartan Race brings obstacle racing to the mountain on October 24\u201325, 2026 \u2014 expect extra energy (and traffic) around the resort.",
+    "category": "spartan",
+    "attrs": [],
+    "source_url": "https://www.massresort.com/play/live-events/virginia-spartan-race/",
+    "last_verified": "2026-09-13"
+  }
+]

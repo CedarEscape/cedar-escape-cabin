@@ -2,7 +2,7 @@ import { verifyWebhookSignature } from '../../_shared/stripe.js';
 import { getRequest, getItems, updateStatus, logEvent } from '../../_shared/db.js';
 import { markTokenUsed, getOrCreateToken } from '../../_shared/tokens.js';
 import { calculateMinutes, SERVICES } from '../../_shared/pricing.js';
-import { sendEmail, renderShell, renderPanel, renderPanelRow, formatCents, formatDate, formatTime, renderOrderSummary } from '../../_shared/email.js';
+import { sendEmail, renderShell, renderPanel, renderPanelRow, formatCents, formatDate, formatTime, renderOrderSummary, HERO_IMAGES } from '../../_shared/email.js';
 import { buildIcs } from '../../_shared/ics.js';
 
 function serviceLabelFor(code) {
@@ -78,15 +78,16 @@ export async function onRequestPost({ request, env }) {
       title: 'Your Cedar Escape massage is confirmed',
       heroEyebrow: 'Massage Confirmed',
       heroHeadline: "You're all set!",
+      heroImage: HERO_IMAGES.mountain,
       bodyHtml: `
         <p>Hi ${escapeHtml(req.primary_name)},</p>
         <p>We're so glad you'll be enjoying an in-home massage at Cedar Escape. Here are your details for reference:</p>
         <p style="font-size:17px;margin-top:14px;"><strong>${escapeHtml(formatDate(req.preferred_date))} at ${escapeHtml(formatTime(req.preferred_time))}</strong></p>
         ${orderSummaryHtml}
         ${renderPanel(
-          renderPanelRow('Total service value', formatCents(req.subtotal_cents)) +
-            renderPanelRow('Deposit paid (50%)', formatCents(req.deposit_cents)) +
-            renderPanelRow('Remaining balance (50%)', formatCents(req.balance_cents))
+          renderPanelRow('Total service value', formatCents(req.subtotal_cents), 'price') +
+            renderPanelRow('Deposit paid (50%)', formatCents(req.deposit_cents), 'price') +
+            renderPanelRow('Remaining balance (50%)', formatCents(req.balance_cents), 'price')
         )}
         <p>We'll send a secure reminder 48 hours before your massage to take care of the remaining balance.</p>
         <p>Your calendar invite is attached for easy reference.</p>
@@ -112,6 +113,7 @@ export async function onRequestPost({ request, env }) {
       title: `Confirmed — Cedar Escape massage — ${formatDate(req.preferred_date)}`,
       heroEyebrow: 'Final Confirmation',
       heroHeadline: 'Thanks for being part of it!',
+      heroImage: HERO_IMAGES.mountain,
       bodyHtml: `
         <p>Hi ${escapeHtml(env.PARTNER_NAME || 'there')},</p>
         <p>This is a final confirmation for your upcoming massage at Cedar Escape.</p>
@@ -142,11 +144,12 @@ export async function onRequestPost({ request, env }) {
       title: "You're all set for your massage",
       heroEyebrow: 'Paid in Full',
       heroHeadline: 'See you soon!',
+      heroImage: HERO_IMAGES.mountain,
       bodyHtml: `
         <p>Hi ${escapeHtml(req.primary_name)},</p>
         <p>Your massage is paid in full and everything is set for:</p>
         <p style="font-size:17px;margin-top:14px;"><strong>${escapeHtml(formatDate(req.preferred_date))} at ${escapeHtml(formatTime(req.preferred_time))}</strong></p>
-        ${renderPanel(renderPanelRow('Total paid', formatCents(req.subtotal_cents)))}
+        ${renderPanel(renderPanelRow('Total paid', formatCents(req.subtotal_cents), 'price'))}
         <p>Nothing else to take care of — enjoy the rest of your stay.</p>
         <p style="font-style:italic;">Cedar Escape</p>
       `,

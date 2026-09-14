@@ -1,13 +1,21 @@
 // Resend wrapper — plain fetch(), no SDK, to keep the Functions bundle small.
 
 const BRAND = {
-  cream: '#F6F1E6',
-  creamDeep: '#EEE6D6',
+  cream: '#FAF6EE',
+  creamDeep: '#F2EBDD',
   forestDeep: '#232D1D',
   forest: '#37452F',
   gold: '#C0973F',
   goldBright: '#D6B15C',
   ink: '#2B271F',
+};
+
+// Hosted on the production domain regardless of which environment sends the
+// email (local dev / preview / prod) — Resend's servers need a real public
+// HTTPS URL, and these static images are already live there.
+export const HERO_IMAGES = {
+  spa: 'https://cedarescapecabin.com/images/email/hero-spa.jpg',
+  mountain: 'https://cedarescapecabin.com/images/email/hero-mountain.jpg',
 };
 
 function treeSvg(color) {
@@ -27,7 +35,7 @@ const TREE_LIGHT = treeSvg('%23F6F1E6');
 // panels, and a matching footer, echoing the approved Cedar Escape mockup.
 // Built with nested <table> (not div/flexbox/CSS gradients as the only signal)
 // for real compatibility with Outlook's Word rendering engine and older mail apps.
-export function renderShell({ title, heroEyebrow, heroHeadline, bodyHtml }) {
+export function renderShell({ title, heroEyebrow, heroHeadline, heroImage, bodyHtml }) {
   return `<!doctype html>
 <html>
 <head>
@@ -68,9 +76,20 @@ export function renderShell({ title, heroEyebrow, heroHeadline, bodyHtml }) {
       </div>
     </td></tr>
 
-    <tr><td align="center" bgcolor="${BRAND.forestDeep}" style="background:linear-gradient(155deg, ${BRAND.forest} 0%, ${BRAND.forestDeep} 100%);padding:46px 32px;border-top:4px solid ${BRAND.gold};">
+    <tr><td align="center" bgcolor="${BRAND.forestDeep}" background="${heroImage || ''}" style="background-color:${BRAND.forestDeep};${heroImage ? `background-image:linear-gradient(rgba(35,45,29,0.6),rgba(35,45,29,0.8)),url('${heroImage}');background-size:cover;background-position:center;` : `background-image:linear-gradient(155deg, ${BRAND.forest} 0%, ${BRAND.forestDeep} 100%);`}padding:46px 32px;border-top:4px solid ${BRAND.gold};">
+      <!--[if gte mso 9]>
+      <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:220px;">
+      <v:fill type="${heroImage ? 'frame' : 'gradient'}" src="${heroImage || ''}" color="${BRAND.forestDeep}" color2="${BRAND.forest}" />
+      <v:textbox inset="0,0,0,0">
+      <![endif]-->
+      <div>
       ${heroEyebrow ? `<div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:${BRAND.goldBright};font-weight:bold;margin-bottom:12px;">${heroEyebrow}</div>` : ''}
       <div style="font-family:Georgia,serif;font-style:italic;font-size:30px;line-height:1.25;color:${BRAND.cream};">${heroHeadline}</div>
+      </div>
+      <!--[if gte mso 9]>
+      </v:textbox>
+      </v:rect>
+      <![endif]-->
     </td></tr>
 
     <tr><td class="ce-body ce-ink" bgcolor="${BRAND.cream}" style="background:${BRAND.cream};padding:36px 32px;color:${BRAND.ink};font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.65;">
@@ -91,15 +110,33 @@ export function renderShell({ title, heroEyebrow, heroHeadline, bodyHtml }) {
 </html>`;
 }
 
+function svgIcon(path) {
+  return (
+    'data:image/svg+xml;base64,' +
+    btoa(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="%23C0973F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`.replace(/%23/g, '#')
+    )
+  );
+}
+export const ICONS = {
+  calendar: svgIcon('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>'),
+  clock: svgIcon('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>'),
+  guests: svgIcon('<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M2 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1M15.5 14.2A4.3 4.3 0 0 1 19 18v2"/>'),
+  price: svgIcon('<path d="M20.6 12.3 12.7 20a2 2 0 0 1-2.8 0l-6-6a2 2 0 0 1 0-2.8l7.7-7.9a2 2 0 0 1 1.5-.6l5.5.2a2 2 0 0 1 1.9 1.9l.2 5.5a2 2 0 0 1-.1 1.6Z"/><circle cx="14.5" cy="9.5" r="1.2"/>'),
+};
+function iconImg(name) {
+  return name && ICONS[name] ? `<img src="${ICONS[name]}" width="15" height="15" style="vertical-align:-2px;margin-right:6px;" alt="">` : '';
+}
+
 export function renderPanel(rowsHtml) {
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0;"><tr><td class="ce-panel" bgcolor="${BRAND.creamDeep}" style="background:${BRAND.creamDeep};border-radius:6px;border-top:3px solid ${BRAND.gold};padding:20px 22px;">${rowsHtml}</td></tr></table>`;
 }
 
 // Table-based (not flexbox) for real email-client compatibility — Outlook's
 // Word rendering engine and several mobile mail apps don't support flexbox.
-export function renderPanelRow(label, value) {
+export function renderPanelRow(label, value, icon) {
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;"><tr>
-    <td style="padding:7px 0;color:#6b6555;vertical-align:top;width:42%;">${label}</td>
+    <td style="padding:7px 0;color:#6b6555;vertical-align:top;width:42%;">${iconImg(icon)}${label}</td>
     <td style="padding:7px 0;color:${BRAND.forestDeep};font-weight:600;text-align:right;vertical-align:top;">${value}</td>
   </tr></table>`;
 }

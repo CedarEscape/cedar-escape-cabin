@@ -1,6 +1,6 @@
 import { consumeToken, createToken, invalidateTokens } from '../../../_shared/tokens.js';
 import { getRequest, getItems, updateStatus, logEvent } from '../../../_shared/db.js';
-import { sendEmail, renderShell, renderButton, renderPanel, renderPanelRow, formatCents, formatDate, formatTime, renderOrderSummary } from '../../../_shared/email.js';
+import { sendEmail, renderShell, renderButton, renderPanel, renderPanelRow, formatCents, formatDate, formatTime, renderOrderSummary, HERO_IMAGES } from '../../../_shared/email.js';
 import { SERVICES } from '../../../_shared/pricing.js';
 
 function escapeHtml(s) {
@@ -66,9 +66,9 @@ export async function onRequestGet({ request, env, params }) {
       bodyHtml: `
         <p>Our massage partner isn't available for this request.</p>
         ${renderPanel(
-          renderPanelRow('Guest', `${escapeHtml(req.primary_name)}<br>${escapeHtml(req.primary_email)}`) +
-            renderPanelRow('Preferred', `${escapeHtml(formatDate(req.preferred_date))} at ${escapeHtml(formatTime(req.preferred_time))}`) +
-            (req.alternate_date ? renderPanelRow('Alternate', `${escapeHtml(formatDate(req.alternate_date))} at ${escapeHtml(formatTime(req.alternate_time))}`) : '')
+          renderPanelRow('Guest', `${escapeHtml(req.primary_name)}<br>${escapeHtml(req.primary_email)}`, 'guests') +
+            renderPanelRow('Preferred', `${escapeHtml(formatDate(req.preferred_date))} at ${escapeHtml(formatTime(req.preferred_time))}`, 'calendar') +
+            (req.alternate_date ? renderPanelRow('Alternate', `${escapeHtml(formatDate(req.alternate_date))} at ${escapeHtml(formatTime(req.alternate_time))}`, 'calendar') : '')
         )}
         <p><strong>The guest has not been contacted.</strong> Please follow up to coordinate an alternate date or time.</p>
       `,
@@ -96,6 +96,7 @@ export async function onRequestGet({ request, env, params }) {
     title: 'Your massage time works',
     heroEyebrow: 'Availability Update',
     heroHeadline: "You're all set!",
+    heroImage: HERO_IMAGES.spa,
     bodyHtml: `
       <p>Hi ${escapeHtml(req.primary_name)},</p>
       <p>Great news — our massage partner is available for your requested time. Please review the details below and submit your 50% deposit to confirm your appointment.</p>

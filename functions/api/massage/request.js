@@ -1,7 +1,7 @@
 import { priceRequest } from '../../_shared/pricing.js';
 import { insertRequest, insertItems, logEvent } from '../../_shared/db.js';
 import { createToken } from '../../_shared/tokens.js';
-import { sendEmail, renderShell, renderButton, renderPanel, renderPanelRow, formatCents, formatDate, formatTime } from '../../_shared/email.js';
+import { sendEmail, renderShell, renderButton, renderPanel, renderPanelRow, formatCents, formatDate, formatTime, HERO_IMAGES } from '../../_shared/email.js';
 
 function escapeHtml(s) {
   return String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -63,17 +63,18 @@ export async function onRequestPost({ request, env }) {
   const unavailableUrl = `${baseUrl}/api/massage/respond/${respondToken}?decision=unavailable`;
 
   const partnerDetailsPanel = renderPanel(
-    renderPanelRow('Preferred date', escapeHtml(formatDate(preferredDate))) +
-      renderPanelRow('Preferred time', escapeHtml(formatTime(preferredTime))) +
-      (alternateDate ? renderPanelRow('Alternate date', escapeHtml(formatDate(alternateDate))) : '') +
-      (alternateTime ? renderPanelRow('Alternate time', escapeHtml(formatTime(alternateTime))) : '') +
-      renderPanelRow('Guests', String(priced.length))
+    renderPanelRow('Preferred date', escapeHtml(formatDate(preferredDate)), 'calendar') +
+      renderPanelRow('Preferred time', escapeHtml(formatTime(preferredTime)), 'clock') +
+      (alternateDate ? renderPanelRow('Alternate date', escapeHtml(formatDate(alternateDate)), 'calendar') : '') +
+      (alternateTime ? renderPanelRow('Alternate time', escapeHtml(formatTime(alternateTime)), 'clock') : '') +
+      renderPanelRow('Guests', String(priced.length), 'guests')
   );
 
   const partnerHtml = renderShell({
     title: `New Cedar Escape massage request — ${formatDate(preferredDate)} at ${formatTime(preferredTime)}`,
     heroEyebrow: 'Wellness Is Always a Good Idea',
     heroHeadline: `Hi ${escapeHtml(env.PARTNER_NAME || 'there')}, got a moment?`,
+    heroImage: HERO_IMAGES.spa,
     bodyHtml: `
       <p>Hope you're having a great week! We have a new in-home massage request at Cedar Escape and wanted to check your availability. The guest is interested in the details below.</p>
       ${partnerDetailsPanel}
@@ -102,15 +103,16 @@ export async function onRequestPost({ request, env }) {
 
   // Guest email: request-received confirmation, with the estimated total (guest-facing, price OK here).
   const guestDetailsPanel = renderPanel(
-    renderPanelRow('Requested time', `${escapeHtml(formatDate(preferredDate))}<br>${escapeHtml(formatTime(preferredTime))}`) +
-      (alternateDate ? renderPanelRow('Alternate time', `${escapeHtml(formatDate(alternateDate))}<br>${escapeHtml(formatTime(alternateTime))}`) : '') +
-      renderPanelRow('Estimated total', formatCents(subtotalCents))
+    renderPanelRow('Requested time', `${escapeHtml(formatDate(preferredDate))}<br>${escapeHtml(formatTime(preferredTime))}`, 'calendar') +
+      (alternateDate ? renderPanelRow('Alternate time', `${escapeHtml(formatDate(alternateDate))}<br>${escapeHtml(formatTime(alternateTime))}`, 'calendar') : '') +
+      renderPanelRow('Estimated total', formatCents(subtotalCents), 'price')
   );
 
   const guestHtml = renderShell({
     title: "We've got your massage request",
     heroEyebrow: 'Request Received',
     heroHeadline: "We've got your request.",
+    heroImage: HERO_IMAGES.spa,
     bodyHtml: `
       <p>Hi ${escapeHtml(primaryName)},</p>
       <p>Thanks for choosing Cedar Escape! We're checking your requested date and time with our massage partner now. Once we hear back, we'll send the next step to your inbox.</p>

@@ -184,6 +184,12 @@
   .contact-modal-close:hover { color: var(--forest-deep); }
   .contact-modal h3 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: 26px; color: var(--forest-deep); margin: 10px 0 10px; }
   .contact-modal-sub { font-size: 14.5px; color: #4b453b; margin-bottom: 22px; }
+
+  .request-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(35,45,29,0.55); z-index: 100; align-items: flex-start; justify-content: center; padding: 40px 20px; overflow-y: auto; }
+  .request-modal-overlay.open { display: flex; }
+  .request-modal { position: relative; background: var(--cream-deep); border-radius: 4px; max-width: 760px; width: 100%; margin: auto; padding: 44px 36px 36px; box-shadow: 0 30px 60px rgba(0,0,0,0.35); }
+  .request-modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 26px; line-height: 1; color: var(--taupe); cursor: pointer; padding: 6px 10px; z-index: 1; }
+  .request-modal-close:hover { color: var(--forest-deep); }
   .contact-form label { display: block; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); margin: 16px 0 6px; }
   .contact-form label:first-of-type { margin-top: 0; }
   .contact-form label .req { color: var(--gold); margin-left: 2px; }
@@ -269,7 +275,7 @@
         <h2>Cedar Escape guests can request an in-home massage during their visit.</h2>
         <p>Choose your services, tell us when you'd prefer to schedule, and we'll check availability with our massage partner.</p>
         <p class="partner-note">At Cedar Escape &nbsp;&middot;&nbsp; By request &nbsp;&middot;&nbsp; Subject to availability</p>
-        <a href="#massage-request" class="btn btn-gold">Request a Massage →</a>
+        <button type="button" class="btn btn-gold js-open-request">Request a Massage →</button>
         <div class="how-it-works">
           <div class="how-it-works-label">How It Works</div>
           <div class="how-steps">
@@ -321,11 +327,12 @@
   </div>
 </section>
 
-<section style="background:var(--cream-deep);" id="massage-request">
-  <div class="wrap req-section">
+<div class="request-modal-overlay" id="massageRequestOverlay">
+  <div class="request-modal req-section" role="dialog" aria-modal="true" aria-labelledby="massageRequestTitle">
+    <button type="button" class="request-modal-close" aria-label="Close">&times;</button>
     <div class="section-head">
       <div class="eyebrow">In-Home Massage</div>
-      <h2>Request your massage.</h2>
+      <h2 id="massageRequestTitle">Request your massage.</h2>
       <p>Choose your preferred time and services below. We'll check availability before you're asked to pay.</p>
     </div>
 
@@ -377,7 +384,7 @@
       <p>Your massage is not confirmed just yet. Once we hear back, we'll send the next steps your way.</p>
     </div>
   </div>
-</section>
+</div>
 
 <script>
   // Mirrors functions/_shared/pricing.js — this static site has no build step
@@ -646,6 +653,29 @@
     btn.disabled = true;
     btn.textContent = 'Sending…';
   });
+})();
+</script>
+
+<script>
+(function(){
+  var overlay = document.getElementById('massageRequestOverlay');
+  if (!overlay) return;
+  var closeBtn = overlay.querySelector('.request-modal-close');
+  var openers = document.querySelectorAll('.js-open-request');
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  openers.forEach(function(el){ el.addEventListener('click', openModal); });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
 })();
 </script>
 

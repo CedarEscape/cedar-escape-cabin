@@ -394,7 +394,11 @@
     { id:'air-fryer', name:'6-Quart Air Fryer', category:'kitchen-favorites', description:"A large-basket air fryer with five cooking functions — roast, bake, broil, air fry and keep warm.", image:'images/shop/air-fryer.jpg', url:'https://link.amazon/B02PXJpvL', status:'published' },
     { id:'fleece-blanket', name:'Soft Fleece Blanket, Queen', category:'cozy-comforts', description:"A soft, lightweight microfiber fleece blanket — great for the couch or an extra layer at night.", image:'images/shop/fleece-blanket.jpg', url:'https://link.amazon/B0iCRWgYN', status:'published' },
     { id:'serving-trays', name:'Wooden Serving Trays, Set of 2', category:'kitchen-favorites', description:"Two wooden trays with handles — good for coffee, breakfast in bed, or serving snacks during game night.", image:'images/shop/serving-trays.jpg', url:'https://link.amazon/B0cdcowxG', status:'published' },
-    { id:'drinking-glasses', name:'Reusable Acrylic Drinking Glasses, Set of 8', category:'kitchen-favorites', description:"Unbreakable, BPA-free acrylic tumblers (12 oz and 16 oz) — dishwasher safe and great for outdoor use.", image:'images/shop/drinking-glasses.jpg', url:'https://link.amazon/B09nq2RA8', status:'published' }
+    { id:'drinking-glasses', name:'Reusable Acrylic Drinking Glasses, Set of 8', category:'kitchen-favorites', description:"Unbreakable, BPA-free acrylic tumblers (12 oz and 16 oz) — dishwasher safe and great for outdoor use.", image:'images/shop/drinking-glasses.jpg', url:'https://link.amazon/B09nq2RA8', status:'published' },
+    { id:'pendant-lights', name:'Hammered Pendant Lights, Set of 2', category:'decor-finishing-touches', description:"Industrial-style hammered metal and solid wood pendant lights — a warm upgrade for a kitchen island or dining nook.", image:'images/shop/pendant-lights.jpg', url:'https://link.amazon/B0bBVMDuK', status:'published' },
+    { id:'adjustable-dumbbells', name:'Adjustable Dumbbell Set, 52.5 lbs Pair', category:'fitness-recreation', description:"A space-saving adjustable dumbbell set (15-in-1, up to 52.5 lbs per side) for keeping up a workout routine on vacation.", image:'images/shop/adjustable-dumbbells.jpg', url:'https://link.amazon/B0g12EHJI', status:'published' },
+    { id:'leather-lumbar-pillow', name:'Faux Leather Lumbar Pillow Cover', category:'cozy-comforts', description:"A hand-stitched faux-leather lumbar pillow cover — an easy accent for a couch, sofa bed, or reading chair.", image:'images/shop/leather-lumbar-pillow.jpg', url:'https://link.amazon/B0b9DEJkq', status:'published' },
+    { id:'pool-table-light', name:'Pool Table Pendant Light', category:'fitness-recreation', description:"A billiard-style ceiling pendant with three glass shades, sized for a 7–8 ft pool table — game room ready.", image:'images/shop/pool-table-light.jpg', url:'https://link.amazon/B02mAC22Q', status:'published' }
   ];
 
   var CATEGORY_LABELS = {
@@ -402,9 +406,10 @@
     'cozy-comforts': 'Cozy Comforts',
     'furniture': 'Furniture',
     'decor-finishing-touches': 'Décor & Finishing Touches',
-    'kids-family': 'Kids & Family'
+    'kids-family': 'Kids & Family',
+    'fitness-recreation': 'Fitness & Recreation'
   };
-  var CATEGORY_ORDER = ['kitchen-favorites', 'cozy-comforts', 'furniture', 'decor-finishing-touches', 'kids-family'];
+  var CATEGORY_ORDER = ['kitchen-favorites', 'cozy-comforts', 'furniture', 'decor-finishing-touches', 'kids-family', 'fitness-recreation'];
 
   (function(){
     var published = SHOP_PRODUCTS.filter(function(p){ return p.status === 'published' && p.image && p.url; });

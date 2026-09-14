@@ -30,28 +30,54 @@ const TREE_LIGHT = treeSvg('%23F6F1E6');
 export function renderShell({ title, heroEyebrow, heroHeadline, bodyHtml }) {
   return `<!doctype html>
 <html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title></head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>${title}</title>
+<style>
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body, table, td { -webkit-text-size-adjust: 100%; }
+  /* Force light backgrounds even when a mail client's dark mode tries to
+     invert colors it doesn't recognize as intentionally light. */
+  @media (prefers-color-scheme: dark) {
+    body, .ce-body, .ce-panel { background: ${BRAND.cream} !important; }
+    .ce-panel { background: ${BRAND.creamDeep} !important; }
+    .ce-ink { color: ${BRAND.ink} !important; }
+  }
+  [data-ogsc] body, [data-ogsc] .ce-body { background: ${BRAND.cream} !important; }
+  [data-ogsc] .ce-panel { background: ${BRAND.creamDeep} !important; }
+</style>
+</head>
 <body style="margin:0;padding:0;background:${BRAND.creamDeep};font-family:Georgia,'Times New Roman',serif;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BRAND.creamDeep};">
   <tr><td align="center">
   <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:${BRAND.cream};">
 
-    <tr><td align="center" bgcolor="${BRAND.cream}" style="padding:26px 32px 18px;">
+    <tr><td align="center" bgcolor="${BRAND.cream}" style="padding:26px 32px 14px;">
       <img src="${TREE_DARK}" width="26" height="26" alt="" style="display:block;margin:0 auto 8px;">
       <div style="font-family:Georgia,serif;letter-spacing:0.16em;font-size:19px;font-weight:bold;color:${BRAND.forestDeep};">CEDAR ESCAPE</div>
-      <div style="font-size:11px;letter-spacing:0.16em;color:${BRAND.gold};margin-top:4px;">MASSANUTTEN, VA</div>
+      <div style="font-size:11px;letter-spacing:0.16em;color:${BRAND.gold};font-weight:bold;margin-top:4px;">MASSANUTTEN, VA</div>
+      <div style="margin:14px auto 0;width:120px;font-size:0;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+          <td style="border-top:1px solid ${BRAND.gold};width:44%;"></td>
+          <td style="width:12%;text-align:center;color:${BRAND.gold};font-size:13px;line-height:1;">&#9670;</td>
+          <td style="border-top:1px solid ${BRAND.gold};width:44%;"></td>
+        </tr></table>
+      </div>
     </td></tr>
 
-    <tr><td align="center" bgcolor="${BRAND.forestDeep}" style="background:linear-gradient(155deg, ${BRAND.forest} 0%, ${BRAND.forestDeep} 100%);padding:44px 32px;">
-      ${heroEyebrow ? `<div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${BRAND.goldBright};margin-bottom:10px;">${heroEyebrow}</div>` : ''}
-      <div style="font-family:Georgia,serif;font-style:italic;font-size:28px;line-height:1.25;color:${BRAND.cream};">${heroHeadline}</div>
+    <tr><td align="center" bgcolor="${BRAND.forestDeep}" style="background:linear-gradient(155deg, ${BRAND.forest} 0%, ${BRAND.forestDeep} 100%);padding:46px 32px;border-top:4px solid ${BRAND.gold};">
+      ${heroEyebrow ? `<div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:${BRAND.goldBright};font-weight:bold;margin-bottom:12px;">${heroEyebrow}</div>` : ''}
+      <div style="font-family:Georgia,serif;font-style:italic;font-size:30px;line-height:1.25;color:${BRAND.cream};">${heroHeadline}</div>
     </td></tr>
 
-    <tr><td style="padding:36px 32px;color:${BRAND.ink};font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.65;">
+    <tr><td class="ce-body ce-ink" bgcolor="${BRAND.cream}" style="background:${BRAND.cream};padding:36px 32px;color:${BRAND.ink};font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.65;">
       ${bodyHtml}
     </td></tr>
 
-    <tr><td align="center" bgcolor="${BRAND.forestDeep}" style="color:rgba(246,241,230,0.8);padding:30px 32px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;">
+    <tr><td align="center" bgcolor="${BRAND.forestDeep}" style="color:rgba(250,246,238,0.8);padding:30px 32px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;">
       <img src="${TREE_LIGHT}" width="20" height="20" alt="" style="display:block;margin:0 auto 8px;">
       <div style="color:${BRAND.cream};font-weight:bold;letter-spacing:0.1em;">CEDAR ESCAPE</div>
       <div style="margin-top:8px;letter-spacing:0.06em;">RELAX &nbsp;&bull;&nbsp; RECONNECT &nbsp;&bull;&nbsp; MAKE MEMORIES</div>
@@ -66,7 +92,7 @@ export function renderShell({ title, heroEyebrow, heroHeadline, bodyHtml }) {
 }
 
 export function renderPanel(rowsHtml) {
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${BRAND.creamDeep}" style="background:${BRAND.creamDeep};border-radius:6px;margin:22px 0;"><tr><td style="padding:20px 22px;">${rowsHtml}</td></tr></table>`;
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0;"><tr><td class="ce-panel" bgcolor="${BRAND.creamDeep}" style="background:${BRAND.creamDeep};border-radius:6px;border-top:3px solid ${BRAND.gold};padding:20px 22px;">${rowsHtml}</td></tr></table>`;
 }
 
 // Table-based (not flexbox) for real email-client compatibility — Outlook's

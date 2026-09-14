@@ -116,7 +116,6 @@ export async function onRequestPost({ request, env }) {
       <p>Thanks for choosing Cedar Escape! We're checking your requested date and time with our massage partner now. Once we hear back, we'll send the next step to your inbox.</p>
       ${guestDetailsPanel}
       <p style="font-size:13px;color:#6b6555;">No payment is due yet — we'll be in touch soon.</p>
-      <p style="font-size:12.5px;color:#9a917a;margin-top:6px;">Tip: we recommend submitting requests as early as possible, especially for weekends and group stays.</p>
       <p style="margin-top:20px;font-style:italic;">Relax. Reconnect. Make memories.<br>Cedar Escape</p>
     `,
   });

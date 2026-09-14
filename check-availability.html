@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #F6F1E6; --cream-deep: #EEE6D6; --ink: #2B271F; --forest: #37452F; --forest-deep: #232D1D;
+    --cream: #FAF6EE; --cream-deep: #F2EBDD; --ink: #2B271F; --forest: #37452F; --forest-deep: #232D1D;
     --brown: #6E4F37; --taupe: #A9917A; --gold: #C0973F; --gold-bright: #D6B15C; --line: rgba(43,39,31,0.14);
     --radius: 2px; --wrap: 1180px;
   }
@@ -34,7 +34,7 @@
   h1, h2, h3 { margin: 0; font-weight: 500; }
   p { margin: 0; }
 
-  header { position: sticky; top: 0; z-index: 50; background: rgba(246,241,230,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+  header { position: sticky; top: 0; z-index: 50; background: rgba(250,246,238,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
   .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: var(--wrap); margin: 0 auto; gap: 20px; }
   .wordmark { font-family: 'Cinzel', serif; font-size: 19px; letter-spacing: 0.14em; font-weight: 600; color: var(--forest-deep); text-decoration: none; white-space: nowrap; }
   .wordmark span { color: var(--gold); }
@@ -52,7 +52,7 @@
   .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,151,63,0.35); }
   .btn-outline { background: transparent; border-color: var(--forest-deep); color: var(--forest-deep); }
   .btn-outline:hover { background: var(--forest-deep); color: var(--cream); }
-  .btn-outline-cream { background: transparent; border-color: rgba(246,241,230,0.5); color: var(--cream); }
+  .btn-outline-cream { background: transparent; border-color: rgba(250,246,238,0.5); color: var(--cream); }
   .btn-outline-cream:hover { background: var(--cream); color: var(--forest-deep); }
   .burger { display: inline-flex; background: none; border: none; font-family: 'Cinzel',serif; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; color: var(--forest-deep); }
   @media (min-width: 880px) { .burger { display: none; } }
@@ -67,7 +67,7 @@
   .page-hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(35,45,29,0.3) 0%, rgba(35,45,29,0.72) 78%, rgba(35,45,29,0.9) 100%); }
   .page-hero-inner { position: relative; z-index: 2; width: 100%; padding: 54px 32px 36px; max-width: var(--wrap); margin: 0 auto; }
   .page-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(28px, 4.4vw, 46px); line-height: 1.1; margin: 14px 0 14px; max-width: 620px; }
-  .page-hero p { font-size: 15.5px; max-width: 480px; color: rgba(246,241,230,0.88); }
+  .page-hero p { font-size: 15.5px; max-width: 480px; color: rgba(250,246,238,0.88); }
 
   section { padding: 72px 0; }
   .section-head { max-width: 640px; margin: 0 auto 40px; text-align: center; }
@@ -78,13 +78,13 @@
   .book-split { display: grid; grid-template-columns: 1fr; }
   @media (min-width: 900px) { .book-split { grid-template-columns: 35% 65%; align-items: stretch; } }
   .book-left { background: var(--forest-deep); color: var(--cream); padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
-  .book-left .thumb { width: 84px; height: 84px; border-radius: 4px; overflow: hidden; margin-top: 20px; border: 1px solid rgba(246,241,230,0.25); }
+  .book-left .thumb { width: 84px; height: 84px; border-radius: 4px; overflow: hidden; margin-top: 20px; border: 1px solid rgba(250,246,238,0.25); }
   .book-left .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .book-left .eyebrow { color: var(--gold-bright); }
   .book-left h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px,2.6vw,30px); color: var(--cream); margin: 12px 0 14px; line-height: 1.2; }
-  .book-left p.sub { font-size: 14.5px; color: rgba(246,241,230,0.78); margin-bottom: 20px; }
+  .book-left p.sub { font-size: 14.5px; color: rgba(250,246,238,0.78); margin-bottom: 20px; }
   .book-left ul { list-style: none; margin: 0; padding: 0; }
-  .book-left li { font-size: 14px; color: rgba(246,241,230,0.92); padding: 8px 0; border-top: 1px solid rgba(246,241,230,0.12); display: flex; gap: 10px; align-items: baseline; }
+  .book-left li { font-size: 14px; color: rgba(250,246,238,0.92); padding: 8px 0; border-top: 1px solid rgba(250,246,238,0.12); display: flex; gap: 10px; align-items: baseline; }
   .book-left li:first-of-type { border-top: none; }
   .book-left li::before { content: '✓'; color: var(--gold-bright); font-weight: 700; }
   .book-right { background: var(--cream); padding: 30px; display: flex; align-items: center; }
@@ -125,8 +125,8 @@
   .contact-callout .contacts { margin-top: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 14.5px; }
   .contact-callout .contacts a { font-weight: 700; color: var(--forest-deep); text-decoration: none; }
 
-  footer { background: var(--forest-deep); color: rgba(246,241,230,0.82); padding: 70px 0 30px; }
-  .foot-grid { display: grid; grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(246,241,230,0.14); }
+  footer { background: var(--forest-deep); color: rgba(250,246,238,0.82); padding: 70px 0 30px; }
+  .foot-grid { display: grid; grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(250,246,238,0.14); }
   @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
   footer .wordmark { color: var(--cream); }
   footer h4 { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 14px; }
@@ -134,7 +134,7 @@
   footer li { margin-bottom: 9px; font-size: 14.5px; }
   footer a { text-decoration: none; }
   footer a:hover { color: var(--gold-bright); }
-  .foot-bottom { padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: rgba(246,241,230,0.5); }
+  .foot-bottom { padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: rgba(250,246,238,0.5); }
 
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -152,7 +152,7 @@
   @media (max-width: 879.98px) { .ask-cedar-panel { right: 16px; left: 16px; width: auto; bottom: 84px; } }
   .ac-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 18px 18px 14px; background: var(--forest-deep); flex: none; }
   .ac-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: var(--cream); }
-  .ac-sub { font-size: 12px; color: rgba(246,241,230,0.72); margin-top: 4px; line-height: 1.4; }
+  .ac-sub { font-size: 12px; color: rgba(250,246,238,0.72); margin-top: 4px; line-height: 1.4; }
   .ac-close { background: none; border: none; color: var(--cream); font-size: 22px; line-height: 1; cursor: pointer; padding: 0 2px; flex: none; }
   .ac-input { width: 100%; box-sizing: border-box; border: none; border-bottom: 1px solid var(--line); padding: 14px 18px; font-size: 14px; font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); outline: none; flex: none; }
   .ac-input:focus { background: var(--cream-deep); }
@@ -386,7 +386,7 @@
     <div class="foot-grid">
       <div>
         <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
-        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(250,246,238,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
       </div>
       <div>
         <h4>Quick Links</h4>

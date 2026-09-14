@@ -189,7 +189,7 @@ export function renderOrderSummary(items, serviceLabelFor) {
 
 export async function sendEmail(env, { to, cc, subject, html, attachments }) {
   const payload = {
-    from: 'Cedar Escape <onboarding@resend.dev>',
+    from: 'Cedar Escape <massage@cedarescapecabin.com>',
     to: Array.isArray(to) ? to : [to],
     reply_to: env.COURTESY_EMAIL,
     subject,

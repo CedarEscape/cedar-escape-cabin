@@ -1,7 +1,7 @@
 import { priceRequest } from '../../_shared/pricing.js';
 import { insertRequest, insertItems, logEvent } from '../../_shared/db.js';
 import { createToken } from '../../_shared/tokens.js';
-import { sendEmail, renderShell, renderButton, formatCents } from '../../_shared/email.js';
+import { sendEmail, renderShell, renderButton, renderPanel, renderPanelRow, formatCents, formatDate, formatTime } from '../../_shared/email.js';
 
 function escapeHtml(s) {
   return String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -51,59 +51,79 @@ export async function onRequestPost({ request, env }) {
 
   const respondToken = await createToken(db, requestId, 'partner_respond');
 
-  const itemsHtml = priced
-    .map(
-      (i) =>
-        `<div style="margin-bottom:10px;"><strong>${escapeHtml(i.guestLabel)}</strong><br>${escapeHtml(i.serviceLabel)}${i.cbdAddon ? '<br>+ ' + escapeHtml('CBD Oil Add-On') : ''}</div>`
-    )
-    .join('');
+  // Partner email: availability/logistics only — never guest payment info.
+  const itemsHtmlNoPrice = renderPanel(
+    priced
+      .map((i) => renderPanelRow(`<strong>${escapeHtml(i.guestLabel)}</strong>`, `${escapeHtml(i.serviceLabel)}${i.cbdAddon ? ' + CBD Enhancement' : ''}`))
+      .join('')
+  );
 
   const baseUrl = new URL(request.url).origin;
   const availableUrl = `${baseUrl}/api/massage/respond/${respondToken}?decision=available`;
   const unavailableUrl = `${baseUrl}/api/massage/respond/${respondToken}?decision=unavailable`;
 
+  const partnerDetailsPanel = renderPanel(
+    renderPanelRow('Preferred date', escapeHtml(formatDate(preferredDate))) +
+      renderPanelRow('Preferred time', escapeHtml(formatTime(preferredTime))) +
+      (alternateDate ? renderPanelRow('Alternate date', escapeHtml(formatDate(alternateDate))) : '') +
+      (alternateTime ? renderPanelRow('Alternate time', escapeHtml(formatTime(alternateTime))) : '') +
+      renderPanelRow('Guests', String(priced.length))
+  );
+
   const partnerHtml = renderShell({
-    title: 'New Cedar Escape Massage Request',
+    title: `New Cedar Escape massage request — ${formatDate(preferredDate)} at ${formatTime(preferredTime)}`,
+    heroEyebrow: 'Wellness Is Always a Good Idea',
+    heroHeadline: `Hi ${escapeHtml(env.PARTNER_NAME || 'there')}, got a moment?`,
     bodyHtml: `
-      <p>Hi there,</p>
-      <p>We have a new in-home massage request at Cedar Escape and wanted to check your availability. If you're available, we'll send the guest a secure link to confirm the appointment.</p>
-      <div style="background:rgba(43,39,31,0.05);padding:18px 20px;border-radius:4px;margin:20px 0;">
-        <strong>Preferred:</strong> ${escapeHtml(preferredDate)} at ${escapeHtml(preferredTime)}<br>
-        ${alternateDate ? `<strong>Alternate:</strong> ${escapeHtml(alternateDate)} at ${escapeHtml(alternateTime || '')}<br>` : ''}
-        <strong>${priced.length} Guest${priced.length > 1 ? 's' : ''}</strong>
-      </div>
-      <div style="margin:16px 0;">${itemsHtml}</div>
+      <p>Hope you're having a great week! We have a new in-home massage request at Cedar Escape and wanted to check your availability. The guest is interested in the details below.</p>
+      ${partnerDetailsPanel}
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#8a8168;margin:22px 0 10px;">Requested Services</div>
+      ${itemsHtmlNoPrice}
       ${notes ? `<p><strong>Notes:</strong> ${escapeHtml(notes)}</p>` : ''}
+      <p style="margin-top:10px;">Please let us know if you're available for this request.</p>
       <div style="text-align:center;margin:28px 0;">
-        ${renderButton({ href: availableUrl, label: 'AVAILABLE', style: 'solid' })}
+        ${renderButton({ href: availableUrl, label: "YES, I'M AVAILABLE", style: 'solid' })}
         ${renderButton({ href: unavailableUrl, label: 'NOT AVAILABLE', style: 'outline' })}
       </div>
       <p style="font-size:13px;color:#6b6555;">Have a question or need to suggest a different time? Just reply to this email — we're happy to coordinate.</p>
+      <hr style="border:none;border-top:1px solid rgba(43,39,31,0.12);margin:26px 0;">
+      <p>Thank you for being part of the Cedar Escape experience! We truly appreciate you and love being able to offer our guests this special add-on.</p>
+      <p style="font-style:italic;">With gratitude,<br>The Cedar Escape Team</p>
     `,
   });
 
   await sendEmail(env, {
     to: env.PARTNER_EMAIL,
     cc: env.COURTESY_EMAIL,
-    subject: 'New Cedar Escape Massage Request',
+    subject: `New Cedar Escape massage request — ${formatDate(preferredDate)} at ${formatTime(preferredTime)}`,
     html: partnerHtml,
   });
   await logEvent(db, requestId, 'partner_notified');
 
+  // Guest email: request-received confirmation, with the estimated total (guest-facing, price OK here).
+  const guestDetailsPanel = renderPanel(
+    renderPanelRow('Requested time', `${escapeHtml(formatDate(preferredDate))}<br>${escapeHtml(formatTime(preferredTime))}`) +
+      (alternateDate ? renderPanelRow('Alternate time', `${escapeHtml(formatDate(alternateDate))}<br>${escapeHtml(formatTime(alternateTime))}`) : '') +
+      renderPanelRow('Estimated total', formatCents(subtotalCents))
+  );
+
   const guestHtml = renderShell({
-    title: 'Thanks for submitting your massage request',
+    title: "We've got your massage request",
+    heroEyebrow: 'Request Received',
+    heroHeadline: "We've got your request.",
     bodyHtml: `
       <p>Hi ${escapeHtml(primaryName)},</p>
-      <p>Thanks for submitting your massage request.</p>
-      <p>We've sent it over to our massage partner and will follow up as soon as we have an availability update.</p>
-      <p>Your massage is not confirmed just yet. Once availability is approved, we'll send the next steps your way.</p>
-      <p style="font-size:13px;color:#6b6555;">Massage services are subject to therapist availability, and advance notice is strongly encouraged.</p>
+      <p>Thanks for choosing Cedar Escape! We're checking your requested date and time with our massage partner now. Once we hear back, we'll send the next step to your inbox.</p>
+      ${guestDetailsPanel}
+      <p style="font-size:13px;color:#6b6555;">No payment is due yet — we'll be in touch soon.</p>
+      <p style="font-size:12.5px;color:#9a917a;margin-top:6px;">Tip: we recommend submitting requests as early as possible, especially for weekends and group stays.</p>
+      <p style="margin-top:20px;font-style:italic;">Relax. Reconnect. Make memories.<br>Cedar Escape</p>
     `,
   });
   await sendEmail(env, {
     to: primaryEmail,
     cc: env.COURTESY_EMAIL,
-    subject: 'Your Cedar Escape Massage Request',
+    subject: "We've got your massage request",
     html: guestHtml,
   });
 

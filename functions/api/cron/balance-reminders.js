@@ -1,14 +1,9 @@
-import { findBookingsDueForReminder, getItems, updateStatus, logEvent } from '../../_shared/db.js';
-import { createToken, getOrCreateToken } from '../../_shared/tokens.js';
-import { sendEmail, renderShell, renderButton, formatCents, renderOrderSummary } from '../../_shared/email.js';
-import { SERVICES } from '../../_shared/pricing.js';
+import { findBookingsDueForReminder, updateStatus, logEvent } from '../../_shared/db.js';
+import { createToken } from '../../_shared/tokens.js';
+import { sendEmail, renderShell, renderButton, renderPanel, renderPanelRow, formatCents, formatDate, formatTime } from '../../_shared/email.js';
 
 function escapeHtml(s) {
   return String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-
-function serviceLabelFor(code) {
-  return SERVICES[code] ? SERVICES[code].label : code;
 }
 
 export async function onRequestPost({ request, env }) {
@@ -23,30 +18,27 @@ export async function onRequestPost({ request, env }) {
 
   for (const req of bookings) {
     const payToken = await createToken(db, req.id, 'balance_pay');
-    const payUrl = `${baseUrl}/api/massage/pay/${payToken}`;
-    const cancelToken = await getOrCreateToken(db, req.id, 'cancel');
-    const cancelUrl = `${baseUrl}/api/massage/cancel/${cancelToken}`;
-    const items = await getItems(db, req.id);
-    const orderSummaryHtml = renderOrderSummary(items, serviceLabelFor);
+    const checkoutUrl = `${baseUrl}/add-ons/massage/checkout/${payToken}`;
 
+    // Guest-only — the massage partner does not receive balance/payment emails.
     const guestHtml = renderShell({
-      title: 'Your Cedar Escape massage balance is due',
+      title: 'Your massage is coming up',
+      heroEyebrow: 'A Little Reminder',
+      heroHeadline: 'Your massage is almost here.',
       bodyHtml: `
         <p>Hi ${escapeHtml(req.primary_name)},</p>
-        <p>Your in-home massage at Cedar Escape is coming up:</p>
-        <p style="font-size:17px;"><strong>${escapeHtml(req.preferred_date)} at ${escapeHtml(req.preferred_time)}</strong></p>
-        <div style="margin:18px 0;">${orderSummaryHtml}</div>
-        <p>Remaining balance: <strong>${formatCents(req.balance_cents)}</strong></p>
-        <div style="text-align:center;margin:28px 0;">${renderButton({ href: payUrl, label: 'PAY REMAINING BALANCE →' })}</div>
-        <p>Once the balance is paid, you're all set.</p>
-        <p>See you soon,<br>Cedar Escape</p>
-        <p style="margin-top:20px;font-size:13px;">Need to cancel? <a href="${cancelUrl}" style="color:#232D1D;">Cancel your appointment</a></p>
+        <p>Your in-home massage at Cedar Escape is coming up soon! Please review the details below and take care of any remaining balance.</p>
+        <p style="font-size:17px;margin-top:14px;"><strong>${escapeHtml(formatDate(req.preferred_date))} at ${escapeHtml(formatTime(req.preferred_time))}</strong></p>
+        ${renderPanel(renderPanelRow('Amount due', formatCents(req.balance_cents)))}
+        <div style="text-align:center;margin:28px 0;">${renderButton({ href: checkoutUrl, label: 'PAY REMAINING BALANCE →' })}</div>
+        <p>Once that's taken care of, you're all set. We're looking forward to a wonderful experience!</p>
+        <p style="font-style:italic;">Cedar Escape</p>
       `,
     });
     await sendEmail(env, {
       to: req.primary_email,
       cc: env.COURTESY_EMAIL,
-      subject: 'Your Cedar Escape massage balance is due',
+      subject: 'Your massage is coming up',
       html: guestHtml,
     });
 

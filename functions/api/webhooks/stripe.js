@@ -2,7 +2,7 @@ import { verifyWebhookSignature } from '../../_shared/stripe.js';
 import { getRequest, getItems, updateStatus, logEvent } from '../../_shared/db.js';
 import { markTokenUsed, getOrCreateToken } from '../../_shared/tokens.js';
 import { calculateMinutes, SERVICES } from '../../_shared/pricing.js';
-import { sendEmail, renderShell, formatCents, renderOrderSummary } from '../../_shared/email.js';
+import { sendEmail, renderShell, renderPanel, renderPanelRow, formatCents, formatDate, formatTime, renderOrderSummary } from '../../_shared/email.js';
 import { buildIcs } from '../../_shared/ics.js';
 
 function serviceLabelFor(code) {
@@ -58,42 +58,75 @@ export async function onRequestPost({ request, env }) {
     if (session.metadata.token) await markTokenUsed(db, session.metadata.token);
     await logEvent(db, requestId, 'deposit_paid', { sessionId: session.id, amount: session.amount_total });
 
+    const icsDescription = `${items.length} guest(s): ${items.map((i) => i.guest_label + ' - ' + serviceLabelFor(i.service_code)).join(', ')}`;
     const ics = buildIcs({
       uid: requestId,
       startDate: confirmedStart,
       minutes,
       summary: 'In-Home Massage at Cedar Escape',
-      description: `${items.length} guest(s): ${items.map((i) => i.guest_label + ' - ' + i.service_code).join(', ')}`,
+      description: icsDescription,
       location: 'Cedar Escape, Massanutten, VA',
     });
     const icsBase64 = btoa(ics);
 
-    const cancelToken = await getOrCreateToken(db, requestId, 'cancel');
-    const baseUrl = new URL(request.url).origin;
-    const cancelUrl = `${baseUrl}/api/massage/cancel/${cancelToken}`;
-
     const orderSummaryHtml = renderOrderSummary(items, serviceLabelFor);
+    const cancelToken = await getOrCreateToken(db, requestId, 'cancel');
+    const cancelUrl = `${new URL(request.url).origin}/api/massage/cancel/${cancelToken}`;
 
+    // Guest email — full financial detail + calendar invite.
     const guestHtml = renderShell({
       title: 'Your Cedar Escape massage is confirmed',
+      heroEyebrow: 'Massage Confirmed',
+      heroHeadline: "You're all set!",
       bodyHtml: `
         <p>Hi ${escapeHtml(req.primary_name)},</p>
-        <p><strong>Your Cedar Escape massage is confirmed!</strong></p>
-        <p>Date: ${escapeHtml(req.preferred_date)}<br>Time: ${escapeHtml(req.preferred_time)}</p>
-        <div style="margin:18px 0;">${orderSummaryHtml}</div>
-        <p>Remaining balance: ${formatCents(req.balance_cents)}</p>
-        <p>Your remaining balance will be due 48 hours before your massage. We'll send the secure payment reminder automatically.</p>
-        <p>Your massage will be with ${escapeHtml(env.PARTNER_NAME || 'our local massage partner')}. To help her settle in, please have a clear, open space ready for her table before she arrives — she'll take care of the rest.</p>
-        <p style="font-size:13px;color:#6b6555;margin-top:20px;"><strong>Cancellation Policy:</strong> Plans change — we understand. Cancellations made at least 5 days before your scheduled massage will receive a full refund of payments made. Cancellations made within 5 days are non-refundable, as your massage partner has reserved that appointment time specifically for your stay.</p>
-        <p>A calendar invite is attached to this email.</p>
-        <p style="margin-top:20px;font-size:13px;">Need to cancel? <a href="${cancelUrl}" style="color:#232D1D;">Cancel your appointment</a></p>
+        <p>We're so glad you'll be enjoying an in-home massage at Cedar Escape. Here are your details for reference:</p>
+        <p style="font-size:17px;margin-top:14px;"><strong>${escapeHtml(formatDate(req.preferred_date))} at ${escapeHtml(formatTime(req.preferred_time))}</strong></p>
+        ${orderSummaryHtml}
+        ${renderPanel(
+          renderPanelRow('Total service value', formatCents(req.subtotal_cents)) +
+            renderPanelRow('Deposit paid (50%)', formatCents(req.deposit_cents)) +
+            renderPanelRow('Remaining balance (50%)', formatCents(req.balance_cents))
+        )}
+        <p>We'll send a secure reminder 48 hours before your massage to take care of the remaining balance.</p>
+        <p>Your calendar invite is attached for easy reference.</p>
+        <p style="font-size:13px;color:#6b6555;margin-top:20px;"><strong>Cancellation Policy:</strong> Plans change — we understand. Cancellations made at least 5 days before your scheduled massage will receive a full refund of any amount paid. See our full policy for details.</p>
+        <p style="margin-top:16px;">Thank you for choosing Cedar Escape! We look forward to helping you relax and recharge.</p>
+        <p style="font-style:italic;">Cedar Escape Team</p>
+        <p style="margin-top:16px;font-size:12px;color:#8a8168;">Need to cancel? <a href="${cancelUrl}" style="color:#8a8168;">Cancel your appointment</a></p>
       `,
     });
     await sendEmail(env, {
       to: req.primary_email,
-      cc: [env.COURTESY_EMAIL, env.PARTNER_EMAIL],
+      cc: env.COURTESY_EMAIL,
       subject: 'Your Cedar Escape massage is confirmed',
       html: guestHtml,
+      attachments: [{ filename: 'cedar-escape-massage.ics', content: icsBase64 }],
+    });
+
+    // Partner email — logistics + calendar invite only, never payment info.
+    const partnerServicesPanel = renderPanel(
+      items.map((i) => renderPanelRow(escapeHtml(i.guest_label), `${escapeHtml(serviceLabelFor(i.service_code))}${i.cbd_addon ? ' + CBD Enhancement' : ''}`)).join('')
+    );
+    const partnerHtml = renderShell({
+      title: `Confirmed — Cedar Escape massage — ${formatDate(req.preferred_date)}`,
+      heroEyebrow: 'Final Confirmation',
+      heroHeadline: 'Thanks for being part of it!',
+      bodyHtml: `
+        <p>Hi ${escapeHtml(env.PARTNER_NAME || 'there')},</p>
+        <p>This is a final confirmation for your upcoming massage at Cedar Escape.</p>
+        <p style="font-size:17px;margin-top:14px;"><strong>${escapeHtml(formatDate(req.preferred_date))} at ${escapeHtml(formatTime(req.preferred_time))}</strong></p>
+        ${partnerServicesPanel}
+        <p style="margin-top:16px;">The appointment is confirmed and your calendar invite is attached.</p>
+        <p>Thank you for helping make our guests' stays so special. We appreciate you!</p>
+        <p>See you soon,<br>Cedar Escape Team</p>
+      `,
+    });
+    await sendEmail(env, {
+      to: env.PARTNER_EMAIL,
+      cc: env.COURTESY_EMAIL,
+      subject: `Confirmed — Cedar Escape massage — ${formatDate(req.preferred_date)}`,
+      html: partnerHtml,
       attachments: [{ filename: 'cedar-escape-massage.ics', content: icsBase64 }],
     });
   } else if (purpose === 'balance') {
@@ -104,22 +137,24 @@ export async function onRequestPost({ request, env }) {
     if (session.metadata.token) await markTokenUsed(db, session.metadata.token);
     await logEvent(db, requestId, 'balance_paid', { sessionId: session.id, amount: session.amount_total });
 
-    const items = await getItems(db, requestId);
-    const orderSummaryHtml = renderOrderSummary(items, serviceLabelFor);
-
+    // Guest-only — the massage partner does not receive a paid-in-full email.
     const guestHtml = renderShell({
-      title: 'Your Cedar Escape massage is paid in full',
+      title: "You're all set for your massage",
+      heroEyebrow: 'Paid in Full',
+      heroHeadline: 'See you soon!',
       bodyHtml: `
         <p>Hi ${escapeHtml(req.primary_name)},</p>
-        <p>Once the balance is paid, you're all set. Your Cedar Escape massage on ${escapeHtml(req.preferred_date)} at ${escapeHtml(req.preferred_time)} is paid in full.</p>
-        <div style="margin:18px 0;">${orderSummaryHtml}</div>
-        <p>See you soon,<br>Cedar Escape</p>
+        <p>Your massage is paid in full and everything is set for:</p>
+        <p style="font-size:17px;margin-top:14px;"><strong>${escapeHtml(formatDate(req.preferred_date))} at ${escapeHtml(formatTime(req.preferred_time))}</strong></p>
+        ${renderPanel(renderPanelRow('Total paid', formatCents(req.subtotal_cents)))}
+        <p>Nothing else to take care of — enjoy the rest of your stay.</p>
+        <p style="font-style:italic;">Cedar Escape</p>
       `,
     });
     await sendEmail(env, {
       to: req.primary_email,
-      cc: [env.COURTESY_EMAIL, env.PARTNER_EMAIL],
-      subject: 'Your Cedar Escape massage balance is paid in full',
+      cc: env.COURTESY_EMAIL,
+      subject: "You're all set for your massage",
       html: guestHtml,
     });
   }

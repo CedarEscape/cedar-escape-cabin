@@ -1,0 +1,7 @@
+name = "cedar-escape-cabin"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "MASSAGE_DB"
+database_name = "cedar-escape-massage"
+database_id = "35eddb5c-3db5-42db-9751-29f979ccca28"

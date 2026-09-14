@@ -2,3 +2,6 @@
 /Archive/
 /Save for later/
 /New website Layout/
+node_modules/
+.wrangler/
+.dev.vars

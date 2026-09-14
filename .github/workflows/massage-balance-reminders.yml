@@ -1,0 +1,15 @@
+name: Massage balance-due reminders
+
+on:
+  schedule:
+    - cron: "0 * * * *" # hourly; the endpoint itself only acts on bookings ~48h out
+  workflow_dispatch: {}
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call balance-reminders endpoint
+        run: |
+          curl -sf -X POST "https://cedarescapecabin.com/api/cron/balance-reminders" \
+            -H "Authorization: Bearer ${{ secrets.MASSAGE_CRON_SECRET }}"

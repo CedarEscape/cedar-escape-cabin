@@ -176,6 +176,8 @@
   .rest-logo-zone.dark { background: var(--forest-deep); }
   .rest-logo-zone img { max-height: 58px; max-width: 82%; object-fit: contain; }
   .rest-photo-zone { height: 140px; margin: -18px -20px 14px; overflow: hidden; }
+  .rest-photo-zone.show-full { background: var(--forest-deep); }
+  .rest-photo-zone.show-full img { object-fit: contain !important; }
   .rest-photo-zone img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .rest-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
   .rest-icon svg { width: 20px; height: 20px; color: var(--cream); }
@@ -198,8 +200,7 @@
   .rest-card .links { margin-top: 12px; display: flex; gap: 14px; flex-wrap: wrap; }
   .rest-card .links a { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--forest-deep); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
   .rest-card .tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: var(--taupe); margin-top: 2px; }
-  .rest-card .partner-perk { font-size: 11.5px; color: var(--forest-deep); background: rgba(192,151,63,0.14); border: 1px solid rgba(192,151,63,0.4); border-radius: 2px; padding: 8px 10px; margin-top: 10px; line-height: 1.45; }
-  .rest-card .partner-perk b { font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .rest-card .partner-note { font-size: 12px; color: var(--gold); font-style: italic; margin-top: 8px; }
 
   /* ---------- WINE / CIDER / BEER ---------- */
   .pour-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
@@ -598,9 +599,22 @@
       <div class="glabel">Close to Cedar Escape</div>
       <div class="rest-grid">
         <div class="rest-card">
+          <div class="rest-photo-zone show-full"><img src="images/local-biz/brisas-del-caribe.jpg" alt="Empanadas, mofongo and grilled shrimp at Brisas del Caribe 809"></div>
+          <h4>Brisas del Caribe 809</h4>
+          <div class="tagline">Empanada + Mofongo Spot</div>
+          <div class="meta">Elkton, VA · ~12-13 min</div>
+          <p class="desc">Dominican favorites, empanadas, mofongo, plates, and more.</p>
+          <div class="bf"><b>Best For</b><br>A flavorful Dominican meal close to the resort.</div>
+          <p class="partner-note">See Cedar Escape Exclusive Perk in the digital guidebook.</p>
+          <div class="links">
+            <a href="https://www.facebook.com/brisasdelcaribe809/" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=11702+Spotswood+Trail+Elkton+VA" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </div>
+        <div class="rest-card">
           <div class="rest-photo-zone"><img src="images/local-biz/hanks-grille.jpg" alt="Food spread at Hank's Grille"></div>
           <h4>Hank's Grille</h4>
-          <div class="meta">McGaheysville · ~1 min</div>
+          <div class="meta">McGaheysville · ~12-13 min</div>
           <p class="desc">Family friendly and the closest sit-down meal to the house.</p>
           <div class="bf"><b>Best For</b><br>A relaxed dinner without leaving the neighborhood.</div>
           <div class="links"><a href="https://book.toasttab.com/r/hanks" target="_blank" rel="noopener">View Menu + Map</a></div>
@@ -608,7 +622,7 @@
         <div class="rest-card">
           <div class="rest-logo-zone"><img src="images/logos/romanos.jpg" alt="Romano's Italian Bistro logo"></div>
           <h4>Romano's Italian Bistro</h4>
-          <div class="meta">McGaheysville · ~1 min</div>
+          <div class="meta">McGaheysville · ~12-13 min</div>
           <p class="desc">Italian favorites right across the highway.</p>
           <div class="bf"><b>Best For</b><br>An easy, crowd-pleasing group dinner.</div>
           <div class="links"><a href="https://romanositalianbistro.com/" target="_blank" rel="noopener">View Menu + Map</a></div>
@@ -616,7 +630,7 @@
         <div class="rest-card">
           <div class="rest-photo-zone"><img src="images/local-biz/thirstys.jpg" alt="Burger and fries at Thirsty's Burgers"></div>
           <h4>Thirsty's Burgers</h4>
-          <div class="meta">McGaheysville area · ~5 min</div>
+          <div class="meta">McGaheysville area · ~12-13 min</div>
           <p class="desc">Burgers, shakes and good vibes after a day on the hill.</p>
           <div class="bf"><b>Best For</b><br>A quick, casual bite the kids will love too.</div>
           <div class="links"><a href="https://order.toasttab.com/online/thirty3-s-burgers-11702-spotswood-trail-suite-5" target="_blank" rel="noopener">View Menu + Map</a></div>
@@ -624,7 +638,7 @@
         <div class="rest-card">
           <div class="rest-logo-zone"><img src="images/logos/thunderbird-cafe.png" alt="Thunderbird Cafe logo"></div>
           <h4>Thunderbird Cafe</h4>
-          <div class="meta">McGaheysville · ~1 min</div>
+          <div class="meta">McGaheysville · ~12-13 min</div>
           <p class="desc">A local roadside diner favorite with a Southern-comfort twist.</p>
           <div class="bf"><b>Best For</b><br>Breakfast or brunch before a day at the resort.</div>
           <div class="links"><a href="https://www.facebook.com/ThunderbirdCafe/" target="_blank" rel="noopener">View Menu + Map</a></div>
@@ -632,7 +646,7 @@
         <div class="rest-card">
           <div class="rest-photo-zone"><img src="images/local-biz/santa-fe.jpg" alt="Plate at Santa Fe Mexican Grille"></div>
           <h4>Santa Fe Mexican Grille</h4>
-          <div class="meta">McGaheysville · ~1 min</div>
+          <div class="meta">McGaheysville · ~12-13 min</div>
           <p class="desc">Tex-Mex favorites right in the village.</p>
           <div class="bf"><b>Best For</b><br>A casual, flavorful night when the group wants Mexican.</div>
           <div class="links"><a href="https://www.yelp.com/biz/santa-fe-mexican-grille-mcgaheysville" target="_blank" rel="noopener">View Menu + Map</a></div>
@@ -693,19 +707,6 @@
           <p class="desc">Pizza, subs and pasta — an easy group-friendly option when everyone wants something familiar.</p>
           <div class="bf"><b>Best For</b><br>Arrival night when nobody wants to decide on dinner.</div>
           <div class="links"><a href="https://www.vitopizzapie.com/contact-us" target="_blank" rel="noopener">View Menu + Map</a></div>
-        </div>
-        <div class="rest-card">
-          <div class="rest-photo-zone"><img src="images/local-biz/brisas-del-caribe.jpg" alt="Empanadas, mofongo and grilled shrimp at Brisas del Caribe 809"></div>
-          <h4>Brisas del Caribe 809</h4>
-          <div class="tagline">Empanada + Mofongo Spot</div>
-          <div class="meta">Elkton, VA · ~20 min</div>
-          <p class="desc">Dominican favorites, empanadas, mofongo, plates, and more.</p>
-          <div class="bf"><b>Best For</b><br>A flavorful Dominican meal worth the drive.</div>
-          <div class="partner-perk"><b>Cedar Escape Partner</b><br>Guests receive 10% off their total purchase. Redemption details are in your digital guidebook.</div>
-          <div class="links">
-            <a href="https://www.facebook.com/brisasdelcaribe809/" target="_blank" rel="noopener">Facebook</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=11702+Spotswood+Trail+Elkton+VA" target="_blank" rel="noopener">Get Directions</a>
-          </div>
         </div>
       </div>
     </div>

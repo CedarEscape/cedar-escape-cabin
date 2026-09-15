@@ -16,7 +16,7 @@
 <meta name="description" content="A little extra for your Cedar Escape stay — request an in-home massage from our local massage partner, delivered right to the property.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 <style>
   :root {
     --cream: #FAF6EE; --cream-deep: #F2EBDD; --ink: #2B271F; --forest: #37452F; --forest-deep: #232D1D;
@@ -66,55 +66,77 @@
   .section-head h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 3.2vw, 34px); margin-top: 12px; color: var(--forest-deep); }
   .section-head p { margin-top: 14px; font-size: 15.5px; color: #4b453b; }
 
-  .addons-hero { position: relative; padding: 90px 0 70px; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); color: var(--cream); overflow: hidden; }
-  .addons-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 80% 20%, rgba(214,177,92,0.14), transparent 55%); pointer-events: none; }
-  .addons-hero-inner { position: relative; max-width: 640px; }
-  .addons-hero .eyebrow { color: var(--gold-bright); }
-  .addons-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(38px, 6vw, 60px); line-height: 1.05; margin: 14px 0 18px; }
-  .addons-hero p { font-size: 17px; color: rgba(250,246,238,0.85); max-width: 480px; }
+  .script-accent { font-family: 'Dancing Script', cursive; font-weight: 600; color: var(--gold); line-height: 1.15; }
+  .script-accent .rule { display: block; width: 60px; height: 1px; background: currentColor; opacity: 0.55; margin-top: 10px; }
 
-  .how-it-works { background: var(--cream); border: 1px solid var(--line); border-radius: 4px; padding: 24px 26px; margin-top: 24px; }
-  .how-it-works-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin-bottom: 16px; }
-  .how-steps { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-  @media (min-width: 640px) { .how-steps { grid-template-columns: repeat(4,1fr); } }
-  .how-step { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
-  .how-step svg { width: 22px; height: 22px; color: var(--gold); }
-  .how-step .num { width: 30px; height: 30px; border-radius: 50%; background: var(--forest-deep); color: var(--cream); font-family: 'Cinzel', serif; font-size: 13px; display: flex; align-items: center; justify-content: center; font-weight: 600; }
-  .how-step span { font-size: 12.5px; color: #4b453b; }
+  .addons-hero { position: relative; padding: 0; overflow: hidden; min-height: 480px; display: flex; align-items: center; background: var(--forest-deep); }
+  .addons-hero-bg { position: absolute; inset: 0; }
+  .addons-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .addons-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, var(--cream) 0%, var(--cream) 28%, rgba(250,246,238,0.75) 42%, rgba(250,246,238,0.15) 58%, transparent 72%); }
+  .addons-hero-inner { position: relative; max-width: 620px; padding-top: 90px; padding-bottom: 90px; }
+  .addons-hero .eyebrow { color: var(--gold); }
+  .addons-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(38px, 6vw, 60px); line-height: 1.05; margin: 14px 0 18px; color: var(--forest-deep); }
+  .addons-hero p { font-size: 17px; color: #4b453b; max-width: 420px; }
+  .addons-hero-script { position: absolute; top: 54px; right: 32px; text-align: right; font-size: clamp(22px, 2.6vw, 30px); z-index: 2; }
+  @media (max-width: 760px) {
+    .addons-hero { min-height: 0; }
+    .addons-hero-bg::after { background: linear-gradient(180deg, var(--cream) 0%, var(--cream) 38%, rgba(250,246,238,0.85) 55%, rgba(250,246,238,0.3) 75%, transparent 100%); }
+    .addons-hero-inner { padding-top: 130px; padding-bottom: 30px; }
+    .addons-hero-script { top: 20px; right: 20px; font-size: 20px; }
+  }
+
+  .how-it-works-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin-bottom: 20px; }
+  .how-steps-list { display: flex; flex-direction: column; gap: 20px; }
+  .how-step-row { display: flex; align-items: center; gap: 14px; }
+  .how-step-row .num { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--gold); color: var(--forest-deep); font-family: 'Cinzel', serif; font-size: 13px; display: flex; align-items: center; justify-content: center; font-weight: 600; flex: none; }
+  .how-step-row span.step-text { font-size: 13.5px; color: #4b453b; }
 
   .exclusives-section { background: var(--forest-deep); color: var(--cream); }
   .exclusives-section .eyebrow { color: var(--gold-bright); }
   .exclusives-section h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(26px, 3.5vw, 36px); color: var(--cream); margin: 10px 0 14px; }
   .exclusives-section p { color: rgba(250,246,238,0.78); font-size: 15.5px; max-width: 480px; }
   .exclusives-wrap { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
-  @media (min-width: 860px) { .exclusives-wrap { grid-template-columns: 1.1fr 1fr; gap: 56px; } }
-  .exclusives-photos { position: relative; height: 260px; }
-  .polaroid { position: absolute; background: var(--cream); padding: 10px 10px 34px; border-radius: 2px; box-shadow: 0 16px 32px rgba(0,0,0,0.35); width: 42%; }
-  .polaroid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-  .polaroid figcaption { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: var(--forest-deep); text-align: center; margin-top: 8px; }
-  .polaroid.p1 { left: 0; top: 30px; transform: rotate(-6deg); z-index: 1; }
-  .polaroid.p2 { left: 26%; top: 0; transform: rotate(3deg); z-index: 2; }
-  .polaroid.p3 { left: 54%; top: 40px; transform: rotate(7deg); z-index: 1; }
+  @media (min-width: 860px) { .exclusives-wrap { grid-template-columns: 1fr 1.15fr; gap: 56px; } }
+  .exclusives-script { margin-top: 22px; font-size: clamp(20px, 2.4vw, 26px); color: var(--gold-bright); }
 
-  .included-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; margin-top: 28px; }
+  .sitter-card { background: var(--cream); border-radius: 4px; overflow: hidden; box-shadow: 0 24px 54px rgba(0,0,0,0.3); display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .sitter-card { grid-template-columns: 40% 1fr; } }
+  .sitter-card-media { position: relative; min-height: 220px; }
+  .sitter-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sitter-card-body { padding: 30px 28px 26px; color: var(--ink); }
+  .sitter-card-body .eyebrow { color: var(--gold); }
+  .sitter-card-body h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; color: var(--forest-deep); margin: 8px 0 18px; }
+  .sitter-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 13.5px; color: #3d3a33; line-height: 1.45; }
+  .sitter-row svg { width: 18px; height: 18px; color: var(--gold); flex: none; margin-top: 2px; }
+  .sitter-callout { display: flex; align-items: center; gap: 12px; background: rgba(192,151,63,0.16); border: 1px solid rgba(192,151,63,0.4); border-radius: 3px; padding: 14px 16px; margin-top: 18px; font-size: 12.5px; color: var(--forest-deep); font-weight: 600; line-height: 1.4; }
+  .sitter-callout svg { width: 20px; height: 20px; flex: none; color: var(--forest-deep); }
+  .sitter-disclaimer { font-size: 11.5px; color: var(--taupe); margin-top: 14px; font-style: italic; line-height: 1.5; }
+
+  .included-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px 22px; margin-top: 32px; }
   @media (min-width: 700px) { .included-grid { grid-template-columns: repeat(3,1fr); } }
   @media (min-width: 980px) { .included-grid { grid-template-columns: repeat(6,1fr); } }
-  .included-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
-  .included-item svg { width: 26px; height: 26px; color: var(--gold); }
-  .included-item span { font-size: 12.5px; color: #4b453b; }
+  .included-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+  .included-item .thumb { width: 100%; aspect-ratio: 1/1; border-radius: 3px; overflow: hidden; }
+  .included-item .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .included-item svg { width: 22px; height: 22px; color: var(--gold); }
+  .included-item .label { font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--forest-deep); font-weight: 600; }
+  .included-item .desc { font-size: 12px; color: #6b6558; }
   .included-quote { text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--forest-deep); margin-top: 40px; }
   .included-quote cite { display: block; font-family: 'Cinzel', serif; font-style: normal; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); margin-top: 10px; }
 
   .addon-card { display: grid; grid-template-columns: 1fr; gap: 0; background: var(--cream-deep); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
-  @media (min-width: 800px) { .addon-card { grid-template-columns: 40% 1fr; } }
+  @media (min-width: 900px) { .addon-card { grid-template-columns: 34% 1fr 27%; } }
   .addon-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  @media (min-width: 900px) { .addon-media { aspect-ratio: auto; } }
   .addon-media img { width: 100%; height: 100%; object-fit: cover; }
   .addon-media svg { width: 84px; height: 84px; color: var(--gold-bright); opacity: 0.85; }
-  .addon-info { padding: 36px 32px 38px; display: flex; flex-direction: column; justify-content: center; }
-  .addon-info h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 3vw, 32px); color: var(--forest-deep); margin: 10px 0 8px; }
+  .addon-info { padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; }
+  .addon-info h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(22px, 2.6vw, 28px); color: var(--forest-deep); margin: 10px 0 8px; }
   .addon-info p { font-size: 15.5px; color: #4b453b; margin-bottom: 8px; }
   .addon-info .partner-note { font-size: 13px; color: var(--taupe); font-style: italic; margin-top: 10px; }
   .addon-info .btn { margin-top: 20px; align-self: flex-start; }
+  .addon-howit { padding: 36px 32px; border-top: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
+  @media (min-width: 900px) { .addon-howit { border-top: none; border-left: 1px solid var(--line); } }
 
   .req-section { max-width: 760px; margin: 0 auto; }
   .req-block { background: var(--cream-deep); border: 1px solid var(--line); border-radius: 4px; padding: 28px 28px 30px; margin-bottom: 24px; }
@@ -257,6 +279,8 @@
 </script>
 
 <section class="addons-hero">
+  <div class="addons-hero-bg"><img src="images/addons/hero-lifestyle.jpg" alt="" loading="eager"></div>
+  <div class="addons-hero-script script-accent">Small additions.<br>Big memories.<span class="rule"></span></div>
   <div class="wrap addons-hero-inner">
     <div class="eyebrow">Make Your Stay</div>
     <h1>Your Own</h1>
@@ -278,14 +302,14 @@
         <p>Choose your services, tell us when you'd prefer to schedule, and we'll check availability with our massage partner.</p>
         <p class="partner-note">At Cedar Escape &nbsp;&middot;&nbsp; By request &nbsp;&middot;&nbsp; Subject to availability</p>
         <button type="button" class="btn btn-gold js-open-request">Request a Massage →</button>
-        <div class="how-it-works">
-          <div class="how-it-works-label">How It Works</div>
-          <div class="how-steps">
-            <div class="how-step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg><span class="num">1</span><span>Send your request</span></div>
-            <div class="how-step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg><span class="num">2</span><span>We check availability</span></div>
-            <div class="how-step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span class="num">3</span><span>Pay your deposit</span></div>
-            <div class="how-step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-2-8-5.5-8-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 10-.6.3-1.4.3-2 0Z"/></svg><span class="num">4</span><span>Your massage is confirmed</span></div>
-          </div>
+      </div>
+      <div class="addon-howit">
+        <div class="how-it-works-label">How It Works</div>
+        <div class="how-steps-list">
+          <div class="how-step-row"><span class="num">1</span><span class="step-text">Send your request</span></div>
+          <div class="how-step-row"><span class="num">2</span><span class="step-text">We check availability</span></div>
+          <div class="how-step-row"><span class="num">3</span><span class="step-text">Pay your deposit</span></div>
+          <div class="how-step-row"><span class="num">4</span><span class="step-text">Your massage is confirmed</span></div>
         </div>
       </div>
     </div>
@@ -300,11 +324,24 @@
       <p>We've partnered with some amazing local businesses to offer guest-only perks and special offers during your stay.</p>
       <p style="margin-top:12px;">Booked guests can find current Cedar Escape-only offers and redemption details in the digital guest guide.</p>
       <a href="plan-your-trip.html" class="btn btn-gold" style="margin-top:22px;">Check Your Guest Guide →</a>
+      <div class="exclusives-script script-accent">More time<br>for what matters.<span class="rule"></span></div>
     </div>
-    <div class="exclusives-photos">
-      <figure class="polaroid p1"><img src="images/addons/local-flavor.jpg" alt="Local flavor" loading="lazy"><figcaption>Local Flavor</figcaption></figure>
-      <figure class="polaroid p2"><img src="images/addons/explore-more.jpg" alt="Explore more" loading="lazy"><figcaption>Explore More</figcaption></figure>
-      <figure class="polaroid p3"><img src="images/addons/good-eats.jpg" alt="Good eats" loading="lazy"><figcaption>Good Eats</figcaption></figure>
+    <div class="sitter-card">
+      <div class="sitter-card-media"><img src="images/addons/adriana-card.jpg" alt="Childcare provider spending time with a child, decorative image" loading="lazy"></div>
+      <div class="sitter-card-body">
+        <div class="eyebrow">Recommended Sitter</div>
+        <h3>Adriana</h3>
+        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg><span>Languages: English + Spanish</span></div>
+        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11 6.5 6.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg><span>Transportation: Has a car + driver's license</span></div>
+        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1M15.5 14.5A4.5 4.5 0 0 1 20 19v1"/></svg><span>Comfortable with excursions, WaterPark outings and activities away from the house</span></div>
+        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1.1-3 2.3c0 3 6 1.5 6 4.5 0 1.3-1.3 2.4-3 2.4s-3-1-3-2.4"/></svg><span>Rates: $20 / $30 depending on number of children, ages and hours requested</span></div>
+        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span>Payment accepted: Apple Pay, PayPal, Cash App, cash and Venmo</span></div>
+        <div class="sitter-callout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+          <span>Booked guests can find Adriana's contact information in the Cedar Escape digital guidebook.</span>
+        </div>
+        <p class="sitter-disclaimer">Adriana is an independent childcare provider. Availability, rates and arrangements are made directly with her.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -315,12 +352,42 @@
     <h2 style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(24px,3.2vw,34px);color:var(--forest-deep);margin:10px 0 8px;">Because not every extra should cost extra.</h2>
     <p style="font-size:15.5px;color:#4b453b;max-width:560px;">From movie nights to morning coffee, there's a lot already here for you to enjoy — at no additional cost.</p>
     <div class="included-grid">
-      <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4"/></svg><span>Movie Room</span></div>
-      <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="4"/><path d="M7 12h3M8.5 10.5v3M15 12h.01M18 10h.01"/></svg><span>Game Spaces</span></div>
-      <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 21v-2a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v2M15.5 13.5A4.5 4.5 0 0 1 20 18v1"/></svg><span>Family Gear</span></div>
-      <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg><span>Work + Fitness Setup</span></div>
-      <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-4Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-.5 1 .5 1.5 0 2.5M12 3c-.5 1 .5 1.5 0 2.5"/></svg><span>Coffee Starter Supplies</span></div>
-      <div class="included-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-2-8-5.5-8-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 10-.6.3-1.4.3-2 0Z"/></svg><span>And More Throughout the Home</span></div>
+      <div class="included-item">
+        <div class="thumb"><img src="images/addons/included/movie-room.jpg" alt="Movie room theater seating at Cedar Escape" loading="lazy"></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4"/></svg>
+        <div class="label">Movie Room</div>
+        <div class="desc">Big screen. Big cozy.</div>
+      </div>
+      <div class="included-item">
+        <div class="thumb"><img src="images/addons/included/game-spaces.jpg" alt="Colorful arcade room at Cedar Escape" loading="lazy"></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="4"/><path d="M7 12h3M8.5 10.5v3M15 12h.01M18 10h.01"/></svg>
+        <div class="label">Game Spaces</div>
+        <div class="desc">Fun for all ages.</div>
+      </div>
+      <div class="included-item">
+        <div class="thumb"><img src="images/addons/included/family-gear.jpg" alt="Family gear" loading="lazy"></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 21v-2a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v2M15.5 13.5A4.5 4.5 0 0 1 20 18v1"/></svg>
+        <div class="label">Family Gear</div>
+        <div class="desc">High chairs, Pack 'n Plays and more.</div>
+      </div>
+      <div class="included-item">
+        <div class="thumb"><img src="images/addons/included/work-fitness.jpg" alt="Home gym with exercise bike and weight bench at Cedar Escape" loading="lazy"></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>
+        <div class="label">Work + Fitness Setup</div>
+        <div class="desc">Stay on your routine.</div>
+      </div>
+      <div class="included-item">
+        <div class="thumb"><img src="images/addons/included/coffee.jpg" alt="Kitchen coffee station at Cedar Escape" loading="lazy"></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-4Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-.5 1 .5 1.5 0 2.5M12 3c-.5 1 .5 1.5 0 2.5"/></svg>
+        <div class="label">Coffee Starter Supplies</div>
+        <div class="desc">Because good mornings matter.</div>
+      </div>
+      <div class="included-item">
+        <div class="thumb"><img src="images/addons/included/and-more.jpg" alt="Deck seating at Cedar Escape" loading="lazy"></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-2-8-5.5-8-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 10-.6.3-1.4.3-2 0Z"/></svg>
+        <div class="label">And More</div>
+        <div class="desc">Relax, reconnect, belong.</div>
+      </div>
     </div>
     <div class="included-quote">
       "It's all here so you can focus on what matters most."

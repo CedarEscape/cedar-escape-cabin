@@ -153,6 +153,18 @@
   .valley-card p { font-size: 12.5px; color: rgba(250,246,238,0.82); }
   .valley-card .go { display: inline-block; margin-top: 10px; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid var(--gold-bright); padding-bottom: 2px; }
 
+  .valley-market { margin-top: 16px; background: rgba(250,246,238,0.06); border: 1px solid rgba(250,246,238,0.16); border-radius: 3px; overflow: hidden; display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .valley-market { grid-template-columns: 38% 1fr; } }
+  .valley-market img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 200px; }
+  .valley-market-body { padding: 26px 28px; color: var(--cream); }
+  .valley-market-badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest-deep); background: var(--gold-bright); padding: 4px 10px; border-radius: 2px; font-weight: 700; margin-bottom: 12px; }
+  .valley-market-body h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; margin: 0 0 6px; color: var(--cream); }
+  .valley-market-address { font-size: 12.5px; color: rgba(250,246,238,0.6); margin-bottom: 12px; line-height: 1.5; }
+  .valley-market-body p.vm-copy { font-size: 13.5px; color: rgba(250,246,238,0.82); margin-bottom: 10px; line-height: 1.55; }
+  .valley-market-tip { font-size: 12.5px; color: rgba(250,246,238,0.7); font-style: italic; margin-bottom: 16px; line-height: 1.5; }
+  .valley-market-ctas { display: flex; flex-wrap: wrap; gap: 20px; }
+  .valley-market-ctas a { font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid var(--gold-bright); padding-bottom: 2px; }
+
   /* ---------- RESTAURANT / CATERING CARDS ---------- */
   .rest-group { margin-bottom: 30px; }
   .rest-group .glabel { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
@@ -552,6 +564,20 @@
           <h4>Caverns &amp; the Valley</h4>
           <p>Luray Caverns, Grand Caverns and more valley adventures worth the drive.</p>
           <a href="https://www.luraycaverns.com/" target="_blank" rel="noopener" class="go">Plan the Visit →</a>
+        </div>
+      </div>
+    </div>
+    <div class="valley-market">
+      <img src="images/farmers-market.jpg" loading="lazy" alt="Outdoor farmers market stalls">
+      <div class="valley-market-body">
+        <div class="valley-market-badge">Year-Round</div>
+        <h4>Harrisonburg Farmers Market</h4>
+        <div class="valley-market-address">Turner Pavilion &middot; 228 S. Liberty St., Harrisonburg, VA 22801</div>
+        <p class="vm-copy">A year-round downtown market featuring local produce, baked goods, meats, cheeses, prepared foods, flowers and locally made goods.</p>
+        <p class="valley-market-tip">Cedar Tip: Pair it with a morning in Downtown Harrisonburg — grab breakfast or coffee, walk the market, then explore the shops nearby.</p>
+        <div class="valley-market-ctas">
+          <a href="https://harrisonburgfarmersmarket.com/" target="_blank" rel="noopener">Market Details →</a>
+          <a href="https://maps.app.goo.gl/BpcC9zUPj47GvFVw8?g_st=i&utm_campaign=ac-im" target="_blank" rel="noopener">Get Directions →</a>
         </div>
       </div>
     </div>

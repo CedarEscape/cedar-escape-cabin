@@ -83,17 +83,19 @@
   .exclusives-section .eyebrow { color: var(--gold-bright); }
   .exclusives-section h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(26px, 3.5vw, 36px); color: var(--cream); margin: 10px 0 14px; }
   .exclusives-section p { color: rgba(250,246,238,0.78); font-size: 15.5px; max-width: 480px; }
-  .exclusives-wrap { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
-  @media (min-width: 860px) { .exclusives-wrap { grid-template-columns: 1fr 1.15fr; gap: 56px; } }
+  .exclusives-wrap { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; }
+  @media (min-width: 860px) { .exclusives-wrap { grid-template-columns: 0.85fr 1.3fr; gap: 40px; align-items: center; } }
   .exclusives-script { margin-top: 22px; font-size: clamp(20px, 2.4vw, 26px); color: var(--gold-bright); }
 
-  .sitter-card { background: var(--cream); border-radius: 4px; overflow: hidden; box-shadow: 0 24px 54px rgba(0,0,0,0.3); display: grid; grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .sitter-card { grid-template-columns: 40% 1fr; } }
-  .sitter-card-media { position: relative; min-height: 220px; }
+  .sitters-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 640px) { .sitters-grid { grid-template-columns: 1fr 1fr; } }
+
+  .sitter-card { background: var(--cream); border-radius: 4px; overflow: hidden; box-shadow: 0 24px 54px rgba(0,0,0,0.3); display: flex; flex-direction: column; height: 100%; }
+  .sitter-card-media { position: relative; aspect-ratio: 4/3; }
   .sitter-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .sitter-card-body { padding: 30px 28px 26px; color: var(--ink); }
+  .sitter-card-body { padding: 26px 24px 24px; color: var(--ink); flex: 1; display: flex; flex-direction: column; }
   .sitter-card-body .eyebrow { color: var(--gold); }
-  .sitter-card-body h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; color: var(--forest-deep); margin: 8px 0 18px; }
+  .sitter-card-body h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 27px; color: var(--forest-deep); margin: 8px 0 16px; }
   .sitter-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 13.5px; color: #3d3a33; line-height: 1.45; }
   .sitter-row svg { width: 18px; height: 18px; color: var(--gold); flex: none; margin-top: 2px; }
   .sitter-callout { display: flex; align-items: center; gap: 12px; background: rgba(192,151,63,0.16); border: 1px solid rgba(192,151,63,0.4); border-radius: 3px; padding: 14px 16px; margin-top: 18px; font-size: 12.5px; color: var(--forest-deep); font-weight: 600; line-height: 1.4; }
@@ -305,27 +307,49 @@
     <div>
       <div class="eyebrow">Cedar Escape Exclusives</div>
       <h2>A few local perks, just for Cedar Escape guests.</h2>
-      <p>We've partnered with some amazing local businesses to offer guest-only perks and special offers during your stay.</p>
-      <p style="margin-top:12px;">Booked guests can find current Cedar Escape-only offers and redemption details in the digital guest guide.</p>
+      <p>We've partnered with some amazing local businesses and trusted local help to offer guest-only perks and stay-enhancing extras.</p>
+      <p style="margin-top:12px;">Booked guests can find current Cedar Escape-only offers and sitter contact details in the digital guest guide.</p>
       <a href="plan-your-trip.html" class="btn btn-gold" style="margin-top:22px;">Check Your Guest Guide →</a>
       <div class="exclusives-script script-accent">More time<br>for what matters.<span class="rule"></span></div>
     </div>
-    <div class="sitter-card">
-      <div class="sitter-card-media"><img src="images/addons/adriana-card.jpg" alt="Children's books, decorative image" loading="lazy"></div>
-      <div class="sitter-card-body">
-        <div class="eyebrow">Recommended Sitter</div>
-        <h3>Adriana</h3>
-        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg><span>Languages: English + Spanish</span></div>
-        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11 6.5 6.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg><span>Transportation: Has a car + driver's license</span></div>
-        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1M15.5 14.5A4.5 4.5 0 0 1 20 19v1"/></svg><span>Comfortable with excursions, WaterPark outings and activities away from the house</span></div>
-        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-8-8"/><path d="M14 4.5V2M14 2h2.5M14 2 11.5 4.5"/><path d="m8 12 2.2 2.2L16 8.4"/></svg><span>CPR Certified</span></div>
-        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1.1-3 2.3c0 3 6 1.5 6 4.5 0 1.3-1.3 2.4-3 2.4s-3-1-3-2.4"/></svg><span>Rates: $20&ndash;30/hour, depending on number of children and ages</span></div>
-        <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span>Payment accepted: Apple Pay, PayPal, Cash App, cash and Venmo</span></div>
-        <div class="sitter-callout">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
-          <span>Booked guests can find Adriana's contact information in the Cedar Escape digital guidebook.</span>
+    <div class="sitters-grid">
+      <div class="sitter-card">
+        <div class="sitter-card-media"><img src="images/addons/adriana-card.jpg" alt="Children's books, decorative image" loading="lazy"></div>
+        <div class="sitter-card-body">
+          <div class="eyebrow">Recommended Sitter</div>
+          <h3>Adriana</h3>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg><span>Languages: English + Spanish</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11 6.5 6.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg><span>Transportation: Has a car + driver's license</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1M15.5 14.5A4.5 4.5 0 0 1 20 19v1"/></svg><span>Comfortable with excursions, WaterPark outings and activities away from the house</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5h.01"/></svg><span>Additional fees apply for excursions</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-8-8"/><path d="M14 4.5V2M14 2h2.5M14 2 11.5 4.5"/><path d="m8 12 2.2 2.2L16 8.4"/></svg><span>CPR Certified</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1.1-3 2.3c0 3 6 1.5 6 4.5 0 1.3-1.3 2.4-3 2.4s-3-1-3-2.4"/></svg><span>Rates: $20&ndash;30/hour, depending on number of children and ages</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span>Payment accepted: Apple Pay, PayPal, Cash App, cash and Venmo</span></div>
+          <div class="sitter-callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+            <span>Booked guests can find Adriana's contact information in the Cedar Escape digital guidebook.</span>
+          </div>
+          <p class="sitter-disclaimer">Adriana is an independent childcare provider. Availability, rates and arrangements are made directly with her.</p>
         </div>
-        <p class="sitter-disclaimer">Adriana is an independent childcare provider. Availability, rates and arrangements are made directly with her.</p>
+      </div>
+      <div class="sitter-card">
+        <div class="sitter-card-media"><img src="images/addons/ashlyn-card.jpg" alt="Child-friendly travel items, decorative image" loading="lazy"></div>
+        <div class="sitter-card-body">
+          <div class="eyebrow">Recommended Sitter</div>
+          <h3>Ashlyn</h3>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg><span>Languages: English</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11 6.5 6.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg><span>Transportation: Has a car + driver's license</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1M15.5 14.5A4.5 4.5 0 0 1 20 19v1"/></svg><span>Comfortable with excursions, WaterPark outings and activities away from the house</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5h.01"/></svg><span>Additional fees apply for excursions</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-8-8"/><path d="M14 4.5V2M14 2h2.5M14 2 11.5 4.5"/><path d="m8 12 2.2 2.2L16 8.4"/></svg><span>CPR Certified</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1.1-3 2.3c0 3 6 1.5 6 4.5 0 1.3-1.3 2.4-3 2.4s-3-1-3-2.4"/></svg><span>Rates: $20&ndash;30/hour, depending on number of children and ages</span></div>
+          <div class="sitter-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span>Payment accepted: Cash, Cash App, Apple Pay</span></div>
+          <div class="sitter-callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+            <span>Booked guests can find Ashlyn's contact information in the Cedar Escape digital guidebook.</span>
+          </div>
+          <p class="sitter-disclaimer">Ashlyn is an independent childcare provider. Availability, rates and arrangements are made directly with her.</p>
+        </div>
       </div>
     </div>
   </div>

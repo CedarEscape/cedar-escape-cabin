@@ -25,6 +25,14 @@ export async function onRequestPost({ request, env }) {
   let reversalsPosted = 0;
   const itemErrors = [];
 
+  // HOSPITABLE_API_TOKEN is a known, expected gap until the owner adds it
+  // (a documented pre-launch step) -- skip quietly rather than paging them
+  // with a daily "job failed" email for something that isn't a real fault.
+  if (!env.HOSPITABLE_API_TOKEN) {
+    await insertJobRun(db, { jobName: 'hospitable_nightly_sync', status: 'skipped', scanned: 0, earnsPosted: 0, reversalsPosted: 0, errorDetail: 'HOSPITABLE_API_TOKEN not configured yet', startedAt, finishedAt: new Date().toISOString() });
+    return new Response(JSON.stringify({ ok: true, skipped: true, reason: 'HOSPITABLE_API_TOKEN not configured' }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  }
+
   let reservations;
   try {
     const lookbackDays = await getSettingInt(db, 'lookback_days', 60);

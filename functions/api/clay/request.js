@@ -65,7 +65,7 @@ export async function onRequestPost({ request, env }) {
   const lpHtml = renderShell({
     title: 'New Cedar Escape private experience request',
     heroEyebrow: 'Friendly City Clay & Art Center',
-    heroHeadline: 'Hi LP, got a moment?',
+    heroHeadline: 'Hi Laura Paige, got a moment?',
     bodyHtml: `
       <p>We have a new Cedar Escape guest interested in a private experience with Friendly City Clay &amp; Art Center.</p>
       <p>Here are the request details:</p>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rewards Shop | Cedar Rewards</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rewards.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="add-ons.html">Add-Ons</a></li>
+      <li><a href="rewards-dashboard.html" class="current">Cedar Rewards</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Reserve</a></li>
+    </ul>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+
+<div class="wrap rw-section">
+  <div class="eyebrow">Cedar Rewards</div>
+  <h1 style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3.6vw,34px);color:var(--forest-deep);margin:10px 0 6px;">Rewards Shop</h1>
+  <p style="font-size:14px;color:var(--taupe);" id="rwBalanceLine">Loading your balance…</p>
+
+  <div id="rwMsg" class="rw-msg error" style="display:none;margin-top:18px;"></div>
+
+  <div class="rw-tabs" style="margin-top:28px;">
+    <button type="button" class="rw-tab active" data-cat="all">All</button>
+    <button type="button" class="rw-tab" data-cat="cedar_credit">Cedar Credit</button>
+    <button type="button" class="rw-tab" data-cat="stay_perk">Stay Perks</button>
+  </div>
+
+  <div id="rwGrid" class="rw-grid cols-3">Loading…</div>
+</div>
+
+<footer><div class="wrap"><div class="foot-bottom"><span>© 2026 Cedar Escape · Massanutten Resort, VA</span></div></div></footer>
+
+<script src="js/rewards-common.js"></script>
+<script>
+  var currentBalance = 0;
+  var allRewards = [];
+  var currentCat = 'all';
+
+  function showMsg(text) {
+    var el = document.getElementById('rwMsg');
+    el.textContent = text;
+    el.style.display = '';
+  }
+
+  function render() {
+    var grid = document.getElementById('rwGrid');
+    var list = currentCat === 'all' ? allRewards : allRewards.filter(function (r) { return r.category === currentCat; });
+    if (!list.length) { grid.innerHTML = '<p>No rewards in this category yet.</p>'; return; }
+
+    grid.innerHTML = list.map(function (r) {
+      var affordable = currentBalance >= r.cost_points;
+      var actionHtml = affordable
+        ? '<button type="button" class="btn btn-gold rw-redeem-btn" data-code="' + r.code + '" data-type="' + r.reward_type + '">Redeem</button>'
+        : '<span class="need-more">' + rwFormatPoints(r.cost_points - currentBalance) + ' more points</span>';
+      return '<div class="rw-reward-card' + (affordable ? '' : ' unaffordable') + '">' +
+        '<div class="cost">' + rwFormatPoints(r.cost_points) + ' PTS</div>' +
+        '<h3>' + rwEscapeHtml(r.name) + '</h3>' +
+        '<p>' + rwEscapeHtml(r.description || '') + '</p>' +
+        actionHtml +
+        '</div>';
+    }).join('');
+
+    grid.querySelectorAll('.rw-redeem-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () { redeem(btn.dataset.code, btn.dataset.type, btn); });
+    });
+  }
+
+  async function redeem(code, type, btn) {
+    btn.disabled = true;
+    document.getElementById('rwMsg').style.display = 'none';
+
+    if (type === 'request') {
+      window.location.href = 'rewards-choose-stay.html?reward=' + encodeURIComponent(code);
+      return;
+    }
+
+    try {
+      var res = await fetch('/api/rewards/redeem/instant', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rewardCode: code })
+      });
+      var data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Could not redeem right now.');
+      sessionStorage.setItem('rwRedeemResult', JSON.stringify({ type: 'instant', code: data.code }));
+      window.location.href = 'rewards-redeem.html';
+    } catch (err) {
+      showMsg(err.message);
+      btn.disabled = false;
+    }
+  }
+
+  document.querySelectorAll('.rw-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.rw-tab').forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      currentCat = tab.dataset.cat;
+      render();
+    });
+  });
+
+  (async function init() {
+    var me = await rwRequireSession();
+    if (!me) return;
+    currentBalance = me.balance;
+    document.getElementById('rwBalanceLine').textContent = 'You have ' + rwFormatPoints(currentBalance) + ' points.';
+
+    var res = await fetch('/api/rewards/catalog');
+    var data = await res.json();
+    allRewards = data.rewards || [];
+    render();
+  })();
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import { consumeToken } from '../../../_shared/rewards-tokens.js';
 import { getMember } from '../../../_shared/rewards-db.js';
-import { createSession, sessionCookieHeader } from '../../../_shared/rewards-session.js';
+import { createSession, sessionCookieHeader, isSecureRequest } from '../../../_shared/rewards-session.js';
 
 function landingPage(heading, message) {
   return new Response(
@@ -20,7 +20,7 @@ function landingPage(heading, message) {
   );
 }
 
-export async function onRequestGet({ params, env }) {
+export async function onRequestGet({ request, params, env }) {
   const db = env.REWARDS_DB;
   const tokenRow = await consumeToken(db, params.token, 'sign_in');
 
@@ -38,7 +38,7 @@ export async function onRequestGet({ params, env }) {
     status: 302,
     headers: {
       Location: '/rewards-dashboard.html',
-      'Set-Cookie': sessionCookieHeader(sessionId, expiresAt),
+      'Set-Cookie': sessionCookieHeader(sessionId, expiresAt, isSecureRequest(request)),
     },
   });
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redeemed | Cedar Rewards</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rewards.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rewards-dashboard.html" class="current">Cedar Rewards</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Reserve</a></li>
+    </ul>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+
+<div class="wrap rw-section" style="max-width:520px;text-align:center;">
+  <div id="rwContent">Loading…</div>
+</div>
+
+<footer><div class="wrap"><div class="foot-bottom"><span>© 2026 Cedar Escape · Massanutten Resort, VA</span></div></div></footer>
+
+<script>
+  var raw = sessionStorage.getItem('rwRedeemResult');
+  var content = document.getElementById('rwContent');
+
+  if (!raw) {
+    content.innerHTML = '<p>No redemption to show.</p><a href="rewards-shop.html" class="btn btn-gold" style="margin-top:16px;display:inline-flex;">Back to Rewards Shop</a>';
+  } else {
+    var result = JSON.parse(raw);
+    sessionStorage.removeItem('rwRedeemResult');
+
+    if (result.type === 'instant') {
+      content.innerHTML =
+        '<div class="eyebrow">Your Code</div>' +
+        '<h1 style="font-family:\'Playfair Display\',serif;font-style:italic;font-size:clamp(26px,3.6vw,34px);color:var(--forest-deep);margin:10px 0 6px;">Your code is ready.</h1>' +
+        '<div class="rw-code-display">' + result.code + '</div>' +
+        '<p style="font-size:13.5px;color:#4b453b;">Enter this code at checkout when you book direct.</p>' +
+        '<a href="check-availability.html" class="btn btn-gold" style="margin-top:20px;display:inline-flex;">Copy Code &amp; Book Direct →</a>';
+    } else {
+      content.innerHTML =
+        '<div class="eyebrow">Request Submitted</div>' +
+        '<h1 style="font-family:\'Playfair Display\',serif;font-style:italic;font-size:clamp(26px,3.6vw,34px);color:var(--forest-deep);margin:10px 0 6px;">We’ve got your request.</h1>' +
+        '<p style="font-size:14px;color:#4b453b;">Your points are on hold while we review it — we’ll email you once it’s decided.</p>' +
+        '<a href="rewards-dashboard.html" class="btn btn-gold" style="margin-top:20px;display:inline-flex;">Back to my dashboard →</a>';
+    }
+  }
+</script>
+</body>
+</html>

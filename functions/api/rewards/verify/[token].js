@@ -1,6 +1,6 @@
 import { consumeToken } from '../../../_shared/rewards-tokens.js';
 import { getMember, postEarn, getSettingInt } from '../../../_shared/rewards-db.js';
-import { createSession, sessionCookieHeader } from '../../../_shared/rewards-session.js';
+import { createSession, sessionCookieHeader, isSecureRequest } from '../../../_shared/rewards-session.js';
 
 function landingPage(heading, message) {
   return new Response(
@@ -20,19 +20,20 @@ function landingPage(heading, message) {
   );
 }
 
-async function signInAndRedirect(db, memberId, redirectPath) {
+async function signInAndRedirect(db, memberId, redirectPath, secure) {
   const { id: sessionId, expiresAt } = await createSession(db, memberId);
   return new Response(null, {
     status: 302,
     headers: {
       Location: redirectPath,
-      'Set-Cookie': sessionCookieHeader(sessionId, expiresAt),
+      'Set-Cookie': sessionCookieHeader(sessionId, expiresAt, secure),
     },
   });
 }
 
-export async function onRequestGet({ params, env }) {
+export async function onRequestGet({ request, params, env }) {
   const db = env.REWARDS_DB;
+  const secure = isSecureRequest(request);
   const tokenRow = await consumeToken(db, params.token, 'verify_email');
 
   if (!tokenRow) {
@@ -48,7 +49,7 @@ export async function onRequestGet({ params, env }) {
     // Likely an email-scanner prefetch or a double click. If the account is
     // already verified, sign them in gracefully rather than showing an error.
     if (member.verified_at) {
-      return signInAndRedirect(db, member.id, '/rewards-dashboard.html');
+      return signInAndRedirect(db, member.id, '/rewards-dashboard.html', secure);
     }
     return landingPage('Link expired', 'This link is invalid or has expired. Please request a new one.');
   }
@@ -64,5 +65,5 @@ export async function onRequestGet({ params, env }) {
     }
   }
 
-  return signInAndRedirect(db, member.id, '/rewards-welcome.html');
+  return signInAndRedirect(db, member.id, '/rewards-welcome.html', secure);
 }

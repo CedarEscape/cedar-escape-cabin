@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Rewards | Cedar Escape</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rewards.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="stay.html">House Tour</a></li>
+      <li><a href="plan-your-trip.html">Guest Guide</a></li>
+      <li><a href="explore-massanutten.html">Things to Do</a></li>
+      <li><a href="add-ons.html">Add-Ons</a></li>
+      <li><a href="rewards-dashboard.html" class="current">Cedar Rewards</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Reserve</a></li>
+    </ul>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+
+<section class="rw-hero" style="padding:44px 0;">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold-bright);">Cedar Rewards</div>
+    <h1 id="rwGreeting" style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(24px,3.4vw,34px);margin-top:10px;">Welcome back.</h1>
+  </div>
+</section>
+
+<div class="wrap rw-section" style="padding-top:36px;">
+  <div id="rwBanner" class="rw-msg error" style="display:none;"></div>
+
+  <div class="rw-balance-card">
+    <div class="eyebrow" style="color:var(--gold-bright);">Your Balance</div>
+    <div class="amount"><span id="rwBalance">—</span> pts</div>
+    <div class="next" id="rwNextReward"></div>
+  </div>
+
+  <div class="rw-grid cols-3">
+    <a href="rewards-shop.html" class="rw-card" style="text-decoration:none;display:block;">
+      <div class="eyebrow">Rewards Shop</div>
+      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--forest-deep);margin-top:8px;">Redeem your points →</h3>
+    </a>
+    <a href="rewards-earn.html" class="rw-card" style="text-decoration:none;display:block;">
+      <div class="eyebrow">Earn More</div>
+      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--forest-deep);margin-top:8px;">Ways to add points →</h3>
+    </a>
+    <a href="check-availability.html" class="rw-card" style="text-decoration:none;display:block;">
+      <div class="eyebrow">Book Direct</div>
+      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--forest-deep);margin-top:8px;">Earn on your next stay →</h3>
+    </a>
+  </div>
+
+  <div class="rw-banner" style="margin-top:32px;">Use the same email for Cedar Rewards and your direct reservation so your points can be added automatically.</div>
+
+  <div id="rwPendingWrap" style="margin-top:36px;display:none;">
+    <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--forest-deep);">Pending requests</h3>
+    <div id="rwPending" class="rw-card" style="margin-top:14px;"></div>
+  </div>
+
+  <div style="margin-top:36px;">
+    <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--forest-deep);">Recent activity</h3>
+    <div id="rwActivity" class="rw-card" style="margin-top:14px;">Loading…</div>
+  </div>
+
+  <p style="margin-top:28px;font-size:13px;"><a href="rewards-missing-points.html" style="color:var(--taupe);">Missing points? Let us know →</a></p>
+  <p style="margin-top:10px;font-size:13px;"><a href="#" class="js-rw-logout" style="color:var(--taupe);">Sign out</a></p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(250,246,238,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="add-ons.html">Add-Ons</a></li>
+          <li><a href="check-availability.html">Reserve</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cedar Escape · Massanutten Resort, VA</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/rewards-common.js"></script>
+<script>
+  function entryLabel(row) {
+    var labels = { earn: 'Points earned', hold: 'Points held', spend: 'Points redeemed', release: 'Hold released', reversal: 'Points reversed', adjustment: 'Adjustment' };
+    return labels[row.entry_type] || row.entry_type;
+  }
+  function entrySign(row) {
+    if (row.entry_type === 'earn' || row.entry_type === 'release') return 1;
+    if (row.entry_type === 'adjustment') return row.points >= 0 ? 1 : -1;
+    if (row.entry_type === 'hold') return row.hold_status === 'open' ? -1 : 0;
+    return -1; // spend, reversal
+  }
+
+  (async function init() {
+    var me = await rwRequireSession();
+    if (!me) return;
+
+    document.getElementById('rwGreeting').textContent = me.member.name ? ('Welcome back, ' + me.member.name.split(' ')[0] + '.') : 'Welcome back.';
+    document.getElementById('rwBalance').textContent = rwFormatPoints(me.balance);
+
+    try {
+      var catalogRes = await fetch('/api/rewards/catalog');
+      var catalog = (await catalogRes.json()).rewards || [];
+      var next = catalog.filter(function (r) { return r.cost_points > me.balance; })
+        .sort(function (a, b) { return a.cost_points - b.cost_points; })[0];
+      document.getElementById('rwNextReward').textContent = next
+        ? ('Next reward: ' + next.name + ', ' + rwFormatPoints(next.cost_points - me.balance) + ' points away')
+        : "You've got enough for anything in the shop. Nice.";
+    } catch (e) { /* non-critical */ }
+
+    try {
+      var historyRes = await fetch('/api/rewards/history');
+      var history = await historyRes.json();
+
+      var pending = (history.redemptions || []).filter(function (r) { return r.status === 'pending'; });
+      if (pending.length) {
+        document.getElementById('rwPendingWrap').style.display = '';
+        document.getElementById('rwPending').innerHTML = pending.map(function (r) {
+          return '<div class="rw-activity-row"><span>Request pending review</span><span class="points negative">-' + rwFormatPoints(r.points_cost) + ' pts held</span></div>';
+        }).join('');
+      }
+
+      var activity = history.ledger || [];
+      if (!activity.length) {
+        document.getElementById('rwActivity').textContent = 'Nothing yet — join bonuses and stay credits will show up here.';
+      } else {
+        document.getElementById('rwActivity').innerHTML = activity.slice(0, 15).map(function (row) {
+          var sign = entrySign(row);
+          var cls = sign > 0 ? 'positive' : (sign < 0 ? 'negative' : '');
+          var amount = sign === 0 ? '—' : (sign > 0 ? '+' : '-') + rwFormatPoints(row.points);
+          return '<div class="rw-activity-row"><span>' + rwEscapeHtml(entryLabel(row)) + '</span><span class="points ' + cls + '">' + amount + '</span></div>';
+        }).join('');
+      }
+    } catch (e) {
+      document.getElementById('rwActivity').textContent = 'Could not load activity right now.';
+    }
+  })();
+</script>
+</body>
+</html>

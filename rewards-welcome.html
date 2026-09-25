@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Cedar Rewards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rewards.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Reserve</a></li>
+    </ul>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+<div class="wrap rw-section" style="max-width:520px;text-align:center;">
+  <div class="eyebrow">You're in</div>
+  <h1 style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(28px,4vw,38px);color:var(--forest-deep);margin:10px 0 16px;">Welcome to Cedar Rewards.</h1>
+  <p id="rwBonusLine" style="color:#4b453b;font-size:16px;">You've earned your signup bonus.</p>
+  <a href="rewards-dashboard.html" class="btn btn-gold" style="margin-top:26px;">Go to my dashboard →</a>
+</div>
+<footer><div class="wrap"><div class="foot-bottom"><span>© 2026 Cedar Escape · Massanutten Resort, VA</span></div></div></footer>
+<script>
+  fetch('/api/rewards/me').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+    if (data) document.getElementById('rwBonusLine').textContent = "You've earned " + Number(data.balance).toLocaleString() + " points just for joining.";
+  }).catch(function () {});
+</script>
+</body>
+</html>

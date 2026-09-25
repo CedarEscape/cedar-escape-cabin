@@ -26,13 +26,20 @@ export async function createSession(db, memberId) {
   return { id, expiresAt: expires };
 }
 
-export function sessionCookieHeader(sessionId, expiresAt) {
+// `secure` should be false only for local http://localhost dev — browsers
+// silently refuse to store a `Secure` cookie over plain http, which would
+// otherwise make sign-in look like it works while no session ever persists.
+export function sessionCookieHeader(sessionId, expiresAt, secure = true) {
   const maxAge = Math.max(0, Math.floor((expiresAt.getTime() - Date.now()) / 1000));
-  return `${COOKIE_NAME}=${sessionId}; Path=/; Max-Age=${maxAge}; HttpOnly; Secure; SameSite=Lax`;
+  return `${COOKIE_NAME}=${sessionId}; Path=/; Max-Age=${maxAge}; HttpOnly;${secure ? ' Secure;' : ''} SameSite=Lax`;
 }
 
-export function clearSessionCookieHeader() {
-  return `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`;
+export function clearSessionCookieHeader(secure = true) {
+  return `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly;${secure ? ' Secure;' : ''} SameSite=Lax`;
+}
+
+export function isSecureRequest(request) {
+  return new URL(request.url).protocol === 'https:';
 }
 
 function readCookie(request, name) {

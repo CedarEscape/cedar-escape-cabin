@@ -206,6 +206,45 @@ export async function getEarnForReservation(db, reservationId) {
     .first();
 }
 
+// ---- Redemptions ----
+
+export function buildRedemptionInsertStatement(db, { id, memberId, rewardId, pointsCost, status, linkedReservationId = null, issuedCode = null, expiresAt = null }) {
+  const now = new Date().toISOString();
+  return db
+    .prepare(
+      `INSERT INTO rewards_redemptions
+        (id, member_id, reward_id, points_cost, status, linked_reservation_id, issued_code, requested_at, expires_at, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    )
+    .bind(id, memberId, rewardId, pointsCost, status, linkedReservationId, issuedCode, now, expiresAt, now, now);
+}
+
+export async function getRedemption(db, id) {
+  return db.prepare('SELECT * FROM rewards_redemptions WHERE id = ?').bind(id).first();
+}
+
+export async function getMemberRedemptions(db, memberId) {
+  const { results } = await db
+    .prepare('SELECT * FROM rewards_redemptions WHERE member_id = ? ORDER BY requested_at DESC')
+    .bind(memberId)
+    .all();
+  return results;
+}
+
+export async function updateRedemptionStatus(db, id, status, extraFields = {}) {
+  const fields = { status, updated_at: new Date().toISOString(), ...extraFields };
+  const keys = Object.keys(fields);
+  const setClause = keys.map((k) => `${k} = ?`).join(', ');
+  await db
+    .prepare(`UPDATE rewards_redemptions SET ${setClause} WHERE id = ?`)
+    .bind(...keys.map((k) => fields[k]), id)
+    .run();
+}
+
+export function newId() {
+  return uuid();
+}
+
 export async function logEvent(db, { memberId = null, redemptionId = null, eventType, detail = null }) {
   await db
     .prepare(

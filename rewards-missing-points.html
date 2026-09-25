@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missing Points? | Cedar Rewards</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rewards.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rewards.html">Cedar Rewards</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Reserve</a></li>
+    </ul>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+
+<div class="wrap rw-section" style="max-width:520px;">
+  <div class="eyebrow">Cedar Rewards</div>
+  <h1 style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3.6vw,34px);color:var(--forest-deep);margin:10px 0 16px;">Missing points?</h1>
+  <p style="font-size:14px;color:#4b453b;margin-bottom:24px;">Booked a direct stay but don't see the points yet? Points post automatically a couple days after checkout. If it's been longer than that, tell us below and we'll look into it — this doesn't credit your account automatically.</p>
+
+  <div id="rwMsg" class="rw-msg error" style="display:none;"></div>
+  <div id="rwFormWrap">
+    <form id="rwMissingForm">
+      <div class="rw-form-field">
+        <label for="rwEmail">Email used for Cedar Rewards <span style="color:var(--gold);">*</span></label>
+        <input type="email" id="rwEmail" required autocomplete="email">
+      </div>
+      <div class="rw-form-field">
+        <label for="rwHint">Reservation dates or confirmation #</label>
+        <input type="text" id="rwHint">
+      </div>
+      <div class="rw-form-field">
+        <label for="rwMessage">Anything else we should know</label>
+        <textarea id="rwMessage" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%;">Submit</button>
+    </form>
+  </div>
+</div>
+
+<footer><div class="wrap"><div class="foot-bottom"><span>© 2026 Cedar Escape · Massanutten Resort, VA</span></div></div></footer>
+
+<script src="js/rewards-common.js"></script>
+<script>
+  document.getElementById('rwMissingForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var msg = document.getElementById('rwMsg');
+    msg.style.display = 'none';
+    var btn = e.target.querySelector('button[type="submit"]');
+    btn.disabled = true;
+
+    try {
+      var res = await fetch('/api/rewards/missing-points', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById('rwEmail').value,
+          reservationHint: document.getElementById('rwHint').value,
+          message: document.getElementById('rwMessage').value
+        })
+      });
+      var data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+      document.getElementById('rwFormWrap').innerHTML = '<div class="rw-msg success">Thanks — we’ll look into it and follow up by email.</div>';
+    } catch (err) {
+      msg.textContent = err.message;
+      msg.style.display = '';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

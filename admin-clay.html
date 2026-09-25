@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friendly City Clay Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rewards.css?v=4">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <div class="eyebrow" style="padding-right:8px;">Friendly City Clay Admin</div>
+  </nav>
+</header>
+
+<div class="wrap rw-section">
+  <div id="msg" class="rw-msg success" style="display:none;"></div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-style:italic;color:var(--forest-deep);">Private Experience Requests</h3>
+  <table class="rw-table" id="requestsTable">
+    <thead>
+      <tr>
+        <th>Guest</th><th>Reservation</th><th>Experience</th><th>Group</th>
+        <th>Preferred</th><th>Alternate</th><th>Status</th><th>Sent to Provider</th>
+        <th>Provider Response</th><th>Quoted Price</th><th>Provider Notes</th>
+        <th>Booking URL/Instructions</th><th>Guest Notified</th><th></th>
+      </tr>
+    </thead>
+    <tbody id="requestsTbody"><tr><td colspan="14">Loading…</td></tr></tbody>
+  </table>
+</div>
+
+<footer><div class="wrap"><div class="foot-bottom"><span>© 2026 Cedar Escape · Massanutten Resort, VA</span></div></div></footer>
+
+<script>
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function dt(s) { return s ? new Date(s).toLocaleString() : '—'; }
+  function showMsg(text, type) {
+    var el = document.getElementById('msg');
+    el.textContent = text;
+    el.className = 'rw-msg ' + (type || 'success');
+    el.style.display = '';
+    setTimeout(function () { el.style.display = 'none'; }, 4000);
+  }
+
+  var EXPERIENCE_LABELS = {
+    dessert_plates: 'Make Your Own Dessert Plates',
+    wheel_sampler: 'Pottery Wheel Sampler',
+    brunch_bowls: 'Brunch & Bowls',
+    wine_and_wheel: 'Wine & Wheel',
+    open_to_recs: 'Open to recommendations',
+  };
+  var RESPONSE_LABELS = {
+    REQUESTED: '—', SENT_TO_FRIENDLY_CITY_CLAY: 'Awaiting response',
+    AVAILABLE: 'Available', UNAVAILABLE: 'Not available',
+    GUEST_NOTIFIED: 'Guest notified', REFERRED_TO_FRIENDLY_CITY_CLAY: 'Referred to workshops',
+    COMPLETE: 'Complete',
+  };
+
+  async function loadRequests() {
+    var res = await fetch('/api/admin/clay/requests');
+    var data = await res.json();
+
+    document.getElementById('requestsTbody').innerHTML = data.requests.length ? data.requests.map(function (r) {
+      var preferred = esc(r.preferred_date) + ' ' + esc(r.preferred_time);
+      var alternate = r.alternate_date ? (esc(r.alternate_date) + ' ' + esc(r.alternate_time)) : '—';
+      return '<tr>' +
+        '<td>' + esc(r.guest_first_name) + ' ' + esc(r.guest_last_name) + '<br><span style="font-size:12px;color:var(--taupe);">' + esc(r.guest_email) + ' · ' + esc(r.guest_phone) + '</span></td>' +
+        '<td>' + esc(r.checkin_date || '—') + '</td>' +
+        '<td>' + esc(EXPERIENCE_LABELS[r.experience_code] || r.experience_code) + '</td>' +
+        '<td>' + esc(r.group_size) + '</td>' +
+        '<td>' + preferred + '</td>' +
+        '<td>' + alternate + '</td>' +
+        '<td>' + esc(r.status) + '</td>' +
+        '<td>' + dt(r.sent_to_provider_at) + '</td>' +
+        '<td>' + esc(RESPONSE_LABELS[r.status] || r.status) + '</td>' +
+        '<td>' + esc(r.quoted_price_text || '—') + '</td>' +
+        '<td>' + esc(r.provider_note || '—') + '</td>' +
+        '<td>' + esc(r.booking_url || '—') + '</td>' +
+        '<td>' + dt(r.guest_notified_at) + '</td>' +
+        '<td><button type="button" class="rw-btn-sm solid mark-complete" data-id="' + r.id + '">Mark Complete</button> ' +
+        '<button type="button" class="rw-btn-sm danger mark-referred" data-id="' + r.id + '">Mark Referred</button></td>' +
+        '</tr>';
+    }).join('') : '<tr><td colspan="14">No requests yet.</td></tr>';
+
+    document.querySelectorAll('.mark-complete').forEach(b => b.addEventListener('click', () => decide(b.dataset.id, 'mark_complete')));
+    document.querySelectorAll('.mark-referred').forEach(b => b.addEventListener('click', () => decide(b.dataset.id, 'mark_referred')));
+  }
+
+  async function decide(id, action) {
+    var res = await fetch('/api/admin/clay/requests', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: id, action: action })
+    });
+    var d = await res.json();
+    if (!res.ok) { showMsg(d.error || 'Failed', 'error'); return; }
+    showMsg('Done.');
+    loadRequests();
+  }
+
+  loadRequests();
+</script>
+</body>
+</html>

@@ -300,6 +300,32 @@
         </div>
       </div>
     </div>
+
+    <div class="addon-card">
+      <div class="addon-media">
+        <!-- Friendly City Clay photos not yet provided — falls back to the gradient background below until real photos are supplied. -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 4 2 7a5 5 0 0 0 10 0c0-3 2-4 2-7a7 7 0 0 0-7-7Z"/><path d="M9 16h6"/></svg>
+      </div>
+      <div class="addon-info">
+        <div class="eyebrow">Friendly City Clay &amp; Art Center</div>
+        <h2>Create something while you're here.</h2>
+        <p>Cedar Escape guests have two ways to enjoy Friendly City Clay:</p>
+        <p>&bull; Scheduled workshops &mdash; book directly with Friendly City Clay and save 10%</p>
+        <p>&bull; Private group experiences &mdash; send us your preferred experience and dates and we'll help coordinate availability</p>
+        <p class="partner-note">Harrisonburg, VA &nbsp;&middot;&nbsp; Advance planning recommended</p>
+        <!-- CLAY_WORKSHOP_URL PLACEHOLDER — real live workshop-schedule URL still needed from Courtney; do not invent one. -->
+        <a href="#" class="btn btn-outline" target="_blank" rel="noopener" title="Workshop URL needed from Courtney">View Workshops + Save 10% &rarr;</a>
+        <button type="button" class="btn btn-gold js-open-clay-request" style="margin-top:10px;">Explore Private Experiences &rarr;</button>
+      </div>
+      <div class="addon-howit">
+        <div class="how-it-works-label">How It Works</div>
+        <div class="how-steps-list">
+          <div class="how-step-row"><span class="num">1</span><span class="step-text">Send your request</span></div>
+          <div class="how-step-row"><span class="num">2</span><span class="step-text">We check availability</span></div>
+          <div class="how-step-row"><span class="num">3</span><span class="step-text">Friendly City Clay confirms directly with you</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -464,6 +490,152 @@
     </div>
   </div>
 </div>
+
+<div class="request-modal-overlay" id="clayRequestOverlay">
+  <div class="request-modal req-section" role="dialog" aria-modal="true" aria-labelledby="clayRequestTitle">
+    <button type="button" class="request-modal-close" aria-label="Close">&times;</button>
+    <div class="section-head">
+      <div class="eyebrow">Private Group Experiences</div>
+      <h2 id="clayRequestTitle">Private Group Experiences</h2>
+      <p>Planning something with your group? Explore a few of Friendly City Clay's current private experience options below. Submit your preferred experience and dates and we'll check availability for your stay.</p>
+    </div>
+
+    <div class="req-block" style="background:var(--cream-deep);border-radius:4px;padding:20px 22px;margin-bottom:8px;">
+      <h3>Current Pricing</h3>
+      <p style="margin:4px 0;">$330 for up to 6 guests</p>
+      <p style="margin:4px 0;">$55 per additional guest</p>
+      <p style="font-size:12.5px;color:var(--taupe);font-style:italic;margin-top:10px;">Pricing shown reflects current Friendly City Clay rates and is subject to change. Final pricing will be confirmed with availability.</p>
+    </div>
+
+    <form id="clayForm">
+      <div class="req-block" data-step="1">
+        <h3>Your Stay</h3>
+        <div class="req-grid two-col">
+          <div class="req-field"><label for="cf-fname">Guest First Name <span class="req">*</span></label><input id="cf-fname" type="text" required></div>
+          <div class="req-field"><label for="cf-lname">Guest Last Name <span class="req">*</span></label><input id="cf-lname" type="text" required></div>
+          <div class="req-field"><label for="cf-email">Email <span class="req">*</span></label><input id="cf-email" type="email" required></div>
+          <div class="req-field"><label for="cf-phone">Phone <span class="req">*</span></label><input id="cf-phone" type="tel" required></div>
+          <div class="req-field"><label for="cf-checkin">Cedar Escape Check-In Date</label><input id="cf-checkin" type="date"></div>
+        </div>
+      </div>
+
+      <div class="req-block">
+        <h3>Your Experience</h3>
+        <div class="req-grid two-col">
+          <div class="req-field">
+            <label for="cf-experience">Preferred Experience <span class="req">*</span></label>
+            <select id="cf-experience" required>
+              <option value="dessert_plates">Make Your Own Dessert Plates</option>
+              <option value="wheel_sampler">Pottery Wheel Sampler</option>
+              <option value="brunch_bowls">Brunch &amp; Bowls</option>
+              <option value="wine_and_wheel">Wine &amp; Wheel</option>
+              <option value="open_to_recs">Open to recommendations</option>
+            </select>
+          </div>
+          <div class="req-field"><label for="cf-guests">Number of Guests <span class="req">*</span></label><input id="cf-guests" type="number" min="1" required></div>
+        </div>
+        <p style="font-size:13px;color:var(--taupe);font-style:italic;margin-top:10px;">Private experience offerings are subject to availability and may change.</p>
+      </div>
+
+      <div class="req-block">
+        <h3>When</h3>
+        <div class="req-grid two-col">
+          <div class="req-field"><label for="cf-pdate">Preferred Date <span class="req">*</span></label><input id="cf-pdate" type="date" required></div>
+          <div class="req-field"><label for="cf-ptime">Preferred Time <span class="req">*</span></label><input id="cf-ptime" type="time" required></div>
+          <div class="req-field"><label for="cf-adate">Alternate Date</label><input id="cf-adate" type="date"></div>
+          <div class="req-field"><label for="cf-atime">Alternate Time</label><input id="cf-atime" type="time"></div>
+        </div>
+        <div class="req-field" style="margin-top:16px;"><label for="cf-notes">Notes / Special Requests</label><textarea id="cf-notes" rows="3"></textarea></div>
+      </div>
+
+      <p class="req-disclaimer">Submitting a request does not confirm your experience. We'll check availability with Friendly City Clay and follow up with current pricing and next steps. No payment is due when submitting your request.</p>
+      <div class="wizard-nav">
+        <span></span>
+        <button type="submit" id="claySubmitBtn" class="btn btn-gold">Send Private Experience Request</button>
+      </div>
+      <div id="clayFormError" class="req-error" hidden></div>
+    </form>
+
+    <div id="clayWizardSuccess" hidden>
+      <div class="eyebrow">Request Received</div>
+      <h3>Request received!</h3>
+      <p>We'll check availability with Friendly City Clay and follow up with current pricing and next steps.</p>
+      <p>Your experience is not confirmed yet, and no payment is due at this time.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var form = document.getElementById('clayForm');
+  var submitBtn = document.getElementById('claySubmitBtn');
+  var formError = document.getElementById('clayFormError');
+  var wizardSuccess = document.getElementById('clayWizardSuccess');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    formError.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    var payload = {
+      guestFirstName: document.getElementById('cf-fname').value,
+      guestLastName: document.getElementById('cf-lname').value,
+      guestEmail: document.getElementById('cf-email').value,
+      guestPhone: document.getElementById('cf-phone').value,
+      checkinDate: document.getElementById('cf-checkin').value,
+      experienceCode: document.getElementById('cf-experience').value,
+      groupSize: document.getElementById('cf-guests').value,
+      preferredDate: document.getElementById('cf-pdate').value,
+      preferredTime: document.getElementById('cf-ptime').value,
+      alternateDate: document.getElementById('cf-adate').value,
+      alternateTime: document.getElementById('cf-atime').value,
+      notes: document.getElementById('cf-notes').value,
+    };
+
+    fetch('/api/clay/request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).then(function(res){
+      if (!res.ok) return res.json().then(function(d){ throw new Error(d.error || 'Something went wrong.'); });
+      return res.json();
+    }).then(function(){
+      form.hidden = true;
+      wizardSuccess.hidden = false;
+      wizardSuccess.scrollIntoView({ behavior: 'smooth' });
+    }).catch(function(err){
+      formError.textContent = err.message || 'Something went wrong. Please try again.';
+      formError.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Private Experience Request';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var overlay = document.getElementById('clayRequestOverlay');
+  if (!overlay) return;
+  var closeBtn = overlay.querySelector('.request-modal-close');
+  var openers = document.querySelectorAll('.js-open-clay-request');
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  openers.forEach(function(el){ el.addEventListener('click', openModal); });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+})();
+</script>
 
 <script>
   // Mirrors functions/_shared/pricing.js — this static site has no build step

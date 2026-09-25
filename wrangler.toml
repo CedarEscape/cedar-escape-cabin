@@ -9,6 +9,4 @@ database_id = "35eddb5c-3db5-42db-9751-29f979ccca28"
 [[d1_databases]]
 binding = "REWARDS_DB"
 database_name = "cedar-escape-rewards"
-# Placeholder — replace once the real database is created remotely with
-# `wrangler login` then `wrangler d1 create cedar-escape-rewards`.
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "75d3151f-62d2-4a07-a261-d350f131a0aa"

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cedar Rewards | Cedar Escape</title>
+<meta name="description" content="Cedar Rewards: earn points on direct stays at Cedar Escape and redeem them for Cedar Credit or stay perks like early check-in and late checkout.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rewards.css">
+<style>
+  .rw-landing-hero { position: relative; overflow: hidden; height: clamp(320px, 46vw, 520px); display: flex; align-items: flex-end; }
+  .rw-landing-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .rw-landing-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(35,45,29,0.15) 0%, rgba(35,45,29,0.85) 100%); z-index: 1; }
+  .rw-landing-hero .inner { position: relative; z-index: 2; padding: 48px 32px; max-width: var(--wrap); margin: 0 auto; width: 100%; }
+  .rw-landing-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(30px, 5vw, 52px); color: var(--cream); margin: 12px 0 14px; }
+  .rw-landing-hero p { color: rgba(250,246,238,0.88); font-size: 16px; max-width: 480px; }
+  .rw-steps { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 32px; }
+  @media (min-width: 700px) { .rw-steps { grid-template-columns: repeat(3,1fr); } }
+  .rw-step { text-align: center; }
+  .rw-step .num { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--gold); color: var(--forest-deep); font-family: 'Cinzel', serif; font-size: 15px; display: flex; align-items: center; justify-content: center; font-weight: 600; margin: 0 auto 14px; }
+  .rw-step h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: var(--forest-deep); }
+  .rw-step p { font-size: 13.5px; color: #4b453b; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="stay.html">House Tour</a></li>
+      <li><a href="plan-your-trip.html">Guest Guide</a></li>
+      <li><a href="explore-massanutten.html">Things to Do</a></li>
+      <li><a href="add-ons.html">Add-Ons</a></li>
+      <li><a href="rewards.html" class="current">Cedar Rewards</a></li>
+      <li class="nav-check"><a href="check-availability.html" class="btn btn-gold">Reserve</a></li>
+    </ul>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+
+<section class="rw-landing-hero">
+  <img src="images/hero-poolroom-jmu.webp" alt="Game room at Cedar Escape" loading="eager">
+  <div class="inner">
+    <div class="eyebrow" style="color:var(--gold-bright);">Cedar Rewards</div>
+    <h1>Stay more. Get rewarded.</h1>
+    <p>Book direct, earn points automatically, and redeem them for Cedar Credit or stay perks — no middleman, no catch.</p>
+    <a href="rewards-join.html" class="btn btn-gold" style="margin-top:22px;">Join Cedar Rewards</a>
+  </div>
+</section>
+
+<div class="wrap rw-section">
+  <div class="section-head" style="max-width:640px;margin:0 auto 10px;text-align:center;">
+    <div class="eyebrow">How It Works</div>
+  </div>
+  <div class="rw-steps">
+    <div class="rw-step">
+      <div class="num">1</div>
+      <h3>Join</h3>
+      <p>Sign up free with your email — takes under a minute.</p>
+    </div>
+    <div class="rw-step">
+      <div class="num">2</div>
+      <h3>Earn on Direct Stays</h3>
+      <p>1 point per $1 of qualifying spend, posted automatically after checkout.</p>
+    </div>
+    <div class="rw-step">
+      <div class="num">3</div>
+      <h3>Redeem</h3>
+      <p>Cedar Credit toward your next stay, or perks like early check-in and late checkout.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:56px;">
+    <div class="section-head" style="max-width:640px;margin:0 auto 10px;text-align:center;">
+      <div class="eyebrow">A Few Example Rewards</div>
+    </div>
+    <div class="rw-grid cols-3" id="rwExampleRewards">
+      <div class="rw-reward-card"><div class="cost">1,500 PTS</div><h3>2-Hour Early Check-In</h3><p>Check in two hours before the standard time.</p></div>
+      <div class="rw-reward-card"><div class="cost">2,500 PTS</div><h3>$25 Cedar Credit</h3><p>A $25 discount code for your next direct stay.</p></div>
+      <div class="rw-reward-card"><div class="cost">5,500 PTS</div><h3>1 Free Night</h3><p>Up to $500, on an eligible 3+ night direct stay.</p></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:56px;">
+    <a href="rewards-join.html" class="btn btn-gold">Join Cedar Rewards</a>
+    <p style="margin-top:16px;font-size:13.5px;">Already a member? <a href="rewards-signin.html" style="color:var(--gold);">Sign in</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(250,246,238,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="add-ons.html">Add-Ons</a></li>
+          <li><a href="check-availability.html">Reserve</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul><li><a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Cedar Escape · Massanutten Resort, VA</span></div>
+  </div>
+</footer>
+
+<script src="js/rewards-common.js"></script>
+<script>
+  // Signed-in members land on their dashboard instead of the marketing page.
+  fetch('/api/rewards/me').then(function (r) {
+    if (r.ok) window.location.href = 'rewards-dashboard.html';
+  }).catch(function () {});
+</script>
+</body>
+</html>

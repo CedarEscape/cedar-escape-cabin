@@ -107,8 +107,8 @@ async function sendGuestAvailableEmail(env, db, req) {
   await logClayEvent(db, req.id, 'guest_notified_available');
 }
 
-async function sendGuestUnavailableEmail(env, db, req, baseUrl) {
-  const workshopsUrl = `${baseUrl}/add-ons.html#exclusive-add-ons`;
+async function sendGuestUnavailableEmail(env, db, req) {
+  const workshopsUrl = 'https://www.friendlycityclay.com/current-classes';
   const html = renderShell({
     title: 'Update on your Friendly City Clay request',
     heroEyebrow: 'Availability Update',
@@ -148,7 +148,7 @@ export async function onRequestGet({ request, env, params }) {
       await updateClayStatus(db, respondRow.request_id, 'UNAVAILABLE');
       await logClayEvent(db, respondRow.request_id, 'provider_unavailable');
       const req = await getClayRequest(db, respondRow.request_id);
-      await sendGuestUnavailableEmail(env, db, req, url.origin);
+      await sendGuestUnavailableEmail(env, db, req);
       return landingPage('Response received.', "Thanks for letting us know &mdash; we've let the guest know this time didn't work.");
     }
 

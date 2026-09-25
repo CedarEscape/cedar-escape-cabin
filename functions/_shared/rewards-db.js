@@ -183,6 +183,24 @@ export async function postAdjustment(db, { memberId, points, category, note, cre
   return id;
 }
 
+export async function getOpenHoldForRedemption(db, redemptionId) {
+  return db
+    .prepare("SELECT * FROM rewards_ledger WHERE redemption_id = ? AND entry_type = 'hold' AND hold_status = 'open'")
+    .bind(redemptionId)
+    .first();
+}
+
+export async function getRedemptionsAwaitingResolution(db) {
+  const { results } = await db
+    .prepare(
+      `SELECT r.*, m.email AS member_email, m.name AS member_name
+       FROM rewards_redemptions r JOIN rewards_members m ON m.id = r.member_id
+       WHERE r.status IN ('pending', 'approved') AND r.linked_reservation_id IS NOT NULL`
+    )
+    .all();
+  return results;
+}
+
 export async function hasReservationEarn(db, reservationId) {
   const row = await db
     .prepare("SELECT id FROM rewards_ledger WHERE reservation_id = ? AND entry_type = 'earn'")

@@ -25,6 +25,11 @@ async function apiGet(env, path, params) {
   return res.json();
 }
 
+export async function getReservationById(env, id) {
+  const data = await apiGet(env, `/reservations/${id}`, {});
+  return data.data || data;
+}
+
 async function getAllPages(env, path, params) {
   let page = 1;
   const items = [];
@@ -95,4 +100,27 @@ export async function getUpcomingDirectStaysForEmail(env, email) {
   const oneYearOut = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
   const reservations = await fetchUpcomingDirectReservations(env, { startDate: today, endDate: oneYearOut });
   return reservations.filter((r) => r.guestEmail === normalized);
+}
+
+// Reservations whose checkout falls inside the lookback window, up through
+// today — the full candidate set for the nightly earn/reversal job. No
+// status filter: cancelled reservations must come through too, since the
+// job needs to see them to reverse a stay that already earned points. A
+// reservation that hasn't checked out yet can't have earned anything (the
+// posting-delay gate guarantees that), so there's nothing to reverse for it
+// either — no need to also pull future checkouts here.
+export async function fetchReservationsForSync(env, { lookbackDays }) {
+  const propertyId = env.HOSPITABLE_PROPERTY_ID || '4f05e11c-f631-4f21-9a9f-282819425722';
+  const today = new Date();
+  const startDate = new Date(today.getTime() - lookbackDays * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const endDate = today.toISOString().slice(0, 10);
+  const reservations = await getAllPages(env, '/reservations', {
+    'properties[]': propertyId,
+    start_date: startDate,
+    end_date: endDate,
+    date_query: 'checkout',
+    'platforms[]': 'direct',
+    include: 'financials,guest',
+  });
+  return reservations;
 }

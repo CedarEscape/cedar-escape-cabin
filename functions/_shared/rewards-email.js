@@ -103,6 +103,16 @@ export async function sendPendingReminderOwnerEmail(env, { count, adminUrl }) {
   await sendEmail(env, { to: env.COURTESY_EMAIL, subject: 'Cedar Rewards: requests waiting', html });
 }
 
+export async function sendJobFailureOwnerEmail(env, { jobName, errorDetail }) {
+  const html = renderShell({
+    title: `Cedar Rewards: ${jobName} failed`,
+    heroEyebrow: 'Needs Attention',
+    heroHeadline: 'A scheduled job failed.',
+    bodyHtml: `<p><strong>${escapeHtml(jobName)}</strong> did not complete successfully.</p><p style="font-size:13px;color:#6b6555;">${escapeHtml(errorDetail)}</p>`,
+  });
+  await sendEmail(env, { to: env.COURTESY_EMAIL, subject: `Cedar Rewards: ${jobName} failed`, html });
+}
+
 export async function sendMissingPointsOwnerEmail(env, { submittedEmail, reservationHint, message }) {
   const html = renderShell({
     title: 'Cedar Rewards: Missing Points? submission',

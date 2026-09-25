@@ -1,0 +1,16 @@
+name: Cedar Rewards expire/decline stale requests
+
+on:
+  schedule:
+    - cron: "0 * * * *" # hourly
+  workflow_dispatch: {}
+
+jobs:
+  expire:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call expire-holds endpoint
+        # Reuses the massage feature's cron secret — see rewards-nightly-sync.yml.
+        run: |
+          curl -sf -X POST "https://cedarescapecabin.com/api/rewards/cron/expire-holds" \
+            -H "Authorization: Bearer ${{ secrets.MASSAGE_CRON_SECRET }}"

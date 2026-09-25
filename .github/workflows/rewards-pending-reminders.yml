@@ -1,0 +1,16 @@
+name: Cedar Rewards pending-request reminders
+
+on:
+  schedule:
+    - cron: "0 14 * * *" # 2pm UTC = ~10am US Eastern, once daily
+  workflow_dispatch: {}
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call pending-reminders endpoint
+        # Reuses the massage feature's cron secret — see rewards-nightly-sync.yml.
+        run: |
+          curl -sf -X POST "https://cedarescapecabin.com/api/rewards/cron/pending-reminders" \
+            -H "Authorization: Bearer ${{ secrets.MASSAGE_CRON_SECRET }}"

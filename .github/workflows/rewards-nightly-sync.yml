@@ -1,0 +1,18 @@
+name: Cedar Rewards nightly Hospitable sync
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # 9am UTC = ~5am US Eastern, well after any late checkouts settle
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call nightly-sync endpoint
+        # Reuses the same GitHub secret as the massage feature's cron job —
+        # both Functions check against the one shared CRON_SECRET Cloudflare
+        # Pages env var, so this doesn't need its own separate secret.
+        run: |
+          curl -sf -X POST "https://cedarescapecabin.com/api/rewards/cron/nightly-sync" \
+            -H "Authorization: Bearer ${{ secrets.MASSAGE_CRON_SECRET }}"

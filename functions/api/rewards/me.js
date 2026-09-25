@@ -1,0 +1,22 @@
+import { getSessionMember } from '../../_shared/rewards-session.js';
+import { getAvailableBalance, getLedger } from '../../_shared/rewards-db.js';
+
+export async function onRequestGet({ request, env }) {
+  const db = env.REWARDS_DB;
+  const member = await getSessionMember(request, db);
+  if (!member) {
+    return new Response(JSON.stringify({ error: 'Not signed in' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
+  }
+
+  const balance = await getAvailableBalance(db, member.id);
+  const ledger = await getLedger(db, member.id);
+
+  return new Response(
+    JSON.stringify({
+      member: { id: member.id, email: member.email, name: member.name, joinedAt: member.joined_at },
+      balance,
+      recentActivity: ledger.slice(0, 20),
+    }),
+    { status: 200, headers: { 'Content-Type': 'application/json' } }
+  );
+}

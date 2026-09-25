@@ -267,6 +267,13 @@ export function newId() {
   return uuid();
 }
 
+export async function getLatestTaggedPost(db, memberId) {
+  return db
+    .prepare('SELECT * FROM rewards_tagged_posts WHERE member_id = ? ORDER BY created_at DESC LIMIT 1')
+    .bind(memberId)
+    .first();
+}
+
 // ---- Admin ----
 
 export async function searchMembers(db, query) {

@@ -7,8 +7,9 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/rewards.css">
+<style>.script-accent { font-family: 'Dancing Script', cursive; font-weight: 600; color: var(--gold); line-height: 1.15; }</style>
 </head>
 <body>
 <header>
@@ -25,37 +26,62 @@
 </header>
 
 <div class="wrap rw-section">
-  <div class="eyebrow">Cedar Rewards</div>
-  <h1 style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3.6vw,34px);color:var(--forest-deep);margin:10px 0 30px;">Ways to earn more.</h1>
+  <div class="rw-earn-hero">
+    <img src="images/reset-deck.webp" alt="Mountain view near Cedar Escape at Massanutten Resort" loading="eager">
+    <div class="inner">
+      <div class="eyebrow">Cedar Rewards</div>
+      <h1>Earn more Cedar Points.</h1>
+      <p>Simple ways to grow your balance and unlock more perks for your next stay.</p>
+    </div>
+    <div class="script-corner script-accent">You're here.<br>Go make some memories.</div>
+  </div>
 
-  <div id="rwMsg" class="rw-msg error" style="display:none;"></div>
+  <div id="rwMsg" class="rw-msg error" style="display:none;margin-top:18px;"></div>
 
-  <div class="rw-grid cols-2">
-    <div class="rw-card">
-      <div class="eyebrow">100 pts, automatic</div>
-      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--forest-deep);margin-top:8px;">Direct stays</h3>
-      <p style="font-size:13.5px;color:#4b453b;margin-top:8px;">Earn 1 point for every $1 of qualifying accommodation spend on a direct booking — no extra step, it's automatic within a couple days of checkout.</p>
+  <div class="rw-featured">
+    <div class="rw-featured-media">
+      <img src="images/vrbo/vrbo-29.jpg" alt="Emerald Room bedroom at Cedar Escape" loading="lazy">
     </div>
-    <div class="rw-card">
-      <div class="eyebrow" id="rwIgPoints">200 pts</div>
-      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--forest-deep);margin-top:8px;">Follow on Instagram</h3>
-      <p style="font-size:13.5px;color:#4b453b;margin-top:8px;">Follow @cedarescape_massanutten, then let us know below.</p>
-      <button type="button" class="btn btn-outline" id="rwIgBtn" style="margin-top:12px;align-self:flex-start;">I follow on Instagram</button>
+    <div class="rw-featured-body">
+      <div class="rw-featured-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+        <div class="n">1 POINT</div>
+        <div class="d">PER $1</div>
+      </div>
+      <div class="eyebrow">Automatic</div>
+      <h2>Direct stays</h2>
+      <p>Earn 1 point for every $1 spent on qualifying direct bookings.</p>
+      <p>Your points are added automatically after checkout — no extra step required.</p>
+      <div class="rw-earn-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <span>Use the same email for Cedar Rewards and your direct reservation so your points can be added automatically.</span>
+      </div>
     </div>
-    <div class="rw-card">
-      <div class="eyebrow" id="rwFbPoints">200 pts</div>
-      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--forest-deep);margin-top:8px;">Follow on Facebook</h3>
-      <p style="font-size:13.5px;color:#4b453b;margin-top:8px;">Follow the Cedar Escape page, then let us know below.</p>
-      <button type="button" class="btn btn-outline" id="rwFbBtn" style="margin-top:12px;align-self:flex-start;">I follow on Facebook</button>
+  </div>
+
+  <div class="rw-earn-grid">
+    <div class="rw-earn-card" id="rwIgCard">
+      <div class="icon-circle ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></div>
+      <div class="points-label">200 Points</div>
+      <h3>Follow on Instagram</h3>
+      <p>Follow @cedarescape_massanutten on Instagram and confirm below to earn 200 points.</p>
+      <div class="rw-earn-card-action"></div>
     </div>
-    <div class="rw-card">
-      <div class="eyebrow">300 pts, reviewed</div>
-      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--forest-deep);margin-top:8px;">Tag us in a post or story</h3>
-      <p style="font-size:13.5px;color:#4b453b;margin-top:8px;">Paste a link to your post or story and we'll review it.</p>
-      <form id="rwTaggedForm" style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
-        <input type="url" id="rwPostUrl" placeholder="https://instagram.com/p/..." required style="flex:1;min-width:180px;padding:10px 12px;border:1px solid var(--line);border-radius:2px;">
-        <button type="submit" class="btn btn-outline">Submit</button>
-      </form>
+
+    <div class="rw-earn-card" id="rwFbCard">
+      <div class="icon-circle fb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg></div>
+      <div class="points-label">200 Points</div>
+      <h3>Follow on Facebook</h3>
+      <p>Follow the Cedar Escape page on Facebook and confirm below to earn 200 points.</p>
+      <div class="rw-earn-card-action"></div>
+    </div>
+
+    <div class="rw-earn-card" id="rwTagCard">
+      <div class="icon-circle tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7l9 9a2 2 0 0 1 0 3l-4 4a2 2 0 0 1-3 0l-9-9V4z"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+      <div class="points-label">300 Points · Reviewed</div>
+      <h3>Tag us in a post or story</h3>
+      <p>Tag Cedar Escape in a post or story, then paste your link below to earn 300 points after review.</p>
+      <div class="rw-earn-card-action"></div>
     </div>
   </div>
 </div>
@@ -66,6 +92,8 @@
 
 <script src="js/rewards-common.js"></script>
 <script>
+  var checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
   function showMsg(text, type) {
     var el = document.getElementById('rwMsg');
     el.textContent = text;
@@ -73,57 +101,73 @@
     el.style.display = '';
   }
 
+  function renderSocialAction(cardId, platform, alreadyClaimed, label) {
+    var action = document.querySelector('#' + cardId + ' .rw-earn-card-action');
+    if (alreadyClaimed) {
+      action.innerHTML = '<div class="complete-state">' + checkSvg + '<span>Confirmed — points added</span></div>';
+      return;
+    }
+    action.innerHTML = '<button type="button" class="btn btn-outline rw-earn-btn">' + label + ' →</button>';
+    action.querySelector('button').addEventListener('click', function () {
+      this.disabled = true;
+      var btn = this;
+      fetch('/api/rewards/earn/social', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ platform: platform }) })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.data.error || 'Something went wrong.');
+          showMsg('Nice — ' + r.data.pointsEarned + ' points added.', 'success');
+          renderSocialAction(cardId, platform, true, label);
+        })
+        .catch(function (err) {
+          showMsg(err.message);
+          btn.disabled = false;
+        });
+    });
+  }
+
+  function renderTagAction(latestTaggedPost) {
+    var action = document.querySelector('#rwTagCard .rw-earn-card-action');
+    if (latestTaggedPost && latestTaggedPost.status === 'pending') {
+      action.innerHTML = '<div class="pending-state">Submitted — waiting on review.</div>';
+      return;
+    }
+    if (latestTaggedPost && latestTaggedPost.status === 'approved') {
+      action.innerHTML = '<div class="complete-state">' + checkSvg + '<span>Reviewed — points added</span></div>';
+      return;
+    }
+    action.innerHTML =
+      '<form id="rwTaggedForm">' +
+      '<input type="url" id="rwPostUrl" placeholder="Paste your post or story link (Instagram or Facebook)" required>' +
+      '<button type="submit" class="btn btn-outline rw-earn-btn">Submit for Review →</button>' +
+      '</form>';
+    document.getElementById('rwTaggedForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      fetch('/api/rewards/earn/tagged-post', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ postUrl: document.getElementById('rwPostUrl').value })
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.data.error || 'Something went wrong.');
+          showMsg('Thanks! We’ll review it and add your points soon.', 'success');
+          renderTagAction({ status: 'pending' });
+        })
+        .catch(function (err) {
+          showMsg(err.message);
+          btn.disabled = false;
+        });
+    });
+  }
+
   (async function init() {
     var me = await rwRequireSession();
     if (!me) return;
+    renderSocialAction('rwIgCard', 'instagram', me.member.igFollowPosted, 'Confirm Instagram Follow');
+    renderSocialAction('rwFbCard', 'facebook', me.member.fbFollowPosted, 'Confirm Facebook Follow');
+    renderTagAction(me.latestTaggedPost);
   })();
-
-  document.getElementById('rwIgBtn').addEventListener('click', async function () {
-    this.disabled = true;
-    try {
-      var res = await fetch('/api/rewards/earn/social', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ platform: 'instagram' }) });
-      var data = await res.json();
-      if (!res.ok) throw new Error(data.error);
-      showMsg('Nice — ' + data.pointsEarned + ' points added.', 'success');
-      this.textContent = 'Claimed ✓';
-    } catch (err) {
-      showMsg(err.message || 'Something went wrong.');
-      this.disabled = false;
-    }
-  });
-
-  document.getElementById('rwFbBtn').addEventListener('click', async function () {
-    this.disabled = true;
-    try {
-      var res = await fetch('/api/rewards/earn/social', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ platform: 'facebook' }) });
-      var data = await res.json();
-      if (!res.ok) throw new Error(data.error);
-      showMsg('Nice — ' + data.pointsEarned + ' points added.', 'success');
-      this.textContent = 'Claimed ✓';
-    } catch (err) {
-      showMsg(err.message || 'Something went wrong.');
-      this.disabled = false;
-    }
-  });
-
-  document.getElementById('rwTaggedForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    var btn = e.target.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    try {
-      var res = await fetch('/api/rewards/earn/tagged-post', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ postUrl: document.getElementById('rwPostUrl').value })
-      });
-      var data = await res.json();
-      if (!res.ok) throw new Error(data.error);
-      showMsg('Thanks! We’ll review it and add your points soon.', 'success');
-      e.target.reset();
-    } catch (err) {
-      showMsg(err.message || 'Something went wrong.');
-    }
-    btn.disabled = false;
-  });
 </script>
 </body>
 </html>

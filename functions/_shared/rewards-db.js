@@ -65,11 +65,15 @@ export async function getAvailableBalance(db, memberId) {
       `SELECT COALESCE(SUM(
          CASE entry_type
            WHEN 'earn'       THEN points
-           WHEN 'release'    THEN points
            WHEN 'adjustment' THEN points
            WHEN 'spend'      THEN -points
            WHEN 'reversal'   THEN -points
            WHEN 'hold'       THEN CASE WHEN hold_status = 'open' THEN -points ELSE 0 END
+           -- 'release' deliberately contributes 0: a hold's -points effect
+           -- already stops once hold_status leaves 'open', so the release
+           -- row is a pure audit record of that transition, not a second
+           -- financial event. Counting it too would double-credit the
+           -- member every time a request is declined or auto-expired.
            ELSE 0
          END
        ), 0) AS balance
@@ -261,6 +265,95 @@ export async function updateRedemptionStatus(db, id, status, extraFields = {}) {
 
 export function newId() {
   return uuid();
+}
+
+// ---- Admin ----
+
+export async function searchMembers(db, query) {
+  const like = `%${query.trim()}%`;
+  const { results } = await db
+    .prepare(
+      `SELECT DISTINCT m.* FROM rewards_members m
+       LEFT JOIN rewards_ledger l ON l.member_id = m.id
+       WHERE m.email LIKE ? OR m.name LIKE ? OR l.reservation_id = ?
+       ORDER BY m.joined_at DESC LIMIT 50`
+    )
+    .bind(like, like, query.trim())
+    .all();
+  return results;
+}
+
+export async function getMemberLifetimeStats(db, memberId) {
+  const row = await db
+    .prepare(
+      `SELECT
+         COALESCE(SUM(CASE WHEN entry_type IN ('earn','adjustment') AND points > 0 THEN points ELSE 0 END), 0) AS lifetime_earned,
+         COALESCE(SUM(CASE WHEN entry_type = 'spend' THEN points ELSE 0 END), 0) AS lifetime_redeemed,
+         COUNT(DISTINCT CASE WHEN entry_type = 'earn' AND source = 'direct_stay' THEN reservation_id END) AS direct_stays_credited
+       FROM rewards_ledger WHERE member_id = ?`
+    )
+    .bind(memberId)
+    .first();
+  return row;
+}
+
+export async function setMemberStatus(db, memberId, status) {
+  await db.prepare('UPDATE rewards_members SET status = ?, updated_at = ? WHERE id = ?').bind(status, new Date().toISOString(), memberId).run();
+}
+
+export async function getRequestsQueue(db) {
+  const { results } = await db
+    .prepare(
+      `SELECT r.*, m.email AS member_email, m.name AS member_name, c.name AS reward_name, c.code AS reward_code
+       FROM rewards_redemptions r
+       JOIN rewards_members m ON m.id = r.member_id
+       JOIN rewards_catalog c ON c.id = r.reward_id
+       WHERE r.status = 'pending'
+       ORDER BY r.requested_at ASC`
+    )
+    .all();
+  return results;
+}
+
+export async function getFulfillmentQueue(db) {
+  const { results } = await db
+    .prepare(
+      `SELECT r.*, m.email AS member_email, m.name AS member_name, c.name AS reward_name
+       FROM rewards_redemptions r
+       JOIN rewards_members m ON m.id = r.member_id
+       JOIN rewards_catalog c ON c.id = r.reward_id
+       WHERE r.status = 'approved' AND c.code = 'movie_basket'
+       ORDER BY r.decided_at ASC`
+    )
+    .all();
+  return results;
+}
+
+export async function getPendingTaggedPosts(db) {
+  const { results } = await db
+    .prepare(
+      `SELECT t.*, m.email AS member_email, m.name AS member_name
+       FROM rewards_tagged_posts t JOIN rewards_members m ON m.id = t.member_id
+       WHERE t.status = 'pending' ORDER BY t.created_at ASC`
+    )
+    .all();
+  return results;
+}
+
+export async function getAdminHomeStats(db) {
+  const members = await db.prepare('SELECT COUNT(*) AS n FROM rewards_members').first();
+  const outstanding = await db
+    .prepare(
+      `SELECT COALESCE(SUM(CASE entry_type
+         WHEN 'earn' THEN points WHEN 'release' THEN 0 WHEN 'adjustment' THEN points
+         WHEN 'spend' THEN -points WHEN 'reversal' THEN -points
+         WHEN 'hold' THEN CASE WHEN hold_status='open' THEN -points ELSE 0 END ELSE 0 END), 0) AS total
+       FROM rewards_ledger`
+    )
+    .first();
+  const pending = await db.prepare("SELECT COUNT(*) AS n FROM rewards_redemptions WHERE status = 'pending'").first();
+  const lastRun = await db.prepare("SELECT * FROM rewards_job_runs WHERE job_name = 'hospitable_nightly_sync' ORDER BY started_at DESC LIMIT 1").first();
+  return { memberCount: members.n, pointsOutstanding: outstanding.total, pendingRequests: pending.n, lastNightlySync: lastRun || null };
 }
 
 export async function logEvent(db, { memberId = null, redemptionId = null, eventType, detail = null }) {

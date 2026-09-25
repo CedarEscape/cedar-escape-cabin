@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cedar Rewards Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rewards.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <div class="eyebrow" style="padding-right:8px;">Rewards Admin</div>
+  </nav>
+</header>
+
+<div class="wrap rw-section">
+  <div id="rwMsg" class="rw-msg success" style="display:none;"></div>
+
+  <div class="rw-admin-tabs">
+    <button type="button" class="rw-admin-tab active" data-tab="home">Home</button>
+    <button type="button" class="rw-admin-tab" data-tab="members">Members</button>
+    <button type="button" class="rw-admin-tab" data-tab="requests">Requests</button>
+    <button type="button" class="rw-admin-tab" data-tab="codes">Codes</button>
+    <button type="button" class="rw-admin-tab" data-tab="settings">Rewards &amp; Settings</button>
+  </div>
+
+  <!-- HOME -->
+  <div class="rw-admin-panel active" id="panel-home">
+    <div class="rw-stat-row" id="homeStats">Loading…</div>
+    <p style="margin-top:24px;font-size:13px;">
+      Export:
+      <a href="/api/admin/rewards/export?table=members">Members</a> ·
+      <a href="/api/admin/rewards/export?table=ledger">Ledger</a> ·
+      <a href="/api/admin/rewards/export?table=redemptions">Redemptions</a> ·
+      <a href="/api/admin/rewards/export?table=codes">Codes</a>
+    </p>
+  </div>
+
+  <!-- MEMBERS -->
+  <div class="rw-admin-panel" id="panel-members">
+    <div class="rw-inline-form">
+      <input type="text" id="memberSearch" placeholder="Search name, email, or reservation ID">
+      <button type="button" class="rw-btn-sm solid" id="memberSearchBtn">Search</button>
+    </div>
+    <table class="rw-table" id="membersTable" style="display:none;">
+      <thead><tr><th>Email</th><th>Name</th><th>Balance</th><th>Status</th><th></th></tr></thead>
+      <tbody id="membersTbody"></tbody>
+    </table>
+    <div id="memberDetail" style="margin-top:30px;"></div>
+  </div>
+
+  <!-- REQUESTS -->
+  <div class="rw-admin-panel" id="panel-requests">
+    <h3 style="font-family:'Playfair Display',serif;font-style:italic;color:var(--forest-deep);">Requests Queue</h3>
+    <table class="rw-table" id="queueTable">
+      <thead><tr><th>Member</th><th>Reward</th><th>Points</th><th>Requested</th><th></th></tr></thead>
+      <tbody id="queueTbody"><tr><td colspan="5">Loading…</td></tr></tbody>
+    </table>
+
+    <h3 style="font-family:'Playfair Display',serif;font-style:italic;color:var(--forest-deep);margin-top:36px;">Upcoming Fulfillment (Movie Night Basket)</h3>
+    <table class="rw-table" id="fulfillmentTable">
+      <thead><tr><th>Member</th><th>Approved</th><th></th></tr></thead>
+      <tbody id="fulfillmentTbody"><tr><td colspan="3">Loading…</td></tr></tbody>
+    </table>
+
+    <h3 style="font-family:'Playfair Display',serif;font-style:italic;color:var(--forest-deep);margin-top:36px;">Tagged Post Submissions</h3>
+    <table class="rw-table" id="taggedTable">
+      <thead><tr><th>Member</th><th>Link</th><th></th></tr></thead>
+      <tbody id="taggedTbody"><tr><td colspan="3">Loading…</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- CODES -->
+  <div class="rw-admin-panel" id="panel-codes">
+    <table class="rw-table" id="codesTable">
+      <thead><tr><th>Reward</th><th>Current Code</th><th>Rotate</th></tr></thead>
+      <tbody id="codesTbody"><tr><td colspan="3">Loading…</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="rw-admin-panel" id="panel-settings">
+    <h3 style="font-family:'Playfair Display',serif;font-style:italic;color:var(--forest-deep);">Earning Settings</h3>
+    <table class="rw-table" id="settingsTable">
+      <thead><tr><th>Setting</th><th>Value</th><th></th></tr></thead>
+      <tbody id="settingsTbody"><tr><td colspan="3">Loading…</td></tr></tbody>
+    </table>
+
+    <h3 style="font-family:'Playfair Display',serif;font-style:italic;color:var(--forest-deep);margin-top:36px;">Rewards Catalog</h3>
+    <table class="rw-table" id="catalogTable">
+      <thead><tr><th>Reward</th><th>Cost</th><th>Active</th><th></th></tr></thead>
+      <tbody id="catalogTbody"><tr><td colspan="4">Loading…</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+<footer><div class="wrap"><div class="foot-bottom"><span>© 2026 Cedar Escape · Massanutten Resort, VA</span></div></div></footer>
+
+<script>
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function fmt(n) { return Number(n || 0).toLocaleString(); }
+  function showMsg(text, type) {
+    var el = document.getElementById('rwMsg');
+    el.textContent = text;
+    el.className = 'rw-msg ' + (type || 'success');
+    el.style.display = '';
+    setTimeout(function () { el.style.display = 'none'; }, 4000);
+  }
+
+  document.querySelectorAll('.rw-admin-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.rw-admin-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.rw-admin-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ---- Home ----
+  async function loadHome() {
+    var res = await fetch('/api/admin/rewards/home');
+    var s = await res.json();
+    var lastRun = s.lastNightlySync ? (s.lastNightlySync.status + ' — ' + s.lastNightlySync.started_at) : 'Never run';
+    document.getElementById('homeStats').innerHTML = [
+      ['Members', fmt(s.memberCount)],
+      ['Points Outstanding', fmt(s.pointsOutstanding)],
+      ['Pending Requests', fmt(s.pendingRequests)],
+      ['Last Nightly Sync', lastRun],
+    ].map(function (pair) {
+      return '<div class="rw-stat"><div class="label">' + esc(pair[0]) + '</div><div class="value" style="font-size:16px;">' + esc(pair[1]) + '</div></div>';
+    }).join('');
+  }
+
+  // ---- Members ----
+  document.getElementById('memberSearchBtn').addEventListener('click', searchMembers);
+  document.getElementById('memberSearch').addEventListener('keydown', function (e) { if (e.key === 'Enter') searchMembers(); });
+
+  async function searchMembers() {
+    var q = document.getElementById('memberSearch').value;
+    if (!q.trim()) return;
+    var res = await fetch('/api/admin/rewards/members?q=' + encodeURIComponent(q));
+    var data = await res.json();
+    var table = document.getElementById('membersTable');
+    var tbody = document.getElementById('membersTbody');
+    if (!data.members.length) {
+      table.style.display = 'none';
+      document.getElementById('memberDetail').innerHTML = '<p>No members found.</p>';
+      return;
+    }
+    table.style.display = '';
+    tbody.innerHTML = data.members.map(function (m) {
+      return '<tr><td>' + esc(m.email) + '</td><td>' + esc(m.name) + '</td><td>' + fmt(m.balance) + '</td><td>' + esc(m.status) + '</td>' +
+        '<td><button type="button" class="rw-btn-sm view-member" data-id="' + m.id + '">View</button></td></tr>';
+    }).join('');
+    tbody.querySelectorAll('.view-member').forEach(function (btn) {
+      btn.addEventListener('click', function () { loadMemberDetail(btn.dataset.id); });
+    });
+  }
+
+  async function loadMemberDetail(id) {
+    var res = await fetch('/api/admin/rewards/member-detail?id=' + id);
+    var data = await res.json();
+    var m = data.member;
+    var html = '<div class="rw-card">' +
+      '<h3 style="font-family:\'Playfair Display\',serif;font-style:italic;color:var(--forest-deep);">' + esc(m.name || m.email) + '</h3>' +
+      '<p>' + esc(m.email) + ' &middot; Status: ' + esc(m.status) + ' &middot; Joined ' + esc(m.joined_at) + '</p>' +
+      '<div class="rw-stat-row">' +
+        '<div class="rw-stat"><div class="label">Balance</div><div class="value" style="font-size:18px;">' + fmt(data.balance) + '</div></div>' +
+        '<div class="rw-stat"><div class="label">Lifetime Earned</div><div class="value" style="font-size:18px;">' + fmt(data.lifetime.lifetime_earned) + '</div></div>' +
+        '<div class="rw-stat"><div class="label">Lifetime Redeemed</div><div class="value" style="font-size:18px;">' + fmt(data.lifetime.lifetime_redeemed) + '</div></div>' +
+        '<div class="rw-stat"><div class="label">Direct Stays Credited</div><div class="value" style="font-size:18px;">' + fmt(data.lifetime.direct_stays_credited) + '</div></div>' +
+      '</div>' +
+      '<div class="rw-inline-form">' +
+        '<input type="number" id="adjPoints" placeholder="Points (+/-)" style="width:120px;">' +
+        '<select id="adjCategory"><option>Courtesy Bonus</option><option>Missing Stay Credit</option><option>Promotion</option><option>Correction</option><option>Other</option></select>' +
+        '<input type="text" id="adjNote" placeholder="Note (required)" style="flex:1;min-width:160px;">' +
+        '<button type="button" class="rw-btn-sm solid" id="adjSubmit">Add/Deduct</button>' +
+        '<button type="button" class="rw-btn-sm danger" id="toggleStatusBtn">' + (m.status === 'active' ? 'Disable' : 'Enable') + '</button>' +
+      '</div>' +
+      '<h4 style="margin-top:22px;font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--taupe);">Full Ledger</h4>' +
+      '<table class="rw-table"><thead><tr><th>Type</th><th>Points</th><th>Source</th><th>Note</th><th>Date</th></tr></thead><tbody>' +
+      data.ledger.map(function (l) {
+        return '<tr><td>' + esc(l.entry_type) + '</td><td>' + fmt(l.points) + '</td><td>' + esc(l.source) + '</td><td>' + esc(l.note || l.adjustment_category || '') + '</td><td>' + esc(l.created_at) + '</td></tr>';
+      }).join('') +
+      '</tbody></table>' +
+      '</div>';
+    document.getElementById('memberDetail').innerHTML = html;
+
+    document.getElementById('adjSubmit').addEventListener('click', async function () {
+      var points = Number(document.getElementById('adjPoints').value);
+      var category = document.getElementById('adjCategory').value;
+      var note = document.getElementById('adjNote').value;
+      if (!points || !note) { showMsg('Points and a note are required.', 'error'); return; }
+      var res = await fetch('/api/admin/rewards/member-detail', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: m.id, action: 'adjust', points: points, category: category, note: note })
+      });
+      var d = await res.json();
+      if (!res.ok) { showMsg(d.error || 'Failed', 'error'); return; }
+      showMsg('Balance updated to ' + fmt(d.balance) + '.');
+      loadMemberDetail(id);
+    });
+
+    document.getElementById('toggleStatusBtn').addEventListener('click', async function () {
+      var action = m.status === 'active' ? 'disable' : 'enable';
+      await fetch('/api/admin/rewards/member-detail', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: m.id, action: action })
+      });
+      showMsg('Account ' + action + 'd.');
+      loadMemberDetail(id);
+    });
+  }
+
+  // ---- Requests ----
+  async function loadRequests() {
+    var res = await fetch('/api/admin/rewards/requests');
+    var data = await res.json();
+
+    document.getElementById('queueTbody').innerHTML = data.queue.length ? data.queue.map(function (r) {
+      return '<tr><td>' + esc(r.member_name || r.member_email) + '</td><td>' + esc(r.reward_name) + '</td><td>' + fmt(r.points_cost) + '</td><td>' + esc(r.requested_at) + '</td>' +
+        '<td><button type="button" class="rw-btn-sm solid req-approve" data-id="' + r.id + '" data-name="' + esc(r.reward_name) + '">Approve</button> ' +
+        '<button type="button" class="rw-btn-sm danger req-decline" data-id="' + r.id + '" data-name="' + esc(r.reward_name) + '">Decline</button></td></tr>';
+    }).join('') : '<tr><td colspan="5">Nothing pending.</td></tr>';
+
+    document.getElementById('fulfillmentTbody').innerHTML = data.fulfillment.length ? data.fulfillment.map(function (r) {
+      return '<tr><td>' + esc(r.member_name || r.member_email) + '</td><td>' + esc(r.decided_at) + '</td>' +
+        '<td><button type="button" class="rw-btn-sm solid req-deliver" data-id="' + r.id + '">Mark Delivered</button></td></tr>';
+    }).join('') : '<tr><td colspan="3">Nothing awaiting delivery.</td></tr>';
+
+    document.getElementById('taggedTbody').innerHTML = data.taggedPosts.length ? data.taggedPosts.map(function (t) {
+      return '<tr><td>' + esc(t.member_name || t.member_email) + '</td><td><a href="' + esc(t.post_url) + '" target="_blank" rel="noopener">' + esc(t.post_url) + '</a></td>' +
+        '<td><button type="button" class="rw-btn-sm solid tag-approve" data-id="' + t.id + '">Approve</button> ' +
+        '<button type="button" class="rw-btn-sm danger tag-decline" data-id="' + t.id + '">Decline</button></td></tr>';
+    }).join('') : '<tr><td colspan="3">Nothing pending.</td></tr>';
+
+    document.querySelectorAll('.req-approve').forEach(b => b.addEventListener('click', () => decideRequest(b.dataset.id, 'approve', b.dataset.name)));
+    document.querySelectorAll('.req-decline').forEach(b => b.addEventListener('click', () => decideRequest(b.dataset.id, 'decline', b.dataset.name)));
+    document.querySelectorAll('.req-deliver').forEach(b => b.addEventListener('click', () => decideRequest(b.dataset.id, 'deliver')));
+    document.querySelectorAll('.tag-approve').forEach(b => b.addEventListener('click', () => decideTagged(b.dataset.id, 'approve')));
+    document.querySelectorAll('.tag-decline').forEach(b => b.addEventListener('click', () => decideTagged(b.dataset.id, 'decline')));
+  }
+
+  async function decideRequest(id, action, rewardName) {
+    var res = await fetch('/api/admin/rewards/requests', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: id, action: action, rewardName: rewardName })
+    });
+    var d = await res.json();
+    if (!res.ok) { showMsg(d.error || 'Failed', 'error'); return; }
+    showMsg('Done.');
+    loadRequests();
+    loadHome();
+  }
+
+  async function decideTagged(id, action) {
+    var res = await fetch('/api/admin/rewards/requests', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind: 'tagged_post', id: id, action: action })
+    });
+    var d = await res.json();
+    if (!res.ok) { showMsg(d.error || 'Failed', 'error'); return; }
+    showMsg('Done.');
+    loadRequests();
+  }
+
+  // ---- Codes ----
+  async function loadCodes() {
+    var res = await fetch('/api/admin/rewards/codes');
+    var data = await res.json();
+    document.getElementById('codesTbody').innerHTML = data.rewards.map(function (r) {
+      return '<tr><td>' + esc(r.name) + '</td><td>' + esc(r.shared_code || '—') + '</td>' +
+        '<td class="rw-inline-form" style="margin:0;"><input type="text" class="new-code" data-id="' + r.id + '" placeholder="New code" style="width:140px;">' +
+        '<button type="button" class="rw-btn-sm solid rotate-code" data-id="' + r.id + '">Rotate</button></td></tr>';
+    }).join('');
+    document.querySelectorAll('.rotate-code').forEach(function (btn) {
+      btn.addEventListener('click', async function () {
+        var input = document.querySelector('.new-code[data-id="' + btn.dataset.id + '"]');
+        if (!input.value.trim()) return;
+        await fetch('/api/admin/rewards/codes', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rewardId: btn.dataset.id, sharedCode: input.value.trim() })
+        });
+        showMsg('Code rotated.');
+        loadCodes();
+      });
+    });
+  }
+
+  // ---- Settings ----
+  async function loadSettings() {
+    var res = await fetch('/api/admin/rewards/settings');
+    var data = await res.json();
+
+    document.getElementById('settingsTbody').innerHTML = data.settings.map(function (s) {
+      return '<tr><td>' + esc(s.key) + '</td>' +
+        '<td><input type="text" class="setting-value" data-key="' + esc(s.key) + '" value="' + esc(s.value) + '" style="width:160px;"></td>' +
+        '<td><button type="button" class="rw-btn-sm solid save-setting" data-key="' + esc(s.key) + '">Save</button></td></tr>';
+    }).join('');
+    document.querySelectorAll('.save-setting').forEach(function (btn) {
+      btn.addEventListener('click', async function () {
+        var input = document.querySelector('.setting-value[data-key="' + btn.dataset.key + '"]');
+        await fetch('/api/admin/rewards/settings', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ kind: 'setting', key: btn.dataset.key, value: input.value })
+        });
+        showMsg('Setting saved.');
+      });
+    });
+
+    document.getElementById('catalogTbody').innerHTML = data.rewards.map(function (r) {
+      return '<tr><td>' + esc(r.name) + '</td>' +
+        '<td><input type="number" class="reward-cost" data-id="' + r.id + '" value="' + r.cost_points + '" style="width:90px;"></td>' +
+        '<td><input type="checkbox" class="reward-active" data-id="' + r.id + '" ' + (r.active ? 'checked' : '') + '></td>' +
+        '<td><button type="button" class="rw-btn-sm solid save-reward" data-id="' + r.id + '">Save</button></td></tr>';
+    }).join('');
+    document.querySelectorAll('.save-reward').forEach(function (btn) {
+      btn.addEventListener('click', async function () {
+        var cost = document.querySelector('.reward-cost[data-id="' + btn.dataset.id + '"]').value;
+        var active = document.querySelector('.reward-active[data-id="' + btn.dataset.id + '"]').checked;
+        await fetch('/api/admin/rewards/settings', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ kind: 'reward', id: btn.dataset.id, cost_points: cost, active: active })
+        });
+        showMsg('Reward saved.');
+      });
+    });
+  }
+
+  loadHome();
+  loadRequests();
+  loadCodes();
+  loadSettings();
+</script>
+</body>
+</html>

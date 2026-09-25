@@ -100,3 +100,23 @@ footer a:hover { color: var(--gold-bright); }
 .rw-msg.success { background: rgba(55,69,47,0.1); color: var(--forest-deep); border: 1px solid rgba(55,69,47,0.25); }
 
 .rw-code-display { font-family: 'Cinzel', serif; font-size: 26px; letter-spacing: 0.08em; color: var(--forest-deep); background: var(--cream-deep); border: 1px dashed var(--gold); border-radius: 4px; padding: 18px; text-align: center; margin: 20px 0; }
+
+/* Admin */
+.rw-admin-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0; border-bottom: 1px solid var(--line); padding-bottom: 0; }
+.rw-admin-tab { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 16px; border: none; background: none; color: var(--taupe); cursor: pointer; border-bottom: 2px solid transparent; }
+.rw-admin-tab.active { color: var(--forest-deep); border-bottom-color: var(--gold); }
+.rw-admin-panel { display: none; }
+.rw-admin-panel.active { display: block; }
+.rw-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 14px; }
+.rw-table th { text-align: left; font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.rw-table td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.rw-table tr:hover td { background: var(--cream-deep); }
+.rw-stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-top: 20px; }
+.rw-stat { background: var(--cream-deep); border: 1px solid var(--line); border-radius: 4px; padding: 16px; }
+.rw-stat .label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); }
+.rw-stat .value { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: var(--forest-deep); margin-top: 4px; }
+.rw-inline-form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+.rw-inline-form input, .rw-inline-form select { padding: 8px 10px; border: 1px solid var(--line); border-radius: 2px; font-size: 13px; }
+.rw-btn-sm { font-family: 'DM Sans',sans-serif; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 2px; border: 1px solid var(--forest-deep); background: transparent; color: var(--forest-deep); cursor: pointer; }
+.rw-btn-sm.solid { background: var(--forest-deep); color: var(--cream); }
+.rw-btn-sm.danger { border-color: #8a2e2e; color: #8a2e2e; }

@@ -143,7 +143,6 @@
 
   async function searchMembers() {
     var q = document.getElementById('memberSearch').value;
-    if (!q.trim()) return;
     var res = await fetch('/api/admin/rewards/members?q=' + encodeURIComponent(q));
     var data = await res.json();
     var table = document.getElementById('membersTable');
@@ -337,6 +336,7 @@
   loadRequests();
   loadCodes();
   loadSettings();
+  searchMembers();
 </script>
 </body>
 </html>

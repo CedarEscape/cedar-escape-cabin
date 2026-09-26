@@ -276,8 +276,17 @@ export async function getLatestTaggedPost(db, memberId) {
 
 // ---- Admin ----
 
+// Empty query returns the most recently joined members (no filter) so the
+// admin Members tab can show a default list, not just search results.
 export async function searchMembers(db, query) {
-  const like = `%${query.trim()}%`;
+  const trimmed = query.trim();
+  if (!trimmed) {
+    const { results } = await db
+      .prepare(`SELECT * FROM rewards_members ORDER BY joined_at DESC LIMIT 50`)
+      .all();
+    return results;
+  }
+  const like = `%${trimmed}%`;
   const { results } = await db
     .prepare(
       `SELECT DISTINCT m.* FROM rewards_members m
@@ -285,7 +294,7 @@ export async function searchMembers(db, query) {
        WHERE m.email LIKE ? OR m.name LIKE ? OR l.reservation_id = ?
        ORDER BY m.joined_at DESC LIMIT 50`
     )
-    .bind(like, like, query.trim())
+    .bind(like, like, trimmed)
     .all();
   return results;
 }

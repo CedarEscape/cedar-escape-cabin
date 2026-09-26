@@ -2,10 +2,6 @@ import { searchMembers, getAvailableBalance } from '../../../_shared/rewards-db.
 
 export async function onRequestGet({ request, env }) {
   const q = new URL(request.url).searchParams.get('q') || '';
-  if (!q.trim()) {
-    return new Response(JSON.stringify({ members: [] }), { status: 200, headers: { 'Content-Type': 'application/json' } });
-  }
-
   const db = env.REWARDS_DB;
   const members = await searchMembers(db, q);
   const withBalance = await Promise.all(

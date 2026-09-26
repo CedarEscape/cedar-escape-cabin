@@ -35,12 +35,12 @@
   p { margin: 0; }
 
   header { position: sticky; top: 0; z-index: 50; background: rgba(250,246,238,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
-  .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: var(--wrap); margin: 0 auto; gap: 20px; }
-  .wordmark { font-family: 'Cinzel', serif; font-size: 19px; letter-spacing: 0.14em; font-weight: 600; color: var(--forest-deep); text-decoration: none; white-space: nowrap; }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; max-width: var(--wrap); margin: 0 auto; gap: 20px; }
+  .wordmark { font-family: 'Cinzel', serif; font-size: 17px; letter-spacing: 0.14em; font-weight: 600; color: var(--forest-deep); text-decoration: none; white-space: nowrap; }
   .wordmark span { color: var(--gold); }
-  .nav-links { display: none; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
+  .nav-links { display: none; align-items: center; gap: 22px; list-style: none; margin: 0; padding: 0; }
   @media (min-width: 880px) { .nav-links { display: flex; } }
-  .nav-links a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--ink); position: relative; padding-bottom: 4px; white-space: nowrap; }
+  .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--ink); position: relative; padding-bottom: 4px; white-space: nowrap; }
   .nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
   .nav-links a:hover::after { transform: scaleX(1); }
   .nav-links a.current::after { transform: scaleX(1); }
@@ -70,8 +70,8 @@
   .page-hero p { font-size: 16px; max-width: 500px; color: rgba(250,246,238,0.88); margin-bottom: 26px; }
   .page-hero .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
-  section { padding: 76px 0; }
-  .section-head { max-width: 640px; margin: 0 auto 42px; text-align: center; }
+  section { padding: 52px 0; }
+  .section-head { max-width: 640px; margin: 0 auto 28px; text-align: center; }
   .section-head h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 3.2vw, 34px); margin-top: 12px; color: var(--forest-deep); }
   .section-head p { margin-top: 14px; font-size: 15.5px; color: #4b453b; }
 

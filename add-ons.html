@@ -114,7 +114,10 @@
   .included-quote { text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--forest-deep); margin-top: 40px; }
   .included-quote cite { display: block; font-family: 'Cinzel', serif; font-style: normal; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); margin-top: 10px; }
 
-  .addon-card { display: grid; grid-template-columns: 1fr; gap: 0; background: var(--cream-deep); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .addon-cards-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
+  @media (min-width: 860px) { .addon-cards-grid { grid-template-columns: repeat(3, 1fr); } }
+  .addon-card { display: grid; grid-template-columns: 1fr; gap: 0; background: var(--cream-deep); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 18px 40px rgba(35,45,29,0.16); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .addon-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px rgba(35,45,29,0.22); }
   .addon-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .addon-media img { width: 100%; height: 100%; object-fit: cover; }
   .addon-media svg { width: 84px; height: 84px; color: var(--gold-bright); opacity: 0.85; }
@@ -278,6 +281,7 @@
   <div class="wrap">
     <div class="eyebrow">Add-Ons &amp; Local Experiences</div>
     <h2 style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(24px,3.2vw,34px);color:var(--forest-deep);margin:10px 0 30px;">Thoughtful extras and memorable local experiences to make your Cedar Escape stay even more special.</h2>
+    <div class="addon-cards-grid">
     <div class="addon-card">
       <div class="addon-media">
         <img src="images/addons/massage-card.jpg" alt="In-home massage therapy" loading="lazy">
@@ -356,6 +360,7 @@
           <div class="how-step-row"><span class="num">4</span><span class="step-text">You book &amp; pay Friendly City Clay direct</span></div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>

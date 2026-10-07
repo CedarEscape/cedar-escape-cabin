@@ -124,8 +124,15 @@
 
   // ---- Home ----
   async function loadHome() {
-    var res = await fetch('/api/admin/rewards/home');
-    var s = await res.json();
+    var s;
+    try {
+      var res = await fetch('/api/admin/rewards/home');
+      if (!res.ok) throw new Error('server returned ' + res.status);
+      s = await res.json();
+    } catch (err) {
+      document.getElementById('homeStats').textContent = 'Could not load: ' + err.message + '. Try signing in again (refresh the page).';
+      return;
+    }
     var lastRun = s.lastNightlySync ? (s.lastNightlySync.status + ' — ' + s.lastNightlySync.started_at) : 'Never run';
     document.getElementById('homeStats').innerHTML = [
       ['Members', fmt(s.memberCount)],

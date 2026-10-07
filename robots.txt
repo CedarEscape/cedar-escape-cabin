@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /api/
+Disallow: /admin-clay
+Disallow: /admin-rewards
+Disallow: /owner-dashboard
+
+Sitemap: https://cedarescapecabin.com/sitemap.xml

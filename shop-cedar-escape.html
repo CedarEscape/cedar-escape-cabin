@@ -645,7 +645,15 @@
   var STORAGE_KEY = 'cedarPromoDismissed';
   var shown = false;
 
-  if (new Date() >= new Date("2026-11-20T00:00:00")) return;
+  var promoNow = new Date();
+  if (promoNow >= new Date("2027-02-28T00:00:00")) return;
+  if (promoNow >= new Date("2026-11-20T00:00:00")) {
+    overlay.querySelector('.promo-popup-eyebrow').textContent = 'Winter Escape';
+    overlay.querySelector('.promo-popup-save').textContent = 'Save 10% on stays of 3+ nights';
+    overlay.querySelector('.promo-popup-code').textContent = 'WINTERESCAPE';
+    overlay.querySelector('.promo-popup-note').textContent = 'Valid on stays through Feb 27. Plus, skip the extra booking-platform fees.';
+  }
+
 
   if (sessionStorage.getItem(STORAGE_KEY)) return;
 

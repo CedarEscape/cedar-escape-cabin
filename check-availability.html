@@ -580,7 +580,7 @@
       <div class="promo-popup-save">Save 15% on stays of 3+ nights</div>
       <div class="promo-popup-code">FIRSTESCAPE</div>
       <a href="#book" class="promo-popup-btn" id="promoPopupBtn">Check Your Dates</a>
-      <p class="promo-popup-note">Plus, skip the extra booking-platform fees.</p>
+      <p class="promo-popup-note">Applies to stays before Nov 19. Plus, skip the extra booking-platform fees.</p>
     </div>
   </div>
 </div>
@@ -593,6 +593,8 @@
   var ctaBtn = document.getElementById('promoPopupBtn');
   var STORAGE_KEY = 'cedarPromoDismissed';
   var shown = false;
+
+  if (new Date() >= new Date("2026-11-20T00:00:00")) return;
 
   if (sessionStorage.getItem(STORAGE_KEY)) return;
 

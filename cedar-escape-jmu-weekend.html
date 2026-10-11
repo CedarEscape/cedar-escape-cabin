@@ -20,7 +20,7 @@
 <meta property="og:description" content="Stay about 25 minutes from JMU in a 5-bedroom home that sleeps 14. Ideal for JMU football weekends, graduation, family weekend and visiting your student.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cedarescapecabin.com/cedar-escape-jmu-weekend">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Cedar Escape from James Madison University?", "acceptedAnswer": {"@type": "Answer", "text": "About 25 minutes by car. Home football weekends can add time in traffic, so leave a little extra."}}, {"@type": "Question", "name": "Is Cedar Escape suitable for graduation weekends?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. With 5 bedrooms, 9 beds and room for up to 14 guests, extended family can stay together under one roof. Graduation weekends book early, so check availability as soon as your dates are set."}}, {"@type": "Question", "name": "Can multiple families stay together?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The house has 5 bedrooms, 3 full bathrooms and several shared living spaces, and sleeps up to 14 guests, which suits two or three families traveling together."}}, {"@type": "Question", "name": "Are catering options available?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Crossroads Café & Catering is one of our local catering partners. Contact them directly to plan your menu; catering is priced separately and subject to their availability."}}, {"@type": "Question", "name": "What is there to do near Cedar Escape beyond JMU?", "acceptedAnswer": {"@type": "Answer", "text": "Massanutten Resort, downtown Harrisonburg, Shenandoah National Park, and local wineries are all a short drive away."}}, {"@type": "Question", "name": "How do I check availability for football or graduation weekends?", "acceptedAnswer": {"@type": "Answer", "text": "Use the booking calendar on our availability page to enter your dates and see live pricing. Football and graduation weekends fill early, so book as soon as you know your dates."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Cedar Escape from James Madison University?", "acceptedAnswer": {"@type": "Answer", "text": "About 25 minutes by car. Home football weekends can add time in traffic, so leave a little extra."}}, {"@type": "Question", "name": "Is Cedar Escape suitable for graduation weekends?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. With 5 bedrooms, 9 beds and room for up to 14 guests, extended family can stay together under one roof. Graduation weekends book early, so check availability as soon as your dates are set."}}, {"@type": "Question", "name": "Can multiple families stay together?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The house has 5 bedrooms, 3 full bathrooms and several shared living spaces, and sleeps up to 14 guests, which suits two or three families traveling together."}}, {"@type": "Question", "name": "Are catering options available?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Pop's Southern Cuisine, one of our local partners, offers catering for groups and events, and Crossroads Café & Catering is another local option. Contact the caterer directly to plan your menu; catering is priced separately and subject to their availability."}}, {"@type": "Question", "name": "What is there to do near Cedar Escape beyond JMU?", "acceptedAnswer": {"@type": "Answer", "text": "Massanutten Resort, downtown Harrisonburg, Shenandoah National Park, and local wineries are all a short drive away."}}, {"@type": "Question", "name": "How do I check availability for football or graduation weekends?", "acceptedAnswer": {"@type": "Answer", "text": "Use the booking calendar on our availability page to enter your dates and see live pricing. Football and graduation weekends fill early, so book as soon as you know your dates."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -836,21 +836,26 @@
   .jw-hl h3 { font-size: 15px; font-weight: 700; color: var(--forest-deep); margin-bottom: 4px; }
   .jw-hl p { font-size: 14px; color: #4b453b; }
 
-  .jw-cater-card { background: var(--cream); border-radius: 14px; box-shadow: 0 14px 34px rgba(35,45,29,0.12); display: grid; grid-template-columns: 1fr; overflow: hidden; }
-  @media (min-width: 980px) { .jw-cater-card { grid-template-columns: 0.8fr 1.5fr 1fr; } }
-  .jw-cater-logo { background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; padding: 32px; min-height: 180px; }
-  .jw-cater-logo img { width: 170px; max-width: 70%; background: var(--cream); border-radius: 12px; padding: 14px; }
-  .jw-cater-body { padding: 28px 28px 30px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
   .jw-kicker { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brown); }
-  .jw-cater-body h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(26px, 3.4vw, 36px); color: var(--forest-deep); line-height: 1.12; }
-  .jw-cater-body h3 { font-family: 'Cinzel', serif; font-size: 17px; color: var(--brown); letter-spacing: 0.04em; }
-  .jw-cater-body p { font-size: 15.5px; color: #4b453b; }
-  .jw-cater-body .jw-fine { font-size: 13px; color: var(--brown); font-style: italic; }
+  .jw-cater-checks { list-style: none; margin: 0 auto 28px; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; max-width: 900px; }
+  .jw-cater-checks li { font-size: 14.5px; color: var(--forest-deep); padding-left: 22px; position: relative; }
+  .jw-cater-checks li::before { content: '\2713'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .jw-cater-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 900px) { .jw-cater-grid { grid-template-columns: 1.7fr 1fr; align-items: stretch; } }
+  .jw-cater-feature { background: var(--cream); border-radius: 14px; box-shadow: 0 14px 34px rgba(35,45,29,0.12); overflow: hidden; display: flex; flex-direction: column; }
+  .jw-cater-feature img { width: 100%; height: auto; display: block; background: var(--forest-deep); }
+  .jw-cater-feature-body { padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .jw-cater-feature h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--forest-deep); line-height: 1.15; }
+  .jw-cater-feature p { font-size: 15.5px; color: #4b453b; }
+  .jw-fine { font-size: 13px !important; color: var(--brown) !important; font-style: italic; }
+  .jw-cater-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
   .jw-btn-green { background: var(--forest); color: var(--cream); }
   .jw-btn-green:hover { background: var(--forest-deep); transform: translateY(-1px); }
-  .jw-cater-list { list-style: none; margin: 0; padding: 26px 28px; background: #F3E9D2; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
-  .jw-cater-list li { font-size: 14.5px; color: var(--forest-deep); padding-left: 24px; position: relative; }
-  .jw-cater-list li::before { content: '\2713'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .jw-cater-other { background: var(--cream); border: 1px solid rgba(35,45,29,0.12); border-radius: 14px; padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 8px; align-self: start; }
+  .jw-cater-other h3 { font-family: 'Playfair Display', serif; font-size: 21px; color: var(--forest-deep); }
+  .jw-cater-other p { font-size: 14.5px; color: #4b453b; }
+  .jw-link { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--forest); font-weight: 700; text-decoration: none; margin-top: 4px; }
+  .jw-link:hover { text-decoration: underline; }
 
   .jw-exp-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
   @media (min-width: 640px) { .jw-exp-grid { grid-template-columns: 1fr 1fr; } }
@@ -875,8 +880,8 @@
   .jw-tile-purple { background: linear-gradient(155deg, var(--jmu-purple) 0%, #2d0057 100%); color: var(--jmu-gold); }
   .jw-tile-purple svg { width: 54px; height: 54px; }
   .jw-tile-purple span { font-family: 'Cinzel', serif; font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; }
-  .jw-tile-logo { background: var(--cream); }
-  .jw-tile-logo img { width: 120px; height: auto; object-fit: contain; margin: 0; border-radius: 0; }
+  .jw-tile-photo { background: var(--forest-deep); }
+  .jw-tile-photo img { width: 100%; height: 100%; object-fit: contain; margin: 0; border-radius: 0; }
   .jw-step h3 { font-size: 16px; font-weight: 700; color: var(--forest-deep); margin-bottom: 6px; }
   .jw-step h3 span { color: var(--jmu-purple); margin-right: 4px; }
   .jw-step p { font-size: 14.5px; color: #4b453b; }
@@ -893,6 +898,8 @@
   .jw-dest p { font-size: 13px; color: #4b453b; padding: 0 12px 14px; }
   .jw-flex-note { text-align: center; margin-top: 24px; font-size: 14.5px; color: var(--brown); }
   .jw-flex-note a { color: var(--forest); text-decoration: underline; }
+  .jw-credits { text-align: center; margin-top: 10px; font-size: 12px; color: var(--taupe); }
+  .jw-credits a { color: inherit; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -988,26 +995,39 @@
 
 <section class="jw-catering" id="catering" style="background:var(--cream-deep);">
   <div class="wrap">
-    <div class="jw-cater-card">
-      <div class="jw-cater-logo">
-        <img src="images/logos/crossroads-cafe.png" alt="Crossroads Cafe &amp; Catering logo" loading="lazy">
-      </div>
-      <div class="jw-cater-body">
-        <div class="jw-kicker">Our Catering Partner</div>
-        <h2>Let Someone Else Do the Cooking.</h2>
-        <h3>Crossroads Caf&eacute; &amp; Catering</h3>
-        <p>Make your JMU weekend even easier with delicious catering options from Crossroads Caf&eacute; &amp; Catering. Perfect for graduation gatherings, game-day meals, or simply enjoying more time together at the house.</p>
-        <a class="btn jw-btn-green" href="https://www.welovecrossroads.com/" target="_blank" rel="noopener">View Catering Options <span aria-hidden="true">&#8599;</span></a>
-        <p class="jw-fine">Catering is arranged directly with Crossroads, priced separately, and subject to partner availability.</p>
-      </div>
-      <ul class="jw-cater-list">
-        <li>Convenient meals for larger groups</li>
-        <li>Graduation celebrations</li>
-        <li>Game-day gatherings</li>
-        <li>Less time cooking, more time together</li>
-        <li>Flexible catering possibilities</li>
-      </ul>
+    <div class="section-head" style="max-width:760px;margin-left:auto;margin-right:auto;text-align:center;margin-bottom:24px;">
+      <div class="eyebrow">Catering For Your Weekend</div>
+      <h2>Let Someone Else Do the Cooking.</h2>
+      <p>Make your JMU weekend even easier with local catering &mdash; perfect for graduation gatherings, game-day meals, or simply enjoying more time together at the house.</p>
     </div>
+    <ul class="jw-cater-checks">
+      <li>Convenient meals for larger groups</li>
+      <li>Graduation celebrations</li>
+      <li>Game-day gatherings</li>
+      <li>Less time cooking, more time together</li>
+    </ul>
+    <div class="jw-cater-grid">
+      <article class="jw-cater-feature">
+        <img src="images/local-biz/pops-southern-cuisine.jpg?v=5" alt="Fried chicken, mac and cheese and collard greens from Pop's Southern Cuisine food truck" loading="lazy">
+        <div class="jw-cater-feature-body">
+          <div class="jw-kicker">Cedar Escape Local Partner</div>
+          <h3>Pop's Southern Cuisine</h3>
+          <p>Bring Southern comfort food to your JMU weekend. Pop's offers catering for groups, celebrations, and events &mdash; a great fit for graduation gatherings and game-day meals at the house.</p>
+          <p class="jw-fine">Guests should contact Pop's directly for catering. Catering is priced separately and subject to availability.</p>
+          <div class="jw-cater-actions">
+            <a class="btn jw-btn-green" href="mailto:popssoutherncuisine@gmail.com">Contact Pop's</a>
+            <a class="btn btn-outline" href="https://www.instagram.com/popssoutherncuisine" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </article>
+      <article class="jw-cater-other">
+        <div class="jw-kicker">Another Local Option</div>
+        <h3>Crossroads Caf&eacute; &amp; Catering</h3>
+        <p>Breakfast, lunch and event trays made fresh in Penn Laird.</p>
+        <a class="jw-link" href="https://www.welovecrossroads.com/" target="_blank" rel="noopener">View website &#8599;</a>
+      </article>
+    </div>
+    <p class="jw-flex-note">More caterers are listed in our <a href="explore-massanutten.html#catering">local catering guide</a>.</p>
   </div>
 </section>
 
@@ -1059,9 +1079,9 @@
       </div>
       <div class="jw-arrow" aria-hidden="true">&rarr;</div>
       <div class="jw-step">
-        <div class="jw-step-tile jw-tile-logo"><img src="images/logos/crossroads-cafe.png" alt="Crossroads Cafe &amp; Catering logo" loading="lazy"></div>
+        <div class="jw-step-tile jw-tile-photo"><img src="images/local-biz/pops-southern-cuisine.jpg?v=5" alt="Pop's Southern Cuisine food truck and plate of fried chicken" loading="lazy"></div>
         <h3><span>3.</span> Enjoy a Catered Meal</h3>
-        <p>Let Crossroads Caf&eacute; &amp; Catering help with meal planning so everyone can spend more time together.</p>
+        <p>Let a local caterer, like Pop's Southern Cuisine, help with meal planning so everyone can spend more time together.</p>
       </div>
       <div class="jw-arrow" aria-hidden="true">&rarr;</div>
       <div class="jw-step">
@@ -1086,11 +1106,11 @@
         <h3>Massanutten Resort</h3><p>Seasonal recreation and family activities.</p>
       </a>
       <a class="jw-dest" href="https://harrisonburgva.gov/tourism" target="_blank" rel="noopener">
-        <div class="jw-dest-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l5-3v15M8 21V11l6-3v13M14 21V6l7 3v12M3 21h18"/><path d="M10.5 14h1M10.5 17h1M16.5 12h1M16.5 15h1"/></svg></div>
+        <img src="images/jmu-downtown-harrisonburg.jpg" alt="Court Square Theater on Court Square in downtown Harrisonburg" loading="lazy">
         <h3>Downtown Harrisonburg</h3><p>Restaurants, shopping, and local attractions.</p>
       </a>
       <a class="jw-dest" href="https://www.nps.gov/shen/index.htm" target="_blank" rel="noopener">
-        <div class="jw-dest-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20l6-10 4 6 3-4 7 8z"/><circle cx="17" cy="6" r="2"/></svg></div>
+        <img src="images/jmu-shenandoah-blackrock.jpg" alt="Sunset over the Shenandoah Valley from Blackrock Summit in Shenandoah National Park" loading="lazy">
         <h3>Shenandoah National Park</h3><p>Hiking and scenic drives.</p>
       </a>
       <a class="jw-dest" href="cedar-escape-wine-weekend.html">
@@ -1103,6 +1123,7 @@
       </a>
     </div>
     <p class="jw-flex-note">Hours and availability vary by season. <a href="explore-massanutten.html">View our full Explore Massanutten guide &rarr;</a></p>
+    <p class="jw-credits">Photo credits: &ldquo;Blackrock Sunset&rdquo; by Neal Lewis, <a href="https://commons.wikimedia.org/wiki/File:Blackrock_Sunset_(49565011683).jpg" target="_blank" rel="noopener">National Park Service</a> (public domain). Court Square Theater by G. Edward Johnson, <a href="https://commons.wikimedia.org/wiki/File:Court_Square_Theater_Harrisonburg_VA_2021-06-06_160021_1_crop.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> (resized and cropped).</p>
   </div>
 </section>
 
@@ -1215,7 +1236,7 @@
       </details>
       <details class="faq-item">
         <summary>Are catering options available?</summary>
-        <div class="a">Yes. Crossroads Caf&eacute; &amp; Catering is one of our local catering partners. Contact them directly to plan your menu; catering is priced separately and subject to their availability. You can also browse more options in our <a href="explore-massanutten.html#catering">local catering guide</a>.</div>
+        <div class="a">Yes. Pop's Southern Cuisine, one of our local partners, offers catering for groups and events, and Crossroads Caf&eacute; &amp; Catering is another local option. Contact the caterer directly to plan your menu; catering is priced separately and subject to their availability. You can also browse more options in our <a href="explore-massanutten.html#catering">local catering guide</a>.</div>
       </details>
       <details class="faq-item">
         <summary>What is there to do near Cedar Escape beyond JMU?</summary>

@@ -859,6 +859,13 @@
   .fg-act-tile svg { width: 56px; height: 56px; }
   .fg-act h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--forest-deep); padding: 16px 20px 6px; }
   .fg-act p { font-size: 14.5px; color: #4b453b; padding: 0 20px; flex: 1; }
+  .fg-act-partner { position: relative; }
+  .fg-ribbon { position: absolute; top: 14px; left: 0; z-index: 2; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); color: var(--gold-bright); font-family: 'Cinzel', serif; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 11px; padding: 7px 24px 7px 14px; clip-path: polygon(0 0, 82% 0, 100% 50%, 82% 100%, 0 100%); filter: drop-shadow(1px 0 0 var(--gold)) drop-shadow(-1px 0 0 var(--gold)) drop-shadow(0 1px 0 var(--gold)) drop-shadow(0 -1px 0 var(--gold)); pointer-events: none; white-space: nowrap; }
+  .fg-act .fg-act-note { font-size: 13px; color: var(--brown); font-style: italic; padding-top: 8px; flex: none; }
+  .fg-act-links { display: flex; flex-wrap: wrap; gap: 0 18px; }
+  .fg-illus { position: relative; }
+  .fg-illus img { width: 100%; height: 170px; object-fit: cover; display: block; }
+  .fg-illus span { position: absolute; bottom: 8px; left: 8px; background: rgba(35,45,29,0.78); color: var(--cream); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
   .fg-learn { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--forest); font-weight: 700; text-decoration: none; padding: 12px 20px 18px; }
   .fg-learn:hover { text-decoration: underline; }
   .fg-credits { text-align: center; margin-top: 18px; font-size: 12px; color: var(--taupe); }
@@ -1015,13 +1022,13 @@
     </div>
     <div class="fg-act-grid">
       <article class="fg-act">
-        <div class="fg-act-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c2 0 2-2 4.5-2S10 15 12 15s2.5-2 4.5-2S19 15 21 15"/><path d="M3 19c2 0 2-2 4.5-2S10 19 12 19s2.5-2 4.5-2S19 19 21 19"/><path d="M5 11c3-6 8-6 11-1"/></svg></div>
+        <div class="fg-illus"><img src="images/fg-waterpark.jpg" alt="Children playing in front of indoor water park slides (illustrative photo, not Massanutten)" loading="lazy"><span>Illustrative photo</span></div>
         <h3>Massanutten WaterPark</h3>
         <p>Indoor and outdoor water parks with slides and a lazy river at Massanutten Resort.</p>
         <a class="fg-learn" href="https://www.massresort.com/play/waterpark/" target="_blank" rel="noopener">Learn More &rarr;</a>
       </article>
       <article class="fg-act">
-        <div class="fg-act-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11"/><path d="M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5"/></svg></div>
+        <div class="fg-illus"><img src="images/fg-snowtubing.jpg" alt="Two children in snow tubes on a snowy hill (illustrative photo, not Massanutten)" loading="lazy"><span>Illustrative photo</span></div>
         <h3>Skiing &amp; Snow Tubing</h3>
         <p>Seasonal winter adventures at Massanutten, including skiing, snowboarding, and snow tubing.</p>
         <a class="fg-learn" href="https://www.massresort.com/play/snow-sports/" target="_blank" rel="noopener">Learn More &rarr;</a>
@@ -1038,14 +1045,19 @@
         <p>Dining, shopping, and local attractions to explore together.</p>
         <a class="fg-learn" href="https://harrisonburgva.gov/tourism" target="_blank" rel="noopener">Learn More &rarr;</a>
       </article>
-      <article class="fg-act">
+      <article class="fg-act fg-act-partner">
+        <div class="fg-ribbon">&mdash; CE Exclusive &mdash;</div>
         <img src="images/addons/clay-card.jpg" alt="People shaping pottery at wheels during a Friendly City Clay workshop" loading="lazy">
         <h3>Friendly City Clay</h3>
-        <p>Pottery and art workshops in Harrisonburg, including options for kids and families. Registration is through their website, and age requirements vary by class.</p>
-        <a class="fg-learn" href="https://www.friendlycityclay.com/" target="_blank" rel="noopener">Learn More &rarr;</a>
+        <p>A Cedar Escape partner offering pottery and art workshops in Harrisonburg, including options for kids and families. Registration is through their website, and age requirements vary by class.</p>
+        <p class="fg-act-note">Booked guests: see the Cedar Escape digital guidebook for redemption details.</p>
+        <div class="fg-act-links">
+          <a class="fg-learn" href="https://www.friendlycityclay.com/" target="_blank" rel="noopener">Learn More &rarr;</a>
+          <a class="fg-learn" href="add-ons.html#exclusive-add-ons">Private Group Experiences &rarr;</a>
+        </div>
       </article>
     </div>
-    <p class="fg-credits">Photo credits: &ldquo;Blackrock Sunset&rdquo; by Neal Lewis, <a href="https://commons.wikimedia.org/wiki/File:Blackrock_Sunset_(49565011683).jpg" target="_blank" rel="noopener">National Park Service</a> (public domain). Court Square Theater by G. Edward Johnson, <a href="https://commons.wikimedia.org/wiki/File:Court_Square_Theater_Harrisonburg_VA_2021-06-06_160021_1_crop.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> (resized and cropped).</p>
+    <p class="fg-credits">Photo credits: &ldquo;Blackrock Sunset&rdquo; by Neal Lewis, <a href="https://commons.wikimedia.org/wiki/File:Blackrock_Sunset_(49565011683).jpg" target="_blank" rel="noopener">National Park Service</a> (public domain). Court Square Theater by G. Edward Johnson, <a href="https://commons.wikimedia.org/wiki/File:Court_Square_Theater_Harrisonburg_VA_2021-06-06_160021_1_crop.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Indoor water park by Battle Creek CVB, <a href="https://commons.wikimedia.org/wiki/File:Full_Blast_waterpark_indoor_slides.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>. Snow tubing by James Song, <a href="https://commons.wikimedia.org/wiki/File:Snow_tubing.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.5/" target="_blank" rel="noopener">CC BY 2.5</a>. Photos were resized and cropped. The water park and snow tubing photos are illustrative and do not show Massanutten Resort.</p>
   </div>
 </section>
 

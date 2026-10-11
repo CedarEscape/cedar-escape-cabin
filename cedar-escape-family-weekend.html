@@ -13,7 +13,14 @@
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="fluRb5pqQbRyoYBszjH6r6vUlKDnWXYRyJcgYh6-Ww0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Family Mountain Weekend — Cedar Escape</title>
+<title>Family Getaway in Massanutten, VA | Family Vacation Rental | Cedar Escape</title>
+<meta name="description" content="Plan a family weekend at Cedar Escape in Massanutten: a 5-bedroom home that sleeps 14, with a sample 3-day itinerary, WaterPark, snow tubing, hiking and local meal options nearby.">
+<link rel="canonical" href="https://cedarescapecabin.com/cedar-escape-family-weekend">
+<meta property="og:title" content="Family Getaway in Massanutten, VA | Family Vacation Rental | Cedar Escape">
+<meta property="og:description" content="Plan a family weekend at Cedar Escape in Massanutten: a 5-bedroom home that sleeps 14, with a sample 3-day itinerary, WaterPark, snow tubing, hiking and local meal options nearby.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cedarescapecabin.com/cedar-escape-family-weekend">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Cedar Escape good for multi-generational trips?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — five bedrooms and 9 beds mean grandparents, parents, and kids can each have their own space instead of sharing a hotel room."}}, {"@type": "Question", "name": "What's actually here for young kids?", "acceptedAnswer": {"@type": "Answer", "text": "A high chair, toddler kitchenware, a pack n' play, a toddler toilet seat, gates, and bunk beds."}}, {"@type": "Question", "name": "Is there room for the kids to have their own space?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the bunk room and downstairs sleeper sofa give kids somewhere separate from the adult bedrooms, plus a movie room and game room for their own hangout space."}}, {"@type": "Question", "name": "Are activities and meals included in my reservation?", "acceptedAnswer": {"@type": "Answer", "text": "No. WaterPark, skiing and snow tubing, workshops and meals from local businesses are arranged and paid for separately with each provider. Hours, ages and availability vary, so check each website before you go."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -806,6 +813,69 @@
   #contactFormSuccess { text-align: center; padding: 20px 0; }
   #contactFormSuccess h3 { margin-top: 6px; }
   #contactFormSuccess p { color: #4b453b; font-size: 15px; margin-top: 10px; }
+
+  /* ---- Family Getaway page ---- */
+  .fg-hero {
+    background:
+      linear-gradient(90deg, rgba(35,45,29,0.86) 0%, rgba(35,45,29,0.6) 55%, rgba(35,45,29,0.3) 100%),
+      url('images/fg-game-room.jpg') center 55% / cover no-repeat,
+      #2b3624;
+  }
+  .fg-hero h1 em { color: var(--gold-bright); font-style: italic; }
+  .fg-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .fg-chips span { font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream); border: 1px solid var(--gold); background: rgba(35,45,29,0.55); border-radius: 999px; padding: 6px 14px; }
+  @media (max-width: 600px) {
+    .fg-hero .hero-inner { padding-top: 22px !important; padding-bottom: 20px !important; }
+    .fg-hero h1 { font-size: 28px !important; }
+    .fg-hero .hero-sub { font-size: 14.5px !important; margin-bottom: 12px !important; }
+    .fg-chips { gap: 6px; margin-bottom: 12px; }
+    .fg-chips span { font-size: 10.5px; padding: 4px 10px; }
+  }
+
+  .fg-highlights { padding: 36px 0; }
+  .fg-hl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px; text-align: center; }
+  @media (min-width: 700px) { .fg-hl-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1000px) { .fg-hl-grid { grid-template-columns: repeat(6, 1fr); } }
+  .fg-hl svg { width: 34px; height: 34px; color: var(--forest); margin-bottom: 8px; }
+  .fg-hl h3 { font-size: 15px; font-weight: 700; color: var(--forest-deep); margin-bottom: 4px; }
+  .fg-hl p { font-size: 14px; color: #4b453b; }
+
+  .fg-days { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 900px) { .fg-days { grid-template-columns: repeat(3, 1fr); } }
+  .fg-day { position: relative; background: var(--cream); border-radius: 12px; overflow: hidden; box-shadow: 0 14px 34px rgba(35,45,29,0.12); display: flex; flex-direction: column; }
+  .fg-day img { width: 100%; height: 210px; object-fit: cover; display: block; }
+  .fg-num { position: absolute; top: 12px; left: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; background: var(--forest-deep); color: var(--gold-bright); border: 2px solid var(--gold); font-family: 'Cinzel', serif; font-size: 20px; display: flex; align-items: center; justify-content: center; }
+  .fg-day-body { padding: 18px 22px 24px; }
+  .fg-kicker { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brown); margin-bottom: 6px; }
+  .fg-day-body h3 { font-family: 'Playfair Display', serif; font-size: 23px; color: var(--forest-deep); line-height: 1.15; margin-bottom: 8px; }
+  .fg-day-body p { font-size: 15px; color: #4b453b; }
+
+  .fg-act-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 640px) { .fg-act-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .fg-act-grid { grid-template-columns: repeat(6, 1fr); } .fg-act { grid-column: span 2; } .fg-act:nth-child(4) { grid-column: 2 / span 2; } .fg-act:nth-child(5) { grid-column: 4 / span 2; } }
+  .fg-act { background: var(--cream); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 26px rgba(35,45,29,0.1); display: flex; flex-direction: column; }
+  .fg-act img, .fg-act-tile { width: 100%; height: 170px; object-fit: cover; display: block; }
+  .fg-act-tile { background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); color: var(--gold-bright); display: flex; align-items: center; justify-content: center; }
+  .fg-act-tile svg { width: 56px; height: 56px; }
+  .fg-act h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--forest-deep); padding: 16px 20px 6px; }
+  .fg-act p { font-size: 14.5px; color: #4b453b; padding: 0 20px; flex: 1; }
+  .fg-learn { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--forest); font-weight: 700; text-decoration: none; padding: 12px 20px 18px; }
+  .fg-learn:hover { text-decoration: underline; }
+  .fg-credits { text-align: center; margin-top: 18px; font-size: 12px; color: var(--taupe); }
+  .fg-credits a { color: inherit; text-decoration: underline; }
+
+  .fg-food-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 900px) { .fg-food-grid { grid-template-columns: 1fr 1fr; align-items: stretch; } }
+  .fg-food-card { background: var(--cream-deep); border-radius: 14px; box-shadow: 0 14px 34px rgba(35,45,29,0.1); overflow: hidden; display: flex; flex-direction: column; }
+  .fg-food-img { width: 100%; height: 230px; object-fit: cover; object-position: top center; display: block; background: var(--forest-deep); }
+  .fg-food-logo { height: 230px; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; }
+  .fg-food-logo img { width: 210px; max-width: 60%; background: var(--cream); border-radius: 14px; padding: 16px; display: block; }
+  .fg-food-body { padding: 22px 26px 26px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; flex: 1; }
+  .fg-food-body h3 { font-family: 'Playfair Display', serif; font-size: 25px; color: var(--forest-deep); line-height: 1.15; }
+  .fg-food-body p { font-size: 15.5px; color: #4b453b; }
+  .fg-food-actions { margin-top: auto; padding-top: 6px; }
+  .fg-btn-green { background: var(--forest); color: var(--cream); }
+  .fg-btn-green:hover { background: var(--forest-deep); transform: translateY(-1px); }
 </style>
 </head>
 <body>
@@ -844,90 +914,169 @@
 </script>
 
 
-<section class="hero" style="min-height:56vh;">
-  <div class="hero-inner" style="padding-top:60px;">
-    <div class="eyebrow">Family Weekend</div>
-    <h1 style="font-size:clamp(30px, 5vw, 54px);">More than a hotel room. A whole house for the whole family.</h1>
-    <p class="hero-sub">Grandparents, parents, kids, and whoever else is coming — one house, room to spread out, and everybody actually together instead of splitting across hotel floors.</p>
-    <div class="hero-actions" style="flex-wrap:wrap;">
-      <span class="btn btn-outline" style="border-color:rgba(250,246,238,0.4); color:var(--cream); cursor:default;">Golf & Spa On-Site</span>
-      <span class="btn btn-outline" style="border-color:rgba(250,246,238,0.4); color:var(--cream); cursor:default;">Wineries 15–25 Min Away</span>
-      <span class="btn btn-outline" style="border-color:rgba(250,246,238,0.4); color:var(--cream); cursor:default;">Farmers Market Wed Mornings</span>
+<section class="hero fg-hero" style="min-height:0;">
+  <div class="hero-inner" style="padding-top:30px;padding-bottom:28px;">
+    <div class="eyebrow">Cedar Escape Family Getaway</div>
+    <h1 style="font-size:clamp(28px, 4.4vw, 46px);">Less Planning. More Playing.<br><em>More Memories.</em></h1>
+    <p class="hero-sub" style="font-size:16px;margin-bottom:18px;">We've got the home base. Massanutten brings the adventure. You bring the family.</p>
+    <div class="fg-chips">
+      <span>5 Bedrooms</span>
+      <span>3 Full Bathrooms</span>
+      <span>Sleeps Up To 14</span>
     </div>
-    <div class="hero-actions" style="margin-top:18px;">
-      <a href="check-availability.html" class="btn btn-gold">Check Dates & Pricing</a>
-      <a href="#nearby" class="btn btn-outline" style="border-color:rgba(250,246,238,0.5); color:var(--cream);">See Nearby Ideas</a>
+    <div class="hero-actions">
+      <a href="check-availability.html" class="btn btn-gold">Plan Your Family Getaway</a>
     </div>
   </div>
 </section>
 
-<div class="trust-bar">
+<section class="fg-highlights">
   <div class="wrap">
-    <ul>
-      <li>5 Bedrooms · 9 Beds</li>
-      <li>Sleeps Up To 14</li>
-      <li>Kid Gear Already Here</li>
-      <li>~25 Min From JMU</li>
-    </ul>
-  </div>
-</div>
-
-<section id="basecamp">
-  <div class="wrap">
-    <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Your Massanutten Home Base</div>
-      <h2>Skip the two-hotel-rooms math.</h2>
-      <p>Family trips get complicated fast once you're coordinating multiple rooms, multiple keycards, and a group text that just says "meet in the lobby." Cedar Escape keeps everyone under one roof — bunk beds for the cousins, a bedroom for the grandparents, and a movie room for after the kids are finally asleep.</p>
-    </div>
-    <div class="signpost">
-      <div class="post-pole"></div>
-      <div class="planks">
-        <div class="plank">
-          <div class="num">Why It Works 01</div>
-          <h3>Room For Everyone</h3>
-          <p>Five bedrooms and 9 beds mean nobody's sleeping on an air mattress in someone else's room.</p>
-        </div>
-        <div class="plank">
-          <div class="num">Why It Works 02</div>
-          <h3>Slower Mornings</h3>
-          <p>Coffee at your own pace, not a lobby line — everyone wakes up on their own schedule.</p>
-        </div>
-        <div class="plank">
-          <div class="num">Why It Works 03</div>
-          <h3>Nobody's Rushing Out</h3>
-          <p>Grab breakfast in, or head out together — either way, it's not a group decision made under a checkout deadline.</p>
-        </div>
-        <div class="plank">
-          <div class="num">Why It Works 04</div>
-          <h3>Room To Spread Out</h3>
-          <p>Game room and movie room mean the group doesn't have to do everything together, all the time.</p>
-        </div>
+    <div class="fg-hl-grid">
+      <div class="fg-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><path d="M14.5 14.4c.8-.3 1.6-.4 2.5-.4 2.5 0 4.5 2.2 4.5 5"/></svg>
+        <h3>Space for the Whole Family</h3>
+        <p>5 bedrooms, 3 bathrooms. Sleeps up to 14.</p>
+      </div>
+      <div class="fg-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20l6-10 4 6 3-4 7 8z"/><path d="M8 10l-1.5-2.5"/></svg>
+        <h3>At Massanutten</h3>
+        <p>Cedar Escape sits inside the Massanutten Resort community.</p>
+      </div>
+      <div class="fg-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c2 0 2-2 4.5-2S10 15 12 15s2.500-2 4.500-2S19 15 21 15"/><path d="M3 19c2 0 2-2 4.5-2S10 19 12 19s2.500-2 4.500-2S19 19 21 19"/><circle cx="12" cy="6" r="2.5"/></svg>
+        <h3>Indoor &amp; Outdoor Fun</h3>
+        <p>Water slides, snow tubing, hiking, and more nearby.</p>
+      </div>
+      <div class="fg-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10M8 20c-2-3-2-7 0-9h8c2 2 2 6 0 9"/><path d="M9 11c0-2 1-3 3-3s3 1 3 3"/></svg>
+        <h3>Friendly City Clay &amp; Local Fun</h3>
+        <p>Pottery workshops and attractions in Harrisonburg.</p>
+      </div>
+      <div class="fg-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8a2 2 0 002 2v8M7 3v6M11 3v6M9 3v6"/><path d="M17 3c-2 2-2 6-2 8h2v10"/></svg>
+        <h3>Family Meal Options</h3>
+        <p>Easy meals from local food partners.</p>
+      </div>
+      <div class="fg-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg>
+        <h3>Memories That Last</h3>
+        <p>One house for the whole family to reconnect.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="nearby" style="background:var(--cream-deep);">
+<section class="fg-itin" id="itinerary">
   <div class="wrap">
-    <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Nearby · Food & Wine</div>
-      <h2>Low-effort, high-reward.</h2>
-      <p>Family weekends move at a slower pace than most trips — nobody wants an ambitious itinerary with a toddler in tow.</p>
+    <div class="section-head" style="max-width:720px;margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow">A Sample Family Weekend Itinerary</div>
+      <h2>Three Days. A Happier You.</h2>
+      <p>Here's one way your family getaway at Cedar Escape can come together &mdash; as inspiration, never a required schedule.</p>
     </div>
-    <div class="reviews-strip">
-      <div class="review-card">
-        <p class="quote">Grab a pizza for pickup and bring it back to the house — no waiting on a table with tired kids.</p>
-        <div class="who">Vito's Pizza</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Sunday brunch or a relaxed wine tasting, just outside Harrisonburg.</p>
-        <div class="who"><a href="https://crosskeysvineyards.com/bistro/" target="_blank" rel="noopener" style="color:inherit;">CrossKeys Vineyards →</a></div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Fresh produce, local vendors, and live music — Wednesday mornings, seasonal (May–Aug).</p>
-        <div class="who"><a href="https://www.massresort.com/play/farmers-market/" target="_blank" rel="noopener" style="color:inherit;">Massanutten Farmers Market →</a></div>
-      </div>
+    <div class="fg-days">
+      <article class="fg-day">
+        <div class="fg-num">1</div>
+        <img src="images/fg-game-room.jpg" alt="Colorful Cedar Escape game room and lounge with arcade machine and TV" loading="lazy">
+        <div class="fg-day-body">
+          <div class="fg-kicker">Friday &middot; Arrive &amp; Unwind</div>
+          <h3>The Vacation Starts Here.</h3>
+          <p>Check in, get comfortable, and let the kids explore the game room. Order dinner or make an easy meal, then settle in for popcorn and a family movie night.</p>
+        </div>
+      </article>
+      <article class="fg-day">
+        <div class="fg-num">2</div>
+        <img src="images/massanutten-chairlift.webp" alt="Chairlift rising over green mountains at Massanutten Resort" loading="lazy">
+        <div class="fg-day-body">
+          <div class="fg-kicker">Saturday &middot; Adventure Day</div>
+          <h3>Make a Splash. Make Memories.</h3>
+          <p>Spend the day at Massanutten's WaterPark or choose a seasonal adventure like hiking, skiing, or snow tubing. Head back to Cedar Escape for a delicious family dinner from one of our local food partners, followed by games and movie night.</p>
+        </div>
+      </article>
+      <article class="fg-day">
+        <div class="fg-num">3</div>
+        <img src="images/fg-dining.jpg" alt="Cedar Escape dining table set for a family meal beside the open kitchen" loading="lazy">
+        <div class="fg-day-body">
+          <div class="fg-kicker">Sunday &middot; One More Memory</div>
+          <h3>Slow Mornings Are Part of It.</h3>
+          <p>Enjoy breakfast together, take a few family photos, play a final game, or fit in one last local adventure before heading home with full hearts and stories everyone will be talking about.</p>
+        </div>
+      </article>
     </div>
+  </div>
+</section>
+
+<section class="fg-season" id="adventures" style="background:var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head" style="max-width:760px;margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow">Choose Your Family Adventure</div>
+      <h2>Fun for Every Season.</h2>
+      <p>From water slides to pottery workshops, there's something for everyone near Cedar Escape.</p>
+    </div>
+    <div class="fg-act-grid">
+      <article class="fg-act">
+        <div class="fg-act-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c2 0 2-2 4.5-2S10 15 12 15s2.5-2 4.5-2S19 15 21 15"/><path d="M3 19c2 0 2-2 4.5-2S10 19 12 19s2.5-2 4.5-2S19 19 21 19"/><path d="M5 11c3-6 8-6 11-1"/></svg></div>
+        <h3>Massanutten WaterPark</h3>
+        <p>Indoor and outdoor water parks with slides and a lazy river at Massanutten Resort.</p>
+        <a class="fg-learn" href="https://www.massresort.com/play/waterpark/" target="_blank" rel="noopener">Learn More &rarr;</a>
+      </article>
+      <article class="fg-act">
+        <div class="fg-act-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11"/><path d="M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5"/></svg></div>
+        <h3>Skiing &amp; Snow Tubing</h3>
+        <p>Seasonal winter adventures at Massanutten, including skiing, snowboarding, and snow tubing.</p>
+        <a class="fg-learn" href="https://www.massresort.com/play/snow-sports/" target="_blank" rel="noopener">Learn More &rarr;</a>
+      </article>
+      <article class="fg-act">
+        <img src="images/jmu-shenandoah-blackrock.jpg" alt="Sunset over the Shenandoah Valley from Blackrock Summit in Shenandoah National Park" loading="lazy">
+        <h3>Hiking &amp; Outdoor Adventures</h3>
+        <p>Shenandoah National Park offers scenic trails, overlooks, and outdoor exploration.</p>
+        <a class="fg-learn" href="https://www.nps.gov/shen/index.htm" target="_blank" rel="noopener">Learn More &rarr;</a>
+      </article>
+      <article class="fg-act">
+        <img src="images/jmu-downtown-harrisonburg.jpg" alt="Court Square Theater on Court Square in downtown Harrisonburg" loading="lazy">
+        <h3>Downtown Harrisonburg</h3>
+        <p>Dining, shopping, and local attractions to explore together.</p>
+        <a class="fg-learn" href="https://harrisonburgva.gov/tourism" target="_blank" rel="noopener">Learn More &rarr;</a>
+      </article>
+      <article class="fg-act">
+        <img src="images/addons/clay-card.jpg" alt="People shaping pottery at wheels during a Friendly City Clay workshop" loading="lazy">
+        <h3>Friendly City Clay</h3>
+        <p>Pottery and art workshops in Harrisonburg, including options for kids and families. Registration is through their website, and age requirements vary by class.</p>
+        <a class="fg-learn" href="https://www.friendlycityclay.com/" target="_blank" rel="noopener">Learn More &rarr;</a>
+      </article>
+    </div>
+    <p class="fg-credits">Photo credits: &ldquo;Blackrock Sunset&rdquo; by Neal Lewis, <a href="https://commons.wikimedia.org/wiki/File:Blackrock_Sunset_(49565011683).jpg" target="_blank" rel="noopener">National Park Service</a> (public domain). Court Square Theater by G. Edward Johnson, <a href="https://commons.wikimedia.org/wiki/File:Court_Square_Theater_Harrisonburg_VA_2021-06-06_160021_1_crop.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> (resized and cropped).</p>
+  </div>
+</section>
+
+<section class="fg-food" id="food">
+  <div class="wrap">
+    <div class="section-head" style="max-width:760px;margin-left:auto;margin-right:auto;text-align:center;margin-bottom:24px;">
+      <div class="eyebrow">Less Time Cooking. More Time Together.</div>
+      <h2>Local Food Partners</h2>
+      <p>Make family meals one less thing to plan! Cedar Escape guests can explore convenient meal and catering options from local food businesses.</p>
+    </div>
+    <div class="fg-food-grid">
+      <article class="fg-food-card">
+        <img class="fg-food-img" src="images/local-biz/pops-southern-cuisine.jpg?v=5" alt="Fried chicken, mac and cheese and collard greens from Pop's Southern Cuisine food truck" loading="lazy">
+        <div class="fg-food-body">
+          <div class="fg-kicker">Cedar Escape Food Partner</div>
+          <h3>Pop's Southern Cuisine</h3>
+          <p>Southern comfort food from a local food truck with a rotating menu of favorites and specials. Follow @popssoutherncuisine for current menu and location updates, and contact Pop's directly about catering for your group.</p>
+          <div class="fg-food-actions"><a class="btn fg-btn-green" href="https://www.instagram.com/popssoutherncuisine" target="_blank" rel="noopener">View Menu</a></div>
+        </div>
+      </article>
+      <article class="fg-food-card">
+        <div class="fg-food-logo"><img src="images/logos/crossroads-cafe.png" alt="Crossroads Cafe &amp; Catering logo" loading="lazy"></div>
+        <div class="fg-food-body">
+          <div class="fg-kicker">Recommended Local Option</div>
+          <h3>Crossroads Caf&eacute; &amp; Catering</h3>
+          <p>A family-owned Penn Laird caf&eacute; with made-from-scratch breakfast and lunch, baked goods, and catering for events &mdash; a convenient option for group meals and family celebrations.</p>
+          <div class="fg-food-actions"><a class="btn fg-btn-green" href="https://www.welovecrossroads.com/" target="_blank" rel="noopener">View Menu / Catering Options</a></div>
+        </div>
+      </article>
+    </div>
+    <p class="fg-credits" style="font-size:13px;">Meals and catering are ordered directly from each business and priced separately; availability varies.</p>
   </div>
 </section>
 
@@ -991,63 +1140,16 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Sample Trip Flow</div>
-      <h2>A family weekend that doesn't feel like logistics.</h2>
-      <p>A simple framework — not a schedule anyone has to follow.</p>
-    </div>
-    <div class="reviews-strip">
-      <div class="review-card">
-        <p class="quote">Arrive, grab Vito's for pickup on the way in, and let the kids find the bunk room and pool table before bed.</p>
-        <div class="who">Friday</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Slow breakfast, then split up — golf, the spa, or just time on the deck — before regrouping for dinner off the grill.</p>
-        <div class="who">Saturday</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">With the late checkout, there's no rush — Sunday brunch at CrossKeys, then home whenever you're ready.</p>
-        <div class="who">Sunday</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Where You'll Stay</div>
-      <h2>Built for the whole family, not just the adults.</h2>
-    </div>
-    <div class="amenity-grid amenity-grid-3">
-      <div class="amenity-card">
-        <span class="cat">For The Kids</span>
-        <ul><li>Bunk beds</li><li>High chair & toddler kitchenware</li><li>Pack n' play / travel crib</li><li>Toddler toilet seat</li><li>Gates & toys</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">For The Whole Group</span>
-        <ul><li>Coffee & tea bar</li><li>Washer & dryer</li><li>Downstairs sleeper sofa</li></ul>
-      </div>
-      <div class="amenity-card">
-        <span class="cat">Once The Kids Are Down</span>
-        <ul><li>Movie room</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="faq" style="background:var(--cream-deep);">
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Family Weekend FAQ</div>
+      <div class="eyebrow">Family Getaway FAQ</div>
       <h2>Quick answers for planning your trip.</h2>
     </div>
     <div class="faq-list">
       <details class="faq-item">
         <summary>Is Cedar Escape good for multi-generational trips?</summary>
-        <div class="a">Yes — five bedrooms and 9 beds mean grandparents, parents, and kids can each have their own space instead of sharing a hotel room.</div>
+        <div class="a">Yes &mdash; five bedrooms and 9 beds mean grandparents, parents, and kids can each have their own space instead of sharing a hotel room.</div>
       </details>
       <details class="faq-item">
         <summary>What's actually here for young kids?</summary>
@@ -1055,7 +1157,11 @@
       </details>
       <details class="faq-item">
         <summary>Is there room for the kids to have their own space?</summary>
-        <div class="a">Yes — the bunk room and downstairs sleeper sofa give kids somewhere separate from the adult bedrooms, plus a movie room and game room for their own hangout space.</div>
+        <div class="a">Yes &mdash; the bunk room and downstairs sleeper sofa give kids somewhere separate from the adult bedrooms, plus a movie room and game room for their own hangout space.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Are activities and meals included in my reservation?</summary>
+        <div class="a">No. WaterPark, skiing and snow tubing, workshops and meals from local businesses are arranged and paid for separately with each provider. Hours, ages and availability vary, so check each website before you go.</div>
       </details>
     </div>
   </div>
@@ -1063,12 +1169,14 @@
 
 <section class="trailhead">
   <div class="wrap" style="text-align:center;">
-    <div class="section-head" style="margin:0 auto 24px;max-width:560px;">
-      <div class="eyebrow">Ready To Get Everyone Together?</div>
-      <h2>Check dates before the good weekends book up.</h2>
+    <div class="section-head" style="margin:0 auto 24px;max-width:600px;">
+      <div class="eyebrow">Book Direct &amp; Save on Fees</div>
+      <h2>Ready for Your Family Getaway?</h2>
+      <p>Book your stay at Cedar Escape and give your family a place to reconnect, explore, and make memories together.</p>
     </div>
-    <a href="check-availability.html" class="btn btn-gold">Check Dates & Pricing</a>
-    <p style="margin-top:14px;font-size:13px;color:var(--taupe);">Cedar Rewards members earn points on qualifying direct stays.</p>
+    <a href="check-availability.html" class="btn btn-gold">Check Availability</a>
+    <p style="margin-top:14px;font-size:14px;color:rgba(250,246,238,0.8);">Book direct and skip third-party booking fees.</p>
+    <p style="margin-top:6px;font-size:13px;color:var(--taupe);">Cedar Rewards members earn points on qualifying direct stays.</p>
   </div>
 </section>
 

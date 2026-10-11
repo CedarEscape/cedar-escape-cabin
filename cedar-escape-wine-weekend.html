@@ -13,7 +13,14 @@
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="fluRb5pqQbRyoYBszjH6r6vUlKDnWXYRyJcgYh6-Ww0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shenandoah Wine Weekend — Cedar Escape</title>
+<title>Massanutten Wine Weekend | Shenandoah Valley Winery Getaway | Cedar Escape</title>
+<meta name="description" content="Plan a Massanutten wine weekend: a Shenandoah Valley winery getaway for groups, with an exclusive wine tour discount for Cedar Escape guests, in-home massage, and a 5-bedroom home that sleeps 14.">
+<link rel="canonical" href="https://cedarescapecabin.com/cedar-escape-wine-weekend">
+<meta property="og:title" content="Massanutten Wine Weekend | Shenandoah Valley Winery Getaway | Cedar Escape">
+<meta property="og:description" content="Plan a Massanutten wine weekend: a Shenandoah Valley winery getaway for groups, with an exclusive wine tour discount for Cedar Escape guests, in-home massage, and a 5-bedroom home that sleeps 14.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cedarescapecabin.com/cedar-escape-wine-weekend">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do Cedar Escape guests receive a discount on wine tours?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Booked Cedar Escape guests receive an exclusive discount with Shenandoah Wine Tours, our local wine-tour transportation partner. See your Cedar Escape digital guidebook after you book for redemption details."}}, {"@type": "Question", "name": "How do I arrange transportation through Shenandoah Wine Tours?", "acceptedAnswer": {"@type": "Answer", "text": "Shenandoah Wine Tours handles tour dates, scheduling and payment directly. Visit shenandoahwinetours.com or contact them to plan your day, and check your Cedar Escape digital guidebook for the guest discount details."}}, {"@type": "Question", "name": "Can I book an in-home massage during my stay?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In-home massage is available through our local partner. You can learn more and send a request on our Add-Ons page. Availability varies."}}, {"@type": "Question", "name": "Are transportation and massage services included in my reservation?", "acceptedAnswer": {"@type": "Answer", "text": "No. Wine-tour transportation and in-home massage are optional experiences arranged separately through our local partners, and are not included in your Cedar Escape reservation."}}, {"@type": "Question", "name": "Do I need to reserve these experiences in advance?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend it, especially for weekends and busy seasons. Availability is set by each provider, so the earlier you reach out, the better your chances."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -839,6 +846,73 @@
   #contactFormSuccess { text-align: center; padding: 20px 0; }
   #contactFormSuccess h3 { margin-top: 6px; }
   #contactFormSuccess p { color: #4b453b; font-size: 15px; margin-top: 10px; }
+
+  /* ---- Wine Weekend page ---- */
+  .ww-hero {
+    background:
+      linear-gradient(180deg, rgba(35,45,29,0.35) 0%, rgba(35,45,29,0.62) 55%, rgba(35,45,29,0.9) 100%),
+      url('images/addons/wine-card.jpg') center 40% / cover no-repeat,
+      #2b3624;
+  }
+  .ww-perk-chip {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(250,246,238,0.94); color: var(--forest-deep);
+    border: 1px solid var(--gold); border-radius: 6px; padding: 12px 18px;
+  }
+  .ww-perk-chip svg { width: 28px; height: 28px; color: var(--gold); flex: none; }
+  .ww-perk-chip span { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brown); }
+  .ww-perk-chip b { display: block; font-family: 'Cinzel', serif; font-weight: 600; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .ww-perk-chip small { display: block; font-size: 12px; color: #4b453b; }
+
+  .ww-highlights { padding: 36px 0; }
+  .ww-hl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px; text-align: center; }
+  @media (min-width: 860px) { .ww-hl-grid { grid-template-columns: repeat(4, 1fr); } }
+  .ww-hl svg { width: 34px; height: 34px; color: var(--forest); margin-bottom: 8px; }
+  .ww-hl h3 { font-size: 15px; font-weight: 700; color: var(--forest-deep); margin-bottom: 4px; }
+  .ww-hl p { font-size: 14px; color: #4b453b; }
+
+  .ww-perk-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+  @media (min-width: 860px) { .ww-perk-grid { grid-template-columns: 1fr 1fr; } }
+  .ww-perk-card { background: var(--cream); border-radius: 12px; overflow: hidden; box-shadow: 0 14px 34px rgba(35,45,29,0.12); display: flex; flex-direction: column; }
+  .ww-perk-media { height: 200px; position: relative; overflow: hidden; background: var(--forest-deep); }
+  .ww-perk-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ww-perk-media-wine { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--gold-bright); background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); }
+  .ww-perk-media-wine svg { width: 56px; height: 56px; }
+  .ww-perk-media-wine span { font-family: 'Cinzel', serif; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .ww-perk-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; align-items: flex-start; }
+  .ww-kicker { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brown); }
+  .ww-perk-body h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--forest-deep); line-height: 1.15; }
+  .ww-badge { display: inline-flex; align-items: center; gap: 12px; background: var(--cream-deep); border: 1px solid var(--gold); border-radius: 8px; padding: 8px 14px; }
+  .ww-badge b { font-family: 'Cinzel', serif; font-size: 24px; color: var(--forest-deep); white-space: nowrap; }
+  .ww-badge span { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brown); line-height: 1.3; }
+  .ww-perk-body p { font-size: 15.5px; color: #4b453b; }
+  .ww-perk-body .ww-note { font-size: 13.5px; color: var(--brown); font-style: italic; }
+  .ww-btn-green { background: var(--forest); color: var(--cream); margin-top: auto; }
+  .ww-btn-green:hover { background: var(--forest-deep); transform: translateY(-1px); }
+
+  .ww-flow { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  .ww-arrow { display: none; }
+  @media (min-width: 900px) {
+    .ww-flow { grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: start; gap: 12px; }
+    .ww-arrow { display: block; align-self: center; font-size: 26px; color: var(--gold); padding-top: 0; }
+  }
+  .ww-step img { width: 100%; height: 170px; object-fit: cover; border-radius: 8px; display: block; margin-bottom: 14px; }
+  .ww-step h3 { font-size: 16px; font-weight: 700; color: var(--forest-deep); margin-bottom: 6px; }
+  .ww-step h3 span { color: var(--gold); margin-right: 4px; }
+  .ww-step p { font-size: 14.5px; color: #4b453b; }
+  .ww-flex-note { text-align: center; margin-top: 26px; font-size: 14.5px; color: var(--brown); }
+  .ww-flex-note a { color: var(--forest); text-decoration: underline; }
+
+  .ww-winery-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 600px) { .ww-winery-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .ww-winery-grid { grid-template-columns: repeat(6, 1fr); } .ww-winery { grid-column: span 2; } .ww-winery:nth-child(4) { grid-column: 2 / span 2; } .ww-winery:nth-child(5) { grid-column: 4 / span 2; } }
+  .ww-winery { display: flex; flex-direction: column; gap: 6px; background: var(--cream); border: 1px solid rgba(35,45,29,0.12); border-top: 3px solid var(--gold); border-radius: 10px; padding: 22px 22px 20px; text-decoration: none; color: inherit; transition: transform .2s ease, box-shadow .2s ease; }
+  .ww-winery:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(35,45,29,0.14); }
+  .ww-winery svg { width: 30px; height: 30px; color: var(--gold); }
+  .ww-winery h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--forest-deep); line-height: 1.2; }
+  .ww-where { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brown); }
+  .ww-winery p { font-size: 14.5px; color: #4b453b; flex: 1; }
+  .ww-visit { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--forest); font-weight: 700; margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -877,18 +951,17 @@
 </script>
 
 
-<section class="hero" style="min-height:56vh;">
+<section class="hero ww-hero" style="min-height:62vh;">
   <div class="hero-inner" style="padding-top:60px;">
-    <div class="eyebrow">Shenandoah Wine Weekend</div>
-    <h1 style="font-size:clamp(30px, 5vw, 54px);">A wine trail weekend that ends back at the house, not a hotel bar.</h1>
-    <p class="hero-sub">Four wineries within a short drive, a house big enough for the whole group, and nobody splitting a cab back to separate hotel rooms at the end of the night.</p>
-    <div class="hero-actions" style="flex-wrap:wrap;">
-      <span class="btn btn-outline" style="border-color:rgba(250,246,238,0.4); color:var(--cream); cursor:default;">4 Wineries Nearby</span>
-      <span class="btn btn-outline" style="border-color:rgba(250,246,238,0.4); color:var(--cream); cursor:default;">Spa On-Site</span>
-      <span class="btn btn-outline" style="border-color:rgba(250,246,238,0.4); color:var(--cream); cursor:default;">15–25 Min To Tasting Rooms</span>
-    </div>
-    <div class="hero-actions" style="margin-top:18px;">
-      <a href="check-availability.html" class="btn btn-gold">Check Dates & Pricing</a>
+    <div class="eyebrow">Cedar Escape Wine Weekend</div>
+    <h1 style="font-size:clamp(34px, 6vw, 62px);">Sip. Explore. Unwind.<br>Stay Together.</h1>
+    <p class="hero-sub">Explore Shenandoah Valley wineries, enjoy convenient wine-tour transportation through our local partner, add an in-home massage, and make unforgettable memories &mdash; all while staying together at Cedar Escape.</p>
+    <div class="hero-actions" style="align-items:center;">
+      <div class="ww-perk-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
+        <div><span>Exclusive Guest Perk</span><b>Wine Tour Savings</b><small>See your CE Guide Book for details</small></div>
+      </div>
+      <a href="check-availability.html" class="btn btn-gold">Plan Your Wine Weekend</a>
     </div>
   </div>
 </section>
@@ -896,12 +969,158 @@
 <div class="trust-bar">
   <div class="wrap">
     <ul>
-      <li>5 Bedrooms · 9 Beds</li>
+      <li>5 Bedrooms &middot; 9 Beds</li>
       <li>Sleeps Up To 14</li>
       <li>Game Room</li>
     </ul>
   </div>
 </div>
+
+<section class="ww-highlights">
+  <div class="wrap">
+    <div class="ww-hl-grid">
+      <div class="ww-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
+        <h3>Sip Local</h3>
+        <p>Shenandoah Valley wineries just a short drive away.</p>
+      </div>
+      <div class="ww-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="13" rx="2"/><path d="M4 11h16M8 21v-4M16 21v-4"/><circle cx="8" cy="14" r=".6"/><circle cx="16" cy="14" r=".6"/></svg>
+        <h3>Stress-Free Transportation</h3>
+        <p>Exclusive guest savings on wine tours with our local partner.</p>
+      </div>
+      <div class="ww-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4-1-7-4-7-8 3 0 5.5 1.2 7 3.5C13.5 14.2 16 13 19 13c0 4-3 7-7 8z"/><path d="M12 16.5C12 11 10 8 7 6c-.5 4 1 8 5 10.5zM12 16.5C12 11 14 8 17 6c.5 4-1 8-5 10.5z"/></svg>
+        <h3>In-Home Massage</h3>
+        <p>Relax and recharge without leaving the house.</p>
+      </div>
+      <div class="ww-hl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><path d="M14.5 14.4c.8-.3 1.6-.4 2.5-.4 2.5 0 4.5 2.2 4.5 5"/></svg>
+        <h3>Stay Together</h3>
+        <p>All the fun of a wine weekend from the comfort of Cedar Escape.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ww-perks" style="background:var(--cream-deep);" id="perks">
+  <div class="wrap">
+    <div class="section-head" style="max-width:720px;margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow">Exclusive Cedar Escape Guest Perks</div>
+      <h2>Make your weekend even more special.</h2>
+    </div>
+    <div class="ww-perk-grid">
+      <article class="ww-perk-card">
+        <div class="ww-perk-media ww-perk-media-wine">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
+          <span>Shenandoah Wine Tours</span>
+        </div>
+        <div class="ww-perk-body">
+          <div class="ww-kicker">Private Wine Tour Transportation</div>
+          <h3>Shenandoah Wine Tours</h3>
+          <div class="ww-badge"><b>Guest Perk</b><span>Exclusive savings for Cedar Escape guests</span></div>
+          <p>Leave the driving to someone else. Shenandoah Wine Tours provides group winery transportation from the Massanutten area, so your whole group can relax and fully enjoy the experience.</p>
+          <p class="ww-note">Booked guests: see the Cedar Escape digital guidebook for the exclusive discount and redemption details.</p>
+          <a class="btn ww-btn-green" href="https://shenandoahwinetours.com" target="_blank" rel="noopener">Explore Shenandoah Wine Tours <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
+      <article class="ww-perk-card">
+        <div class="ww-perk-media"><img src="images/addons/massage-card.jpg" alt="Massage therapist's hands during an in-home massage" loading="lazy"></div>
+        <div class="ww-perk-body">
+          <div class="ww-kicker">In-Home Massage Experience</div>
+          <h3>Relax at Cedar Escape</h3>
+          <p>Bring the spa experience to the house. Arrange a professional in-home massage through our local partner &mdash; ideal for couples, girls' weekends and group getaways, and the perfect way to unwind after a day exploring wineries.</p>
+          <p class="ww-note">Massage is arranged separately and is not included in your reservation. Availability varies.</p>
+          <a class="btn ww-btn-green" href="add-ons.html#exclusive-add-ons">Arrange an In-Home Massage</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="itinerary">
+  <div class="wrap">
+    <div class="section-head" style="max-width:720px;margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow">Sample Trip Flow</div>
+      <h2>A perfect wine weekend.</h2>
+      <p>Here's how a weekend at Cedar Escape can come together &mdash; flexible, never a schedule anyone has to follow.</p>
+    </div>
+    <div class="ww-flow">
+      <div class="ww-step">
+        <img src="images/hero-exterior.webp" alt="Cedar Escape mountain home exterior" loading="lazy">
+        <h3><span>1.</span> Arrive &amp; Settle In</h3>
+        <p>Check in, get comfortable, and enjoy Cedar Escape.</p>
+      </div>
+      <div class="ww-arrow" aria-hidden="true">&rarr;</div>
+      <div class="ww-step">
+        <img src="images/addons/wine-card.jpg" alt="Two glasses of white wine overlooking a vineyard at sunset" loading="lazy">
+        <h3><span>2.</span> Explore Local Wineries</h3>
+        <p>Spend the day visiting Shenandoah Valley wineries with convenient transportation through Shenandoah Wine Tours &mdash; with an exclusive guest discount. Details are in your CE Guide Book.</p>
+      </div>
+      <div class="ww-arrow" aria-hidden="true">&rarr;</div>
+      <div class="ww-step">
+        <img src="images/addons/massage-card.jpg" alt="In-home massage" loading="lazy">
+        <h3><span>3.</span> Unwind With an In-Home Massage</h3>
+        <p>Return to Cedar Escape and enjoy an optional massage experience arranged through our local partner.</p>
+      </div>
+      <div class="ww-arrow" aria-hidden="true">&rarr;</div>
+      <div class="ww-step">
+        <img src="images/photo-16.jpg" alt="Cedar Escape living room with leather sofas and fireplace" loading="lazy">
+        <h3><span>4.</span> Stay Together</h3>
+        <p>Spend the evening relaxing, enjoying the house, and making memories together.</p>
+      </div>
+    </div>
+    <p class="ww-flex-note">Every part of this is optional &mdash; book what fits your group.</p>
+  </div>
+</section>
+
+<section style="background:var(--cream-deep);" id="wineries">
+  <div class="wrap">
+    <div class="section-head" style="max-width:720px;margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow">Local Wineries Nearby</div>
+      <h2>Explore Shenandoah Valley wine country.</h2>
+      <p>The Shenandoah Valley Wine Trail runs right through this area. All five wineries below are official trail members, and several are close enough to visit two or three in a single day.</p>
+    </div>
+    <div class="ww-winery-grid">
+      <a class="ww-winery" href="https://crosskeysvineyards.com/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
+        <h3>CrossKeys Vineyards</h3>
+        <div class="ww-where">Mt. Crawford</div>
+        <p>A Tuscan-style villa estate with mountain views and an on-site bistro &mdash; brunch here is a local favorite.</p>
+        <span class="ww-visit">Visit website &#8599;</span>
+      </a>
+      <a class="ww-winery" href="https://www.brixandcolumns.com/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
+        <h3>Brix &amp; Columns Vineyards</h3>
+        <div class="ww-where">McGaheysville</div>
+        <p>Stately Jeffersonian architecture, open fields and wide mountain views, close to Massanutten.</p>
+        <span class="ww-visit">Visit website &#8599;</span>
+      </a>
+      <a class="ww-winery" href="https://www.bluestonevineyard.com/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
+        <h3>Bluestone Vineyard</h3>
+        <div class="ww-where">Bridgewater</div>
+        <p>A family-owned winery crafting small-batch wines from locally sourced and estate-grown fruit.</p>
+        <span class="ww-visit">Visit website &#8599;</span>
+      </a>
+      <a class="ww-winery" href="https://whiteoaklavender.com/pages/the-purple-wolf-vineyard" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
+        <h3>White Oak Lavender Farm &amp; The Purple WOLF</h3>
+        <div class="ww-where">Harrisonburg</div>
+        <p>Part lavender farm, part vineyard &mdash; wine tasting with some wines infused with lavender.</p>
+        <span class="ww-visit">Visit website &#8599;</span>
+      </a>
+      <a class="ww-winery" href="http://www.wisteriavineyard.com/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
+        <h3>Wisteria Farm &amp; Vineyard</h3>
+        <div class="ww-where">Stanley &middot; Page County</div>
+        <p>A working farm winery on the Blue Ridge side of the valley, with picnics and tastings.</p>
+        <span class="ww-visit">Visit website &#8599;</span>
+      </a>
+    </div>
+    <p class="ww-flex-note">Hours and tasting details vary &mdash; check each winery's website before you go. <a href="explore-massanutten.html">View our full local guide &rarr;</a></p>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -941,34 +1160,6 @@
   </div>
 </section>
 
-<section style="background:var(--cream-deep);">
-  <div class="wrap">
-    <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Wine Country, Nearby</div>
-      <h2>Four wineries, all within a short drive.</h2>
-      <p>The Shenandoah Valley Wine Trail runs right through this area — CrossKeys, Bluestone, Brix & Columns, and White Oak/Purple WOLF are all official trail members, and several are close enough to visit two or three in a single day.</p>
-    </div>
-    <div class="reviews-strip reviews-strip-2">
-      <div class="review-card">
-        <p class="quote">The name that comes up first when locals talk wine — Tuscan-style architecture that genuinely feels like a detour through Italy, plus a bistro on-site for Sunday brunch.</p>
-        <div class="who">CrossKeys Vineyards</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">About 15 minutes from Massanutten Village — striking architecture, a 360-degree mountain view, and a bistro on-site.</p>
-        <div class="who">Brix & Columns Vineyards</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Award-winning estate wines and sweeping valley views, roughly 20 minutes away.</p>
-        <div class="who">Bluestone Vineyard</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">Part lavender farm, part vineyard — a unique stop if your group wants something a little different.</p>
-        <div class="who">White Oak Lavender Farm & The Purple WOLF</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section>
   <div class="wrap">
     <div class="section-head" style="max-width:680px;">
@@ -997,32 +1188,8 @@
         <div class="who">Late Checkout Add-On</div>
       </div>
       <div class="review-card">
-        <p class="quote">Private wine-country transportation is a real, bookable option in this area — some services pick up directly from the house.</p>
-        <div class="who">Local Wine Tour & Driver Services</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--cream-deep);">
-  <div class="wrap">
-    <div class="section-head" style="max-width:680px;">
-      <div class="eyebrow">Sample Trip Flow</div>
-      <h2>A wine weekend that doesn't feel rushed.</h2>
-      <p>A simple framework — not a schedule anyone has to follow.</p>
-    </div>
-    <div class="reviews-strip">
-      <div class="review-card">
-        <p class="quote">Arrive, settle in, and let the group unwind before a low-key first night.</p>
-        <div class="who">Friday</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">A late start, then Bluestone and White Oak/Purple WOLF for something a little different from the usual tasting room.</p>
-        <div class="who">Saturday</div>
-      </div>
-      <div class="review-card">
-        <p class="quote">With the late checkout, there's no rush — Sunday brunch at CrossKeys, paired with one last tasting before the drive home.</p>
-        <div class="who">Sunday</div>
+        <p class="quote">Group wine-country transportation through Shenandoah Wine Tours &mdash; with an exclusive discount for Cedar Escape guests (details in your CE Guide Book).</p>
+        <div class="who"><a href="https://shenandoahwinetours.com" target="_blank" rel="noopener" style="color:inherit;">Shenandoah Wine Tours →</a></div>
       </div>
     </div>
   </div>
@@ -1036,12 +1203,32 @@
     </div>
     <div class="faq-list">
       <details class="faq-item">
+        <summary>Do Cedar Escape guests receive a discount on wine tours?</summary>
+        <div class="a">Yes. Booked Cedar Escape guests receive an exclusive discount with Shenandoah Wine Tours, our local wine-tour transportation partner. See your Cedar Escape digital guidebook after you book for redemption details.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How do I arrange transportation through Shenandoah Wine Tours?</summary>
+        <div class="a">Shenandoah Wine Tours handles tour dates, scheduling and payment directly. Visit <a href="https://shenandoahwinetours.com" target="_blank" rel="noopener">shenandoahwinetours.com</a> or contact them to plan your day, and check your Cedar Escape digital guidebook for the guest discount details.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I book an in-home massage during my stay?</summary>
+        <div class="a">Yes. In-home massage is available through our local partner. You can learn more and send a request on our <a href="add-ons.html#exclusive-add-ons">Add-Ons page</a>. Availability varies.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Are transportation and massage services included in my reservation?</summary>
+        <div class="a">No. Wine-tour transportation and in-home massage are optional experiences arranged separately through our local partners, and are not included in your Cedar Escape reservation.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to reserve these experiences in advance?</summary>
+        <div class="a">We recommend it, especially for weekends and busy seasons. Availability is set by each provider, so the earlier you reach out, the better your chances. If you have questions, <a href="#" class="js-open-contact">message us</a> and we'll help.</div>
+      </details>
+      <details class="faq-item">
         <summary>How far are the wineries from the house?</summary>
-        <div class="a">Most are within a 10–25 minute drive, and several sit close enough together to visit more than one in the same day.</div>
+        <div class="a">Most are within about a 25-minute drive, and several sit close enough together to visit more than one in the same day. Wisteria Farm &amp; Vineyard, in Page County, is a bit farther out.</div>
       </details>
       <details class="faq-item">
         <summary>What makes Cedar Escape perfect for a girls' weekend?</summary>
-        <div class="a">It gives old friends the space to make new memories—long conversations, loud laughter, slow mornings, and the kind of late nights nobody wants to end.</div>
+        <div class="a">It gives old friends the space to make new memories&mdash;long conversations, loud laughter, slow mornings, and the kind of late nights nobody wants to end.</div>
       </details>
       <details class="faq-item">
         <summary>What if we don't want to plan every minute?</summary>
@@ -1057,8 +1244,9 @@
       <div class="eyebrow">Ready For A Wine Weekend?</div>
       <h2>Check dates before the good weekends book up.</h2>
     </div>
-    <a href="check-availability.html" class="btn btn-gold">Check Dates & Pricing</a>
-    <p style="margin-top:14px;font-size:13px;color:var(--taupe);">Cedar Rewards members earn points on qualifying direct stays.</p>
+    <a href="check-availability.html" class="btn btn-gold">Check Availability</a>
+    <p style="margin-top:14px;font-size:14px;color:rgba(250,246,238,0.8);">Book directly with Cedar Escape and skip third-party booking fees.</p>
+    <p style="margin-top:6px;font-size:13px;color:var(--taupe);">Cedar Rewards members earn points on qualifying direct stays.</p>
   </div>
 </section>
 

@@ -903,6 +903,14 @@
   .ww-flex-note { text-align: center; margin-top: 26px; font-size: 14.5px; color: var(--brown); }
   .ww-flex-note a { color: var(--forest); text-decoration: underline; }
 
+  .ww-cater { margin-top: 28px; background: var(--forest-deep); color: var(--cream); border-radius: 12px; padding: 24px 26px; display: flex; flex-direction: column; gap: 18px; }
+  @media (min-width: 860px) { .ww-cater { flex-direction: row; align-items: center; justify-content: space-between; gap: 32px; } }
+  .ww-cater h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--gold-bright); margin-bottom: 6px; }
+  .ww-cater p { font-size: 15.5px; color: rgba(250,246,238,0.85); max-width: 640px; }
+  .ww-cater-actions { display: flex; gap: 12px; flex-wrap: wrap; flex: none; }
+  .ww-cater .ww-btn-green { background: var(--gold); color: var(--forest-deep); margin-top: 0; }
+  .ww-cater .btn-outline { border-color: rgba(250,246,238,0.5); color: var(--cream); }
+  .ww-cater .btn-outline:hover { background: var(--cream); color: var(--forest-deep); }
   .ww-winery-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
   @media (min-width: 600px) { .ww-winery-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 900px) { .ww-winery-grid { grid-template-columns: repeat(6, 1fr); } .ww-winery { grid-column: span 2; } .ww-winery:nth-child(4) { grid-column: 2 / span 2; } .ww-winery:nth-child(5) { grid-column: 4 / span 2; } }
@@ -952,10 +960,10 @@
 
 
 <section class="hero ww-hero" style="min-height:0;">
-  <div class="hero-inner" style="padding-top:44px;padding-bottom:34px;">
+  <div class="hero-inner" style="padding-top:30px;padding-bottom:26px;">
     <div class="eyebrow">Cedar Escape Wine Weekend</div>
-    <h1 style="font-size:clamp(30px, 4.6vw, 48px);">Sip. Explore. Unwind.<br>Stay Together.</h1>
-    <p class="hero-sub">Explore Shenandoah Valley wineries, enjoy convenient wine-tour transportation through our local partner, add an in-home massage, and make unforgettable memories &mdash; all while staying together at Cedar Escape.</p>
+    <h1 style="font-size:clamp(28px, 4vw, 42px);">Sip. Explore. Unwind.<br>Stay Together.</h1>
+    <p class="hero-sub" style="font-size:16px;margin-bottom:18px;">Explore Shenandoah Valley wineries, enjoy convenient wine-tour transportation through our local partner, add an in-home massage, and make unforgettable memories &mdash; all while staying together at Cedar Escape.</p>
     <div class="hero-actions" style="align-items:center;">
       <div class="ww-perk-chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 8a3 3 0 01-6 0L8 2z"/><path d="M12 14v6M9 21h6"/></svg>
@@ -1032,6 +1040,16 @@
         </div>
       </article>
     </div>
+    <div class="ww-cater">
+      <div>
+        <h3>Want dinner at the house?</h3>
+        <p>Ask us about arranging a catered dinner for your group &mdash; a great way to end a day of tastings without anyone cooking or driving. Catering is arranged and priced separately through local caterers.</p>
+      </div>
+      <div class="ww-cater-actions">
+        <a class="btn ww-btn-green" href="explore-massanutten.html#catering">Browse Local Caterers</a>
+        <a class="btn btn-outline js-open-contact" href="#">Message Us</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1064,7 +1082,7 @@
       <div class="ww-step">
         <img src="images/ww-deck-golden.jpg" alt="Golden evening light on the Cedar Escape deck, with a cup of coffee on the table" loading="lazy" style="object-position:50% 70%;">
         <h3><span>4.</span> Stay Together</h3>
-        <p>Spend the evening relaxing, enjoying the house, and making memories together.</p>
+        <p>Spend the evening relaxing, enjoying the house &mdash; maybe with a catered dinner at home &mdash; and making memories together.</p>
       </div>
     </div>
     <p class="ww-flex-note">Every part of this is optional &mdash; book what fits your group.</p>
@@ -1218,6 +1236,10 @@
       <details class="faq-item">
         <summary>Do I need to reserve these experiences in advance?</summary>
         <div class="a">We recommend it, especially for weekends and busy seasons. Availability is set by each provider, so the earlier you reach out, the better your chances. If you have questions, <a href="#" class="js-open-contact">message us</a> and we'll help.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can we have a catered dinner at the house?</summary>
+        <div class="a">Yes &mdash; we can help arrange one. Browse local caterers on our <a href="explore-massanutten.html#catering">local guide</a> or <a href="#" class="js-open-contact">message us</a> and we'll point you in the right direction. Catering is arranged and priced separately from your reservation.</div>
       </details>
       <details class="faq-item">
         <summary>How far are the wineries from the house?</summary>

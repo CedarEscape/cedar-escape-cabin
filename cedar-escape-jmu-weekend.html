@@ -841,21 +841,18 @@
   .jw-cater-checks li { font-size: 14.5px; color: var(--forest-deep); padding-left: 22px; position: relative; }
   .jw-cater-checks li::before { content: '\2713'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
   .jw-cater-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-  @media (min-width: 900px) { .jw-cater-grid { grid-template-columns: 1.7fr 1fr; align-items: stretch; } }
-  .jw-cater-feature { background: var(--cream); border-radius: 14px; box-shadow: 0 14px 34px rgba(35,45,29,0.12); overflow: hidden; display: flex; flex-direction: column; }
-  .jw-cater-feature img { width: 100%; height: auto; display: block; background: var(--forest-deep); }
-  .jw-cater-feature-body { padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
-  .jw-cater-feature h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--forest-deep); line-height: 1.15; }
-  .jw-cater-feature p { font-size: 15.5px; color: #4b453b; }
+  @media (min-width: 900px) { .jw-cater-grid { grid-template-columns: 1fr 1fr; align-items: stretch; } }
+  .jw-cater-feature, .jw-cater-other { background: var(--cream); border-radius: 14px; box-shadow: 0 14px 34px rgba(35,45,29,0.12); overflow: hidden; display: flex; flex-direction: column; }
+  .jw-cater-feature > img { width: 100%; height: 230px; object-fit: cover; object-position: top center; display: block; background: var(--forest-deep); }
+  .jw-cater-other-logo { height: 230px; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; }
+  .jw-cater-other-logo img { width: 210px; max-width: 60%; background: var(--cream); border-radius: 14px; padding: 16px; display: block; }
+  .jw-cater-feature-body { padding: 22px 26px 26px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; flex: 1; }
+  .jw-cater-feature h3, .jw-cater-other h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--forest-deep); line-height: 1.15; }
+  .jw-cater-feature p, .jw-cater-other p { font-size: 15.5px; color: #4b453b; }
   .jw-fine { font-size: 13px !important; color: var(--brown) !important; font-style: italic; }
-  .jw-cater-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .jw-cater-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
   .jw-btn-green { background: var(--forest); color: var(--cream); }
   .jw-btn-green:hover { background: var(--forest-deep); transform: translateY(-1px); }
-  .jw-cater-other { background: var(--cream); border: 1px solid rgba(35,45,29,0.12); border-radius: 14px; padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 8px; align-self: start; }
-  .jw-cater-other h3 { font-family: 'Playfair Display', serif; font-size: 21px; color: var(--forest-deep); }
-  .jw-cater-other p { font-size: 14.5px; color: #4b453b; }
-  .jw-link { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--forest); font-weight: 700; text-decoration: none; margin-top: 4px; }
-  .jw-link:hover { text-decoration: underline; }
 
   .jw-exp-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
   @media (min-width: 640px) { .jw-exp-grid { grid-template-columns: 1fr 1fr; } }
@@ -1021,10 +1018,14 @@
         </div>
       </article>
       <article class="jw-cater-other">
-        <div class="jw-kicker">Another Local Option</div>
-        <h3>Crossroads Caf&eacute; &amp; Catering</h3>
-        <p>Breakfast, lunch and event trays made fresh in Penn Laird.</p>
-        <a class="jw-link" href="https://www.welovecrossroads.com/" target="_blank" rel="noopener">View website &#8599;</a>
+        <div class="jw-cater-other-logo"><img src="images/logos/crossroads-cafe.png" alt="Crossroads Cafe &amp; Catering logo" loading="lazy"></div>
+        <div class="jw-cater-feature-body">
+          <div class="jw-kicker">Another Local Option</div>
+          <h3>Crossroads Caf&eacute; &amp; Catering</h3>
+          <p>A family-owned Penn Laird caf&eacute; with made-from-scratch breakfast and lunch, baked goods, and catering for events.</p>
+          <p class="jw-fine">Contact Crossroads directly for catering. Catering is priced separately and subject to availability.</p>
+          <div class="jw-cater-actions"><a class="btn jw-btn-green" href="https://www.welovecrossroads.com/" target="_blank" rel="noopener">View Website</a></div>
+        </div>
       </article>
     </div>
     <p class="jw-flex-note">More caterers are listed in our <a href="explore-massanutten.html#catering">local catering guide</a>.</p>

@@ -1,41 +1,79 @@
 #!/usr/bin/env python3
-"""Sync guest reviews from the public Hospitable direct-booking page into index.html.
+"""Sync guest reviews (Airbnb, VRBO and direct) from the Hospitable API into index.html.
 
-Reads the public HTML at SOURCE_URL, extracts each guest review (name, date,
-comment), and replaces the content between the REVIEWS:AUTO:START/END markers
-in index.html. Run manually or on a schedule (see .github/workflows/sync-reviews.yml).
+Pulls every public review for the property, newest first, and replaces the content
+between the REVIEWS:HERO / REVIEWS:CARDS markers in index.html. Reviewers are shown
+as "Verified <platform> guest" because the API does not return names by default.
+
+Requires the HOSPITABLE_API_TOKEN environment variable (same token the dashboard
+sync uses). Run manually or on a schedule (see .github/workflows/sync-reviews.yml).
 """
 import html
+import json
+import os
 import re
 import sys
 import urllib.request
+from datetime import datetime
 from pathlib import Path
 
-SOURCE_URL = "https://cedarretreat.directstays.com/"
+API_BASE = "https://public.api.hospitable.com/v2"
+PROPERTY_ID = "4f05e11c-f631-4f21-9a9f-282819425722"
 INDEX_HTML = Path(__file__).resolve().parent.parent / "index.html"
 HERO_START = "<!-- REVIEWS:HERO:START -->"
 HERO_END = "<!-- REVIEWS:HERO:END -->"
 CARDS_START = "<!-- REVIEWS:CARDS:START -->"
 CARDS_END = "<!-- REVIEWS:CARDS:END -->"
 
-NAME_RE = re.compile(r'<div class="mb-1 font-medium ">(.*?)</div>', re.DOTALL)
-DATE_RE = re.compile(r'<div class="mt-3 mb-2 text-sm text-gray-500">\s*(.*?)\s*</div>', re.DOTALL)
-COMMENT_RE = re.compile(r'<span x-show="!showingOriginal">(.*?)</span>', re.DOTALL)
+PLATFORM_LABELS = {"airbnb": "Airbnb", "vrbo": "VRBO", "direct": "direct"}
+MIN_RATING = 4
+
+TOKEN = os.environ.get("HOSPITABLE_API_TOKEN")
+if not TOKEN:
+    print("HOSPITABLE_API_TOKEN not set — aborting.")
+    sys.exit(1)
 
 
-def fetch_reviews(html_text: str):
-    names = NAME_RE.findall(html_text)
-    dates = DATE_RE.findall(html_text)
-    comments = COMMENT_RE.findall(html_text)
+def api_get(path, params=None):
+    url = f"{API_BASE}{path}"
+    if params:
+        url += "?" + "&".join(f"{k}={v}" for k, v in params.items())
+    req = urllib.request.Request(
+        url,
+        headers={"Authorization": f"Bearer {TOKEN}", "Accept": "application/json"},
+        method="GET",
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.loads(resp.read().decode("utf-8"))
 
+
+def get_all_pages(path):
+    items, page = [], 1
+    while True:
+        data = api_get(path, {"per_page": 100, "page": page})
+        items.extend(data.get("data", []))
+        meta = data.get("meta", {})
+        if not meta.get("has_more_pages") and page >= meta.get("last_page", 1):
+            break
+        page += 1
+    return items
+
+
+def fetch_reviews():
     reviews = []
-    for name, date, comment in zip(names, dates, comments):
-        clean_comment = html.unescape(comment.strip())
-        clean_name = html.unescape(name.strip())
-        clean_date = html.unescape(date.strip())
-        if clean_comment and clean_name:
-            reviews.append((clean_name, clean_date, clean_comment))
-    return reviews
+    for item in get_all_pages(f"/properties/{PROPERTY_ID}/reviews"):
+        public = item.get("public") or {}
+        comment = (public.get("review") or "").strip()
+        rating = public.get("rating") or 0
+        reviewed_at = item.get("reviewed_at")
+        if not comment or rating < MIN_RATING or not reviewed_at:
+            continue
+        platform = (item.get("platform") or "").lower()
+        label = f"Verified {PLATFORM_LABELS[platform]} guest" if platform in PLATFORM_LABELS else "Verified guest"
+        when = datetime.fromisoformat(reviewed_at.replace("Z", "+00:00"))
+        reviews.append((when, label, when.strftime("%B %Y"), comment, int(round(rating))))
+    reviews.sort(key=lambda r: r[0], reverse=True)
+    return [(label, date, comment, rating) for _, label, date, comment, rating in reviews]
 
 
 def escape_html(text: str) -> str:
@@ -47,27 +85,29 @@ def first_sentence(text: str) -> str:
     return match.group(0).strip() if match else text.strip()
 
 
+def stars(rating: int) -> str:
+    return "★" * rating
+
+
 def render_hero(reviews) -> str:
-    featured_name, featured_date, featured_comment = reviews[0]
-    featured_who = f"★★★★★ {escape_html(featured_name)} · {escape_html(featured_date)}" if featured_date else f"★★★★★ {escape_html(featured_name)}"
+    label, date, comment, rating = reviews[0]
     parts = [
         '    <div class="quote-mark">"</div>',
-        f'    <p class="quote">{escape_html(first_sentence(featured_comment))}</p>',
-        f'    <div class="who">{featured_who}</div>',
+        f'    <p class="quote">{escape_html(first_sentence(comment))}</p>',
+        f'    <div class="who">{stars(rating)} {escape_html(label)} · {escape_html(date)}</div>',
     ]
     return "\n".join(parts)
 
 
 def render_cards(reviews) -> str:
     cards = []
-    for name, date, comment in reviews:
-        who = f"{escape_html(name)} — {escape_html(date)}" if date else escape_html(name)
+    for label, date, comment, rating in reviews:
         cards.append(
             "      <div class=\"review-card\">\n"
-            "        <div class=\"stars\">★★★★★</div>\n"
+            f"        <div class=\"stars\">{stars(rating)}</div>\n"
             f"        <p class=\"quote quote-clamp\">{escape_html(comment)}</p>\n"
             "        <button class=\"review-toggle\" type=\"button\">Read full review</button>\n"
-            f"        <div class=\"who\">{who}</div>\n"
+            f"        <div class=\"who\">{escape_html(label)} — {escape_html(date)}</div>\n"
             "      </div>"
         )
     return "\n".join(cards)
@@ -79,20 +119,13 @@ def replace_marker(site_html: str, start: str, end: str, inner: str, label: str)
         print(f"Could not find {label} markers in index.html — aborting.")
         sys.exit(1)
     replacement = f"{start}\n{inner}\n      {end}"
-    return pattern.sub(replacement, site_html)
+    return pattern.sub(lambda _: replacement, site_html)
 
 
 def main():
-    req = urllib.request.Request(SOURCE_URL, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=20) as resp:
-        source_html = resp.read().decode("utf-8", errors="replace")
-
-    reviews = fetch_reviews(source_html)
+    reviews = fetch_reviews()
     if not reviews:
-        # Not a failure: the property may simply have no reviews live on the
-        # source page right now (e.g. between guests). Only a fetch/parse
-        # exception above should fail this job loudly.
-        print("No reviews found on source page — leaving index.html untouched.")
+        print("No qualifying reviews returned — leaving index.html untouched.")
         return
 
     site_html = INDEX_HTML.read_text(encoding="utf-8")

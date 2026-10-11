@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="fluRb5pqQbRyoYBszjH6r6vUlKDnWXYRyJcgYh6-Ww0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Photo Gallery — Cedar Escape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1E6;
+    --cream-deep: #EEE6D6;
+    --ink: #2B271F;
+    --forest: #37452F;
+    --forest-deep: #232D1D;
+    --brown: #6E4F37;
+    --taupe: #A9917A;
+    --gold: #C0973F;
+    --gold-bright: #D6B15C;
+    --line: rgba(43,39,31,0.14);
+    --radius: 2px;
+    --wrap: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  h1, h2, h3 { margin: 0; font-weight: 500; }
+  p { margin: 0; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(246,241,230,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+  }
+  .wordmark {
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--forest-deep);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .wordmark span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 34px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-gold {
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+    color: var(--forest-deep);
+  }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,151,63,0.35); }
+  .btn-outline {
+    background: transparent;
+    border-color: var(--forest-deep);
+    color: var(--forest-deep);
+  }
+  .btn-outline:hover { background: var(--forest-deep); color: var(--cream); }
+  .nav-cta { display: none; }
+  @media (min-width: 880px) { .nav-cta { display: inline-flex; } }
+  .nav-links { display: none; }
+  @media (min-width: 880px) { .nav-links { display: flex; } }
+  .burger { display: inline-flex; background: none; border: none; font-family: 'Cinzel',serif; font-size: 13px; letter-spacing: 0.1em; cursor: pointer; color: var(--forest-deep); }
+  @media (min-width: 880px) { .burger { display: none; } }
+  @media (max-width: 879.98px) {
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 32px 24px;
+      gap: 16px;
+      box-shadow: 0 14px 24px rgba(43,39,31,0.14);
+      z-index: 49;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 68vh;
+    display: flex;
+    align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(35,45,29,0.15) 0%, rgba(35,45,29,0.65) 78%, rgba(35,45,29,0.88) 100%),
+      radial-gradient(circle at 20% 20%, rgba(214,177,92,0.18), transparent 45%),
+      repeating-linear-gradient(120deg, #3d4a33 0px, #3d4a33 2px, #34412b 2px, #34412b 90px);
+    color: var(--cream);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(35,45,29,0.15) 0%, rgba(35,45,29,0.65) 78%, rgba(35,45,29,0.88) 100%),
+      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.25), transparent 60%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 72px 32px 48px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+  }
+  .hero .eyebrow { color: var(--gold-bright); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(34px, 6vw, 68px);
+    line-height: 1.08;
+    margin: 18px 0 22px;
+    max-width: 780px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    max-width: 520px;
+    color: rgba(246,241,230,0.86);
+    margin-bottom: 34px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .photo-note {
+    position: absolute;
+    right: 32px;
+    top: 26px;
+    z-index: 2;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(246,241,230,0.55);
+    border: 1px solid rgba(246,241,230,0.3);
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    max-width: 200px;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* ---------- TRUST BAR ---------- */
+  .trust-bar {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 16px 0;
+  }
+  .trust-bar ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 0;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .trust-bar li { display: flex; align-items: center; }
+  .trust-bar li:not(:last-child)::after {
+    content: '·';
+    color: var(--gold);
+    margin: 0 22px;
+    font-size: 18px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 96px 0; }
+  .section-head { max-width: 640px; margin-bottom: 56px; }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.4vw, 42px);
+    margin-top: 14px;
+    color: var(--forest-deep);
+  }
+  .section-head p { margin-top: 16px; font-size: 16.5px; color: #4b453b; }
+
+  /* ---------- WHY US LEDGER ---------- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  @media (min-width: 900px) { .why-grid { grid-template-columns: 0.85fr 1.15fr; align-items: start; } }
+  .why-copy p { font-size: 16.5px; color: #4b453b; margin-top: 18px; }
+  .ledger {
+    border-top: 1px solid var(--line);
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .ledger-row.header {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .ledger-row .item { font-weight: 700; font-size: 15px; }
+  .ledger-row .hotel { color: #8a8073; font-size: 14.5px; }
+  .ledger-row .cedar { color: var(--forest-deep); font-size: 14.5px; font-weight: 500; }
+  .ledger-row .cedar::before { content: '✓ '; color: var(--gold); font-weight: 700; }
+
+  /* ---------- SIGNPOST (FOUR STANDARDS) ---------- */
+  .signpost-section { background: var(--cream-deep); }
+  .signpost {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .post-pole {
+    width: 10px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--brown), #4a3423);
+    border-radius: 2px;
+  }
+  .planks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    width: 100%;
+    margin-top: -6px;
+  }
+  @media (min-width: 800px) { .planks { grid-template-columns: repeat(4, 1fr); } }
+  .plank {
+    background: linear-gradient(155deg, #7a5a3f, #5c4229);
+    color: var(--cream);
+    padding: 22px 20px 24px;
+    border-radius: 3px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    position: relative;
+  }
+  .plank::before {
+    content: '';
+    position: absolute;
+    left: -8px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #5c4229;
+  }
+  .plank:nth-child(even)::before { display: none; }
+  .plank:nth-child(even)::after {
+    content: '';
+    position: absolute;
+    right: -8px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 9px solid #5c4229;
+  }
+  .plank .num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+  }
+  .plank h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    margin: 8px 0 10px;
+  }
+  .plank p { font-size: 13.8px; color: rgba(246,241,230,0.82); }
+
+  /* ---------- INVENTORY (EVERYTHING YOU NEED) ---------- */
+  .inventory-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 60px;
+  }
+  @media (min-width: 760px) { .inventory-grid { grid-template-columns: 1fr 1fr; } }
+  .inventory-list { list-style: none; margin: 0; padding: 0; }
+  .inventory-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 15.5px;
+  }
+  .inventory-list li span.tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    white-space: nowrap;
+  }
+
+  .amenity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .amenity-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+  .amenity-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 20px 20px 18px;
+  }
+  .amenity-card .cat {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .amenity-card ul { list-style:none; margin:0; padding:0; }
+  .amenity-card li { font-size: 15px; padding: 5px 0; color: var(--ink); }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 700px) { .area-grid { grid-template-columns: repeat(3, 1fr); } }
+  .area-item {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 18px 18px 16px;
+  }
+  .area-item .name { display:block; font-weight:700; font-size:15px; color:var(--forest-deep); margin-bottom:6px; }
+  .area-item .meta { display:block; font-family:'Cinzel', serif; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 700px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  .frame {
+    aspect-ratio: 3/2;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    border: 6px solid var(--cream);
+    background: var(--cream-deep);
+    box-shadow: 0 0 0 1px var(--line), 0 14px 24px rgba(43,39,31,0.14);
+    display: flex;
+    align-items: flex-end;
+  }
+  .frame .swatch {
+    position: absolute; inset: 0;
+  }
+  .frame img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  .frame .cap {
+    position: relative;
+    z-index: 2;
+    color: var(--cream);
+    font-size: 12.5px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(35,45,29,0.72), transparent);
+    font-weight: 500;
+  }
+  .g1 .swatch { background: linear-gradient(155deg,#4d5a3e,#2b3624); }
+  .g2 .swatch { background: linear-gradient(155deg,#7a5a3f,#4a3423); }
+  .g3 .swatch { background: linear-gradient(155deg,#8a7355,#5c4229); }
+  .g4 .swatch { background: linear-gradient(155deg,#3a4530,#232d1d); }
+  .g5 .swatch { background: linear-gradient(155deg,#6b7a55,#3d4a33); }
+  .g6 .swatch { background: linear-gradient(155deg,#9c8562,#6e4f37); }
+  .g7 .swatch { background: linear-gradient(155deg,#524a3c,#2b271f); }
+  .g8 .swatch { background: linear-gradient(155deg,#5f6b4a,#37452f); }
+  .frame.pending .cap { font-style: italic; color: rgba(246,241,230,0.75); }
+  .frame.pending .swatch {
+    background: repeating-linear-gradient(45deg, #d9cfba, #d9cfba 8px, #ece4d2 8px, #ece4d2 16px);
+  }
+  .frame.pending .cap { background: linear-gradient(0deg, rgba(43,39,31,0.55), transparent); }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 760px) { .reviews-strip { grid-template-columns: repeat(3,1fr); } }
+  .review-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    padding: 26px 24px;
+    border-radius: 2px;
+  }
+  .review-card .stars { color: var(--gold); letter-spacing: 2px; font-size: 14px; }
+  .review-card p.quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16.5px;
+    margin: 14px 0 16px;
+    color: var(--forest-deep);
+  }
+  .review-card .who { font-size: 12.5px; color: var(--taupe); letter-spacing: 0.04em; text-transform: uppercase; font-family: 'Cinzel', serif; }
+  .reviews-note { margin-top: 20px; font-size: 12.5px; color: var(--taupe); font-style: italic; }
+
+  /* ---------- TRIP SIGNPOST NAV (SIGNATURE) ---------- */
+  .trailhead {
+    background: var(--forest-deep);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .trailhead .wrap { position: relative; z-index: 2; }
+  .trailhead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 90px);
+  }
+  .trailhead .section-head h2 { color: var(--cream); }
+  .trailhead .section-head .eyebrow { color: var(--gold-bright); }
+  .trailhead .section-head p { color: rgba(246,241,230,0.72); }
+
+  .signpost-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0 10px;
+  }
+  .sp-pole {
+    width: 14px;
+    height: 90px;
+    background: linear-gradient(180deg, #8a6a4a, #4a3423);
+    border-radius: 3px;
+    box-shadow: inset -3px 0 4px rgba(0,0,0,0.3);
+  }
+  .sp-arms {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+    max-width: 620px;
+    margin-top: -10px;
+  }
+  .sp-arm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(100deg, #8a6a4a, #6e4f37);
+    padding: 16px 26px;
+    border-radius: 3px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+    text-decoration: none;
+    color: var(--cream);
+    transform-origin: left center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sp-arm:nth-child(even) { transform-origin: right center; flex-direction: row-reverse; }
+  .sp-arm:hover { transform: rotate(-1.2deg) scale(1.015); box-shadow: 0 14px 26px rgba(0,0,0,0.32); }
+  .sp-arm:nth-child(even):hover { transform: rotate(1.2deg) scale(1.015); }
+  .sp-arm .label {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .sp-arm .mi {
+    font-size: 12px;
+    color: rgba(246,241,230,0.65);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+  @media (min-width: 760px) {
+    .sp-arms { max-width: 900px; }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { border-top: 1px solid rgba(246,241,230,0.0); }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-left: 20px;
+  }
+  .faq-item[open] summary::after { content: '–'; }
+  .faq-item .a { padding: 0 0 22px; color: #4b453b; font-size: 15px; max-width: 640px; }
+
+  /* ---------- BOOKING PANEL ---------- */
+  .book-panel {
+    background: var(--cream-deep);
+  }
+  .book-shell {
+    border: 1px solid var(--line);
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 6px;
+    box-shadow: 0 20px 40px rgba(43,39,31,0.08);
+  }
+  .book-shell .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .widget-slot {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--taupe);
+    font-style: italic;
+    font-size: 14px;
+    padding: 40px;
+    text-align: center;
+    background:
+      repeating-linear-gradient(135deg, rgba(169,145,122,0.05) 0 12px, transparent 12px 24px);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--forest-deep);
+    color: rgba(246,241,230,0.82);
+    padding: 70px 0 30px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(246,241,230,0.14);
+  }
+  @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+  footer .wordmark { color: var(--cream); }
+  footer h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 14px;
+  }
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li { margin-bottom: 9px; font-size: 14.5px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--gold-bright); }
+  .foot-bottom {
+    padding-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12.5px;
+    color: rgba(246,241,230,0.5);
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- ICON FEATURE BAR ---------- */
+  .icon-bar { background: var(--cream); border-bottom: 1px solid var(--line); padding: 34px 0; }
+  .icon-bar .wrap { display:grid; grid-template-columns: repeat(2,1fr); gap:24px; }
+  @media (min-width:700px) { .icon-bar .wrap { grid-template-columns: repeat(3,1fr); } }
+  @media (min-width:980px) { .icon-bar .wrap { grid-template-columns: repeat(6,1fr); } }
+  .icon-item { display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; }
+  .icon-item svg { width:26px; height:26px; color:var(--gold); }
+  .icon-item span { font-family:'Cinzel', serif; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--forest-deep); font-weight:600; }
+
+  /* ---------- GATHER / PLAY / RESET ---------- */
+  .gpr-grid { display:grid; grid-template-columns:1fr; gap:2px; }
+  @media (min-width:860px) { .gpr-grid { grid-template-columns: repeat(3,1fr); } }
+  .gpr-panel { position:relative; aspect-ratio: 4/3; overflow:hidden; display:flex; align-items:flex-end; }
+  @media (min-width:860px) { .gpr-panel { aspect-ratio: 3/4; } }
+  .gpr-panel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .gpr-panel::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(60,42,18,0.62) 0%, rgba(60,42,18,0.08) 55%, rgba(60,42,18,0.22) 100%); }
+  .gpr-panel.dark::before { background:linear-gradient(0deg, rgba(20,16,10,0.86) 0%, rgba(20,16,10,0.25) 50%, rgba(20,16,10,0.4) 100%); }
+  .gpr-panel .label { position:absolute; top:24px; left:24px; z-index:2; font-family:'Cinzel', serif; font-size:clamp(30px,4.4vw,44px); letter-spacing:0.06em; color:rgba(246,241,230,0.5); text-transform:uppercase; }
+  .gpr-panel .cap { position:relative; z-index:2; padding:24px; color:var(--cream); font-size:15px; max-width:340px; }
+
+  /* ---------- WEEKEND PICKER CARDS ---------- */
+  .weekend-row { display:grid; grid-template-columns: repeat(2,1fr); gap:16px; }
+  @media (min-width:700px) { .weekend-row { grid-template-columns: repeat(3,1fr); } }
+  @media (min-width:1000px) { .weekend-row { grid-template-columns: repeat(5,1fr); } }
+  .weekend-card { display:flex; flex-direction:column; border-radius: var(--radius); overflow:hidden; text-decoration:none; box-shadow: 0 10px 22px rgba(43,39,31,0.14); transition: transform 0.2s ease; }
+  .weekend-card:hover { transform: translateY(-3px); }
+  .weekend-card .photo { position:relative; aspect-ratio: 4/3; overflow:hidden; }
+  .weekend-card .photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .weekend-card .label { background: var(--forest-deep); color:var(--cream); padding:14px 12px; text-align:center; font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase; font-weight:600; line-height:1.4; }
+
+  /* ---------- TESTIMONIAL BANNER ---------- */
+  .testimonial-banner { background: var(--forest-deep); color: var(--cream); padding: 72px 0; text-align:center; }
+  .testimonial-banner .quote-mark { font-family:'Playfair Display', serif; font-size:48px; color:var(--gold); line-height:1; }
+  .testimonial-banner p.quote { font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(17px,2vw,21px); max-width:760px; margin:16px auto; color:rgba(246,241,230,0.92); line-height:1.7; white-space:pre-line; }
+  .testimonial-banner .who { font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-bright); margin-top:16px; }
+  .reviews-more { max-width:900px; margin:40px auto 0; display:grid; grid-template-columns:1fr; gap:20px; }
+  @media (min-width:760px) { .reviews-more { grid-template-columns:repeat(2,1fr); } }
+  .reviews-more .review-card { background:rgba(246,241,230,0.06); border:1px solid rgba(246,241,230,0.15); border-top:3px solid var(--gold); text-align:left; }
+  .reviews-more .review-card .quote { color:rgba(246,241,230,0.85); }
+  .reviews-more .review-card .who { color:var(--gold-bright); }
+
+  /* ---------- GALLERY PREVIEW ---------- */
+  .inside-grid { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
+  @media (min-width:860px) { .inside-grid { grid-template-columns: 0.7fr 1.3fr; } }
+  .inside-preview-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  .inside-preview-grid .frame { aspect-ratio:3/2; border-width:3px; }
+  .gallery-preview-btn { margin-top:28px; }
+
+
+  /* ---------- CONTACT MODAL ---------- */
+  .contact-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(35,45,29,0.55);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .contact-modal-overlay.open { display: flex; }
+  .contact-modal {
+    position: relative;
+    background: var(--cream);
+    border-radius: 4px;
+    max-width: 480px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px 36px 36px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+  }
+  .contact-modal-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--taupe);
+    cursor: pointer;
+    padding: 6px 10px;
+  }
+  .contact-modal-close:hover { color: var(--forest-deep); }
+  .contact-modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--forest-deep);
+    margin: 10px 0 10px;
+  }
+  .contact-modal-sub { font-size: 14.5px; color: #4b453b; margin-bottom: 22px; }
+  .contact-form label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin: 16px 0 6px;
+  }
+  .contact-form label:first-of-type { margin-top: 0; }
+  .contact-form label .req { color: var(--gold); margin-left: 2px; }
+  .contact-form input, .contact-form textarea {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+    box-sizing: border-box;
+  }
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+  .contact-form textarea { resize: vertical; min-height: 90px; font-family: 'DM Sans', sans-serif; }
+  .contact-form-email-note { margin-top: 16px; font-size: 12.5px; color: var(--taupe); text-align: center; }
+  .contact-form-email-note a { color: var(--forest-deep); font-weight: 600; }
+  #contactFormSuccess { text-align: center; padding: 20px 0; }
+  #contactFormSuccess h3 { margin-top: 6px; }
+  #contactFormSuccess p { color: #4b453b; font-size: 15px; margin-top: 10px; }
+</style>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="wordmark">CEDAR <span>ESCAPE</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#stay">Stay</a></li>
+      <li><a href="index.html#area">Explore</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#book">Book Direct</a></li>
+      <li><a href="#" class="js-open-contact">Message Us</a></li>
+    </ul>
+    <a href="index.html#book" class="btn btn-gold nav-cta">Check Dates</a>
+    <button class="burger">MENU</button>
+  </nav>
+</header>
+<script>
+  document.querySelectorAll('.burger').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var nav = btn.closest('.nav');
+      var links = nav && nav.querySelector('.nav-links');
+      if (links) links.classList.toggle('open');
+    });
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      var links = a.closest('.nav-links');
+      if (links) links.classList.remove('open');
+    });
+  });
+</script>
+
+
+<div class="trust-bar">
+  <div class="wrap">
+    <ul>
+      <li><a href="index.html" style="color:inherit;">&larr; Back to Cedar Escape</a></li>
+    </ul>
+  </div>
+</div>
+
+<section >
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">A Look Inside</div>
+      <h2>See the whole house.</h2>
+      <p>A full look at every room, inside and out.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="frame"><img src="images/vrbo/vrbo-01.jpg" loading="lazy" alt="Cedar Escape property photo 1"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-02.jpg" loading="lazy" alt="Cedar Escape property photo 2"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-51.jpg" loading="lazy" alt="Cedar Escape property photo 51"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-03.jpg" loading="lazy" alt="Cedar Escape property photo 3"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-04.jpg" loading="lazy" alt="Cedar Escape property photo 4"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-05.jpg" loading="lazy" alt="Cedar Escape property photo 5"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-06.jpg" loading="lazy" alt="Cedar Escape property photo 6"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-07.jpg" loading="lazy" alt="Cedar Escape property photo 7"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-08.jpg" loading="lazy" alt="Cedar Escape property photo 8"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-09.jpg" loading="lazy" alt="Cedar Escape property photo 9"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-10.jpg" loading="lazy" alt="Cedar Escape property photo 10"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-11.jpg" loading="lazy" alt="Cedar Escape property photo 11"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-12.jpg" loading="lazy" alt="Cedar Escape property photo 12"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-50.jpg" loading="lazy" alt="Cedar Escape property photo 50"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-13.jpg" loading="lazy" alt="Cedar Escape property photo 13"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-14.jpg" loading="lazy" alt="Cedar Escape property photo 14"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-16.jpg" loading="lazy" alt="Cedar Escape property photo 16"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-17.jpg" loading="lazy" alt="Cedar Escape property photo 17"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-18.jpg" loading="lazy" alt="Cedar Escape property photo 18"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-21.jpg" loading="lazy" alt="Cedar Escape property photo 21"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-22.jpg" loading="lazy" alt="Cedar Escape property photo 22"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-23.jpg" loading="lazy" alt="Cedar Escape property photo 23"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-24.jpg" loading="lazy" alt="Cedar Escape property photo 24"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-25.jpg" loading="lazy" alt="Cedar Escape property photo 25"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-27.jpg" loading="lazy" alt="Cedar Escape property photo 27"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-28.jpg" loading="lazy" alt="Cedar Escape property photo 28"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-29.jpg" loading="lazy" alt="Cedar Escape property photo 29"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-30.jpg" loading="lazy" alt="Cedar Escape property photo 30"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-31.jpg" loading="lazy" alt="Cedar Escape property photo 31"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-32.jpg" loading="lazy" alt="Cedar Escape property photo 32"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-33.jpg" loading="lazy" alt="Cedar Escape property photo 33"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-34.jpg" loading="lazy" alt="Cedar Escape property photo 34"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-35.jpg" loading="lazy" alt="Cedar Escape property photo 35"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-36.jpg" loading="lazy" alt="Cedar Escape property photo 36"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-37.jpg" loading="lazy" alt="Cedar Escape property photo 37"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-38.jpg" loading="lazy" alt="Cedar Escape property photo 38"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-39.jpg" loading="lazy" alt="Cedar Escape property photo 39"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-40.jpg" loading="lazy" alt="Cedar Escape property photo 40"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-41.jpg" loading="lazy" alt="Cedar Escape property photo 41"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-42.jpg" loading="lazy" alt="Cedar Escape property photo 42"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-43.jpg" loading="lazy" alt="Cedar Escape property photo 43"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-53.jpg" loading="lazy" alt="Traeger grill on the deck at Cedar Escape"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-44.jpg" loading="lazy" alt="Cedar Escape property photo 44"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-45.jpg" loading="lazy" alt="Cedar Escape property photo 45"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-52.jpg" loading="lazy" alt="Washer and dryer at Cedar Escape"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-46.jpg" loading="lazy" alt="Cedar Escape property photo 46"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-47.jpg" loading="lazy" alt="Cedar Escape property photo 47"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-49.jpg" loading="lazy" alt="Cedar Escape property photo 49"></div>
+    </div>
+  </div>
+</section>
+
+<section class="book-panel" id="book" style="padding-top:0;">
+  <div class="wrap" style="text-align:center;">
+    <a href="index.html#book" class="btn btn-gold">Check Dates & Pricing</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="wordmark">CEDAR <span style="color:var(--gold-bright);">ESCAPE</span></a>
+        <p style="margin-top:14px;max-width:320px;font-size:14px;color:rgba(246,241,230,0.65);">A five-bedroom mountain house at Massanutten Resort, built for the whole crew.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#stay">The Cabin</a></li>
+          <li><a href="index.html#weekends">Weekend Guides</a></li>
+          <li><a href="index.html#area">Area Guide</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Book Direct</h4>
+        <ul>
+          <li><a href="index.html#book">Check Dates & Pricing</a></li>
+          <li><a href="#" class="js-open-contact">Message Us</a></li>
+          <li><a href="https://www.instagram.com/cedarescape_massanutten?utm_source=qr" target="_blank" rel="noopener">Instagram: @cedarescape_massanutten</a></li>
+          <li><a href="https://www.facebook.com/share/19CkRSmUca/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cedar Escape · Massanutten Resort, VA</span>
+      <span>Booked directly. No middleman.</span>
+    </div>
+  </div>
+</footer>
+
+
+<div class="contact-modal-overlay" id="contactModalOverlay">
+  <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <button type="button" class="contact-modal-close" aria-label="Close">&times;</button>
+    <div id="contactFormWrap">
+      <div class="eyebrow">Get In Touch</div>
+      <h3 id="contactModalTitle">Message Cedar Escape</h3>
+      <p class="contact-modal-sub">Have a question about your stay or an upcoming booking? Send us a note and we'll reply directly &mdash; no account needed.</p>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/cedarescape.cabin@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from Cedar Escape website">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label for="cf-name">Name <span class="req">*</span></label>
+        <input id="cf-name" type="text" name="Name" required>
+        <label for="cf-email">Email <span class="req">*</span></label>
+        <input id="cf-email" type="email" name="Email" required>
+        <label for="cf-phone">Phone (optional)</label>
+        <input id="cf-phone" type="tel" name="Phone">
+        <label for="cf-res">Reservation Dates / Confirmation # (optional)</label>
+        <input id="cf-res" type="text" name="Reservation Dates or Confirmation Number">
+        <label for="cf-message">Message <span class="req">*</span></label>
+        <textarea id="cf-message" name="Message" rows="4" required></textarea>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:22px;">Send Message</button>
+        <p class="contact-form-email-note">Prefer email? Reach us directly at <a href="mailto:cedarescape.cabin@gmail.com">cedarescape.cabin@gmail.com</a></p>
+      </form>
+    </div>
+    <div id="contactFormSuccess" style="display:none;">
+      <div class="eyebrow">Message Sent</div>
+      <h3>Thanks! Your message has been sent to Cedar Escape.</h3>
+      <p>We'll be in touch soon.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('contactModalOverlay');
+  if (!overlay) return;
+  var closeBtn = overlay.querySelector('.contact-modal-close');
+  var openers = document.querySelectorAll('.js-open-contact');
+  var form = document.getElementById('contactForm');
+  var formWrap = document.getElementById('contactFormWrap');
+  var success = document.getElementById('contactFormSuccess');
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  openers.forEach(function(el){ el.addEventListener('click', openModal); });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if (res.ok) {
+        formWrap.style.display = 'none';
+        success.style.display = 'block';
+        form.reset();
+      } else {
+        throw new Error('Submit failed');
+      }
+    }).catch(function(){
+      alert('Sorry, something went wrong sending your message. Please email us directly at cedarescape.cabin@gmail.com.');
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = originalText;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

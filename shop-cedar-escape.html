@@ -413,7 +413,8 @@
     { id:'leather-lumbar-pillow', name:'Faux Leather Lumbar Pillow Cover', category:'cozy-comforts', description:"A hand-stitched faux-leather lumbar pillow cover — an easy accent for a couch, sofa bed, or reading chair.", image:'images/shop/leather-lumbar-pillow.jpg', url:'https://link.amazon/B0b9DEJkq', status:'published' },
     { id:'pool-table-light', name:'Pool Table Pendant Light', category:'fitness-recreation', description:"A billiard-style ceiling pendant with three glass shades, sized for a 7–8 ft pool table — game room ready.", image:'images/shop/pool-table-light.jpg', url:'https://link.amazon/B02mAC22Q', status:'published' },
     { id:'gym-wall-decal', name:'"Stronger Than Yesterday" Wall Decal', category:'fitness-recreation', description:"A removable vinyl motivational quote decal, sized for a home gym or workout corner.", image:'images/shop/gym-wall-decal.jpg', url:'https://link.amazon/B0fH7qnzo', status:'published' },
-    { id:'giant-connect-4', name:'Giant Connect-4-in-a-Row Game', category:'fitness-recreation', description:"A height-adjustable (2.5–3.5 ft), weather-resistant giant yard game for backyard games, parties or family game night.", image:'images/shop/giant-connect-4.jpg', url:'https://link.amazon/B05zWHyaA', status:'published' }
+    { id:'giant-connect-4', name:'Giant Connect-4-in-a-Row Game', category:'fitness-recreation', description:"A height-adjustable (2.5–3.5 ft), weather-resistant giant yard game for backyard games, parties or family game night.", image:'images/shop/giant-connect-4.jpg', url:'https://link.amazon/B05zWHyaA', status:'published' },
+    { id:'traeger-pro-22', name:'Traeger Pro 22 Wood Pellet Grill & Smoker', category:'outdoor-grilling', description:"A wood pellet grill and smoker with six cooking functions, a 572 sq in cooking area and an included meat probe — a deck-ready way to cook for a crowd.", image:'images/shop/traeger-pro-22.jpg', url:'https://link.amazon/B01zu1fOZ', status:'published' }
   ];
 
   var CATEGORY_LABELS = {
@@ -422,9 +423,10 @@
     'furniture': 'Furniture',
     'decor-finishing-touches': 'Décor & Finishing Touches',
     'kids-family': 'Kids & Family',
+    'outdoor-grilling': 'Outdoor & Grilling',
     'fitness-recreation': 'Fitness & Recreation'
   };
-  var CATEGORY_ORDER = ['kitchen-favorites', 'cozy-comforts', 'furniture', 'decor-finishing-touches', 'kids-family', 'fitness-recreation'];
+  var CATEGORY_ORDER = ['kitchen-favorites', 'cozy-comforts', 'furniture', 'decor-finishing-touches', 'kids-family', 'outdoor-grilling', 'fitness-recreation'];
 
   (function(){
     var published = SHOP_PRODUCTS.filter(function(p){ return p.status === 'published' && p.image && p.url; });

@@ -1083,13 +1083,13 @@
       <div class="promo-popup-word">CEDAR ESCAPE</div>
       <div class="promo-popup-loc">MASSANUTTEN, VIRGINIA</div>
       <div class="promo-popup-divider"><span></span><i></i><span></span></div>
-      <div class="promo-popup-eyebrow">Direct Booking Perk</div>
+      <div class="promo-popup-eyebrow">Winter Escape</div>
       <h3 class="promo-popup-headline">Book direct.<br>Stay longer.</h3>
       <div class="promo-popup-rule"></div>
-      <div class="promo-popup-save">Save 15% on stays of 3+ nights</div>
-      <div class="promo-popup-code">FIRSTESCAPE</div>
+      <div class="promo-popup-save">Save 10% on stays of 3+ nights</div>
+      <div class="promo-popup-code">WINTERESCAPE</div>
       <a href="/check-availability" class="promo-popup-btn" id="promoPopupBtn">Check Your Dates</a>
-      <p class="promo-popup-note">Applies to stays before Nov 19. Plus, skip the extra booking-platform fees.</p>
+      <p class="promo-popup-note">Valid on stays through Feb 27. Plus, skip the extra booking-platform fees.</p>
     </div>
   </div>
 </div>
@@ -1105,7 +1105,7 @@
 
   var promoNow = new Date();
   if (promoNow >= new Date("2027-02-28T00:00:00")) return;
-  if (promoNow >= new Date("2026-11-20T00:00:00")) {
+  if (promoNow >= new Date("2026-10-16T00:00:00")) {
     overlay.querySelector('.promo-popup-eyebrow').textContent = 'Winter Escape';
     overlay.querySelector('.promo-popup-save').textContent = 'Save 10% on stays of 3+ nights';
     overlay.querySelector('.promo-popup-code').textContent = 'WINTERESCAPE';

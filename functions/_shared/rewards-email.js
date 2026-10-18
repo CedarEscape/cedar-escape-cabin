@@ -103,6 +103,18 @@ export async function sendPendingReminderOwnerEmail(env, { count, adminUrl }) {
   await sendEmail(env, { to: env.COURTESY_EMAIL, subject: 'Cedar Rewards: requests waiting', html });
 }
 
+export async function sendNewMemberOwnerEmail(env, { memberName, memberEmail }) {
+  const html = renderShell({
+    title: 'Cedar Rewards: new member',
+    heroEyebrow: 'Cedar Rewards — Informational',
+    heroHeadline: 'Someone just joined.',
+    bodyHtml: `
+      <p><strong>${escapeHtml(memberName || 'A new guest')}</strong> (${escapeHtml(memberEmail)}) confirmed their email and is now a Cedar Rewards member. No action required.</p>
+    `,
+  });
+  await sendEmail(env, { to: env.COURTESY_EMAIL, subject: 'Cedar Rewards: new member', html });
+}
+
 export async function sendJobFailureOwnerEmail(env, { jobName, errorDetail }) {
   const html = renderShell({
     title: `Cedar Rewards: ${jobName} failed`,

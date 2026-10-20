@@ -22,6 +22,28 @@
   .rw-step .num { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--gold); color: var(--forest-deep); font-family: 'Cinzel', serif; font-size: 15px; display: flex; align-items: center; justify-content: center; font-weight: 600; margin: 0 auto 14px; }
   .rw-step h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: var(--forest-deep); }
   .rw-step p { font-size: 13.5px; color: #4b453b; margin-top: 8px; }
+
+  .rw-two { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 8px auto 0; }
+  @media (min-width: 900px) { .rw-two { grid-template-columns: 1fr 1fr; } }
+  .rw-tile { display: grid; grid-template-columns: 1fr; background: var(--cream); border: 1px solid rgba(192,151,63,0.45); border-radius: 12px; overflow: hidden; box-shadow: 0 14px 34px rgba(35,45,29,0.1); }
+  @media (min-width: 520px) { .rw-tile { grid-template-columns: 0.9fr 1.1fr; } }
+  .rw-tile img { width: 100%; height: 100%; min-height: 200px; object-fit: cover; display: block; }
+  .rw-tile-body { padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .rw-tile-body h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--forest-deep); line-height: 1.1; }
+  .rw-tile-kicker { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brown); }
+  .rw-tile-body p { font-size: 14.5px; color: #4b453b; }
+  .rw-tile-body .btn { margin-top: 6px; }
+  .rw-detail { margin-top: 56px; text-align: center; scroll-margin-top: 90px; }
+  .rw-detail-steps { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 22px auto 0; max-width: 760px; }
+  @media (min-width: 700px) { .rw-detail-steps { grid-template-columns: repeat(3, 1fr); } }
+  .rw-detail-steps .n { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); color: var(--forest-deep); font-family: 'Cinzel', serif; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+  .rw-detail-steps b { display: block; font-size: 14.5px; color: var(--forest-deep); margin-bottom: 4px; }
+  .rw-detail-steps span { font-size: 13.5px; color: #4b453b; }
+  .rw-detail .fine { margin-top: 18px; font-size: 12.5px; color: var(--taupe); max-width: 620px; margin-left: auto; margin-right: auto; }
+  .rw-band { margin-top: 64px; position: relative; text-align: center; color: var(--cream); padding: 64px 24px; background: linear-gradient(rgba(25,34,21,0.5), rgba(25,34,21,0.62)), url('images/jmu-shenandoah-blackrock.jpg') center 60% / cover no-repeat; }
+  .rw-band .eyebrow { color: var(--gold-bright); }
+  .rw-band h2 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(26px, 4vw, 38px); margin: 10px 0 10px; color: var(--cream); }
+  .rw-band p { max-width: 560px; margin: 0 auto 22px; font-size: 15.5px; color: rgba(250,246,238,0.92); }
 </style>
 <!-- SEO (added Oct 2026) -->
 <link rel="canonical" href="https://cedarescapecabin.com/rewards">
@@ -63,6 +85,34 @@
 </section>
 
 <div class="wrap rw-section">
+  <div class="section-head" style="max-width:640px;margin:0 auto 22px;text-align:center;">
+    <div class="eyebrow">Two Ways To Be Rewarded</div>
+    <h2 style="font-family:'Playfair Display',serif;font-style:italic;font-weight:500;color:var(--forest-deep);">The Cedar Rewards experience.</h2>
+    <p>Book direct. Earn rewards. Bring friends. Come back for more.</p>
+  </div>
+  <div class="rw-two">
+    <article class="rw-tile">
+      <img src="images/jmu-bedroom.jpg" alt="Cedar Escape bedroom with emerald accent wall and plush bedding">
+      <div class="rw-tile-body">
+        <h3>Cedar Rewards</h3>
+        <div class="rw-tile-kicker">Book. Earn. Come back.</div>
+        <p>Earn points automatically when you book direct at Cedar Escape, then redeem them for Cedar Credit or stay perks.</p>
+        <a href="/rewards-join" class="btn btn-gold">Join Cedar Rewards</a>
+      </div>
+    </article>
+    <article class="rw-tile">
+      <img src="images/ww-deck-golden.jpg" alt="Golden evening light on the Cedar Escape deck" style="object-position:50% 70%;">
+      <div class="rw-tile-body">
+        <h3>Refer a Friend</h3>
+        <div class="rw-tile-kicker">Share. They stay. You earn.</div>
+        <p>When a friend books direct and mentions your name, you earn $100 toward a future Cedar Escape stay once their stay is complete.</p>
+        <a href="#refer" class="btn btn-gold">Learn More</a>
+      </div>
+    </article>
+  </div>
+</div>
+
+<div class="wrap rw-section">
   <div class="section-head" style="max-width:640px;margin:0 auto 10px;text-align:center;">
     <div class="eyebrow">How It Works</div>
   </div>
@@ -95,11 +145,28 @@
     </div>
   </div>
 
+  <div class="rw-detail" id="refer">
+    <div class="eyebrow">How Referrals Work</div>
+    <div class="rw-detail-steps">
+      <div><div class="n">1</div><b>Tell a friend</b><span>Send them to cedarescapecabin.com.</span></div>
+      <div><div class="n">2</div><b>They book direct</b><span>And mention your name when they book.</span></div>
+      <div><div class="n">3</div><b>You earn $100</b><span>Credited after their stay is complete.</span></div>
+    </div>
+    <p class="fine">One credit per new guest. The $100 credit applies to a future direct stay and expires 12 months after it is issued. Bookings made on other sites don't qualify.</p>
+  </div>
+
   <div style="text-align:center;margin-top:56px;">
     <a href="/rewards-join" class="btn btn-gold">Join Cedar Rewards</a>
     <p style="margin-top:16px;font-size:13.5px;">Already a member? <a href="/rewards-signin" style="color:var(--gold);">Sign in</a></p>
   </div>
 </div>
+
+<section class="rw-band">
+  <div class="eyebrow">Belong Here</div>
+  <h2>Share the experience. Earn rewards together.</h2>
+  <p>Refer a Friend is part of Cedar Rewards: a simple way to share Cedar Escape and earn rewards while friends create their own stays.</p>
+  <a href="/rewards-join" class="btn btn-gold">Join Cedar Rewards</a>
+</section>
 
 <footer>
   <div class="wrap">

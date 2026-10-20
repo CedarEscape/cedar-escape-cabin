@@ -187,11 +187,11 @@ export function renderOrderSummary(items, serviceLabelFor) {
   return renderPanel(rows);
 }
 
-export async function sendEmail(env, { to, cc, subject, html, attachments }) {
+export async function sendEmail(env, { to, cc, subject, html, attachments, replyTo }) {
   const payload = {
     from: 'Cedar Escape <massage@cedarescapecabin.com>',
     to: Array.isArray(to) ? to : [to],
-    reply_to: env.COURTESY_EMAIL,
+    reply_to: replyTo || env.COURTESY_EMAIL,
     subject,
     html,
   };

@@ -219,6 +219,23 @@
   .promo-popup-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(35,45,29,0.3); }
   .promo-popup-note { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: #4b453b; margin-top: 16px; }
   @media (max-width: 480px) { .promo-popup-headline { font-size: 27px; } .promo-popup-frame { padding: 28px 20px 22px; } }
+
+  .book-right { flex-direction: column; align-items: stretch; justify-content: center; }
+  .ref-box { margin: 16px auto 0; width: 100%; max-width: 720px; box-sizing: border-box; border: 1px solid var(--line); border-radius: 6px; background: var(--cream); }
+  .ref-box > summary { cursor: pointer; list-style: none; padding: 14px 18px; font-size: 14.5px; font-weight: 700; color: var(--forest-deep); display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+  .ref-box > summary::-webkit-details-marker { display: none; }
+  .ref-box > summary::after { content: '+'; color: var(--gold); font-size: 20px; line-height: 1; }
+  .ref-box[open] > summary::after { content: '\2212'; }
+  .ref-box > summary span { font-weight: 400; color: var(--taupe); font-size: 13px; }
+  .ref-form { padding: 0 18px 18px; display: grid; gap: 10px; }
+  .ref-form p { font-size: 13.5px; color: #4b453b; margin: 0 0 2px; }
+  .ref-form label { font-size: 12.5px; letter-spacing: 0.04em; color: var(--brown); display: grid; gap: 4px; }
+  .ref-form input[type="text"], .ref-form input[type="email"] { font: inherit; font-size: 15px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); width: 100%; box-sizing: border-box; }
+  .ref-form .ref-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .ref-form button { justify-self: start; }
+  #refMsg { font-size: 13.5px; min-height: 18px; }
+  #refMsg.ok { color: var(--forest); font-weight: 700; }
+  #refMsg.err { color: #9a2f2f; }
 </style>
 <!-- SEO (added Oct 2026) -->
 <link rel="canonical" href="https://cedarescapecabin.com/check-availability">
@@ -296,6 +313,19 @@
           </script>
         </div>
       </div>
+      <details class="ref-box" id="refBox">
+        <summary>Referred by a past Cedar Escape guest? <span>Optional</span></summary>
+        <form class="ref-form" id="refForm" novalidate>
+          <p>Tell us who referred you so we can thank them. This is separate from your booking and doesn't change it.</p>
+          <label>Your name<input type="text" id="refYourName" autocomplete="name" maxlength="80"></label>
+          <label>Your email (use the same one you book with)<input type="email" id="refYourEmail" autocomplete="email" maxlength="120"></label>
+          <label>Who referred you?<input type="text" id="refReferrer" maxlength="80"></label>
+          <div class="ref-hp" aria-hidden="true"><label>Website<input type="text" id="refWebsite" tabindex="-1" autocomplete="off"></label></div>
+          <div id="refTurnstile"></div>
+          <button type="submit" class="btn btn-gold" id="refSubmit">Send</button>
+          <div id="refMsg" role="status" aria-live="polite"></div>
+        </form>
+      </details>
     </div>
   </div>
 </section>
@@ -652,5 +682,34 @@
 })();
 </script>
 
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+<script>
+(function(){
+  var box=document.getElementById('refBox'), form=document.getElementById('refForm'), msg=document.getElementById('refMsg'), btn=document.getElementById('refSubmit');
+  if(!box||!form) return;
+  var widgetId=null;
+  function renderTs(){
+    if(widgetId!==null||!window.turnstile) return;
+    widgetId=window.turnstile.render('#refTurnstile',{sitekey:'0x4AAAAAAFDsIKTexHzWRAFv'});
+  }
+  box.addEventListener('toggle',function(){ if(box.open){ renderTs(); setTimeout(renderTs,1200); } });
+  function say(t,cls){ msg.textContent=t; msg.className=cls||''; }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('refYourName').value.trim(), email=document.getElementById('refYourEmail').value.trim(), ref=document.getElementById('refReferrer').value.trim();
+    if(!name||!email||!ref){ say('Please fill in all three boxes.','err'); return; }
+    var token=window.turnstile&&widgetId!==null?window.turnstile.getResponse(widgetId):'';
+    btn.disabled=true; say('Sending...');
+    fetch('/api/referral',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({yourName:name,yourEmail:email,referrerName:ref,website:document.getElementById('refWebsite').value,turnstileToken:token})})
+      .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+      .then(function(res){
+        if(res.ok){ say("Thank you! We've noted it and will thank your friend after your stay.",'ok'); form.reset(); if(window.turnstile&&widgetId!==null) window.turnstile.reset(widgetId); }
+        else { say(res.d.error||'Something went wrong. Please reply to your booking confirmation with their name instead.','err'); if(window.turnstile&&widgetId!==null) window.turnstile.reset(widgetId); btn.disabled=false; }
+      })
+      .catch(function(){ say('Something went wrong. Please reply to your booking confirmation with their name instead.','err'); btn.disabled=false; });
+  });
+})();
+</script>
 </body>
 </html>

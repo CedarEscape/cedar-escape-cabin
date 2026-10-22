@@ -124,7 +124,16 @@
   @media (min-width: 1000px) {
     .addon-cards-grid > .addon-card { flex: 0 0 calc((100% - 56px) / 3); }
     .addon-cards-grid > .addon-card:first-child:nth-last-child(4),
-    .addon-cards-grid > .addon-card:first-child:nth-last-child(4) ~ .addon-card { flex: 0 0 calc((100% - 28px) / 2); }
+    .addon-cards-grid > .addon-card:first-child:nth-last-child(4) ~ .addon-card { flex: 0 0 min(calc((100% - 28px) / 2), 360px); }
+  }
+  /* Compact card proportions from tablet up: wider, shorter photos and tighter spacing keep the grid from running long. */
+  @media (min-width: 640px) {
+    .addon-cards-grid > .addon-card .addon-media { aspect-ratio: 16 / 10; }
+    .addon-cards-grid > .addon-card .addon-info { padding: 16px 22px 18px; }
+    .addon-cards-grid > .addon-card .addon-info p { margin-bottom: 3px; font-size: 13.5px; }
+    .addon-cards-grid > .addon-card .addon-info .btn { margin-top: 8px; padding: 10px 20px; }
+    .addon-cards-grid > .addon-card .addon-howit { padding: 14px 22px 16px; }
+    .addon-cards-grid > .addon-card .how-steps-list { gap: 8px; }
   }
   .addon-credit { font-size: 11.5px; color: var(--taupe); text-align: center; margin-top: 22px; }
   .addon-credit a { color: inherit; }

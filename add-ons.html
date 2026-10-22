@@ -114,7 +114,10 @@
   .included-quote { text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--forest-deep); margin-top: 40px; }
   .included-quote cite { display: block; font-family: 'Cinzel', serif; font-style: normal; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); margin-top: 10px; }
 
-  .addon-cards-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; align-items: flex-start; }
+  .addon-cards-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; align-items: stretch; }
+  .addon-cards-grid > .addon-card { grid-template-rows: auto 1fr auto; }
+  .addon-cards-grid > .addon-card .addon-info { justify-content: flex-start; }
+  @media (min-width: 860px) { .addon-cards-grid > .addon-card .addon-howit { min-height: 226px; } }
   .addon-cards-grid > .addon-card { flex: 1 1 100%; min-width: 0; }
   @media (min-width: 860px) { .addon-cards-grid > .addon-card { flex: 0 0 calc((100% - 56px) / 3); } }
   .addon-credit { font-size: 11.5px; color: var(--taupe); text-align: center; margin-top: 22px; }

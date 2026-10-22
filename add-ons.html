@@ -114,8 +114,11 @@
   .included-quote { text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--forest-deep); margin-top: 40px; }
   .included-quote cite { display: block; font-family: 'Cinzel', serif; font-style: normal; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); margin-top: 10px; }
 
-  .addon-cards-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
-  @media (min-width: 860px) { .addon-cards-grid { grid-template-columns: repeat(3, 1fr); } }
+  .addon-cards-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; align-items: flex-start; }
+  .addon-cards-grid > .addon-card { flex: 1 1 100%; min-width: 0; }
+  @media (min-width: 860px) { .addon-cards-grid > .addon-card { flex: 0 0 calc((100% - 56px) / 3); } }
+  .addon-credit { font-size: 11.5px; color: var(--taupe); text-align: center; margin-top: 22px; }
+  .addon-credit a { color: inherit; }
   .addon-card { display: grid; grid-template-columns: 1fr; gap: 0; background: var(--cream-deep); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 18px 40px rgba(35,45,29,0.16); transition: transform 0.2s ease, box-shadow 0.2s ease; }
   .addon-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px rgba(35,45,29,0.22); }
   .addon-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -129,6 +132,20 @@
   .addon-howit { padding: 22px 26px; border-top: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
 
   .exclusive-ribbon { position: absolute; top: 14px; left: 0; z-index: 2; background: linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%); color: var(--gold-bright); font-family: 'Cinzel', serif; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 11px; padding: 7px 24px 7px 14px; clip-path: polygon(0 0, 82% 0, 100% 50%, 82% 100%, 0 100%); filter: drop-shadow(1px 0 0 var(--gold)) drop-shadow(-1px 0 0 var(--gold)) drop-shadow(0 1px 0 var(--gold)) drop-shadow(0 -1px 0 var(--gold)); pointer-events: none; white-space: nowrap; }
+
+  /* Experience request modals (NEAT POUR CO.; reusable for later experiences) */
+  .exp-packages { display: grid; gap: 14px; margin: 4px 0 8px; }
+  .exp-package { background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px 16px; }
+  .exp-package.selected { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(192,151,63,0.35); }
+  .exp-package-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+  .exp-package h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: var(--forest-deep); margin: 0; }
+  .exp-package .exp-price { font-family: 'Cinzel', serif; font-weight: 600; font-size: 14px; letter-spacing: 0.04em; color: var(--forest-deep); }
+  .exp-package .exp-meta { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe); margin: 6px 0 8px; }
+  .exp-package p { font-size: 14px; color: #4b453b; margin: 0 0 6px; }
+  .exp-package .exp-incl { font-size: 12.5px; color: var(--taupe); font-style: italic; }
+  .exp-package .btn { margin-top: 8px; padding: 8px 18px; font-size: 12.5px; }
+  .exp-helper { font-size: 12.5px; color: var(--taupe); font-style: italic; margin: 6px 0 0; }
+  .exp-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
   .req-section { max-width: 760px; margin: 0 auto; }
   .req-block { background: var(--cream-deep); border: 1px solid var(--line); border-radius: 4px; padding: 28px 28px 30px; margin-bottom: 24px; }
@@ -369,7 +386,33 @@
         </div>
       </div>
     </div>
+
+    <div class="addon-card" id="neatpour-card">
+      <div class="addon-media">
+        <img src="images/addons/neatpour-card.jpg" alt="Two colorful cocktails in martini glasses on a bar" loading="lazy">
+      </div>
+      <div class="addon-info">
+        <div class="eyebrow">Sip &amp; Celebrate</div>
+        <h2>Private Cocktail Experiences</h2>
+        <p>Elevate your Cedar Escape getaway with NEAT POUR CO. From private bartending to hands-on cocktail and mocktail experiences, we bring the art of mixology right to your stay.</p>
+        <p>&bull; Private bartending for celebrations and gatherings</p>
+        <p>&bull; Hands-on cocktail-making experiences</p>
+        <p>&bull; Interactive, alcohol-free mocktail experiences</p>
+        <p class="partner-note">Curated for Cedar Escape guests &nbsp;&middot;&nbsp; By request &nbsp;&middot;&nbsp; Subject to availability</p>
+        <button type="button" class="btn btn-gold js-open-modal" data-modal="neatpourRequestOverlay">Request Your Experience &rarr;</button>
+      </div>
+      <div class="addon-howit">
+        <div class="how-it-works-label">How It Works</div>
+        <div class="how-steps-list">
+          <div class="how-step-row"><span class="num">1</span><span class="step-text">Request your Cedar Escape cocktail experience</span></div>
+          <div class="how-step-row"><span class="num">2</span><span class="step-text">NEAT POUR CO. checks availability for your stay</span></div>
+          <div class="how-step-row"><span class="num">3</span><span class="step-text">We connect to customize your experience</span></div>
+          <div class="how-step-row"><span class="num">4</span><span class="step-text">Confirm your booking &amp; pay NEAT POUR CO. directly</span></div>
+        </div>
+      </div>
     </div>
+    </div>
+    <p class="addon-credit">Cocktail photo: &ldquo;Cloud 9 &ndash; round 2&rdquo; by Rick A., <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>, via Wikimedia Commons. Illustrative image only.</p>
   </div>
 </section>
 
@@ -608,6 +651,195 @@
     </div>
   </div>
 </div>
+
+<div class="request-modal-overlay" id="neatpourRequestOverlay">
+  <div class="request-modal req-section" role="dialog" aria-modal="true" aria-labelledby="neatpourRequestTitle">
+    <button type="button" class="request-modal-close" aria-label="Close">&times;</button>
+    <div class="section-head">
+      <div class="eyebrow">Sip &amp; Celebrate</div>
+      <h2 id="neatpourRequestTitle">Select Your Cedar Escape Experience</h2>
+    </div>
+
+    <div id="neatpourPick">
+    <div class="exp-packages">
+      <div class="exp-package" data-code="signature_sip">
+        <div class="exp-package-head"><h4>The Signature Sip</h4><span class="exp-price">Starting at $295</span></div>
+        <div class="exp-meta">90 Minutes &middot; Up to 8 Guests</div>
+        <p>Get behind the bar with NEAT POUR CO. for a hands-on cocktail experience! Learn to shake, stir, and garnish two signature cocktails while creating your own drinks alongside your private mixologist.</p>
+        <p>Additional guests: $25 each | Maximum 14 guests</p>
+        <p class="exp-incl">Alcohol included &middot; Garnishes and drink-preparation accompaniments provided</p>
+        <button type="button" class="btn btn-outline js-pick-experience">Select</button>
+      </div>
+      <div class="exp-package" data-code="private_pour">
+        <div class="exp-package-head"><h4>The Private Pour</h4><span class="exp-price">$395</span></div>
+        <div class="exp-meta">3 Hours &middot; Up to 14 Guests</div>
+        <p>Sit back, sip, and celebrate! Enjoy a private bartender dedicated to your group, serving handcrafted cocktails and your favorite beverages throughout your gathering.</p>
+        <p class="exp-incl">Alcohol not included &middot; Guests provide the alcohol &middot; Garnishes and drink-preparation accompaniments provided</p>
+        <button type="button" class="btn btn-outline js-pick-experience">Select</button>
+      </div>
+      <div class="exp-package" data-code="zero_proof_social">
+        <div class="exp-package-head"><h4>The Zero-Proof Social</h4><span class="exp-price">Starting at $245</span></div>
+        <div class="exp-meta">90 Minutes &middot; Up to 8 Guests</div>
+        <p>All the creativity, none of the alcohol! Learn to craft two sophisticated mocktails in this fun, hands-on experience. Perfect for families, girls&rsquo; weekends, and groups of all ages.</p>
+        <p>Additional guests: $20 each | Maximum 14 guests</p>
+        <p class="exp-incl">Non-alcoholic ingredients included &middot; Garnishes and drink-preparation accompaniments provided</p>
+        <button type="button" class="btn btn-outline js-pick-experience">Select</button>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--taupe);font-style:italic;margin:6px 0 22px;">All experiences are subject to availability. NEAT POUR CO. will coordinate experience details and payment directly with guests following their inquiry.</p>
+    </div>
+
+    <form id="neatpourForm">
+      <div class="exp-hp" aria-hidden="true"><label>Website <input id="np-website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <div class="req-block">
+        <h3>Your Stay</h3>
+        <div class="req-grid two-col">
+          <div class="req-field"><label for="np-fname">Guest First Name <span class="req">*</span></label><input id="np-fname" type="text" required></div>
+          <div class="req-field"><label for="np-lname">Guest Last Name <span class="req">*</span></label><input id="np-lname" type="text" required></div>
+          <div class="req-field"><label for="np-email">Email <span class="req">*</span></label><input id="np-email" type="email" required></div>
+          <div class="req-field"><label for="np-phone">Phone <span class="req">*</span></label><input id="np-phone" type="tel" required></div>
+          <div class="req-field"><label for="np-checkin">Cedar Escape Check-In Date</label><input id="np-checkin" type="date"></div>
+        </div>
+      </div>
+
+      <div class="req-block">
+        <h3>Your Experience</h3>
+        <div class="req-grid two-col">
+          <div class="req-field">
+            <label for="np-experience">Preferred Experience <span class="req">*</span></label>
+            <select id="np-experience" required>
+              <option value="">Select an experience</option>
+              <option value="signature_sip">The Signature Sip</option>
+              <option value="private_pour">The Private Pour</option>
+              <option value="zero_proof_social">The Zero-Proof Social</option>
+            </select>
+          </div>
+          <div class="req-field"><label for="np-guests">Number of Guests <span class="req">*</span></label><input id="np-guests" type="number" min="1" max="14" required></div>
+        </div>
+        <div class="req-field" id="np-prefs-wrap" style="margin-top:16px;" hidden>
+          <label for="np-prefs">Any cocktails, mocktails, flavors, or techniques you&rsquo;d especially love to learn?</label>
+          <textarea id="np-prefs" rows="3"></textarea>
+          <p class="exp-helper">Optional &mdash; NEAT POUR CO. will use this as a starting point when customizing your experience.</p>
+        </div>
+      </div>
+
+      <div class="req-block">
+        <h3>When</h3>
+        <div class="req-grid two-col">
+          <div class="req-field"><label for="np-pdate">Preferred Date <span class="req">*</span></label><input id="np-pdate" type="date" required></div>
+          <div class="req-field"><label for="np-ptime">Preferred Time <span class="req">*</span></label><input id="np-ptime" type="time" required></div>
+          <div class="req-field"><label for="np-adate">Alternate Date</label><input id="np-adate" type="date"></div>
+          <div class="req-field"><label for="np-atime">Alternate Time</label><input id="np-atime" type="time"></div>
+        </div>
+        <div class="req-field" style="margin-top:16px;"><label for="np-notes">Notes / Special Requests</label><textarea id="np-notes" rows="3"></textarea></div>
+      </div>
+
+      <p class="req-disclaimer" style="margin-bottom:6px;"><strong>Submitting a request does not confirm your experience. No payment is due when submitting your request.</strong></p>
+      <p class="req-disclaimer" style="margin-top:0;">All experiences are subject to availability. NEAT POUR CO. will coordinate experience details and payment directly with guests following their inquiry.</p>
+      <div class="wizard-nav">
+        <span></span>
+        <button type="submit" id="neatpourSubmitBtn" class="btn btn-gold">Send Experience Request</button>
+      </div>
+      <div id="neatpourFormError" class="req-error" hidden></div>
+    </form>
+
+    <div id="neatpourSuccess" hidden>
+      <div class="eyebrow">Request Received</div>
+      <h3>Request received!</h3>
+      <p>Thank you! We&rsquo;ll check availability with NEAT POUR CO. for your stay and email you with an update.</p>
+      <p>Your experience is not confirmed yet, and no payment is due to Cedar Escape.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('neatpourRequestOverlay');
+  var form = document.getElementById('neatpourForm');
+  var select = document.getElementById('np-experience');
+  var prefsWrap = document.getElementById('np-prefs-wrap');
+  var prefs = document.getElementById('np-prefs');
+  var submitBtn = document.getElementById('neatpourSubmitBtn');
+  var formError = document.getElementById('neatpourFormError');
+  var success = document.getElementById('neatpourSuccess');
+  var packages = overlay.querySelectorAll('.exp-package');
+  var CLASS_CODES = ['signature_sip', 'zero_proof_social'];
+
+  function syncExperience(){
+    var code = select.value;
+    var isClass = CLASS_CODES.indexOf(code) !== -1;
+    prefsWrap.hidden = !isClass;
+    if (!isClass) prefs.value = '';
+    packages.forEach(function(p){ p.classList.toggle('selected', p.getAttribute('data-code') === code); });
+  }
+  select.addEventListener('change', syncExperience);
+  overlay.querySelectorAll('.js-pick-experience').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      select.value = btn.closest('.exp-package').getAttribute('data-code');
+      syncExperience();
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    formError.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+    var val = function(id){ return document.getElementById(id).value; };
+    var payload = {
+      guestFirstName: val('np-fname'), guestLastName: val('np-lname'), guestEmail: val('np-email'), guestPhone: val('np-phone'),
+      checkinDate: val('np-checkin'), experienceCode: val('np-experience'), groupSize: val('np-guests'),
+      classPreferences: prefsWrap.hidden ? '' : prefs.value,
+      preferredDate: val('np-pdate'), preferredTime: val('np-ptime'), alternateDate: val('np-adate'), alternateTime: val('np-atime'),
+      notes: val('np-notes'), website: val('np-website')
+    };
+    fetch('/api/neatpour/request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(res){
+      if (!res.ok) return res.json().then(function(d){ throw new Error(d.error || 'Something went wrong.'); });
+      return res.json();
+    }).then(function(){
+      form.hidden = true;
+      document.getElementById('neatpourPick').hidden = true;
+      document.getElementById('neatpourRequestTitle').textContent = 'Thank You';
+      success.hidden = false;
+      success.scrollIntoView({ behavior: 'smooth' });
+    }).catch(function(err){
+      formError.textContent = err.message || 'Something went wrong. Please try again.';
+      formError.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Experience Request';
+    });
+  });
+})();
+
+// Generic opener: any <button class="js-open-modal" data-modal="overlayId"> opens that
+// request overlay, so a 5th experience only needs its own card + overlay.
+(function(){
+  var open = null;
+  function closeAll(){
+    if (open) open.classList.remove('open');
+    open = null;
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.js-open-modal').forEach(function(btn){
+    var overlay = document.getElementById(btn.getAttribute('data-modal'));
+    if (!overlay) return;
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      overlay.classList.add('open');
+      open = overlay;
+      document.body.style.overflow = 'hidden';
+    });
+    overlay.querySelector('.request-modal-close').addEventListener('click', closeAll);
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) closeAll(); });
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
+})();
+</script>
 
 <script>
 (function(){

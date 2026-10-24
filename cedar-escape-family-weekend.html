@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Owner opt-out: visit any page with ?notrack=1 once per device to stop counting your own visits (?notrack=0 undoes it) -->
+<script>
+  (function () {
+    try {
+      var p = new URLSearchParams(location.search).get('notrack');
+      if (p === '1') localStorage.setItem('ce_notrack', '1');
+      if (p === '0') localStorage.removeItem('ce_notrack');
+      if (localStorage.getItem('ce_notrack')) window['ga-disable-G-MYXMHH20P0'] = true;
+    } catch (e) {}
+  })();
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MYXMHH20P0"></script>
 <script>

@@ -256,6 +256,14 @@
   .explore-teaser-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
   @media (min-width:700px) { .explore-teaser-grid { grid-template-columns:repeat(5,1fr); } }
   .explore-teaser-grid .card { position:relative; aspect-ratio:4/3; border-radius:2px; overflow:hidden; text-decoration:none; }
+  .featured-guide { display:flex; align-items:center; gap:18px; max-width:760px; margin:26px auto 0; padding:12px 18px 12px 12px; background:var(--cream-deep); border:1px solid var(--line); border-radius:3px; text-decoration:none; color:var(--ink); transition:box-shadow .2s ease, transform .2s ease; }
+  .featured-guide:hover { box-shadow:0 10px 24px rgba(43,39,31,0.14); transform:translateY(-2px); }
+  .featured-guide img { width:96px; height:72px; object-fit:cover; border-radius:2px; flex:none; }
+  .featured-guide .fg-k { font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); font-weight:600; }
+  .featured-guide .fg-t { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:var(--forest-deep); line-height:1.2; margin-top:2px; }
+  .featured-guide .fg-s { font-size:13px; color:#5a5346; margin-top:2px; }
+  .featured-guide .fg-go { margin-left:auto; flex:none; font-weight:700; font-size:13px; color:var(--forest-deep); white-space:nowrap; }
+  @media (max-width:560px) { .featured-guide { flex-wrap:wrap; } .featured-guide .fg-go { margin-left:114px; } }
   .explore-teaser-grid .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .explore-teaser-grid .card .cap { position:absolute; left:0; right:0; bottom:0; z-index:2; padding:12px; color:var(--cream); font-size:13px; font-weight:700; background:linear-gradient(0deg, rgba(35,45,29,0.82), transparent); }
 
@@ -1339,6 +1347,11 @@
       <a href="/explore-massanutten" class="card"><img src="images/photo-41.jpg" loading="lazy" alt="Hikes near Cedar Escape"><div class="cap">Hikes</div></a>
       <a href="/explore-massanutten" class="card"><img src="images/photo-47.jpg" loading="lazy" alt="Tours and activities near Cedar Escape"><div class="cap">Tours &amp; Activities</div></a>
     </div>
+    <a href="/guides/jmu-visitors-guide" class="featured-guide">
+      <img src="images/guides/jmu-quad-600.jpg" loading="lazy" width="600" height="340" alt="Students relaxing on the quad at James Madison University">
+      <span><span class="fg-k">Featured Guide</span><span class="fg-t" style="display:block;">The Ultimate JMU Visitor's Guide</span><span class="fg-s" style="display:block;">Where to Eat, Stay &amp; Explore in Harrisonburg, Virginia</span></span>
+      <span class="fg-go">Read the Guide &rarr;</span>
+    </a>
     <div style="text-align:center;margin-top:32px;">
       <a href="/explore-massanutten" class="btn btn-gold">Explore Massanutten</a>
     </div>

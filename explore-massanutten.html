@@ -87,6 +87,16 @@
   .subnav a:hover { opacity: 1; color: var(--gold); }
 
   section { padding: 44px 0; }
+  .lg-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:22px; max-width:1020px; margin:0 auto; }
+  .lg-card { display:flex; flex-direction:column; background:var(--cream-deep); border:1px solid var(--line); border-radius:6px; overflow:hidden; text-decoration:none; color:var(--ink); box-shadow:0 10px 24px rgba(35,45,29,0.1); transition:transform .2s ease, box-shadow .2s ease; }
+  .lg-card:hover { transform:translateY(-3px); box-shadow:0 16px 32px rgba(35,45,29,0.16); }
+  .lg-card .lg-img { aspect-ratio:16/10; overflow:hidden; background:var(--forest-deep); }
+  .lg-card .lg-img img { width:100%; height:100%; object-fit:cover; display:block; }
+  .lg-card .lg-body { padding:18px 20px 20px; display:flex; flex-direction:column; flex:1; }
+  .lg-card .lg-k { font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); font-weight:600; }
+  .lg-card h3 { font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:22px; line-height:1.2; color:var(--forest-deep); margin:6px 0 6px; }
+  .lg-card p { font-size:14px; color:#4b453b; }
+  .lg-card .lg-go { margin-top:auto; padding-top:14px; font-weight:700; font-size:14px; color:var(--forest-deep); }
   .section-head { max-width: 640px; margin: 0 auto 24px; text-align: center; }
   .section-head .eyebrow2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: var(--taupe); }
   .section-head h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 3.2vw, 34px); margin-top: 6px; color: var(--forest-deep); }
@@ -893,6 +903,27 @@
     </div>
     <div class="more-ideas">
       <a href="https://maps.google.com/?q=groceries+near+Massanutten+Resort+VA" target="_blank" rel="noopener">View All on Map →</a>
+    </div>
+  </div>
+</section>
+
+<section id="local-guides" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow2">Cedar Escape Travel Collection</div>
+      <h2>Local Travel Guides</h2>
+      <p>In-depth, locally informed guides to help you plan the trip around your stay.</p>
+    </div>
+    <div class="lg-grid">
+      <a class="lg-card" href="/guides/jmu-visitors-guide">
+        <div class="lg-img"><img src="images/guides/jmu-hero-800.jpg" loading="lazy" width="800" height="600" alt="Wilson Hall at James Madison University in Harrisonburg, Virginia"></div>
+        <div class="lg-body">
+          <div class="lg-k">JMU &amp; Harrisonburg</div>
+          <h3>The Ultimate JMU Visitor's Guide</h3>
+          <p>Where to Eat, Stay &amp; Explore in Harrisonburg, Virginia</p>
+          <span class="lg-go">Read the Guide &rarr;</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>

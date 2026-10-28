@@ -88,7 +88,7 @@ export async function onRequestPost({ request, env }) {
       </div>
       <p style="font-size:13px;color:#6b6555;">Have a question or need to suggest a different time? Just reply to this email — we're happy to coordinate.</p>
       <hr style="border:none;border-top:1px solid rgba(43,39,31,0.12);margin:26px 0;">
-      <p>Thank you for being part of the Cedar Escape experience! We truly appreciate you and love being able to offer our guests this special add-on.</p>
+      <p>Thank you for being part of the Cedar Escape experience! We truly appreciate you and love being able to offer our guests this special experience.</p>
       <p style="font-style:italic;">With gratitude,<br>The Cedar Escape Team</p>
     `,
   });

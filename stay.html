@@ -162,6 +162,11 @@
   .space-photos { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
   @media (min-width: 700px) { .space-photos { grid-template-columns: repeat(4,1fr); } }
   .space-note { font-size: 13px; color: var(--taupe); font-style: italic; margin-top: 10px; }
+  .ev-copy { font-size: 15px; color: rgba(250,246,238,0.8); max-width: 640px; margin: -4px 0 16px; }
+  .ev-photos { grid-template-columns: 1fr; max-width: 620px; }
+  .ev-photos .frame { aspect-ratio: 4/5; }
+  .ev-photos .frame img { object-position: 50% 30%; }
+  @media (min-width: 560px) { .ev-photos { grid-template-columns: repeat(2,1fr); gap: 14px; } }
   .on-dark { background: var(--forest-deep); }
   .on-dark .section-head h2, .on-dark .space-item h3 { color: var(--cream); }
   .on-dark .section-head p { color: rgba(250,246,238,0.72); }
@@ -581,6 +586,14 @@
           <div class="frame"><img src="images/vrbo/vrbo-43.jpg" loading="lazy" alt="Deck seating at Cedar Escape"></div>
           <div class="frame"><img src="images/vrbo/vrbo-44.jpg" loading="lazy" alt="Deck view of the woods at Cedar Escape"></div>
           <div class="frame"><img src="images/vrbo/vrbo-53.jpg" loading="lazy" alt="Traeger grill on the deck at Cedar Escape"></div>
+        </div>
+      </div>
+      <div class="space-item" id="ev-charging">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>Parking + EV Charging</h3>
+        <p class="ev-copy">Charge while you stay. Cedar Escape has a Level 2 EV charger in the driveway with a standard J1772 connector, available to guests at no additional cost. Tesla drivers may need an adapter.</p>
+        <div class="space-photos ev-photos">
+          <div class="frame"><img src="images/ev-charger-wall.jpg" loading="lazy" alt="Cedar Escape's Level 2 EV charger mounted on the exterior wall at the driveway, with its charging cable coiled on the unit"></div>
+          <div class="frame"><img src="images/ev-charger-closeup.jpg" loading="lazy" alt="Close-up of the Cedar Escape EV charger with its J1772 connector holstered and the cable coiled around the unit"></div>
         </div>
       </div>
     </div>

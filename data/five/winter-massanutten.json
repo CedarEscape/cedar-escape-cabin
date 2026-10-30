@@ -99,7 +99,11 @@
    "title": "Find Your New Favorite Local Flavor",
    "icon": "fork",
    "size": "third",
-   "image": null,
+   "image": {
+    "src": "images/guides/five-brisas-900.jpg",
+    "alt": "Empanadas and mofongo topped with grilled shrimp (illustrative image)",
+    "caption": "Illustrative image"
+   },
    "body": "Brisas del Caribe 809 in Elkton serves Dominican-inspired favorites, including empanadas and mofongo. It's a flavorful stop roughly 12 to 13 minutes from the resort.",
    "notes": [
     "Menus change, so check the restaurant's page before you go. It's at 11702 Spotswood Trail in Elkton.",
@@ -153,17 +157,17 @@
   "note": "Booking direct helps guests save on fees.",
   "images": [
    {
-    "src": "images/guides/cedar-escape-great-room-900.jpg",
-    "alt": "A great room with a leather sofa, stone fireplace and vaulted ceiling",
-    "position": "12% 60%"
+    "src": "images/guides/five-living-room-900.jpg",
+    "alt": "A living room with leather sofas and a stone fireplace under a vaulted ceiling",
+    "position": "72% 55%"
    },
    {
-    "src": "images/guides/five-hot-tub-800.jpg",
-    "alt": "A private hot tub on a covered deck surrounded by trees",
-    "position": "50% 40%"
+    "src": "images/guides/five-emerald-room-900.jpg",
+    "alt": "A bedroom with a deep green accent wall, a green headboard and a red throw",
+    "position": "45% 55%"
    }
   ]
  },
  "disclaimer": "Hours, schedules, menus and road conditions change with the weather and the season. Check each official website before you go.",
- "credits": "Hero and trail photos: Shenandoah National Park (National Park Service, public domain). Snow tubing by James Song, <a href=\"https://commons.wikimedia.org/wiki/File:Snow_tubing.jpg\" target=\"_blank\" rel=\"noopener\">Wikimedia Commons</a>, <a href=\"https://creativecommons.org/licenses/by/2.5/\" target=\"_blank\" rel=\"noopener\">CC BY 2.5</a>. Indoor water park by Battle Creek CVB, <a href=\"https://commons.wikimedia.org/wiki/File:Full_Blast_waterpark_indoor_slides.jpg\" target=\"_blank\" rel=\"noopener\">Wikimedia Commons</a>, <a href=\"https://creativecommons.org/licenses/by/2.0/\" target=\"_blank\" rel=\"noopener\">CC BY 2.0</a>. The snow tubing and water park photos are illustrative and are not photos of Massanutten Resort."
+ "credits": "Hero and trail photos: Shenandoah National Park (National Park Service, public domain). Snow tubing by James Song, <a href=\"https://commons.wikimedia.org/wiki/File:Snow_tubing.jpg\" target=\"_blank\" rel=\"noopener\">Wikimedia Commons</a>, <a href=\"https://creativecommons.org/licenses/by/2.5/\" target=\"_blank\" rel=\"noopener\">CC BY 2.5</a>. Indoor water park by Battle Creek CVB, <a href=\"https://commons.wikimedia.org/wiki/File:Full_Blast_waterpark_indoor_slides.jpg\" target=\"_blank\" rel=\"noopener\">Wikimedia Commons</a>, <a href=\"https://creativecommons.org/licenses/by/2.0/\" target=\"_blank\" rel=\"noopener\">CC BY 2.0</a>. The snow tubing, water park and Brisas del Caribe images are illustrative and are not photos of Massanutten Resort or of the restaurant."
 }

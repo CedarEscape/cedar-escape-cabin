@@ -1,0 +1,169 @@
+{
+ "slug": "5-things-to-do-massanutten-winter",
+ "title": "5 Things to Do in Massanutten This Winter",
+ "subtitle": "Quick picks for snowy adventures, cozy experiences, local flavors, and beautiful Shenandoah Valley views.",
+ "seo_title": "5 Things to Do in Massanutten This Winter | Cedar Escape",
+ "issue": "Issue 01",
+ "published": "2026-10-30",
+ "updated": "2026-10-30",
+ "hero": {
+  "src": "images/guides/five-winter-hero-1600.jpg",
+  "src_small": "images/guides/five-winter-hero-800.jpg",
+  "alt": "Winter sunrise over snow-covered rocks and bare trees in Shenandoah National Park",
+  "position": "50% 45%"
+ },
+ "intro": "Winter in the Shenandoah Valley isn't only for skiers. Here are five easy ways to enjoy the season, from snow tubing and an indoor splash to pottery, a plate of mofongo and a quiet look at the mountains, with a few planning notes so nothing catches you off guard.",
+ "items": [
+  {
+   "n": "01",
+   "title": "Snow Much Fun at Massanutten Resort",
+   "icon": "snow",
+   "size": "wide",
+   "image": {
+    "src": "images/guides/five-snow-tubing-900.jpg",
+    "alt": "Two children in colorful snow tubes on a snowy slope (illustrative photo)",
+    "caption": "Illustrative photo"
+   },
+   "body": "Massanutten is the Valley's winter headquarters, with skiing, snowboarding and a ski and snowboard school. If you'd rather stay off the slopes, snow tubing is the crowd-pleaser: 90-minute sessions that include the tube and the lift ride.",
+   "notes": [
+    "Tubing tickets are sold online in advance and regularly sell out. More are released on Wednesday evenings as snow conditions allow.",
+    "The resort currently lists tubing from mid-December to early March, weather permitting. Dates and hours can change, so check conditions before you go."
+   ],
+   "links": [
+    {
+     "label": "Snow tubing hours & tickets",
+     "url": "https://www.massresort.com/play/snow-tubing/",
+     "primary": true
+    },
+    {
+     "label": "Snow conditions",
+     "url": "https://www.massresort.com/play/snow-sports/snow-conditions/"
+    }
+   ]
+  },
+  {
+   "n": "02",
+   "title": "Make a Splash, Even in Winter",
+   "icon": "wave",
+   "size": "wide",
+   "image": {
+    "src": "images/guides/five-waterpark-900.jpg",
+    "alt": "Colorful water slides and a pool inside an indoor water park (illustrative photo)",
+    "caption": "Illustrative photo of an indoor water park"
+   },
+   "body": "When it's too cold to be outside, Massanutten's indoor WaterPark keeps everyone moving. The resort says it operates most days year-round, which makes it an easy plan for mixed-age groups: there's a Frog Pond for guests under 42 inches, and taller swimmers have the slides.",
+   "notes": [
+    "Some weekdays may be closed in off-peak seasons, so check the hours calendar first.",
+    "Online tickets must be bought at least a day ahead and cost less than same-day tickets. The resort recommends buying ahead on weekends and holidays."
+   ],
+   "links": [
+    {
+     "label": "WaterPark hours & rates",
+     "url": "https://www.massresort.com/play/waterpark/hours-rates/",
+     "primary": true
+    },
+    {
+     "label": "WaterPark overview",
+     "url": "https://www.massresort.com/play/waterpark/"
+    }
+   ]
+  },
+  {
+   "n": "03",
+   "title": "Get Creative at Friendly City Clay",
+   "icon": "palette",
+   "size": "third",
+   "image": {
+    "src": "images/guides/five-clay-900.jpg",
+    "alt": "People shaping pottery on wheels during a workshop"
+   },
+   "body": "Friendly City Clay & Art Center in Harrisonburg welcomes complete beginners, with wheel, handbuilding and family-friendly workshops. Check the current schedule for dates that fit your stay, since a few sessions are waitlist-only.",
+   "notes": [
+    "Pieces are fired and glazed by the studio, so they are typically ready for pickup several weeks later. Timing varies by class, so ask before you sign up if you're leaving town soon.",
+    "Booked guests: see the Cedar Escape digital guidebook for redemption details."
+   ],
+   "links": [
+    {
+     "label": "Current classes",
+     "url": "https://www.friendlycityclay.com/current-classes",
+     "primary": true
+    },
+    {
+     "label": "Studio website",
+     "url": "https://www.friendlycityclay.com/"
+    }
+   ]
+  },
+  {
+   "n": "04",
+   "title": "Find Your New Favorite Local Flavor",
+   "icon": "fork",
+   "size": "third",
+   "image": null,
+   "body": "Brisas del Caribe 809 in Elkton serves Dominican-inspired favorites, including empanadas and mofongo. It's a flavorful stop roughly 12 to 13 minutes from the resort.",
+   "notes": [
+    "Menus change, so check the restaurant's page before you go. It's at 11702 Spotswood Trail in Elkton.",
+    "Sweet tooth? Ask whether they have tres leches cake available."
+   ],
+   "links": [
+    {
+     "label": "Brisas on Facebook",
+     "url": "https://www.facebook.com/brisasdelcaribe809/",
+     "primary": true
+    },
+    {
+     "label": "Get directions",
+     "url": "https://www.google.com/maps/search/?api=1&query=11702+Spotswood+Trail+Elkton+VA"
+    }
+   ]
+  },
+  {
+   "n": "05",
+   "title": "Discover a Different Side of the Mountains",
+   "icon": "mtn",
+   "size": "third",
+   "image": {
+    "src": "images/guides/five-shenandoah-900.jpg",
+    "alt": "Snow-dusted woods along a trail in Shenandoah National Park"
+   },
+   "body": "Winter strips Shenandoah National Park down to quiet trails, long views and frosted woods. When there's snow or ice, Skyline Drive may close, but the park itself stays open for hiking, snowshoeing and cross-country skiing.",
+   "notes": [
+    "Skyline Drive is normally open 24 hours, but severe weather can close it at any time. Watch for ice on shaded curves; the speed limit is 35 mph and conditions often call for slower.",
+    "Visitor services and cell coverage are very limited, so pack layers, food and water. Text SHENALERTS to 888777 for closure alerts."
+   ],
+   "links": [
+    {
+     "label": "Alerts & conditions",
+     "url": "https://www.nps.gov/shen/planyourvisit/conditions.htm",
+     "primary": true
+    },
+    {
+     "label": "Shenandoah National Park",
+     "url": "https://www.nps.gov/shen/"
+    }
+   ]
+  }
+ ],
+ "closing": {
+  "eyebrow": "Stay a Little Longer",
+  "title": "Make Room for Winter Memories",
+  "body": "After a day of snow, steam and mountain views, it helps to come back to somewhere that feels like yours. Cedar Escape is a mountain getaway in the Massanutten area for families and groups, with room to spread out and a cozy place to gather.",
+  "cta": "Explore Cedar Escape & Book Direct",
+  "cta_url": "/check-availability",
+  "note": "Booking direct helps guests save on fees.",
+  "images": [
+   {
+    "src": "images/guides/cedar-escape-great-room-900.jpg",
+    "alt": "A great room with a leather sofa, stone fireplace and vaulted ceiling",
+    "position": "12% 60%"
+   },
+   {
+    "src": "images/guides/five-hot-tub-800.jpg",
+    "alt": "A private hot tub on a covered deck surrounded by trees",
+    "position": "50% 40%"
+   }
+  ]
+ },
+ "disclaimer": "Hours, schedules, menus and road conditions change with the weather and the season. Check each official website before you go.",
+ "credits": "Hero and trail photos: Shenandoah National Park (National Park Service, public domain). Snow tubing by James Song, <a href=\"https://commons.wikimedia.org/wiki/File:Snow_tubing.jpg\" target=\"_blank\" rel=\"noopener\">Wikimedia Commons</a>, <a href=\"https://creativecommons.org/licenses/by/2.5/\" target=\"_blank\" rel=\"noopener\">CC BY 2.5</a>. Indoor water park by Battle Creek CVB, <a href=\"https://commons.wikimedia.org/wiki/File:Full_Blast_waterpark_indoor_slides.jpg\" target=\"_blank\" rel=\"noopener\">Wikimedia Commons</a>, <a href=\"https://creativecommons.org/licenses/by/2.0/\" target=\"_blank\" rel=\"noopener\">CC BY 2.0</a>. The snow tubing and water park photos are illustrative and are not photos of Massanutten Resort."
+}

@@ -1,0 +1,58 @@
+{
+ "collections": [
+  {
+   "id": "travel-collection",
+   "name": "Cedar Escape Travel Collection",
+   "short": "Travel Collection",
+   "description": "In-depth guides to the places, experiences, and destinations worth exploring.",
+   "label": "Guide"
+  },
+  {
+   "id": "five",
+   "name": "The Cedar Escape Five",
+   "short": "The Five",
+   "description": "Five local favorites. One quick read. More ways to explore.",
+   "label": "Five"
+  },
+  {
+   "id": "valley-edit",
+   "name": "The Valley Edit",
+   "short": "The Valley Edit",
+   "description": "What's happening, what's coming, and what's worth planning for.",
+   "label": "Edit"
+  }
+ ],
+ "articles": [
+  {
+   "slug": "jmu-visitors-guide",
+   "title": "The Ultimate JMU Visitor's Guide",
+   "subtitle": "Where to Eat, Stay & Explore in Harrisonburg, Virginia",
+   "collection": "travel-collection",
+   "description": "Visiting James Madison University? Discover Harrisonburg restaurants, campus tour tips, shops, family activities, sweet treats and places to stay.",
+   "image": "images/guides/jmu-hero-800.jpg",
+   "imageAlt": "Wilson Hall at James Madison University in Harrisonburg, Virginia",
+   "tag": "JMU & Harrisonburg",
+   "published": "2026-10-28",
+   "updated": "2026-10-28",
+   "seasonal": "year-round",
+   "status": "published",
+   "built": "hand"
+  },
+  {
+   "slug": "5-things-to-do-massanutten-winter",
+   "title": "5 Things to Do in Massanutten This Winter",
+   "subtitle": "Quick picks for snowy adventures, cozy experiences, local flavors, and beautiful Shenandoah Valley views.",
+   "collection": "five",
+   "description": "Discover five winter activities near Massanutten, Virginia, including snow tubing, an indoor waterpark, pottery workshops, local dining, and scenic views.",
+   "image": "images/guides/five-winter-hero-800.jpg",
+   "imageAlt": "Winter sunrise over snow-covered rocks and bare trees in Shenandoah National Park",
+   "tag": "Issue 01 · Winter",
+   "published": "2026-10-30",
+   "updated": "2026-10-30",
+   "seasonal": "winter",
+   "status": "published",
+   "built": "five",
+   "source": "data/five/winter-massanutten.json"
+  }
+ ]
+}

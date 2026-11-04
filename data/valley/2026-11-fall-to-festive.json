@@ -1,0 +1,317 @@
+{
+  "slug": "valley-edit-fall-to-festive-2026",
+  "title": "From Fall to Festive: November Happenings Near Massanutten",
+  "seo_title": "November Events Near Massanutten | The Valley Edit",
+  "h1": "From Fall to Festive",
+  "subtitle": "November Happenings & Local Favorites in the Shenandoah Valley",
+  "edition": {
+    "month": "Nov",
+    "year": "2026",
+    "label": "November 2026 Edition",
+    "number": "01"
+  },
+  "season": "holiday",
+  "published": "2026-11-04",
+  "updated": "2026-11-04",
+  "hero": {
+    "src": "images/guides/valley-hero-1600.jpg",
+    "src_small": "images/guides/valley-hero-800.jpg",
+    "alt": "Autumn foliage on the ridge above the Shenandoah Valley under a blue sky",
+    "position": "50% 60%"
+  },
+  "intro": [
+    "There's something special about November in the Shenandoah Valley. The mountains are settling into their late-autumn colors, local markets are filling with handmade treasures, and the first holiday lights are beginning to appear.",
+    "From a morning spent discovering local artisans to Thanksgiving traditions and festive evenings at Massanutten, November offers plenty of reasons to make a little more time for the people and places you love.",
+    "Here's what we're looking forward to this month."
+  ],
+  "toc": {
+    "title": "In This Edition",
+    "lead": "Your guide to the best of November in and around Massanutten.",
+    "items": [
+      {
+        "id": "upcoming-events",
+        "label": "Upcoming Events",
+        "desc": "Dates worth saving",
+        "icon": "calendar"
+      },
+      {
+        "id": "in-season",
+        "label": "In Season",
+        "desc": "Local traditions and seasonal discoveries",
+        "icon": "leaf"
+      },
+      {
+        "id": "featured-experience",
+        "label": "Featured Experience",
+        "desc": "A market made for holiday treasure hunting",
+        "icon": "star"
+      },
+      {
+        "id": "eat-sip-sweet",
+        "label": "Eat, Sip & Something Sweet",
+        "desc": "A little taste of the valley",
+        "icon": "cup"
+      },
+      {
+        "id": "worth-the-detour",
+        "label": "Worth the Detour",
+        "desc": "One more stop worth making",
+        "icon": "pin"
+      },
+      {
+        "id": "plan-ahead",
+        "label": "Plan Ahead",
+        "desc": "A preview of the magic coming in December",
+        "icon": "binoculars"
+      }
+    ]
+  },
+  "events": {
+    "kicker": "Upcoming Events",
+    "title": "Put It on Your Calendar",
+    "items": [
+      {
+        "month": "Nov",
+        "day": "14",
+        "title": "Festive Fall Open-Air Market",
+        "time": "9 AM–2 PM",
+        "place": "Green Valley Book Fair, Mount Crawford",
+        "desc": "Shop more than 50 local vendors featuring handmade goods, art, books, and seasonal treats. A wonderful excuse to start holiday shopping early.",
+        "link": {
+          "label": "Official event link",
+          "url": "https://gobookfair.com/events/2026/2026-festive-fall-open-air-market/"
+        }
+      },
+      {
+        "month": "Nov",
+        "day": "14",
+        "title": "Burg Bash",
+        "time": "Noon–3 PM",
+        "place": "Community Activities Center, Harrisonburg",
+        "desc": "Celebrate the season of gratitude with an afternoon of family-friendly games, attractions, music, candy, and community fun.",
+        "link": {
+          "label": "Official event link",
+          "url": "https://www.harrisonburgva.gov/Burg-Bash"
+        }
+      },
+      {
+        "month": "Nov",
+        "day": "21",
+        "title": "Light Up the Park Begins",
+        "time": "Select evenings",
+        "place": "Massanutten Resort",
+        "desc": "Welcome the holiday season with sparkling lights, music, s'mores by the firepit, and festive fun. Santa appearances are scheduled for select nights.",
+        "link": {
+          "label": "Official event link",
+          "url": "https://www.massresort.com/events/light-up-the-park/"
+        }
+      },
+      {
+        "month": "Nov",
+        "day": "21",
+        "title": "Holiday Card-Making Workshop",
+        "time": "1–3 PM",
+        "place": "Friendly City Clay & Art Center, Harrisonburg",
+        "desc": "Create hand-printed holiday cards at a beginner-friendly linocut workshop. Open to ages 16 and older; advance registration and a workshop fee apply.",
+        "link": {
+          "label": "Official workshop link",
+          "url": "https://www.friendlycityclay.com/current-classes"
+        }
+      },
+      {
+        "month": "Nov",
+        "day": "26",
+        "title": "Rocktown Turkey Trot",
+        "time": "8 AM",
+        "place": "Downtown Harrisonburg",
+        "desc": "Start Thanksgiving with a little movement and a lot of community spirit. The annual event features a four-mile race and a special Gobble Gobble Kids Dash.",
+        "link": {
+          "label": "Official registration link",
+          "url": "https://vamomentum.com/rocktown-turkey-trot/"
+        }
+      },
+      {
+        "month": "Nov",
+        "day": "28",
+        "title": "Deck the Halls Christmas Market",
+        "time": "9:30 AM–2 PM",
+        "place": "Frieden Farms, Mount Crawford",
+        "desc": "Celebrate Small Business Saturday with holiday shopping, handmade gifts, fresh wreaths, baked goods, and family photo opportunities. Admission is listed at $5 per adult, with children admitted free.",
+        "link": {
+          "label": "Event link",
+          "url": "https://visitharrisonburgva.com/events/deck-the-halls-christmas-market-at-frieden-farms/"
+        }
+      }
+    ]
+  },
+  "in_season": {
+    "kicker": "In Season",
+    "title": "A Slower Kind of Saturday",
+    "lead": "Before the holiday rush begins, make time for a little local tradition.",
+    "chip": "Tuesdays & Saturdays · 8 AM–1 PM",
+    "chip_label": "November market schedule",
+    "body": [
+      "The Harrisonburg Farmers Market is open Tuesdays and Saturdays throughout November, offering an easy way to explore the area's growers, makers, and small businesses.",
+      "Wander through Turner Pavilion, browse what's in season, and pick up something local to enjoy during your stay.",
+      "The market's November schedule includes Tuesday and Saturday markets from 8 AM–1 PM.",
+      "Whether you're planning breakfast, shopping for a holiday gathering, or simply enjoying a morning downtown, it's a lovely way to experience Harrisonburg beyond the usual attractions."
+    ],
+    "link": {
+      "label": "Explore the market",
+      "url": "https://www.harrisonburgfarmersmarket.com/"
+    },
+    "image": {
+      "src": "images/guides/valley-market-900.jpg",
+      "alt": "Baskets of heirloom cherry tomatoes at the Harrisonburg Farmers Market",
+      "caption": "Harrisonburg Farmers Market (file photo)"
+    }
+  },
+  "featured": {
+    "kicker": "Featured Experience",
+    "title": "Handmade for the Holidays",
+    "event": "Festive Fall Open-Air Market at Green Valley Book Fair",
+    "facts": [
+      {
+        "icon": "calendar",
+        "text": "Saturday, November 14"
+      },
+      {
+        "icon": "clock",
+        "text": "9 AM–2 PM"
+      },
+      {
+        "icon": "pin",
+        "text": "Mount Crawford"
+      }
+    ],
+    "body": [
+      "There's something about finding a gift at a local market that makes it feel a little more meaningful.",
+      "This November, Green Valley Book Fair brings together more than 50 local businesses, artists, crafters, and bakers for its Festive Fall Open-Air Market.",
+      "Expect everything from handmade jewelry and home décor to artwork, accessories, and sweet treats.",
+      "And because the market takes place outside Green Valley Book Fair, it's the perfect opportunity to browse the book fair's collection of discounted books, puzzles, and gifts while you're there."
+    ],
+    "why": "It combines holiday shopping, local creativity, and a little something for nearly everyone—without requiring a packed itinerary.",
+    "close": "Make a morning of it, enjoy lunch, and leave room for an afternoon of exploring the valley.",
+    "link": {
+      "label": "Explore the market",
+      "url": "https://gobookfair.com/events/2026/2026-festive-fall-open-air-market/"
+    },
+    "image": {
+      "src": "images/guides/valley-bookfair-1000.jpg",
+      "alt": "The Green Valley Book Fair building in Mount Crawford, Virginia",
+      "caption": "Green Valley Book Fair (file photo)"
+    },
+    "stamp": {
+      "month": "Nov",
+      "day": "14"
+    }
+  },
+  "eat": {
+    "kicker": "Eat, Sip & Something Sweet",
+    "title": "A Little Taste of November",
+    "lead": "Good food deserves a place in the itinerary, especially when a local market makes it easy to sample something new.",
+    "vendors_intro": "At the November 14 Festive Fall Open-Air Market, the announced food lineup includes:",
+    "vendors": [
+      "Catrea's BBQ & More",
+      "Shenandoah Valley Reserve",
+      "The Sweet Spot Dessert Truck"
+    ],
+    "body": [
+      "That means you can work a savory bite, something to sip, and a sweet finish into your market visit without needing to make several separate stops.",
+      "For another low-key food outing, stop by the Harrisonburg Farmers Market and see what its seasonal vendors have available."
+    ],
+    "tip": "Come hungry, browse first, and make time for dessert. Vacation calories have a remarkable talent for finding their own itinerary.",
+    "image": {
+      "src": "images/guides/valley-market-jars-900.jpg",
+      "alt": "Jars of apple jelly and blueberry rhubarb jam on a shelf at the Harrisonburg Farmers Market",
+      "caption": "Harrisonburg Farmers Market (file photo)"
+    }
+  },
+  "detour": {
+    "kicker": "Worth the Detour",
+    "title": "Get Creative at Friendly City Clay",
+    "lead": "Holiday shopping is fun. Making something yourself? That's a different kind of memory.",
+    "badge": "Cedar Escape Local Partner",
+    "chip": "Nov 21 · 1–3 PM · Linocut Card Making: Holiday Greetings",
+    "body": [
+      "At Friendly City Clay & Art Center in Harrisonburg, creative workshops offer visitors a chance to slow down, try something new, and leave with a piece of the experience.",
+      "On November 21 from 1–3 PM, the studio has scheduled Linocut Card Making: Holiday Greetings, a beginner-friendly workshop where participants ages 16 and older can create hand-printed holiday cards.",
+      "It's a particularly nice option for couples, friends, or anyone looking for an afternoon activity beyond the slopes.",
+      "Friendly City Clay is also one of Cedar Escape's local experience partners, with a guest benefit available on eligible scheduled workshops."
+    ],
+    "note": "Workshop availability and discount eligibility should be confirmed before booking.",
+    "link": {
+      "label": "Explore workshops",
+      "url": "https://www.friendlycityclay.com/current-classes"
+    },
+    "image": {
+      "src": "images/guides/five-clay-900.jpg",
+      "alt": "People shaping pottery on wheels during a workshop",
+      "caption": "Friendly City Clay workshop"
+    }
+  },
+  "ahead": {
+    "kicker": "Plan Ahead",
+    "title": "A Little Holiday Magic Is Coming",
+    "lead": "November is just the beginning. If you're already thinking about a December mountain getaway, here are a few experiences worth putting on your calendar.",
+    "items": [
+      {
+        "when": "Nov 21–Jan 3",
+        "month": "Nov",
+        "day": "21",
+        "title": "Light Up the Park",
+        "desc": "Massanutten's seasonal light experience returns on select nights, making it an easy addition to a winter stay.",
+        "link": {
+          "label": "Event details",
+          "url": "https://www.massresort.com/events/light-up-the-park/"
+        }
+      },
+      {
+        "when": "December 5",
+        "month": "Dec",
+        "day": "5",
+        "title": "Winter Wonderfest",
+        "desc": "Downtown Harrisonburg celebrates with festive activities, holiday shopping, performances, and seasonal family fun. The city's Holiday Parade begins at 7 PM.",
+        "link": {
+          "label": "Event details",
+          "url": "https://www.downtownharrisonburg.org/winter-wonderfest"
+        }
+      },
+      {
+        "when": "December 12–13",
+        "month": "Dec",
+        "day": "12",
+        "title": "JMU HolidayFest",
+        "desc": "Celebrate the sounds of the season with performances by JMU's Choral Area and Wind Symphony at the Forbes Center for the Performing Arts.",
+        "link": null
+      }
+    ],
+    "next": "Our next edition of The Valley Edit will explore these celebrations and more in Holiday Magic in the Shenandoah Valley."
+  },
+  "closing": {
+    "eyebrow": "Your Mountain Home Base",
+    "title": "Make Room for More Memories",
+    "body": [
+      "A weekend in the Shenandoah Valley deserves more than a hurried day trip.",
+      "After exploring local markets, enjoying holiday traditions, and discovering the area's hidden gems, return to Cedar Escape—a spacious five-bedroom retreat inside Massanutten Resort.",
+      "Gather for a movie, enjoy the game room, soak in the hot tub, or simply make time to be together.",
+      "Because sometimes the best part of a getaway is having nowhere else you need to be."
+    ],
+    "cta": "Explore Cedar Escape & Book Direct to Save on Fees",
+    "cta_url": "https://cedarescapecabin.com/",
+    "images": [
+      {
+        "src": "images/hot-tub-foliage.jpg",
+        "alt": "Private hot tub at Cedar Escape vacation rental in Massanutten, Virginia, with autumn foliage beyond the deck",
+        "position": "50% 50%"
+      },
+      {
+        "src": "images/guides/five-living-room-900.jpg",
+        "alt": "A living room with leather sofas and a stone fireplace under a vaulted ceiling",
+        "position": "72% 55%"
+      }
+    ]
+  },
+  "disclaimer": "The Valley Edit is a seasonal editorial collection presented by Cedar Escape. Event details and schedules may change; check the linked organizer pages before attending.",
+  "credits": "Destination photos are used under their free licenses and were resized or cropped: “Fall View into the Shenandoah Valley” by Shenandoah National Park / NPS (<a href=\"https://commons.wikimedia.org/wiki/File:Fall_View_into_the_Shenandoah_Valley_(50570458351).jpg\" target=\"_blank\" rel=\"noopener\">public domain</a>); Harrisonburg Farmers Market photos by jammmick (<a href=\"https://commons.wikimedia.org/wiki/File:Harrisonburg_VA_farmers_market_4_(4954063572).jpg\" target=\"_blank\" rel=\"noopener\">tomatoes</a>, <a href=\"https://commons.wikimedia.org/wiki/File:June_3_Farmers_Market,_Harrisonburg,_Va.,_2010_(4953468809).jpg\" target=\"_blank\" rel=\"noopener\">jars</a>), <a href=\"https://creativecommons.org/licenses/by/2.0/\" target=\"_blank\" rel=\"noopener\">CC BY 2.0</a>; “Green Valley Book Fair – building” by Ser Amantio di Nicolao (<a href=\"https://commons.wikimedia.org/wiki/File:Green_Valley_Book_Fair_-_building.jpg\" target=\"_blank\" rel=\"noopener\">CC0</a>). The market and book fair photos are file photos and do not show the November events. The Cedar Escape photos show the actual property."
+}

@@ -13,6 +13,12 @@ What it does
   4. Adds a sitemap entry for each published article and an isPartOf/articleSection
      series tag to the hand-built Travel Collection guides' structured data.
 
+The Valley Edit (seasonal editions, master template valley_page): copy data/valley/<edition>.json,
+set "season" (holiday / winter / spring / summer) for the accent colour, add an entry with
+"built": "valley" and "source": "data/valley/<edition>.json" to data/articles.json. Keep
+"status": "draft" until approved (draft pages are built with noindex and are not listed or in
+the sitemap); change it to "published" to go live. PREVIEW_DRAFTS=1 lists drafts for screenshots only.
+
 To publish a new Five: copy data/five/winter-massanutten.json, edit it, add an entry to
 data/articles.json (status "published"), run this script, commit the changed files.
 Only articles with "status": "published" appear on the Things to Do page and sitemap.
@@ -267,6 +273,409 @@ def five_page(d):
             '\n' + c['footer'] + '\n\n<a href="#" class="js-open-contact floating-message-btn">Message Us</a>\n\n' + c['contact'])
 
 # ----------------------------------------------------------------------------------
+# The Valley Edit: master template (seasonal editions). Accent colour changes per season.
+# ----------------------------------------------------------------------------------
+ACCENTS = {   # accent, deeper accent (text on ivory), soft tint (panels)
+ 'holiday': ('#8A2A3F', '#6E1D31', '#F5E8E6'),   # mulled-wine / cranberry
+ 'winter':  ('#5C7C99', '#3F5B76', '#E8EEF3'),   # muted frosted blue
+ 'spring':  ('#7E9A7B', '#587556', '#EBF0E6'),   # sage / blush
+ 'summer':  ('#C0674A', '#9A4A31', '#F7E9E1'),   # terracotta / coral
+}
+ICONS.update({
+ 'calendar': ico('<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/>'),
+ 'leaf': ico('<path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19c2-4 5-7 9-9"/>'),
+ 'star': ico('<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/>'),
+ 'cup': ico('<path d="M5 10h11v4a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5v-4Z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16M8 3c-.6 1 .6 1.6 0 3M12 3c-.6 1 .6 1.6 0 3"/>'),
+ 'pin': ico('<path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/>'),
+ 'binoculars': ico('<circle cx="7" cy="16" r="3.5"/><circle cx="17" cy="16" r="3.5"/><path d="M7 12.5V6l2-2h1.5V12M17 12.5V6l-2-2h-1.5V12M10.5 12h3"/>'),
+ 'diamond': ico('<path d="m12 4 7 8-7 8-7-8 7-8Z"/>'),
+ 'leafline': '<svg viewBox="0 0 120 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><path d="M2 14h92"/><path d="M96 14c4-7 10-9 18-8-1 7-6 11-13 10-3 0-5-1-5-2Z"/></svg>',
+})
+
+VALLEY_CSS = '''
+  html { scroll-padding-top: 84px; }
+  body { background: var(--cream); }
+  .vl-wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
+  @media (max-width: 600px) { .vl-wrap { padding: 0 20px; } }
+  .vl-h { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+  .vl-h::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold), rgba(184,146,60,0)); }
+  .vl-h span { font-family: 'Cinzel', serif; font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ac-deep); font-weight: 600; white-space: nowrap; }
+  .vl-title { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; color: var(--forest-deep); font-size: clamp(30px, 4.4vw, 46px); line-height: 1.08; letter-spacing: -0.01em; }
+  .vl-sec { padding-top: 62px; padding-bottom: 62px; scroll-margin-top: 80px; }
+  @media (max-width: 700px) { .vl-sec { padding-top: 46px; padding-bottom: 46px; } }
+  .vl-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--ac-deep); text-decoration: none; border-bottom: 1px solid var(--ac); padding-bottom: 2px; }
+  .vl-link svg { width: 16px; height: 16px; }
+  .vl-link:hover { color: var(--forest-deep); border-color: var(--forest-deep); }
+  .vl-stamp { position: absolute; z-index: 2; top: 18px; left: 18px; background: var(--ac); border: 1px solid var(--gold); color: #fff; text-align: center; padding: 8px 14px 7px; border-radius: 4px; box-shadow: 0 6px 18px rgba(0,0,0,0.3); }
+  .vl-stamp b { display: block; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
+  .vl-stamp i { display: block; font-family: 'Playfair Display', serif; font-style: normal; font-weight: 600; font-size: 34px; line-height: 1.05; }
+  .vl-cap { position: absolute; z-index: 2; right: 10px; bottom: 8px; font-size: 10.5px; color: rgba(255,255,255,0.92); background: rgba(15,22,14,0.6); padding: 2px 8px; border-radius: 2px; }
+
+  /* A. hero */
+  .vl-hero { position: relative; color: #fff; min-height: clamp(520px, 64vw, 650px); display: flex; align-items: flex-end; overflow: hidden; background: var(--forest-deep); isolation: isolate; }
+  .vl-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .vl-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(15,22,14,0.3) 0%, rgba(15,22,14,0.5) 45%, rgba(15,22,14,0.92) 100%); }
+  @media (min-width: 900px) { .vl-hero::before { background: linear-gradient(90deg, rgba(20,34,22,0.94) 0%, rgba(20,34,22,0.78) 34%, rgba(20,34,22,0.18) 62%, rgba(20,34,22,0) 100%), linear-gradient(180deg, rgba(15,22,14,0) 70%, rgba(15,22,14,0.45) 100%); } }
+  .vl-hero-inner { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 96px 28px 54px; position: relative; }
+  @media (max-width: 600px) { .vl-hero-inner { padding: 84px 20px 40px; } }
+  .vl-kicker { display: flex; align-items: center; gap: 12px; font-family: 'Cinzel', serif; font-weight: 600; font-size: clamp(13px, 1.6vw, 17px); letter-spacing: 0.26em; text-transform: uppercase; color: #fff; }
+  .vl-kicker svg { width: 84px; height: 18px; color: var(--gold-bright); flex: none; }
+  .vl-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; line-height: 0.96; letter-spacing: -0.02em; font-size: clamp(50px, 9.2vw, 108px); margin: 16px 0 20px; max-width: 7.2em; text-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+  .vl-sub { font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(11.5px, 1.35vw, 14px); letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.85; max-width: 30em; color: rgba(250,246,238,0.94); }
+  .vl-by { margin-top: 24px; display: flex; align-items: center; gap: 12px; }
+  .vl-by svg { width: 36px; height: 36px; color: var(--gold-bright); flex: none; }
+  .vl-by span { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .vl-ribbon { display: inline-flex; align-items: center; gap: 8px; background: var(--ac); border: 1px solid var(--gold); color: #fff; font-family: 'Cinzel', serif; letter-spacing: 0.14em; text-transform: uppercase; font-size: 10.5px; font-weight: 600; padding: 7px 12px; margin-bottom: 18px; }
+  .vl-ribbon .y { font-weight: 500; }
+  @media (min-width: 900px) {
+    .vl-ribbon { position: absolute; top: 0; right: 28px; flex-direction: column; gap: 2px; width: 116px; padding: 22px 0 30px; margin: 0; text-align: center; border-width: 2px; border-top: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%); }
+    .vl-ribbon .m { font-size: 19px; letter-spacing: 0.12em; }
+    .vl-ribbon .y { font-family: 'Playfair Display', serif; font-size: 26px; letter-spacing: 0; text-transform: none; }
+    .vl-ribbon .e { font-size: 10px; }
+  }
+
+  /* B. intro */
+  .vl-intro { padding: 46px 0 8px; }
+  .vl-intro .vl-wrap > div { max-width: 800px; border-left: 3px solid var(--ac); padding: 2px 0 2px 24px; }
+  .vl-intro p { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(18px, 2vw, 22px); line-height: 1.55; color: var(--forest-deep); }
+  .vl-intro p + p { margin-top: 12px; }
+  .vl-crumb { font-size: 12.5px; color: var(--taupe); padding: 16px 0 0; }
+  .vl-crumb a { color: inherit; }
+
+  /* C. in this edition */
+  .vl-toc { padding: 38px 0 16px; }
+  .vl-toc .vl-h span { font-family: 'Playfair Display', serif; font-style: italic; text-transform: none; letter-spacing: 0; font-size: clamp(26px, 3.4vw, 34px); color: var(--ac-deep); font-weight: 600; }
+  .vl-toc-lead { font-size: 14.5px; color: #5a5346; margin: -8px 0 18px; }
+  .vl-toc ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (min-width: 620px) { .vl-toc ul { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1000px) { .vl-toc ul { grid-template-columns: repeat(6, 1fr); gap: 0; } .vl-toc li + li { border-left: 1px solid rgba(184,146,60,0.45); } }
+  .vl-toc a { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 14px 10px; text-decoration: none; color: var(--forest-deep); border: 1px solid var(--line); border-radius: 6px; background: rgba(255,255,255,0.45); height: 100%; transition: background .2s, border-color .2s; }
+  @media (min-width: 1000px) { .vl-toc a { border: 0; background: none; border-radius: 0; padding: 6px 14px; } }
+  .vl-toc a:hover { background: #fff; border-color: var(--gold); }
+  .vl-toc svg { width: 30px; height: 30px; color: var(--ac); }
+  .vl-toc b { font-family: 'Playfair Display', serif; font-size: 15.5px; font-weight: 600; line-height: 1.2; }
+  .vl-toc small { display: none; font-size: 11.5px; line-height: 1.4; color: #6b6558; }
+  @media (min-width: 1000px) { .vl-toc small { display: block; } }
+
+  /* D. events */
+  .vl-events { background: linear-gradient(180deg, transparent, rgba(255,255,255,0.35)); }
+  .vl-pill { display: inline-flex; align-items: center; gap: 12px; background: var(--forest-deep); color: var(--cream); border-radius: 0 40px 40px 0; padding: 12px 34px 12px 22px; margin-left: -28px; box-shadow: 0 8px 20px rgba(35,45,29,0.18); }
+  @media (max-width: 600px) { .vl-pill { margin-left: -20px; } }
+  .vl-pill svg { width: 26px; height: 26px; color: var(--gold-bright); }
+  .vl-pill h2 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: clamp(24px, 3vw, 32px); color: var(--cream); line-height: 1.1; }
+  .vl-sec-sub { font-size: 15px; color: #5a5346; margin: 14px 0 24px; }
+  .vl-tiles { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 680px) { .vl-tiles { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1020px) { .vl-tiles { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+  .vl-tile { display: grid; grid-template-columns: 68px 1fr; gap: 16px; background: #fff; border: 1px solid rgba(184,146,60,0.4); border-radius: 8px; padding: 16px; box-shadow: 0 8px 22px rgba(35,45,29,0.07); }
+  .vl-date { align-self: start; background: var(--ac); color: #fff; border-radius: 6px; text-align: center; padding: 9px 0 8px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25); }
+  .vl-date .mo { display: block; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+  .vl-date .dy { display: block; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 34px; line-height: 1.05; }
+  .vl-tile h3 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 19px; line-height: 1.2; color: var(--forest-deep); }
+  .vl-meta { list-style: none; margin: 8px 0 0; padding: 0; font-size: 13.5px; color: #3f3a30; }
+  .vl-meta li { display: flex; gap: 8px; align-items: flex-start; margin-top: 4px; }
+  .vl-meta svg { width: 16px; height: 16px; color: var(--ac); flex: none; margin-top: 2px; }
+  .vl-tile p { font-size: 14px; line-height: 1.55; color: #4b453b; margin-top: 10px; }
+  @media (max-width: 679px) { .vl-tile { grid-template-columns: 58px 1fr; gap: 14px; padding: 14px; } .vl-date .dy { font-size: 28px; } .vl-tile h3 { font-size: 18px; } .vl-tile p { font-size: 13.5px; line-height: 1.5; margin-top: 8px; } .vl-tile .vl-link { margin-top: 9px; } }
+  .vl-tile .vl-link { margin-top: 12px; font-size: 13.5px; }
+
+  /* E. in season */
+  .vl-season { background: var(--cream-deep); }
+  .vl-split { display: grid; gap: 28px; align-items: center; }
+  @media (min-width: 900px) { .vl-split { grid-template-columns: 5fr 6fr; gap: 56px; } .vl-split.flip { grid-template-columns: 6fr 5fr; } }
+  .vl-photo { position: relative; border-radius: 8px; overflow: hidden; background: var(--forest); aspect-ratio: 4/3; box-shadow: 0 16px 34px rgba(35,45,29,0.18); }
+  .vl-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .vl-lead { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(18px, 2vw, 21px); color: var(--ac-deep); margin: 12px 0 14px; line-height: 1.4; }
+  .vl-body p { font-size: 15.5px; line-height: 1.7; color: #3f3a30; margin-top: 12px; }
+  @media (max-width: 600px) { .vl-body p, .vl-close p { font-size: 15px; line-height: 1.62; } }
+  .vl-chip { display: inline-flex; flex-direction: column; margin-top: 18px; padding: 12px 18px; border: 1px solid var(--gold); border-left: 4px solid var(--ac); background: rgba(255,255,255,0.7); border-radius: 4px; }
+  .vl-chip small { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ac-deep); font-weight: 600; }
+  .vl-chip b { font-size: 15px; color: var(--forest-deep); margin-top: 3px; }
+  .vl-body .vl-link { margin-top: 20px; }
+
+  /* F. featured */
+  .vl-feature { position: relative; background: var(--forest-deep); color: var(--cream); overflow: hidden; isolation: isolate; }
+  .vl-feature::before { content: ''; position: absolute; z-index: -1; width: 640px; height: 640px; border-radius: 50%; left: -260px; top: -300px; background: radial-gradient(circle, color-mix(in srgb, var(--ac) 55%, transparent) 0%, transparent 68%); }
+  .vl-feature .vl-sec { padding-top: 58px; padding-bottom: 58px; }
+  .vl-fgrid { display: grid; gap: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 24px 50px rgba(0,0,0,0.35); }
+  @media (min-width: 900px) { .vl-fgrid { grid-template-columns: 1.05fr 1fr; } }
+  .vl-fgrid .vl-photo { border-radius: 0; aspect-ratio: 4/3; min-height: 100%; box-shadow: none; }
+  @media (min-width: 900px) { .vl-fgrid .vl-photo { aspect-ratio: auto; } .vl-fgrid .vl-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,34,22,0) 60%, rgba(20,34,22,0.25) 100%); } }
+  .vl-ftxt { background: #FBF7EE; color: #3f3a30; padding: 34px 30px 36px; }
+  @media (min-width: 900px) { .vl-ftxt { padding: 44px 46px 46px; } }
+  .vl-badge { display: inline-block; background: var(--ac); color: #fff; font-family: 'Cinzel', serif; font-weight: 600; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 7px 14px; border: 1px solid var(--gold); border-radius: 2px; }
+  .vl-ftxt h2 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: clamp(32px, 4.2vw, 46px); line-height: 1.04; color: var(--forest-deep); margin: 16px 0 8px; }
+  .vl-ftxt .ev { font-family: 'Cinzel', serif; font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ac-deep); line-height: 1.5; }
+  .vl-facts { list-style: none; margin: 16px 0 6px; padding: 12px 0; display: flex; flex-wrap: wrap; gap: 8px 22px; border-top: 1px solid rgba(184,146,60,0.5); border-bottom: 1px solid rgba(184,146,60,0.5); font-size: 14px; font-weight: 700; color: var(--forest-deep); }
+  .vl-facts li { display: flex; align-items: center; gap: 8px; }
+  .vl-facts svg { width: 18px; height: 18px; color: var(--ac); }
+  .vl-why { margin-top: 18px; padding: 14px 16px; background: var(--ac-tint); border-left: 3px solid var(--ac); border-radius: 0 4px 4px 0; font-size: 14.5px; line-height: 1.55; color: #3f3a30; }
+  .vl-why b { color: var(--ac-deep); }
+  .vl-ftxt .btn { margin-top: 22px; }
+  .btn-gold, .btn-gold:hover { color: var(--forest-deep); }
+
+  /* G. eat */
+  .vl-eat { background: var(--cream); }
+  .vl-vendors { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+  .vl-vendors li { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid rgba(184,146,60,0.4); border-radius: 6px; padding: 12px 16px; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 18px; color: var(--forest-deep); }
+  .vl-vendors svg { flex: none; width: 22px; height: 22px; color: var(--ac); }
+  .vl-tip { margin-top: 22px; padding: 16px 18px; background: var(--ac-tint); border-radius: 6px; font-size: 14.5px; line-height: 1.55; color: #3f3a30; }
+  .vl-tip b { font-family: 'Cinzel', serif; letter-spacing: 0.12em; text-transform: uppercase; font-size: 11px; color: var(--ac-deep); display: block; margin-bottom: 4px; }
+
+  /* H. detour */
+  .vl-detour { background: var(--cream-deep); }
+  .vl-dcard { display: grid; background: #FBF7EE; border: 1px solid var(--line); border-top: 4px solid var(--ac); border-radius: 8px; overflow: hidden; box-shadow: 0 14px 30px rgba(35,45,29,0.1); }
+  @media (min-width: 900px) { .vl-dcard { grid-template-columns: 6fr 5fr; } }
+  .vl-dtxt { padding: 32px 30px 34px; }
+  @media (min-width: 900px) { .vl-dtxt { padding: 42px 46px; } }
+  .vl-partner { display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--forest-deep); background: var(--gold-bright); padding: 6px 12px; border-radius: 2px; margin-bottom: 14px; }
+  .vl-partner svg { width: 14px; height: 14px; }
+  .vl-note { margin-top: 14px; font-size: 13px; font-style: italic; color: #5a5346; }
+  .vl-dcard .vl-photo { border-radius: 0; box-shadow: none; aspect-ratio: 4/3; }
+  @media (min-width: 900px) { .vl-dcard .vl-photo { aspect-ratio: auto; min-height: 100%; } }
+
+  /* I. plan ahead */
+  .vl-ahead { background: var(--ac-tint); }
+  .vl-ahead .vl-sec { padding-top: 52px; padding-bottom: 52px; }
+  .vl-arows { display: grid; gap: 14px; margin-top: 24px; }
+  @media (min-width: 900px) { .vl-arows { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+  .vl-arow { display: grid; grid-template-columns: 56px 1fr; gap: 14px; background: rgba(255,255,255,0.75); border: 1px solid rgba(184,146,60,0.35); border-radius: 8px; padding: 16px; }
+  .vl-arow .vl-date { padding: 7px 0 6px; } .vl-arow .vl-date .dy { font-size: 26px; }
+  .vl-arow h3 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 18px; color: var(--forest-deep); line-height: 1.2; }
+  .vl-arow .when { display: block; font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ac-deep); font-weight: 600; margin: 3px 0 6px; }
+  .vl-arow p { font-size: 13.5px; line-height: 1.55; color: #4b453b; }
+  .vl-arow .vl-link { margin-top: 10px; font-size: 13px; }
+  .vl-next { margin-top: 24px; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: var(--forest-deep); }
+
+  /* J. closing */
+  .vl-close { background: var(--forest-deep); color: var(--cream); }
+  .vl-close .vl-sec { padding-top: 64px; padding-bottom: 64px; }
+  .vl-cgrid { display: grid; gap: 34px; align-items: center; }
+  @media (min-width: 900px) { .vl-cgrid { grid-template-columns: 1.05fr 1fr; gap: 60px; } }
+  .vl-close .k { display: flex; align-items: center; gap: 14px; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-bright); font-weight: 600; }
+  .vl-close .k::after { content: ''; flex: 1; max-width: 90px; height: 1px; background: var(--gold); }
+  .vl-close h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(32px, 4.4vw, 50px); line-height: 1.05; color: #fff; margin: 16px 0 16px; }
+  .vl-close p { font-size: 15.5px; line-height: 1.7; color: rgba(250,246,238,0.88); margin-top: 12px; max-width: 46ch; }
+  .vl-close .btn { margin-top: 24px; padding: 15px 26px; font-size: 13.5px; }
+  .vl-cph { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vl-cph figure { margin: 0; position: relative; aspect-ratio: 3/4; border-radius: 6px; overflow: hidden; box-shadow: 0 16px 34px rgba(0,0,0,0.35); }
+  .vl-cph figure:nth-child(2) { margin-top: 28px; }
+  .vl-cph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .vl-fine { margin: 0; padding: 22px 0 6px; font-size: 12.5px; color: var(--taupe); text-align: center; }
+  .vl-credits { padding: 8px 0 44px; }
+  .vl-credits h2 { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--taupe); margin-bottom: 8px; }
+  .vl-credits p { font-size: 12.5px; line-height: 1.6; color: #6b6558; max-width: 95ch; }
+  .vl-credits a { color: inherit; }
+  .vl-back { display: inline-block; margin-top: 12px; font-size: 14px; font-weight: 700; color: var(--forest-deep); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+'''
+
+def _img(im, w, h, cls='', lazy=True, extra=''):
+    cap = f'<span class="vl-cap">{esc(im["caption"])}</span>' if im.get('caption') else ''
+    lz = 'loading="lazy" ' if lazy else ''
+    return f'<img src="/{im["src"]}" width="{w}" height="{h}" {lz}alt="{esc(im["alt"])}"{extra}>{cap}'
+
+def valley_page(d, live):
+    c = chrome()
+    url = f"{SITE}/guides/{d['slug']}"
+    coll = COLL['valley-edit']
+    art = next(a for a in reg['articles'] if a['slug'] == d['slug'])
+    ac, acd, act = ACCENTS[d['season']]
+    hero = d['hero']
+    og = f"{SITE}/{hero['src']}"
+    article = {
+        "@context": "https://schema.org", "@type": "Article", "mainEntityOfPage": {"@type": "WebPage", "@id": url},
+        "headline": d['title'], "alternativeHeadline": d['subtitle'], "description": art['description'],
+        "image": [og], "datePublished": d['published'], "dateModified": d['updated'], "inLanguage": "en-US",
+        "articleSection": coll['name'], "isPartOf": {"@type": "CreativeWorkSeries", "name": coll['name']},
+        "author": {"@type": "Organization", "name": "Cedar Escape", "url": SITE + "/"},
+        "publisher": {"@type": "Organization", "name": "Cedar Escape", "url": SITE + "/",
+                      "logo": {"@type": "ImageObject", "url": f"{SITE}/images/guides/jmu-hero-800.jpg"}},
+    }
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+        {"@type": "ListItem", "position": 2, "name": "Things to Do", "item": SITE + "/explore-massanutten"},
+        {"@type": "ListItem", "position": 3, "name": d['title'], "item": url}]}
+    robots = '' if live else '<meta name="robots" content="noindex, nofollow">\n'
+    head = c['head_top'] + f'''<meta charset="UTF-8">
+<meta name="google-site-verification" content="fluRb5pqQbRyoYBszjH6r6vUlKDnWXYRyJcgYh6-Ww0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{esc(d['seo_title'])}</title>
+<meta name="description" content="{esc(art['description'])}">
+{robots}<link rel="canonical" href="{url}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Cedar Escape">
+<meta property="og:url" content="{url}">
+<meta property="og:title" content="{esc(d['seo_title'])}">
+<meta property="og:description" content="{esc(art['description'])}">
+<meta property="og:image" content="{og}">
+<meta property="article:published_time" content="{d['published']}">
+<meta property="article:modified_time" content="{d['updated']}">
+<meta property="article:section" content="{esc(coll['name'])}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{json.dumps(crumbs, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(article, ensure_ascii=False)}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+'''
+    e = d['edition']
+    intro = ''.join(f'<p>{esc(p)}</p>' for p in d['intro'])
+    toc = ''.join(f'<li><a href="#{t["id"]}">{ICONS[t["icon"]]}<b>{esc(t["label"])}</b><small>{esc(t["desc"])}</small></a></li>' for t in d['toc']['items'])
+    ev = d['events']
+    tiles = ''
+    for t in ev['items']:
+        l = t['link']
+        tiles += f'''
+      <article class="vl-tile">
+        <div class="vl-date" aria-hidden="true"><span class="mo">{esc(t['month'])}</span><span class="dy">{esc(t['day'])}</span></div>
+        <div>
+          <h3>{esc(t['title'])}</h3>
+          <ul class="vl-meta"><li>{ICONS['calendar']}<span><span class="sr-only">{esc(t['month'])} {esc(t['day'])}, </span>{esc(t['time'])}</span></li><li>{ICONS['pin']}<span>{esc(t['place'])}</span></li></ul>
+          <p>{esc(t['desc'])}</p>
+          <a class="vl-link" href="{l['url']}" target="_blank" rel="noopener">{esc(l['label'])} {ICONS['arrow']}</a>
+        </div>
+      </article>'''
+    s = d['in_season']; f = d['featured']; g = d['eat']; t = d['detour']; a = d['ahead']; cl = d['closing']
+    body_s = ''.join(f'<p>{esc(x)}</p>' for x in s['body'])
+    body_f = ''.join(f'<p>{esc(x)}</p>' for x in f['body'])
+    facts = ''.join(f'<li>{ICONS[x["icon"]]}{esc(x["text"])}</li>' for x in f['facts'])
+    vend = ''.join(f'<li>{ICONS["diamond"]}{esc(v)}</li>' for v in g['vendors'])
+    body_g = ''.join(f'<p>{esc(x)}</p>' for x in g['body'])
+    body_t = ''.join(f'<p>{esc(x)}</p>' for x in t['body'])
+    rows = ''
+    for r in a['items']:
+        lk = f'<a class="vl-link" href="{r["link"]["url"]}" target="_blank" rel="noopener">{esc(r["link"]["label"])} {ICONS["arrow"]}</a>' if r.get('link') else ''
+        rows += f'''
+        <article class="vl-arow">
+          <div class="vl-date" aria-hidden="true"><span class="mo">{esc(r['month'])}</span><span class="dy">{esc(r['day'])}</span></div>
+          <div><h3>{esc(r['title'])}</h3><span class="when">{esc(r['when'])}</span><p>{esc(r['desc'])}</p>{lk}</div>
+        </article>'''
+    ph = ''.join(f'<figure><img src="/{x["src"]}" width="900" height="1200" loading="lazy" alt="{esc(x["alt"])}" style="object-position:{x.get("position","50% 50%")}"></figure>' for x in cl['images'])
+    body_c = ''.join(f'<p>{esc(x)}</p>' for x in cl['body'])
+    main = f'''<main style="--ac:{ac};--ac-deep:{acd};--ac-tint:{act};">
+<div class="vl-hero">
+  <img src="/{hero['src']}" srcset="/{hero['src_small']} 800w, /{hero['src']} 1600w" sizes="100vw" width="1600" height="1064" alt="{esc(hero['alt'])}" style="object-position:{hero.get('position','50% 50%')}" fetchpriority="high">
+  <div class="vl-hero-inner">
+    <div class="vl-ribbon"><span class="m">{esc(e['month'])}</span><span class="y">{esc(e['year'])}</span><span class="e">Edition</span></div>
+    <div class="vl-kicker">The Valley Edit {ICONS['leafline']}</div>
+    <h1>{esc(d['h1'])}</h1>
+    <p class="vl-sub">{esc(d['subtitle'])}</p>
+    <div class="vl-by">{ICONS['mtn']}<span>Presented by Cedar Escape</span></div>
+  </div>
+</div>
+
+<div class="vl-wrap"><p class="vl-crumb"><a href="/">Home</a> / <a href="/explore-massanutten#local-guides">Things to Do</a> / {esc(coll['name'])}</p></div>
+<section class="vl-intro" aria-label="Introduction"><div class="vl-wrap"><div>{intro}</div></div></section>
+
+<nav class="vl-toc" aria-label="{esc(d['toc']['title'])}"><div class="vl-wrap">
+  <div class="vl-h"><span>{esc(d['toc']['title'])}</span></div>
+  <p class="vl-toc-lead">{esc(d['toc']['lead'])}</p>
+  <ul>{toc}</ul>
+</div></nav>
+
+<section class="vl-sec vl-events" id="upcoming-events" aria-labelledby="h-events"><div class="vl-wrap">
+  <div class="vl-pill">{ICONS['calendar']}<h2 id="h-events">{esc(ev['kicker'])}</h2></div>
+  <p class="vl-sec-sub">{esc(ev['title'])}</p>
+  <div class="vl-tiles">{tiles}
+  </div>
+</div></section>
+
+<section class="vl-sec vl-season" id="in-season" aria-labelledby="h-season"><div class="vl-wrap">
+  <div class="vl-split">
+    <div class="vl-photo">{_img(s['image'], 900, 675)}</div>
+    <div class="vl-body">
+      <div class="vl-h"><span>{esc(s['kicker'])}</span></div>
+      <h2 class="vl-title" id="h-season">{esc(s['title'])}</h2>
+      <p class="vl-lead">{esc(s['lead'])}</p>
+      {body_s}
+      <div class="vl-chip"><small>{esc(s['chip_label'])}</small><b>{esc(s['chip'])}</b></div><br>
+      <a class="vl-link" href="{s['link']['url']}" target="_blank" rel="noopener">{esc(s['link']['label'])} {ICONS['arrow']}</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="vl-feature" id="featured-experience" aria-labelledby="h-feat"><div class="vl-wrap vl-sec">
+  <div class="vl-fgrid">
+    <div class="vl-photo"><span class="vl-stamp" aria-hidden="true"><b>{esc(f['stamp']['month'])}</b><i>{esc(f['stamp']['day'])}</i></span>{_img(f['image'], 1000, 750)}</div>
+    <div class="vl-ftxt">
+      <span class="vl-badge">{esc(f['kicker'])}</span>
+      <h2 id="h-feat">{esc(f['title'])}</h2>
+      <p class="ev">{esc(f['event'])}</p>
+      <ul class="vl-facts">{facts}</ul>
+      <div class="vl-body">{body_f}</div>
+      <p class="vl-why"><b>Why we're featuring it:</b> {esc(f['why'])}</p>
+      <div class="vl-body"><p>{esc(f['close'])}</p></div>
+      <a class="btn btn-gold" href="{f['link']['url']}" target="_blank" rel="noopener">{esc(f['link']['label'])} <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</div></section>
+
+<section class="vl-sec vl-eat" id="eat-sip-sweet" aria-labelledby="h-eat"><div class="vl-wrap">
+  <div class="vl-split">
+    <div class="vl-photo">{_img(g['image'], 900, 675)}</div>
+    <div class="vl-body">
+      <div class="vl-h"><span>{esc(g['kicker'])}</span></div>
+      <h2 class="vl-title" id="h-eat">{esc(g['title'])}</h2>
+      <p class="vl-lead">{esc(g['lead'])}</p>
+      <p>{esc(g['vendors_intro'])}</p>
+      <ul class="vl-vendors">{vend}</ul>
+      {body_g}
+      <p class="vl-tip"><b>Our tip</b>{esc(g['tip'])}</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="vl-sec vl-detour" id="worth-the-detour" aria-labelledby="h-detour"><div class="vl-wrap">
+  <div class="vl-dcard">
+    <div class="vl-dtxt vl-body">
+      <span class="vl-partner">{ICONS['pin']}{esc(t['badge'])}</span>
+      <div class="vl-h"><span>{esc(t['kicker'])}</span></div>
+      <h2 class="vl-title" id="h-detour">{esc(t['title'])}</h2>
+      <p class="vl-lead">{esc(t['lead'])}</p>
+      {body_t}
+      <div class="vl-chip"><small>On the calendar</small><b>{esc(t['chip'])}</b></div>
+      <p class="vl-note">{esc(t['note'])}</p>
+      <a class="vl-link" href="{t['link']['url']}" target="_blank" rel="noopener">{esc(t['link']['label'])} {ICONS['arrow']}</a>
+    </div>
+    <div class="vl-photo">{_img(t['image'], 900, 675)}</div>
+  </div>
+</div></section>
+
+<section class="vl-ahead" id="plan-ahead" aria-labelledby="h-ahead"><div class="vl-wrap vl-sec">
+  <div class="vl-h"><span>{esc(a['kicker'])}</span></div>
+  <h2 class="vl-title" id="h-ahead">{esc(a['title'])}</h2>
+  <p class="vl-body" style="max-width:62ch;margin-top:10px;font-size:15.5px;line-height:1.65;color:#3f3a30;">{esc(a['lead'])}</p>
+  <div class="vl-arows">{rows}
+  </div>
+  <p class="vl-next">{esc(a['next'])}</p>
+</div></section>
+
+<section class="vl-close" aria-labelledby="closing-title"><div class="vl-wrap vl-sec">
+  <div class="vl-cgrid">
+    <div>
+      <div class="k">{esc(cl['eyebrow'])}</div>
+      <h2 id="closing-title">{esc(cl['title'])}</h2>
+      {body_c}
+      <a class="btn btn-gold" href="{cl['cta_url']}">{esc(cl['cta'])} <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="vl-cph">{ph}</div>
+  </div>
+</div></section>
+
+<div class="vl-wrap"><p class="vl-fine">{esc(d['disclaimer'])}</p></div>
+<section class="vl-credits" aria-label="Photo credits"><div class="vl-wrap">
+  <h2>Photo credits</h2>
+  <p>{d['credits']}</p>
+  <p>Published <time datetime="{d['published']}">{d['published']}</time> · Last updated <time datetime="{d['updated']}">{d['updated']}</time>.</p>
+  <a class="vl-back" href="/explore-massanutten#local-guides">&larr; Back to Things to Do</a>
+</div></section>
+</main>'''
+    sr = '  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }\n'
+    return (head + '<style>\n' + c['css'] + '\n' + sr + VALLEY_CSS + '\n</style>\n</head>\n<body>\n\n' + c['nav'] + '\n' + main +
+            '\n' + c['footer'] + '\n\n<a href="#" class="js-open-contact floating-message-btn">Message Us</a>\n\n' + c['contact'])
+
+
+# ----------------------------------------------------------------------------------
 # Things to Do: grouped editorial section
 # ----------------------------------------------------------------------------------
 GUIDES_CSS = '''  .lg-series { max-width: 1020px; margin: 0 auto 46px; }
@@ -280,8 +689,11 @@ GUIDES_CSS = '''  .lg-series { max-width: 1020px; margin: 0 auto 46px; }
   .lg-series > p { font-size: 14.5px; color: #4b453b; margin: 0 0 18px; }
   .lg-card .lg-k { display: flex; align-items: center; gap: 8px; }
 '''
+PREVIEW = bool(os.environ.get('PREVIEW_DRAFTS'))   # PREVIEW_DRAFTS=1 shows drafts in listings (never commit that output)
+def is_live(a): return a['status'] == 'published' or (PREVIEW and a['status'] == 'draft')
+
 def guides_section():
-    pub = [a for a in reg['articles'] if a['status'] == 'published']
+    pub = [a for a in reg['articles'] if is_live(a)]
     blocks = []
     for c in reg['collections']:
         arts = [a for a in pub if a['collection'] == c['id']]
@@ -364,6 +776,10 @@ def main():
             d = json.loads(rd(a['source']))
             wr(f"guides/{a['slug']}.html", five_page(d))
             print('built guides/%s.html' % a['slug'])
+        elif a.get('built') == 'valley':
+            d = json.loads(rd(a['source']))
+            wr(f"guides/{a['slug']}.html", valley_page(d, a['status'] == 'published'))
+            print('built guides/%s.html (%s)' % (a['slug'], a['status']))
     update_explore(); update_sitemap(); tag_series_on_handbuilt()
     pub = [a['slug'] for a in reg['articles'] if a['status'] == 'published']
     print('published articles listed:', pub)

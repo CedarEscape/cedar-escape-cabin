@@ -40,7 +40,9 @@
       "card_title": "The Ultimate JMU Visitor's Guide",
       "card_blurb": "Where to eat, stay, and explore in Harrisonburg.",
       "cta": "Read the Guide",
-      "image_large": true
+      "image_large": "images/guides/jmu-hero-1600.jpg",
+      "hub_blurb": "Where to eat, stay, and explore in Harrisonburg.",
+      "hub_featured": true
     },
     {
       "slug": "5-things-to-do-massanutten-winter",
@@ -59,7 +61,9 @@
       "source": "data/five/winter-massanutten.json",
       "card_title": "5 Things to Do in Massanutten This Winter",
       "card_blurb": "Snowy adventures and local favorites.",
-      "cta": "Read the Guide"
+      "cta": "Read the Guide",
+      "image_large": "images/guides/five-winter-hero-1600.jpg",
+      "hub_blurb": "Snowy adventures, local favorites, and winter experiences worth trying."
     },
     {
       "slug": "valley-edit-fall-to-festive-2026",
@@ -78,7 +82,9 @@
       "source": "data/valley/2026-11-fall-to-festive.json",
       "card_title": "From Fall to Festive",
       "card_blurb": "November happenings near Massanutten, including local markets, holiday lights, and seasonal favorites.",
-      "cta": "Read the Edition"
+      "cta": "Read the Edition",
+      "image_large": "images/guides/valley-hero-1600.jpg",
+      "hub_blurb": "November happenings, local experiences, and reasons to explore the Shenandoah Valley."
     }
   ],
   "listing_banner": {

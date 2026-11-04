@@ -1157,6 +1157,26 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "VacationRental", "@id": "https://cedarescapecabin.com/#rental", "name": "Cedar Escape", "url": "https://cedarescapecabin.com/", "description": "A 5-bedroom, 3-bath vacation home inside the Massanutten Resort community in the Shenandoah Valley, sleeping up to 14 guests, about 25 minutes from James Madison University.", "image": ["https://cedarescapecabin.com/images/hero-poolroom-jmu.webp", "https://cedarescapecabin.com/images/vrbo/vrbo-16.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-01.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-21.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-03.jpg"], "telephone": "+1-202-734-5992", "address": {"@type": "PostalAddress", "addressLocality": "McGaheysville", "addressRegion": "VA", "postalCode": "22840", "addressCountry": "US"}, "containedInPlace": {"@type": "Resort", "name": "Massanutten Resort"}, "checkinTime": "16:00", "checkoutTime": "11:00", "petsAllowed": false, "sameAs": ["https://www.instagram.com/cedarescape_massanutten", "https://g.page/r/Cb2bDoAfVzKJEAE"], "containsPlace": {"@type": "Accommodation", "additionalType": "EntirePlace", "occupancy": {"@type": "QuantitativeValue", "maxValue": 14}, "numberOfBedrooms": 5, "numberOfBathroomsTotal": 3, "bed": {"@type": "BedDetails", "numberOfBeds": 9}, "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Movie room", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Pool table", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Poker table", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Peloton bike", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Free weights", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Two work nooks", "value": true}, {"@type": "LocationFeatureSpecification", "name": "High-speed Wi-Fi", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Full kitchen", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Coffee and tea bar", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Washer and dryer", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Gas fireplace", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Outdoor grill", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Deck", "value": true}, {"@type": "LocationFeatureSpecification", "name": "High chair", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Pack 'n Play", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Free parking", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Electric vehicle charging station", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Hot tub", "value": true}]}}</script>
 <body>
 
+<style id="nav-sub">
+  .nav-links li.has-sub { position: relative; }
+  .nav-links .caret { width: 9px; height: 9px; margin-left: 5px; vertical-align: 1px; transition: transform .2s; }
+  .nav-links .sub { list-style: none; margin: 0; padding: 0; }
+  @media (min-width: 880px) {
+    .nav-links .sub { display: none; position: absolute; top: 100%; left: -16px; min-width: 210px; padding: 8px 0; margin-top: 12px; background: var(--cream, #FAF6EE); border: 1px solid var(--line, #E6DDC9); border-top: 2px solid var(--gold, #B8923C); border-radius: 0 0 6px 6px; box-shadow: 0 16px 30px rgba(43,39,31,0.16); z-index: 60; }
+    .nav-links .sub::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+    .nav-links li.has-sub:hover > .sub, .nav-links li.has-sub:focus-within > .sub { display: block; }
+    .nav-links li.has-sub:hover .caret, .nav-links li.has-sub:focus-within .caret { transform: rotate(180deg); }
+    .nav-links .sub a { display: block; padding: 10px 20px; white-space: nowrap; }
+    .nav-links .sub a::after { display: none; }
+    .nav-links .sub a:hover { background: var(--cream-deep, #F2EBDD); color: var(--forest-deep, #232D1D); }
+  }
+  @media (max-width: 879.98px) {
+    .nav-links .caret { display: none; }
+    .nav-links.open .sub { display: block; margin: 8px 0 0 14px; padding-left: 14px; border-left: 1px solid var(--gold, #B8923C); }
+    .nav-links.open .sub li + li { margin-top: 10px; }
+    .nav-links.open .sub a { font-size: 12.5px; }
+  }
+</style>
 <header>
   <nav class="nav">
     <a href="/" class="wordmark">CEDAR <span>ESCAPE</span></a>
@@ -1164,7 +1184,11 @@
       <li><a href="/" class="current">Home</a></li>
       <li><a href="/stay">House Tour</a></li>
       <li><a href="/plan-your-trip">Guest Guide</a></li>
-      <li><a href="/explore-massanutten">Things to Do</a></li>
+      <li class="has-sub"><a href="/explore-massanutten">Things to Do<svg class="caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></a>
+        <ul class="sub">
+          <li><a href="/explore-massanutten">Explore Activities</a></li>
+          <li><a href="/guides">All Travel Guides</a></li>
+        </ul></li>
       <li><a href="/faq">FAQ</a></li>
       <li><a href="/shop-cedar-escape">Shop</a></li>
       <li><a href="/add-ons">Enhance Your Stay</a></li>
@@ -1352,6 +1376,9 @@
       <span><span class="fg-k">Featured Guide</span><span class="fg-t" style="display:block;">The Ultimate JMU Visitor's Guide</span><span class="fg-s" style="display:block;">Where to Eat, Stay &amp; Explore in Harrisonburg, Virginia</span></span>
       <span class="fg-go">Read the Guide &rarr;</span>
     </a>
+    <!-- guides-link:start -->
+    <p style="text-align:center;margin:18px 0 0;"><a href="/guides" style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--forest-deep);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px;">Browse All Travel Guides &rarr;</a></p>
+    <!-- guides-link:end -->
     <div style="text-align:center;margin-top:32px;">
       <a href="/explore-massanutten" class="btn btn-gold">Explore Massanutten</a>
     </div>

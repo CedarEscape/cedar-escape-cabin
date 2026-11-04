@@ -260,6 +260,26 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cedarescapecabin.com/"}, {"@type": "ListItem", "position": 2, "name": "Reserve", "item": "https://cedarescapecabin.com/check-availability"}]}</script>
 <body>
 
+<style id="nav-sub">
+  .nav-links li.has-sub { position: relative; }
+  .nav-links .caret { width: 9px; height: 9px; margin-left: 5px; vertical-align: 1px; transition: transform .2s; }
+  .nav-links .sub { list-style: none; margin: 0; padding: 0; }
+  @media (min-width: 880px) {
+    .nav-links .sub { display: none; position: absolute; top: 100%; left: -16px; min-width: 210px; padding: 8px 0; margin-top: 12px; background: var(--cream, #FAF6EE); border: 1px solid var(--line, #E6DDC9); border-top: 2px solid var(--gold, #B8923C); border-radius: 0 0 6px 6px; box-shadow: 0 16px 30px rgba(43,39,31,0.16); z-index: 60; }
+    .nav-links .sub::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+    .nav-links li.has-sub:hover > .sub, .nav-links li.has-sub:focus-within > .sub { display: block; }
+    .nav-links li.has-sub:hover .caret, .nav-links li.has-sub:focus-within .caret { transform: rotate(180deg); }
+    .nav-links .sub a { display: block; padding: 10px 20px; white-space: nowrap; }
+    .nav-links .sub a::after { display: none; }
+    .nav-links .sub a:hover { background: var(--cream-deep, #F2EBDD); color: var(--forest-deep, #232D1D); }
+  }
+  @media (max-width: 879.98px) {
+    .nav-links .caret { display: none; }
+    .nav-links.open .sub { display: block; margin: 8px 0 0 14px; padding-left: 14px; border-left: 1px solid var(--gold, #B8923C); }
+    .nav-links.open .sub li + li { margin-top: 10px; }
+    .nav-links.open .sub a { font-size: 12.5px; }
+  }
+</style>
 <header>
   <nav class="nav">
     <a href="/" class="wordmark">CEDAR <span>ESCAPE</span></a>
@@ -267,7 +287,11 @@
       <li><a href="/">Home</a></li>
       <li><a href="/stay">House Tour</a></li>
       <li><a href="/plan-your-trip">Guest Guide</a></li>
-      <li><a href="/explore-massanutten">Things to Do</a></li>
+      <li class="has-sub"><a href="/explore-massanutten">Things to Do<svg class="caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></a>
+        <ul class="sub">
+          <li><a href="/explore-massanutten">Explore Activities</a></li>
+          <li><a href="/guides">All Travel Guides</a></li>
+        </ul></li>
       <li><a href="/faq">FAQ</a></li>
       <li><a href="/shop-cedar-escape">Shop</a></li>
       <li><a href="/add-ons">Enhance Your Stay</a></li>

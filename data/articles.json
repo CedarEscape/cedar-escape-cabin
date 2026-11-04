@@ -36,7 +36,11 @@
       "updated": "2026-10-28",
       "seasonal": "year-round",
       "status": "published",
-      "built": "hand"
+      "built": "hand",
+      "card_title": "The Ultimate JMU Visitor's Guide",
+      "card_blurb": "Where to eat, stay, and explore in Harrisonburg.",
+      "cta": "Read the Guide",
+      "image_large": true
     },
     {
       "slug": "5-things-to-do-massanutten-winter",
@@ -52,7 +56,10 @@
       "seasonal": "winter",
       "status": "published",
       "built": "five",
-      "source": "data/five/winter-massanutten.json"
+      "source": "data/five/winter-massanutten.json",
+      "card_title": "5 Things to Do in Massanutten This Winter",
+      "card_blurb": "Snowy adventures and local favorites.",
+      "cta": "Read the Guide"
     },
     {
       "slug": "valley-edit-fall-to-festive-2026",
@@ -68,7 +75,14 @@
       "seasonal": "fall",
       "status": "draft",
       "built": "valley",
-      "source": "data/valley/2026-11-fall-to-festive.json"
+      "source": "data/valley/2026-11-fall-to-festive.json",
+      "card_title": "From Fall to Festive",
+      "card_blurb": "November happenings near Massanutten, including local markets, holiday lights, and seasonal favorites.",
+      "cta": "Read the Edition"
     }
-  ]
+  ],
+  "listing_banner": {
+    "src": "images/guides/valley-hero-1600.jpg",
+    "alt": "Autumn ridge above the Shenandoah Valley (decorative)"
+  }
 }

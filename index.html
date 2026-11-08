@@ -240,9 +240,10 @@
 
   /* ---------- WORKS FOR GROUPS ---------- */
   .works-band { background: var(--forest-deep); padding: 88px 0; border-top: 1px solid var(--gold); }
-  .works-grid { display:grid; grid-template-columns:1fr; gap:36px; text-align:center; }
-  @media (min-width:700px) { .works-grid { grid-template-columns:repeat(2,1fr); } }
-  @media (min-width:980px) { .works-grid { grid-template-columns:repeat(5,1fr); gap:20px; } }
+  .works-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:36px 20px; text-align:center; }
+  .works-grid .works-card { flex:0 0 100%; }
+  @media (min-width:700px) { .works-grid .works-card { flex:0 0 calc(50% - 10px); } }
+  @media (min-width:980px) { .works-grid .works-card { flex:0 0 calc(25% - 15px); } }
   .works-card { display:flex; flex-direction:column; align-items:center; }
   .works-card svg { width:38px; height:38px; color:var(--gold-bright); margin-bottom:16px; }
   .works-card h4 { font-family:'Playfair Display', serif; font-style:italic; font-size:19px; color:var(--cream); margin-bottom:8px; }
@@ -1314,6 +1315,11 @@
         <p>Room for everyone with 5 bedrooms, multiple living areas, and comfy beds.</p>
       </div>
       <div class="works-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18v3a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5v-3Z"/><path d="M7 3.5c0 1.5 1.5 1.5 1.5 3M12 3.5c0 1.5 1.5 1.5 1.5 3M17 3.5c0 1.5 1.5 1.5 1.5 3"/></svg>
+        <h4>Private Hot Tub</h4>
+        <p>Unwind in the private outdoor hot tub after a full day.</p>
+      </div>
+      <div class="works-card">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 5 4h3l-2 4.5M9 8.5 11 4h3l-2 4.5M15 8.5 17 4h3l-2 4.5"/><rect x="3" y="8.5" width="18" height="11.5" rx="1.5"/></svg>
         <h4>Movie Room</h4>
         <p>Cozy up for movie nights in the private theater-style space.</p>
@@ -1333,8 +1339,12 @@
         <h4>Work + Fitness</h4>
         <p>Dedicated workspaces, fast Wi-Fi, and a Peloton bike with free weights.</p>
       </div>
+      <div class="works-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+        <h4>Level 2 EV Charging</h4>
+        <p>Complimentary Level 2 charging in the driveway for guests.</p>
+      </div>
     </div>
-    <p style="text-align:center;margin-top:34px;font-size:13px;letter-spacing:0.04em;color:rgba(250,246,238,0.6);">Also on site: Private hot tub and Level 2 EV charging for guests.</p>
   </div>
 </section>
 

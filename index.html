@@ -24,8 +24,8 @@
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="fluRb5pqQbRyoYBszjH6r6vUlKDnWXYRyJcgYh6-Ww0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Massanutten Vacation Rental for Groups, Sleeps 14 | Cedar Escape</title>
-<meta name="description" content="5-bedroom, 3-bath home in Massanutten Resort for 14: private hot tub, movie room, game room, family gear, 25 min from JMU. Book direct, no platform fees.">
+<title>Massanutten Vacation Rental with Hot Tub, Movie Room &amp; Game Room | Cedar Escape</title>
+<meta name="description" content="Massanutten vacation rental with five bedrooms, a private hot tub, movie room and game room, about 25 minutes from JMU. Book direct to save on fees.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -304,24 +304,16 @@
     .hero-photo { object-position: 64% 50% !important; }
     .hero-inner { padding: 36px 24px 26px; }
     .hero .eyebrow { font-size: 11px; }
-    .hero .eyebrow + p {
-      font-size: 10.5px !important;
-      margin-top: 4px !important;
-      line-height: 1.35;
-      max-width: 300px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
+    /* Phones: drop the tiny location line and swap the long intro for a short, complete one */
+    .hero .eyebrow + p { display: none; }
     .hero h1 { font-size: clamp(26px, 8vw, 36px); margin: 12px 0 12px; }
-    .hero-sub {
+    .hero .hero-sub { display: none; }
+    .hero .hero-sub-short {
+      display: block;
       font-size: 14.5px;
+      line-height: 1.5;
+      color: rgba(250,246,238,0.86);
       margin-bottom: 18px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
     }
     .hero-actions { gap: 10px; }
     .hero-actions .btn { padding: 11px 18px; font-size: 13.5px; }
@@ -351,6 +343,15 @@
     margin-bottom: 34px;
   }
   .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-sub-short { display: none; }
+  /* Newest 5-star review, right under the photo on phones (kept current by scripts/sync_reviews.py) */
+  .review-strip { display: none; }
+  @media (max-width: 879.98px) {
+    .review-strip { display: block; text-align: center; text-decoration: none; background: var(--cream-deep); border-bottom: 1px solid var(--line); padding: 18px 24px 16px; color: var(--ink); }
+    .review-strip .stars { color: var(--gold); letter-spacing: 2px; font-size: 14px; }
+    .review-strip p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; line-height: 1.4; margin: 6px auto; max-width: 520px; }
+    .review-strip .who { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--taupe); }
+  }
 
   .photo-note {
     position: absolute;
@@ -454,10 +455,16 @@
   }
   .planks {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px;
     width: 100%;
     margin-top: -6px;
+  }
+  .plank { min-width: 0; }
+  @media (max-width: 479.98px) {
+    .planks { gap: 14px; }
+    .plank { padding: 20px 14px 18px; }
+    .plank h3 { font-size: 17px !important; }
   }
   @media (min-width: 800px) { .planks { grid-template-columns: repeat(4, 1fr); } }
   .plank {
@@ -849,6 +856,17 @@
   .icon-item svg { width:26px; height:26px; color:var(--gold); }
   .icon-item span { font-family:'Cinzel', serif; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--forest-deep); font-weight:600; }
 
+
+  /* ---------- AT A GLANCE ---------- */
+  .glance { background: var(--cream-deep); padding: 40px 0 44px; border-bottom: 1px solid var(--line); }
+  .glance h2 { text-align: center; font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin: 0 0 22px; }
+  .glance-list { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: 1fr; gap: 10px 28px; max-width: 1080px; }
+  @media (min-width: 600px) { .glance-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 980px) { .glance-list { grid-template-columns: repeat(3, 1fr); } }
+  .glance-list li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.45; color: var(--ink); }
+  .glance-list li::before { content: ''; position: absolute; left: 2px; top: 0.55em; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .glance-list strong { color: var(--forest-deep); font-weight: 700; }
+
   /* ---------- GATHER / PLAY / RESET ---------- */
   .gpr-grid { display:grid; grid-template-columns:1fr; gap:2px; }
   @media (min-width:860px) { .gpr-grid { grid-template-columns: repeat(3,1fr); } }
@@ -1150,12 +1168,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cedar Escape">
 <meta property="og:url" content="https://cedarescapecabin.com/">
-<meta property="og:title" content="Massanutten Vacation Rental for Groups, Sleeps 14 | Cedar Escape">
-<meta property="og:description" content="5-bedroom, 3-bath home in Massanutten Resort for 14: private hot tub, movie room, game room, family gear, 25 min from JMU. Book direct, no platform fees.">
+<meta property="og:title" content="Massanutten Vacation Rental with Hot Tub, Movie Room &amp; Game Room | Cedar Escape">
+<meta property="og:description" content="Massanutten vacation rental with five bedrooms, a private hot tub, movie room and game room, about 25 minutes from JMU. Book direct to save on fees.">
 <meta property="og:image" content="https://cedarescapecabin.com/images/vrbo/vrbo-01.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cedarescapecabin.com/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VacationRental", "@id": "https://cedarescapecabin.com/#rental", "name": "Cedar Escape", "url": "https://cedarescapecabin.com/", "description": "A 5-bedroom, 3-bath vacation home inside the Massanutten Resort community in the Shenandoah Valley, sleeping up to 14 guests, about 25 minutes from James Madison University.", "image": ["https://cedarescapecabin.com/images/hero-poolroom-jmu.webp", "https://cedarescapecabin.com/images/vrbo/vrbo-16.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-01.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-21.jpg", "https://cedarescapecabin.com/images/movie-room-blanket.jpg"], "telephone": "+1-202-734-5992", "address": {"@type": "PostalAddress", "addressLocality": "McGaheysville", "addressRegion": "VA", "postalCode": "22840", "addressCountry": "US"}, "containedInPlace": {"@type": "Resort", "name": "Massanutten Resort"}, "checkinTime": "16:00", "checkoutTime": "11:00", "petsAllowed": false, "sameAs": ["https://www.instagram.com/cedarescape_massanutten", "https://g.page/r/Cb2bDoAfVzKJEAE"], "containsPlace": {"@type": "Accommodation", "additionalType": "EntirePlace", "occupancy": {"@type": "QuantitativeValue", "maxValue": 14}, "numberOfBedrooms": 5, "numberOfBathroomsTotal": 3, "bed": {"@type": "BedDetails", "numberOfBeds": 9}, "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Movie room", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Pool table", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Poker table", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Karaoke machine", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Peloton bike", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Free weights", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Two work nooks", "value": true}, {"@type": "LocationFeatureSpecification", "name": "High-speed Wi-Fi", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Full kitchen", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Coffee and tea bar", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Washer and dryer", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Gas fireplace", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Outdoor grill", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Deck", "value": true}, {"@type": "LocationFeatureSpecification", "name": "High chair", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Pack 'n Play", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Free parking", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Electric vehicle charging station", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Hot tub", "value": true}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VacationRental", "@id": "https://cedarescapecabin.com/#rental", "identifier": "2443116", "name": "Cedar Escape", "url": "https://cedarescapecabin.com/", "description": "A 5-bedroom, 3-bath vacation home inside the Massanutten Resort community in the Shenandoah Valley, sleeping up to 14 guests, about 25 minutes from James Madison University.", "image": ["https://cedarescapecabin.com/images/hero-poolroom-jmu.webp", "https://cedarescapecabin.com/images/vrbo/vrbo-16.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-21.jpg", "https://cedarescapecabin.com/images/movie-room-blanket.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-01.jpg", "https://cedarescapecabin.com/images/hot-tub-dusk.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-29.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-40.jpg", "https://cedarescapecabin.com/images/vrbo/vrbo-42.jpg"], "telephone": "+1-202-734-5992", "address": {"@type": "PostalAddress", "addressLocality": "McGaheysville", "addressRegion": "VA", "postalCode": "22840", "addressCountry": "US"}, "containedInPlace": {"@type": "Resort", "name": "Massanutten Resort"}, "checkinTime": "16:00", "checkoutTime": "11:00", "petsAllowed": false, "sameAs": ["https://www.airbnb.com/rooms/1748647984114262139", "https://www.vrbo.com/5429406", "https://www.houfy.com/lodging/cedar-escape/459034", "https://www.instagram.com/cedarescape_massanutten", "https://g.page/r/Cb2bDoAfVzKJEAE"], "containsPlace": {"@type": "Accommodation", "additionalType": "EntirePlace", "occupancy": {"@type": "QuantitativeValue", "maxValue": 14}, "numberOfBedrooms": 5, "numberOfBathroomsTotal": 3, "bed": {"@type": "BedDetails", "numberOfBeds": 9}, "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Hot tub", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Movie room", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Pool table", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Poker table", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Arcade cabinet", "value": true}, {"@type": "LocationFeatureSpecification", "name": "VR headset", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Indoor basketball game", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Karaoke machine", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Board games", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Peloton bike", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Free weights", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Two work nooks", "value": true}, {"@type": "LocationFeatureSpecification", "name": "High-speed Wi-Fi", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Full kitchen", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Coffee and tea bar", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Washer and dryer", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Gas fireplace", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Outdoor grill", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Deck", "value": true}, {"@type": "LocationFeatureSpecification", "name": "High chair", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Pack 'n Play", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Free parking", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Electric vehicle charging station", "value": true}]}}</script>
 <body>
 
 <style id="nav-sub">
@@ -1221,14 +1239,23 @@
   <div class="hero-inner" style="position:relative;z-index:2;">
     <div class="eyebrow">Massanutten Resort, Virginia</div>
     <p style="font-size:12.5px;color:rgba(250,246,238,0.68);margin-top:6px;">(Located in McGaheysville, VA at the South Fork of the Shenandoah River, in the heart of the Shenandoah Valley)</p>
-    <h1>Bring the whole crew to Massanutten.</h1>
-    <p class="hero-sub">A spacious 5-bedroom vacation home inside the Massanutten Resort community, built for families and groups who want room to stay, play and enjoy the weekend together.</p>
+    <h1>Your home base for Massanutten, JMU and the Shenandoah Valley.</h1>
+    <p class="hero-sub">A comfortable five-bedroom home inside Massanutten Resort with a private hot tub, movie room and game room. It works as well for a family of four, a few couples or a friends&rsquo; weekend as it does for a multigenerational reunion. Sleeps up to 14.</p>
+    <p class="hero-sub-short">Sleeps 14 inside Massanutten Resort, minutes from skiing, the WaterPark and JMU.</p>
     <div class="hero-actions">
       <a href="/check-availability" class="btn btn-gold">Check Dates &amp; Pricing</a>
       <a href="/stay" class="btn btn-outline" style="border-color:rgba(250,246,238,0.5); color:var(--cream);">Explore the House Tour</a>
     </div>
   </div>
 </section>
+
+<a href="#reviews" class="review-strip">
+  <!-- REVIEWS:STRIP:START -->
+  <div class="stars">★★★★★</div>
+  <p>&ldquo;This was the PERFECT place for our busy family to hit pause&hellip;&rdquo;</p>
+  <div class="who">Verified VRBO guest · October 2026 · <u>Read more reviews</u></div>
+      <!-- REVIEWS:STRIP:END -->
+</a>
 
 <div class="icon-bar">
   <div class="wrap">
@@ -1251,6 +1278,24 @@
     </ul>
   </div>
 </div>
+
+<section class="glance" aria-labelledby="glance-title">
+  <div class="wrap">
+    <h2 id="glance-title">At a Glance</h2>
+    <ul class="glance-list">
+      <li><strong>5 bedrooms, 3 bathrooms</strong></li>
+      <li><strong>Sleeps up to 14</strong></li>
+      <li><strong>Inside Massanutten Resort</strong></li>
+      <li><strong>Private hot tub</strong> on the deck</li>
+      <li><strong>Movie room</strong> with recliner seating</li>
+      <li><strong>Game room</strong> with pool, poker, arcade, VR and dual-shot basketball</li>
+      <li><strong>Fitness area</strong> with a Peloton bike and free weights</li>
+      <li><strong>Two workspaces</strong> with high-speed Wi&#8209;Fi</li>
+      <li><strong>Level 2 EV charging</strong> in the driveway</li>
+      <li><strong>About 25 minutes to JMU</strong></li>
+    </ul>
+  </div>
+</section>
 
 <div class="resort-strip">
   <div class="wrap" style="display:block;">
@@ -1275,19 +1320,19 @@
     </div>
     <div class="weekend-row">
       <a href="/cedar-escape-family-weekend" class="weekend-card">
-        <div class="photo"><img src="images/weekend-family.webp" alt="Family Mountain Weekend"></div>
+        <div class="photo"><img src="images/weekend-family.webp" alt="Illustration of a family setting out for a mountain weekend"></div>
         <div class="label">Family Mountain<br>Weekend</div>
       </a>
       <a href="/cedar-escape-wine-weekend" class="weekend-card">
-        <div class="photo"><img src="images/weekend-girls.webp" alt="Girls / Wine Weekend"></div>
+        <div class="photo"><img src="images/weekend-girls.webp" alt="Illustration of friends sharing a glass of wine at a vineyard"></div>
         <div class="label">Girls + Wine<br>Weekend</div>
       </a>
       <a href="/cedar-escape-jmu-weekend" class="weekend-card">
-        <div class="photo"><img src="images/weekend-jmu.webp" alt="JMU Weekend"></div>
+        <div class="photo"><img src="images/weekend-jmu.webp" alt="Illustration of a family visiting a JMU student on campus"></div>
         <div class="label">JMU<br>Weekend</div>
       </a>
       <a href="/cedar-escape-adventure-weekend" class="weekend-card">
-        <div class="photo"><img src="images/weekend-adventure.webp" alt="Adventure Weekend"></div>
+        <div class="photo"><img src="images/weekend-adventure.webp" alt="Illustration of friends heading out for an adventure park day"></div>
         <div class="label">Adventure<br>Weekend</div>
       </a>
       <a href="/cedar-escape-ski-weekend" class="weekend-card">
@@ -1295,7 +1340,7 @@
         <div class="label">Ski &amp; Snow<br>Weekend</div>
       </a>
       <a href="/cedar-escape-golf-weekend" class="weekend-card">
-        <div class="photo"><img src="images/weekend-golf.webp" alt="Golf / Resort Weekend"></div>
+        <div class="photo"><img src="images/weekend-golf.webp" alt="Illustration of friends on a golf course with mountains behind"></div>
         <div class="label">Golf<br>Getaway</div>
       </a>
     </div>
@@ -1305,14 +1350,14 @@
 <section class="works-band">
   <div class="wrap">
     <div class="section-head" style="margin:0 auto 48px;text-align:center;">
-      <div class="eyebrow" style="color:var(--gold-bright);">Made for Group Weekends</div>
-      <h2 style="color:var(--cream);">Why Cedar Escape works for groups.</h2>
+      <div class="eyebrow" style="color:var(--gold-bright);">Made for Time Together</div>
+      <h2 style="color:var(--cream);">Why Cedar Escape works for your trip.</h2>
     </div>
     <div class="works-grid">
       <div class="works-card">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6"/><path d="M14.5 20c0-2.6 1.8-4.8 4-5.6"/></svg>
-        <h4>Sleeps 14</h4>
-        <p>Room for everyone with 5 bedrooms, multiple living areas, and comfy beds.</p>
+        <h4>Room to Spread Out</h4>
+        <p>Five bedrooms and several living areas, so a family of four and a party of 14 both have space.</p>
       </div>
       <div class="works-card">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18v3a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5v-3Z"/><path d="M7 3.5c0 1.5 1.5 1.5 1.5 3M12 3.5c0 1.5 1.5 1.5 1.5 3M17 3.5c0 1.5 1.5 1.5 1.5 3"/></svg>
@@ -1354,14 +1399,14 @@
       <div>
         <div class="eyebrow">See What Cedar Escape Has to Offer</div>
         <h2 class="section-head" style="margin-bottom:0;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,3vw,36px);color:var(--forest-deep);">Room to gather. Space to unwind.</span></h2>
-        <p style="margin-top:16px;font-size:15.5px;color:#4b453b;max-width:400px;">See how Cedar Escape is set up for groups — from bedrooms and bathrooms to game spaces, workspaces and thoughtful extras already waiting when you arrive.</p>
+        <p style="margin-top:16px;font-size:15.5px;color:#4b453b;max-width:400px;">See how Cedar Escape is set up for families, friends and everyone in between — from bedrooms and bathrooms to game spaces, workspaces and thoughtful extras already waiting when you arrive.</p>
         <a href="/stay" class="btn btn-gold gallery-preview-btn">Explore the House Tour</a>
       </div>
       <div class="teaser-mosaic">
-        <div class="frame"><img src="images/vrbo/vrbo-16.jpg" loading="lazy" alt="Living room at Cedar Escape"></div>
-        <div class="frame"><img src="images/vrbo/vrbo-01.jpg" loading="lazy" alt="Pool table at Cedar Escape"></div>
-        <div class="frame"><img src="images/vrbo/vrbo-21.jpg" loading="lazy" alt="Kitchen and dining at Cedar Escape"></div>
-        <div class="frame"><img src="images/movie-room-blanket.jpg" loading="lazy" alt="Movie room at Cedar Escape"></div>
+        <div class="frame"><img src="images/vrbo/vrbo-16.jpg" loading="lazy" alt="Main living room with mounted TV and stone fireplace"></div>
+        <div class="frame"><img src="images/vrbo/vrbo-01.jpg" loading="lazy" alt="Pool table and JMU-themed mural in the game room"></div>
+        <div class="frame"><img src="images/vrbo/vrbo-21.jpg" loading="lazy" alt="Open kitchen, dining and living area with piano"></div>
+        <div class="frame"><img src="images/movie-room-blanket.jpg" loading="lazy" alt="Movie room with leather recliner seating"></div>
       </div>
     </div>
   </div>
@@ -1658,7 +1703,8 @@ We’re already planning a trip back this winter to experience the skiing. I hav
 
 <script>
   const revealEls = document.querySelectorAll('section');
-  if ('IntersectionObserver' in window) {
+  // Phones skip the fade-in so fast scrolling never shows blank gaps
+  if ('IntersectionObserver' in window && window.matchMedia('(min-width: 880px)').matches) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0 });

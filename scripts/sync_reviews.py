@@ -2,7 +2,7 @@
 """Sync guest reviews (Airbnb, VRBO and direct) from the Hospitable API into index.html.
 
 Pulls every public review for the property, newest first, and replaces the content
-between the REVIEWS:HERO / REVIEWS:CARDS markers in index.html. Reviewers are shown
+between the REVIEWS:HERO / REVIEWS:CARDS / REVIEWS:STRIP markers in index.html. Reviewers are shown
 as "Verified <platform> guest" because the API does not return names by default.
 
 Requires the HOSPITABLE_API_TOKEN environment variable (same token the dashboard
@@ -24,6 +24,9 @@ HERO_START = "<!-- REVIEWS:HERO:START -->"
 HERO_END = "<!-- REVIEWS:HERO:END -->"
 CARDS_START = "<!-- REVIEWS:CARDS:START -->"
 CARDS_END = "<!-- REVIEWS:CARDS:END -->"
+STRIP_START = "<!-- REVIEWS:STRIP:START -->"
+STRIP_END = "<!-- REVIEWS:STRIP:END -->"
+STRIP_MAX_CHARS = 75
 
 PLATFORM_LABELS = {"airbnb": "Airbnb", "vrbo": "VRBO", "direct": "direct"}
 MIN_RATING = 4
@@ -99,6 +102,28 @@ def render_hero(reviews) -> str:
     return "\n".join(parts)
 
 
+def short_quote(text: str) -> str:
+    sentence = first_sentence(text)
+    if len(sentence) <= STRIP_MAX_CHARS:
+        return sentence
+    cut = sentence[:STRIP_MAX_CHARS]
+    # Prefer ending at a comma, otherwise at the last whole word
+    end = cut.rfind(",")
+    if end < STRIP_MAX_CHARS // 2:
+        end = cut.rfind(" ")
+    return cut[:end].rstrip(" ,;:") + "…"
+
+
+def render_strip(reviews) -> str:
+    label, date, comment, rating = reviews[0]
+    parts = [
+        f'  <div class="stars">{stars(rating)}</div>',
+        f'  <p>&ldquo;{escape_html(short_quote(comment))}&rdquo;</p>',
+        f'  <div class="who">{escape_html(label)} · {escape_html(date)} · <u>Read more reviews</u></div>',
+    ]
+    return "\n".join(parts)
+
+
 def render_cards(reviews) -> str:
     cards = []
     for label, date, comment, rating in reviews:
@@ -131,6 +156,7 @@ def main():
     site_html = INDEX_HTML.read_text(encoding="utf-8")
     updated_html = replace_marker(site_html, HERO_START, HERO_END, render_hero(reviews), "REVIEWS:HERO")
     updated_html = replace_marker(updated_html, CARDS_START, CARDS_END, render_cards(reviews), "REVIEWS:CARDS")
+    updated_html = replace_marker(updated_html, STRIP_START, STRIP_END, render_strip(reviews), "REVIEWS:STRIP")
 
     if updated_html == site_html:
         print(f"No changes — {len(reviews)} review(s) already up to date.")

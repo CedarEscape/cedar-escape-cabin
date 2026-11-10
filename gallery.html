@@ -492,6 +492,12 @@
   }
   .area-item .name { display:block; font-weight:700; font-size:15px; color:var(--forest-deep); margin-bottom:6px; }
   .area-item .meta { display:block; font-family:'Cinzel', serif; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+  .g-head {
+    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500;
+    font-size: clamp(22px, 2.8vw, 28px); color: var(--forest-deep);
+    margin: 44px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
+  }
+  .section-head + .g-head { margin-top: 8px; }
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -951,55 +957,73 @@
       <h1>Every corner of Cedar Escape.</h1>
       <p>The complete photo set — every room, every angle. For a guided room-by-room tour with details on beds, baths and layout, see the <a href="/stay">House Tour page</a>.</p>
     </div>
+    <h2 class="g-head">Gather and unwind</h2>
     <div class="gallery-grid">
-      <div class="frame"><img src="images/vrbo/vrbo-01.jpg" loading="lazy" alt="Pool table and JMU-themed mural in the game room at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-02.jpg" loading="lazy" alt="Game room corner with pool table and games table at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-51.jpg" loading="lazy" alt="Billiard-ball light fixture above the pool table"></div>
-      <div class="frame"><img src="images/movie-room-blanket.jpg" loading="lazy" alt="Movie room with reclining theater seating and character posters"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-04.jpg" loading="lazy" alt="Movie room with streaming TV and superhero movie posters"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-05.jpg" loading="lazy" alt="Close-up of leather theater recliners in the movie room"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-06.jpg" loading="lazy" alt="Colorful mural game room with TV, arcade cabinet and orange sectional"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-07.jpg" loading="lazy" alt="Ms. Pac-Man and Galaga arcade cabinet at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-54.jpg" loading="lazy" alt="Guests playing VR and arcade games at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-08.jpg" loading="lazy" alt="VR headset and controllers in the game room"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-09.jpg" loading="lazy" alt="Home gym with Peloton bike, weight bench and Pop-A-Shot basketball"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-10.jpg" loading="lazy" alt="Home gym with Peloton bike, dumbbells and mirrors"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-11.jpg" loading="lazy" alt="Pop-A-Shot indoor basketball arcade game"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-55.jpg" loading="lazy" alt="Basketball arcade game and poker table at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-12.jpg" loading="lazy" alt="Poker room with card table, chips and hand-rankings poster"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-50.jpg" loading="lazy" alt="Poker chip set with cards in the poker room"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-13.jpg" loading="lazy" alt="Basket of board and card games for guests to use"></div>
       <div class="frame"><img src="images/vrbo/vrbo-14.jpg" loading="lazy" alt="Entry foyer with Massanutten mural and stairs to the lower level"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-16.jpg" loading="lazy" alt="Main living room with mounted TV and stone fireplace"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-16.jpg" loading="lazy" alt="Main living room with mounted TV and stone fireplace"><span class="cap">Living room with stone fireplace</span></div>
       <div class="frame"><img src="images/vrbo/vrbo-17.jpg" loading="lazy" alt="Open living and dining area with skylights and deck access"></div>
       <div class="frame"><img src="images/vrbo/vrbo-18.jpg" loading="lazy" alt="Living room with piano, sectional seating and stone fireplace"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-21.jpg" loading="lazy" alt="Open kitchen, dining and living area with wine fridge and piano"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-22.jpg" loading="lazy" alt="Coffee bar with Keurig, kettle and flavored syrups"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-23.jpg" loading="lazy" alt="Kitchen cabinet detail with hand-labeled contents"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-21.jpg" loading="lazy" alt="Open kitchen, dining and living area with wine fridge and piano"><span class="cap">Open kitchen, dining and living area</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-22.jpg" loading="lazy" alt="Coffee bar with Keurig, kettle and flavored syrups"><span class="cap">Coffee and tea bar</span></div>
       <div class="frame"><img src="images/vrbo/vrbo-24.jpg" loading="lazy" alt="Kitchen with gas range, vent hood and dark cabinetry"></div>
       <div class="frame"><img src="images/vrbo/vrbo-25.jpg" loading="lazy" alt="Kitchen with double wall ovens and coffee station"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-23.jpg" loading="lazy" alt="Kitchen cabinet detail with hand-labeled contents"></div>
       <div class="frame"><img src="images/vrbo/vrbo-27.jpg" loading="lazy" alt="Air fryer on the kitchen counter"></div>
       <div class="frame"><img src="images/vrbo/vrbo-28.jpg" loading="lazy" alt="Antique upright piano in the living room"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-29.jpg" loading="lazy" alt="Emerald Room bedroom at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-30.jpg" loading="lazy" alt="Emerald Room workspace with dual monitors at Cedar Escape"></div>
+    </div>
+    <h2 class="g-head">Movie and game spaces</h2>
+    <div class="gallery-grid">
+      <div class="frame"><img src="images/movie-room-blanket.jpg" loading="lazy" alt="Movie room with reclining theater seating and character posters"><span class="cap">Movie room with recliner seating</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-04.jpg" loading="lazy" alt="Movie room with streaming TV and superhero movie posters"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-05.jpg" loading="lazy" alt="Close-up of leather theater recliners in the movie room"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-01.jpg" loading="lazy" alt="Pool table and JMU-themed mural in the game room at Cedar Escape"><span class="cap">Pool table in the game room</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-02.jpg" loading="lazy" alt="Game room corner with pool table and games table at Cedar Escape"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-51.jpg" loading="lazy" alt="Billiard-ball light fixture above the pool table"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-06.jpg" loading="lazy" alt="Colorful mural game room with TV, arcade cabinet and orange sectional"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-07.jpg" loading="lazy" alt="Ms. Pac-Man and Galaga arcade cabinet at Cedar Escape"><span class="cap">Classic arcade cabinet</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-54.jpg" loading="lazy" alt="Guests playing VR and arcade games at Cedar Escape"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-08.jpg" loading="lazy" alt="VR headset and controllers in the game room"><span class="cap">VR headset and controllers</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-11.jpg" loading="lazy" alt="Pop-A-Shot indoor basketball arcade game"><span class="cap">Dual-shot basketball</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-55.jpg" loading="lazy" alt="Basketball arcade game and poker table at Cedar Escape"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-12.jpg" loading="lazy" alt="Poker room with card table, chips and hand-rankings poster"><span class="cap">Poker table</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-50.jpg" loading="lazy" alt="Poker chip set with cards in the poker room"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-13.jpg" loading="lazy" alt="Basket of board and card games for guests to use"></div>
+    </div>
+    <h2 class="g-head">Bedrooms and bathrooms</h2>
+    <div class="gallery-grid">
+      <div class="frame"><img src="images/vrbo/vrbo-29.jpg" loading="lazy" alt="Emerald Room bedroom at Cedar Escape"><span class="cap">Emerald Room, the main-level primary suite</span></div>
       <div class="frame"><img src="images/vrbo/vrbo-31.jpg" loading="lazy" alt="Emerald Room en-suite vanity and towel warmer"></div>
       <div class="frame"><img src="images/vrbo/vrbo-32.jpg" loading="lazy" alt="Emerald Room en-suite walk-in shower"></div>
-      <div class="frame"><img src="images/pine-room.jpg" loading="lazy" alt="Pine Room bedroom with wood accent wall"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-34.jpg" loading="lazy" alt="Workspace inside the Pine Room at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-35.jpg" loading="lazy" alt="Adventure Room twin beds at Cedar Escape"></div>
+      <div class="frame"><img src="images/pine-room.jpg" loading="lazy" alt="Pine Room bedroom with wood accent wall"><span class="cap">Pine Room</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-35.jpg" loading="lazy" alt="Adventure Room twin beds at Cedar Escape"><span class="cap">Adventure Room</span></div>
+      <div class="frame"><img src="images/mountain-room.jpg" loading="lazy" alt="Mountain Room bedroom at Cedar Escape"><span class="cap">Mountain Room</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-40.jpg" loading="lazy" alt="Double Bunk Room with two bunk beds and a mountain forest mural"><span class="cap">Double Bunk Room</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-39.jpg" loading="lazy" alt="Guest bedroom with a red upholstered bed, green velvet pillows and a leather armchair"></div>
       <div class="frame"><img src="images/vrbo/vrbo-36.jpg" loading="lazy" alt="Main-Floor Hall Bathroom with glass shower"></div>
-      <div class="frame"><img src="images/mountain-room.jpg" loading="lazy" alt="Mountain Room bedroom at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-38.jpg" loading="lazy" alt="Rolled towels and toiletries provided for guests"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-39.jpg" loading="lazy" alt="Basement guest bedroom with wood accent wall"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-40.jpg" loading="lazy" alt="Double Bunk Room at Cedar Escape"></div>
       <div class="frame"><img src="images/vrbo/vrbo-41.jpg" loading="lazy" alt="Lower-level bathroom at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-42.jpg" loading="lazy" alt="Outdoor deck dining table set for a group"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-43.jpg" loading="lazy" alt="Deck lounge seating overlooking the trees"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-53.jpg" loading="lazy" alt="Traeger grill on the deck at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-44.jpg" loading="lazy" alt="Deck lounge seating, another view"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-38.jpg" loading="lazy" alt="Rolled towels and toiletries provided for guests"></div>
       <div class="frame"><img src="images/vrbo/vrbo-45.jpg" loading="lazy" alt="Bathroom toiletries provided for guests"></div>
+    </div>
+    <h2 class="g-head">Work and fitness</h2>
+    <div class="gallery-grid">
+      <div class="frame"><img src="images/vrbo/vrbo-30.jpg" loading="lazy" alt="Emerald Room workspace with dual monitors at Cedar Escape"><span class="cap">Desk in the Emerald Room</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-34.jpg" loading="lazy" alt="Workspace inside the Pine Room at Cedar Escape"><span class="cap">Desk in the Pine Room</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-09.jpg" loading="lazy" alt="Home gym with Peloton bike, weight bench and Pop-A-Shot basketball"><span class="cap">Fitness area with Peloton bike</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-10.jpg" loading="lazy" alt="Home gym with Peloton bike, dumbbells and mirrors"></div>
       <div class="frame"><img src="images/vrbo/vrbo-52.jpg" loading="lazy" alt="Washer and dryer at Cedar Escape"></div>
-      <div class="frame"><img src="images/vrbo/vrbo-46.jpg" loading="lazy" alt="Massanutten WaterPark entrance sign"></div>
+    </div>
+    <h2 class="g-head">Outdoor living</h2>
+    <div class="gallery-grid">
+      <div class="frame"><img src="images/hot-tub-dusk.jpg" width="1400" height="788" loading="lazy" alt="Private hot tub on the deck glowing at dusk with the woods beyond"><span class="cap">Private hot tub on the deck</span></div>
+      <div class="frame"><img src="images/hot-tub-night.jpg" width="1000" height="1333" loading="lazy" style="object-position:50% 70%" alt="Private hot tub at night under string lights"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-42.jpg" loading="lazy" alt="Outdoor deck dining table set for a group"><span class="cap">Outdoor dining for the whole group</span></div>
+      <div class="frame"><img src="images/vrbo/vrbo-43.jpg" loading="lazy" alt="Deck chairs and coffee table among the trees at golden hour"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-44.jpg" loading="lazy" alt="Wooden deck with lounge chairs overlooking the woods"></div>
+      <div class="frame"><img src="images/vrbo/vrbo-53.jpg" loading="lazy" alt="Traeger grill on the deck at Cedar Escape"><span class="cap">Traeger grill for dinners at home</span></div>
+    </div>
+    <h2 class="g-head">Around Massanutten Resort</h2>
+    <div class="gallery-grid">
+      <div class="frame"><img src="images/vrbo/vrbo-46.jpg" loading="lazy" alt="Massanutten WaterPark entrance sign"><span class="cap">Massanutten WaterPark</span></div>
       <div class="frame"><img src="images/vrbo/vrbo-47.jpg" loading="lazy" alt="Massanutten Family Adventure Park sign"></div>
     </div>
   </div>

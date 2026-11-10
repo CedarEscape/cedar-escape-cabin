@@ -107,6 +107,10 @@
   .book-shell .top { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid var(--line); font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); }
   .book-shell .top h3 { margin: 0; font: inherit; letter-spacing: inherit; color: inherit; text-transform: inherit; }
   .book-shell .body { padding: 20px; }
+  .book-note { width: 100%; max-width: 720px; margin: 0 auto 14px; box-sizing: border-box; font-size: 14.5px; line-height: 1.5; color: var(--forest-deep); text-align: center; }
+  .book-fallback { width: 100%; max-width: 720px; margin: 16px auto 0; box-sizing: border-box; font-size: 14.5px; line-height: 1.5; color: var(--ink); text-align: center; }
+  .book-fallback a { color: var(--brown); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .book-fallback a:hover { color: var(--forest-deep); }
 
   .why-grid-4 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
   @media (min-width: 700px) { .why-grid-4 { grid-template-columns: repeat(4,1fr); } }
@@ -314,10 +318,10 @@
 <section class="page-hero" style="padding:0;">
   <img src="images/hero-poolroom.webp" alt="Game room at Cedar Escape">
   <div class="page-hero-inner">
-    <h1 class="brand-heading">CEDAR <span>ESCAPE</span></h1>
+    <div class="brand-heading" style="line-height:1.1;">CEDAR <span>ESCAPE</span></div>
     <p class="brand-location">Massanutten Resort, Virginia</p>
     <div class="eyebrow" style="color:var(--gold-bright);margin-top:20px;">Book Direct</div>
-    <h2>Check Availability &amp; Book Direct</h2>
+    <h1>Check availability at Cedar Escape</h1>
     <p>Live availability, secure checkout, and no extra platform fees — straight from our booking system.</p>
   </div>
 </section>
@@ -338,6 +342,7 @@
       <p style="margin-top:14px;font-size:13px;color:var(--taupe);">Cedar Rewards members earn points on qualifying direct stays.</p>
     </div>
     <div class="book-right">
+      <p class="book-note">Most stays are two nights. Select your dates for live pricing and availability.</p>
       <div class="book-shell">
         <div class="top"><h3>Cedar Escape · Massanutten, VA</h3><span>Secure Checkout</span></div>
         <div class="body">
@@ -349,6 +354,7 @@
           </script>
         </div>
       </div>
+      <p class="book-fallback">Trouble viewing the calendar? <a href="https://booking.hospitable.com/book/a23c8f9c-1465-4c6a-b17b-32990f37578d/2443116" target="_blank" rel="noopener">Book direct in a new tab.</a></p>
       <details class="ref-box" id="refBox">
         <summary>Referred by a past Cedar Escape guest? <span>Optional</span></summary>
         <form class="ref-form" id="refForm" novalidate>

@@ -36,6 +36,12 @@ reg = json.loads(rd('data/articles.json'))
 COLL = {c['id']: c for c in reg['collections']}
 esc = html.escape
 
+# The single Cedar Escape Organization / WebSite entities are defined on the homepage
+# (index.html, "@id" .../#organization and .../#website). Articles point to them by @id.
+# No "logo" until a real Cedar Escape logo image exists.
+ORG_REF = {"@type": "Organization", "@id": SITE + "/#organization", "name": "Cedar Escape", "url": SITE + "/"}
+WEBSITE_REF = {"@type": "WebSite", "@id": SITE + "/#website", "name": "Cedar Escape", "url": SITE + "/"}
+
 # ----------------------------------------------------------------------------------
 # Shared site chrome (header, footer, contact form + their CSS) taken from an existing page
 # ----------------------------------------------------------------------------------
@@ -171,9 +177,7 @@ def five_page(d):
         "image": [og], "datePublished": d['published'], "dateModified": d['updated'], "inLanguage": "en-US",
         "articleSection": coll['name'],
         "isPartOf": {"@type": "CreativeWorkSeries", "name": coll['name']},
-        "author": {"@type": "Organization", "name": "Cedar Escape", "url": SITE + "/"},
-        "publisher": {"@type": "Organization", "name": "Cedar Escape", "url": SITE + "/",
-                      "logo": {"@type": "ImageObject", "url": f"{SITE}/images/guides/jmu-hero-800.jpg"}},
+        "author": ORG_REF, "publisher": ORG_REF,
     }
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
@@ -488,9 +492,7 @@ def valley_page(d, live):
         "headline": d['title'], "alternativeHeadline": d['subtitle'], "description": art['description'],
         "image": [og], "datePublished": d['published'], "dateModified": d['updated'], "inLanguage": "en-US",
         "articleSection": coll['name'], "isPartOf": {"@type": "CreativeWorkSeries", "name": coll['name']},
-        "author": {"@type": "Organization", "name": "Cedar Escape", "url": SITE + "/"},
-        "publisher": {"@type": "Organization", "name": "Cedar Escape", "url": SITE + "/",
-                      "logo": {"@type": "ImageObject", "url": f"{SITE}/images/guides/jmu-hero-800.jpg"}},
+        "author": ORG_REF, "publisher": ORG_REF,
     }
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
@@ -896,7 +898,7 @@ def hub_page():
         {"@type": "ListItem", "position": 2, "name": "Things to Do", "item": SITE + "/explore-massanutten"},
         {"@type": "ListItem", "position": 3, "name": "All Travel Guides", "item": url}]}
     coll = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Explore the Shenandoah Valley", "url": url,
-            "description": desc, "isPartOf": {"@type": "WebSite", "name": "Cedar Escape", "url": SITE + "/"},
+            "description": desc, "isPartOf": WEBSITE_REF,
             "mainEntity": {"@type": "ItemList", "itemListElement": [
                 {"@type": "ListItem", "position": i + 1, "url": f"{SITE}/guides/{a['slug']}", "name": a['title']} for i, a in enumerate(live)]}}
     head = c['head_top'] + f'''<meta charset="UTF-8">
@@ -1006,6 +1008,8 @@ def tag_series_on_handbuilt():
             if d.get('@type') == 'Article':
                 d['articleSection'] = coll['name']
                 d['isPartOf'] = {"@type": "CreativeWorkSeries", "name": coll['name']}
+                d['author'] = ORG_REF
+                d['publisher'] = ORG_REF
             return '<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False) + '</script>'
         s2 = re.sub(r'<script type="application/ld\+json">(.*?)</script>', fix, s, flags=re.S)
         if s2 != s: wr(p, s2)

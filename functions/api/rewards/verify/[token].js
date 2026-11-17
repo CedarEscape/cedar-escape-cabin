@@ -1,5 +1,5 @@
 import { consumeToken } from '../../../_shared/rewards-tokens.js';
-import { getMember, postEarn, getSettingInt } from '../../../_shared/rewards-db.js';
+import { getMember, postEarn, getSettingInt, getAvailableBalance } from '../../../_shared/rewards-db.js';
 import { createSession, sessionCookieHeader, isSecureRequest } from '../../../_shared/rewards-session.js';
 import { sendNewMemberOwnerEmail, sendWelcomeGuestEmail } from '../../../_shared/rewards-email.js';
 
@@ -66,13 +66,15 @@ export async function onRequestGet({ request, params, env }) {
       await db.prepare('UPDATE rewards_members SET join_bonus_posted = 1 WHERE id = ?').bind(member.id).run();
     }
 
-    // Welcome email to the guest. A failure here must never block sign-in.
+    // Welcome email to the guest. Read-only: reports the balance the dashboard
+    // would show. A failure here must never block sign-in.
     try {
+      const balance = await getAvailableBalance(db, member.id);
       await sendWelcomeGuestEmail(env, {
         to: member.email,
-        name: member.name,
-        joinBonus,
-        baseUrl: new URL(request.url).origin,
+        balance,
+        pointsAwarded: joinBonus,
+        rewardsUrl: `${new URL(request.url).origin}/rewards-dashboard`,
       });
     } catch (err) {
       console.error('welcome guest email failed', err);

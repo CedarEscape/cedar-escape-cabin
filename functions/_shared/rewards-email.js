@@ -4,51 +4,168 @@ function escapeHtml(s) {
   return String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+// ---------------------------------------------------------------------------
+// Cedar Rewards member email design (confirm + welcome).
+// Compact cream card, deep cedar green, muted gold hairlines. Table layout,
+// inline styles, system font stacks and hosted PNGs (not SVG data URIs, which
+// Gmail and AOL block), so it holds up in Apple Mail, Gmail, AOL and Outlook.
+// ---------------------------------------------------------------------------
+export const RW_ASSET_BASE = 'https://cedarescapecabin.com/images/email';
+const RW = {
+  page: '#F2EBDD',
+  card: '#FAF6EE',
+  green: '#1F3A2B',
+  gold: '#B8913F',
+  ink: '#2B271F',
+  muted: '#6B6555',
+  serif: "Georgia,'Times New Roman',Times,serif",
+  sans: "'Helvetica Neue',Helvetica,Arial,sans-serif",
+};
+
+function rwRule(width) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;"><tr>
+    <td width="${width}" style="border-top:1px solid ${RW.gold};font-size:0;line-height:0;">&nbsp;</td>
+    <td style="padding:0 10px;color:${RW.gold};font-size:11px;line-height:1;">&#9670;</td>
+    <td width="${width}" style="border-top:1px solid ${RW.gold};font-size:0;line-height:0;">&nbsp;</td>
+  </tr></table>`;
+}
+
+function rwEyebrow() {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;"><tr>
+    <td width="44" style="border-top:1px solid ${RW.gold};font-size:0;line-height:0;">&nbsp;</td>
+    <td style="padding:0 14px;font-family:${RW.sans};font-size:12px;font-weight:bold;letter-spacing:0.24em;color:${RW.green};white-space:nowrap;">CEDAR REWARDS</td>
+    <td width="44" style="border-top:1px solid ${RW.gold};font-size:0;line-height:0;">&nbsp;</td>
+  </tr></table>`;
+}
+
+function rwButton(href, label) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;"><tr>
+    <td bgcolor="${RW.green}" style="background:${RW.green};border-radius:6px;">
+      <a href="${href}" style="display:inline-block;padding:16px 34px;font-family:${RW.sans};font-size:14px;font-weight:bold;letter-spacing:0.1em;color:#FFFFFF;text-decoration:none;border-radius:6px;">${label}</a>
+    </td>
+  </tr></table>`;
+}
+
+function rwIconLine(icon, html) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;"><tr>
+    <td valign="top" style="padding:2px 10px 0 0;"><img src="${RW_ASSET_BASE}/${icon}" width="18" height="18" alt="" style="display:block;border:0;"></td>
+    <td style="font-family:${RW.sans};font-size:13.5px;line-height:1.5;color:${RW.ink};text-align:left;">${html}</td>
+  </tr></table>`;
+}
+
+function rwShell({ title, preheader, headline, bodyHtml }) {
+  return `<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>${title}</title>
+<style>
+  body, table, td, a { -webkit-text-size-adjust: 100%; }
+  @media (max-width: 480px) {
+    .rw-pad { padding-left: 22px !important; padding-right: 22px !important; }
+    .rw-h1 { font-size: 30px !important; }
+    .rw-num { font-size: 46px !important; }
+  }
+  @media (prefers-color-scheme: dark) {
+    body, .rw-page { background: ${RW.page} !important; }
+    .rw-card { background: ${RW.card} !important; }
+  }
+</style>
+</head>
+<body class="rw-page" style="margin:0;padding:0;background:${RW.page};">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${preheader}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="rw-page" bgcolor="${RW.page}" style="background:${RW.page};">
+<tr><td align="center" style="padding:20px 10px;">
+  <table role="presentation" width="560" cellpadding="0" cellspacing="0" class="rw-card" bgcolor="${RW.card}" style="width:100%;max-width:560px;background:${RW.card};">
+    <tr><td height="6" bgcolor="${RW.green}" style="background:${RW.green};font-size:0;line-height:0;">&nbsp;</td></tr>
+    <tr><td height="2" bgcolor="${RW.gold}" style="background:${RW.gold};font-size:0;line-height:0;">&nbsp;</td></tr>
+
+    <tr><td align="center" class="rw-pad" style="padding:26px 36px 0;">
+      <img src="${RW_ASSET_BASE}/tree-cedar.png" width="22" height="22" alt="" style="display:block;margin:0 auto 8px;border:0;">
+      <div style="font-family:${RW.serif};font-size:17px;font-weight:bold;letter-spacing:0.2em;color:${RW.green};">CEDAR ESCAPE</div>
+      <div style="font-family:${RW.serif};font-size:10px;font-weight:bold;letter-spacing:0.2em;color:${RW.gold};margin:4px 0 10px;">MASSANUTTEN, VA</div>
+      ${rwRule(48)}
+    </td></tr>
+
+    <tr><td align="center" class="rw-pad" style="padding:24px 36px 0;">
+      ${rwEyebrow()}
+      <div class="rw-h1" style="font-family:${RW.serif};font-style:italic;font-size:36px;line-height:1.15;color:${RW.green};margin:14px 0 0;">${headline}</div>
+    </td></tr>
+
+    ${bodyHtml}
+
+    <tr><td align="center" class="rw-pad" style="padding:26px 36px 0;">${rwRule(80)}</td></tr>
+    <tr><td align="center" class="rw-pad" style="padding:16px 36px 26px;">
+      ${rwIconLine('icon-mail.png', 'Questions? Just reply to this email &mdash; we&rsquo;re happy to help.')}
+    </td></tr>
+
+    <tr><td height="2" bgcolor="${RW.gold}" style="background:${RW.gold};font-size:0;line-height:0;">&nbsp;</td></tr>
+    <tr><td height="6" bgcolor="${RW.green}" style="background:${RW.green};font-size:0;line-height:0;">&nbsp;</td></tr>
+  </table>
+  <div style="font-family:${RW.sans};font-size:11px;color:${RW.muted};padding:14px 0 0;">Cedar Escape &middot; Massanutten, VA &middot; <a href="https://cedarescapecabin.com" style="color:${RW.muted};">cedarescapecabin.com</a></div>
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+
+// EMAIL 1: account confirmation. Visual redesign only: verifyUrl, recipient,
+// subject and sender are unchanged.
 export async function sendVerifyEmail(env, { to, verifyUrl }) {
-  const html = renderShell({
+  const html = rwShell({
     title: 'Confirm your Cedar Rewards account',
-    heroEyebrow: 'Cedar Rewards',
-    heroHeadline: "You're almost in.",
+    preheader: 'One quick step to activate your Cedar Rewards account.',
+    headline: 'Confirm your account',
     bodyHtml: `
-      <p>Click below to confirm your email and activate your Cedar Rewards account. This link is single-use and expires in 15 minutes.</p>
-      <div style="text-align:center;margin:28px 0;">${renderButton({ href: verifyUrl, label: 'CONFIRM MY ACCOUNT' })}</div>
-      <p style="font-size:13px;color:#6b6555;">If you didn't request this, you can ignore this email.</p>
-    `,
+    <tr><td align="center" class="rw-pad" style="padding:14px 40px 0;font-family:${RW.sans};font-size:16px;line-height:1.6;color:${RW.ink};">
+      You&rsquo;re one quick step away. Confirm your email to activate your Cedar Rewards account and access your member benefits.
+    </td></tr>
+    <tr><td align="center" class="rw-pad" style="padding:26px 36px 0;">${rwButton(verifyUrl, 'CONFIRM MY ACCOUNT')}</td></tr>
+    <tr><td align="center" class="rw-pad" style="padding:16px 48px 0;font-family:${RW.sans};font-style:italic;font-size:13.5px;line-height:1.55;color:${RW.muted};">
+      For your security, this confirmation link is single-use and expires in 15&nbsp;minutes.
+    </td></tr>`,
   });
   await sendEmail(env, { to, subject: 'Confirm your Cedar Rewards account', html });
 }
 
-// Sent to the guest once, right after they confirm their email.
-export async function sendWelcomeGuestEmail(env, { to, name, joinBonus, baseUrl }) {
-  const firstName = String(name || '').trim().split(/\s+/)[0];
-  const greeting = firstName ? `Hi ${escapeHtml(firstName)},` : 'Hi there,';
-  const step = (n, title, text) => `
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;"><tr>
-      <td style="width:34px;vertical-align:top;"><div style="width:26px;height:26px;line-height:26px;border:1px solid #C0973F;border-radius:50%;text-align:center;font-size:13px;color:#232D1D;">${n}</div></td>
-      <td style="vertical-align:top;font-size:14.5px;color:#4b453b;"><strong style="color:#232D1D;">${title}</strong><br>${text}</td>
-    </tr></table>`;
-  const html = renderShell({
+// EMAIL 2: welcome / points available. Sent once, right after verification
+// (the moment the account activates and the join bonus posts).
+// balance = getAvailableBalance() after the bonus posts. pointsAwarded = the
+// join bonus actually posted in that request, or null (line hidden).
+export async function sendWelcomeGuestEmail(env, { to, balance, pointsAwarded, rewardsUrl }) {
+  const bal = Number(balance || 0).toLocaleString('en-US');
+  const awarded = pointsAwarded ? Number(pointsAwarded).toLocaleString('en-US') : null;
+  const html = rwShell({
     title: 'Welcome to Cedar Rewards',
-    heroEyebrow: 'Cedar Rewards',
-    heroHeadline: "You're in.",
+    preheader: `Your account is approved. You have ${bal} points.`,
+    headline: 'You&rsquo;re officially in.',
     bodyHtml: `
-      <p>${greeting}</p>
-      <p>Welcome to Cedar Rewards, and thank you for being part of the Cedar Escape family. Your account is all set.</p>
-      ${joinBonus ? renderPanel(renderPanelRow('Signup bonus', `${Number(joinBonus).toLocaleString()} points`, 'price')) : ''}
-      <p style="margin-top:24px;"><strong style="color:#232D1D;">How it works</strong></p>
-      ${step(1, 'Book direct', 'Reserve your stay at cedarescapecabin.com.')}
-      ${step(2, 'Earn automatically', '1 point per $1 of qualifying spend, posted after checkout.')}
-      ${step(3, 'Redeem', 'Use points for Cedar Credit toward a future stay, or perks like early check-in.')}
-      <p>You can also earn <strong>$100 toward a future stay</strong> when a friend books direct and mentions your name.</p>
-      <div style="text-align:center;margin:28px 0;">
-        ${renderButton({ href: `${baseUrl}/rewards-dashboard.html`, label: 'VIEW MY POINTS' })}
-        ${renderButton({ href: `${baseUrl}/check-availability`, label: 'BOOK DIRECT →', style: 'outline' })}
-      </div>
-      <p style="font-size:13px;color:#6b6555;">Bookings made on other sites don't earn points. To sign in later, visit cedarescapecabin.com/rewards-signin and we'll email you a link. No password needed.</p>
-      <p>See you at the cabin,<br>Cedar Escape</p>
-    `,
+    <tr><td align="center" class="rw-pad" style="padding:12px 40px 0;font-family:${RW.sans};font-size:16px;line-height:1.6;color:${RW.ink};">
+      Welcome to Cedar Rewards. Your account is approved, and your rewards are ready.
+    </td></tr>
+    <tr><td align="center" class="rw-pad" style="padding:22px 36px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:380px;margin:0 auto;"><tr>
+        <td align="center" bgcolor="${RW.card}" style="border:1px solid ${RW.gold};border-radius:10px;padding:20px 18px 18px;">
+          <img src="${RW_ASSET_BASE}/tree-cedar.png" width="18" height="18" alt="" style="display:block;margin:0 auto 10px;border:0;">
+          <div style="font-family:${RW.sans};font-size:11px;font-weight:bold;letter-spacing:0.22em;color:${RW.green};">YOUR CEDAR REWARDS BALANCE</div>
+          ${awarded ? `<div style="font-family:${RW.sans};font-size:13px;font-weight:bold;color:${RW.gold};margin-top:10px;">+${awarded} points added</div>` : ''}
+          <div class="rw-num" style="font-family:${RW.serif};font-size:54px;font-weight:bold;line-height:1.05;color:${RW.green};margin-top:6px;">${bal}</div>
+          <div style="font-family:${RW.sans};font-size:12px;font-weight:bold;letter-spacing:0.28em;color:${RW.green};margin-top:4px;">POINTS</div>
+        </td>
+      </tr></table>
+    </td></tr>
+    <tr><td align="center" class="rw-pad" style="padding:16px 44px 0;font-family:${RW.serif};font-style:italic;font-size:15px;line-height:1.55;color:${RW.ink};">
+      Your points can be used toward eligible Cedar Escape rewards, perks and future stays.
+    </td></tr>
+    <tr><td align="center" class="rw-pad" style="padding:22px 36px 0;">${rwButton(rewardsUrl, 'VIEW MY REWARDS')}</td></tr>
+    <tr><td align="center" class="rw-pad" style="padding:18px 36px 0;">
+      ${rwIconLine('icon-calendar.png', 'Book direct with Cedar Escape to save on platform fees and make the most of your Cedar Rewards membership.')}
+    </td></tr>`,
   });
-  await sendEmail(env, { to, subject: 'Welcome to Cedar Rewards 🌲', html });
+  await sendEmail(env, { to, subject: 'Welcome to Cedar Rewards: you’re officially in', html });
 }
 
 export async function sendSignInEmail(env, { to, signInUrl }) {

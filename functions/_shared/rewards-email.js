@@ -126,6 +126,13 @@ export async function sendVerifyEmail(env, { to, verifyUrl }) {
     <tr><td align="center" class="rw-pad" style="padding:26px 36px 0;">${rwButton(verifyUrl, 'CONFIRM MY ACCOUNT')}</td></tr>
     <tr><td align="center" class="rw-pad" style="padding:16px 48px 0;font-family:${RW.sans};font-style:italic;font-size:13.5px;line-height:1.55;color:${RW.muted};">
       For your security, this confirmation link is single-use and expires in 15&nbsp;minutes.
+    </td></tr>
+    <tr><td align="center" class="rw-pad" style="padding:18px 36px 0;">
+      <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;max-width:420px;"><tr>
+        <td bgcolor="#F2EBDD" style="background:#F2EBDD;border-radius:8px;padding:12px 16px;font-family:${RW.sans};font-size:13.5px;line-height:1.5;color:${RW.ink};text-align:center;">
+          <strong style="color:${RW.green};">Keep us out of your spam folder:</strong> add this email address to your contacts so your rewards updates always reach your inbox.
+        </td>
+      </tr></table>
     </td></tr>`,
   });
   await sendEmail(env, { to, subject: 'Confirm your Cedar Rewards account', html });

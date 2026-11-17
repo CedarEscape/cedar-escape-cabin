@@ -1,7 +1,7 @@
 import { consumeToken } from '../../../_shared/rewards-tokens.js';
 import { getMember, postEarn, getSettingInt } from '../../../_shared/rewards-db.js';
 import { createSession, sessionCookieHeader, isSecureRequest } from '../../../_shared/rewards-session.js';
-import { sendNewMemberOwnerEmail } from '../../../_shared/rewards-email.js';
+import { sendNewMemberOwnerEmail, sendWelcomeGuestEmail } from '../../../_shared/rewards-email.js';
 
 function landingPage(heading, message) {
   return new Response(
@@ -59,10 +59,23 @@ export async function onRequestGet({ request, params, env }) {
     const now = new Date().toISOString();
     await db.prepare('UPDATE rewards_members SET verified_at = ?, updated_at = ? WHERE id = ?').bind(now, now, member.id).run();
 
+    let joinBonus = null;
     if (!member.join_bonus_posted) {
-      const joinBonus = await getSettingInt(db, 'join_bonus_points', 100);
+      joinBonus = await getSettingInt(db, 'join_bonus_points', 100);
       await postEarn(db, { memberId: member.id, points: joinBonus, source: 'join' });
       await db.prepare('UPDATE rewards_members SET join_bonus_posted = 1 WHERE id = ?').bind(member.id).run();
+    }
+
+    // Welcome email to the guest. A failure here must never block sign-in.
+    try {
+      await sendWelcomeGuestEmail(env, {
+        to: member.email,
+        name: member.name,
+        joinBonus,
+        baseUrl: new URL(request.url).origin,
+      });
+    } catch (err) {
+      console.error('welcome guest email failed', err);
     }
 
     // Heads-up email to the owner for each new member. Set NOTIFY_NEW_MEMBERS=off to silence it.

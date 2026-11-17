@@ -18,6 +18,39 @@ export async function sendVerifyEmail(env, { to, verifyUrl }) {
   await sendEmail(env, { to, subject: 'Confirm your Cedar Rewards account', html });
 }
 
+// Sent to the guest once, right after they confirm their email.
+export async function sendWelcomeGuestEmail(env, { to, name, joinBonus, baseUrl }) {
+  const firstName = String(name || '').trim().split(/\s+/)[0];
+  const greeting = firstName ? `Hi ${escapeHtml(firstName)},` : 'Hi there,';
+  const step = (n, title, text) => `
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;"><tr>
+      <td style="width:34px;vertical-align:top;"><div style="width:26px;height:26px;line-height:26px;border:1px solid #C0973F;border-radius:50%;text-align:center;font-size:13px;color:#232D1D;">${n}</div></td>
+      <td style="vertical-align:top;font-size:14.5px;color:#4b453b;"><strong style="color:#232D1D;">${title}</strong><br>${text}</td>
+    </tr></table>`;
+  const html = renderShell({
+    title: 'Welcome to Cedar Rewards',
+    heroEyebrow: 'Cedar Rewards',
+    heroHeadline: "You're in.",
+    bodyHtml: `
+      <p>${greeting}</p>
+      <p>Welcome to Cedar Rewards, and thank you for being part of the Cedar Escape family. Your account is all set.</p>
+      ${joinBonus ? renderPanel(renderPanelRow('Signup bonus', `${Number(joinBonus).toLocaleString()} points`, 'price')) : ''}
+      <p style="margin-top:24px;"><strong style="color:#232D1D;">How it works</strong></p>
+      ${step(1, 'Book direct', 'Reserve your stay at cedarescapecabin.com.')}
+      ${step(2, 'Earn automatically', '1 point per $1 of qualifying spend, posted after checkout.')}
+      ${step(3, 'Redeem', 'Use points for Cedar Credit toward a future stay, or perks like early check-in.')}
+      <p>You can also earn <strong>$100 toward a future stay</strong> when a friend books direct and mentions your name.</p>
+      <div style="text-align:center;margin:28px 0;">
+        ${renderButton({ href: `${baseUrl}/rewards-dashboard.html`, label: 'VIEW MY POINTS' })}
+        ${renderButton({ href: `${baseUrl}/check-availability`, label: 'BOOK DIRECT →', style: 'outline' })}
+      </div>
+      <p style="font-size:13px;color:#6b6555;">Bookings made on other sites don't earn points. To sign in later, visit cedarescapecabin.com/rewards-signin and we'll email you a link. No password needed.</p>
+      <p>See you at the cabin,<br>Cedar Escape</p>
+    `,
+  });
+  await sendEmail(env, { to, subject: 'Welcome to Cedar Rewards 🌲', html });
+}
+
 export async function sendSignInEmail(env, { to, signInUrl }) {
   const html = renderShell({
     title: 'Your Cedar Rewards sign-in link',

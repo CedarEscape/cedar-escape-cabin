@@ -13,7 +13,8 @@ function escapeHtml(s) {
 export const RW_ASSET_BASE = 'https://cedarescapecabin.com/images/email';
 const RW = {
   page: '#F2EBDD',
-  card: '#FAF6EE',
+  card: '#FDF8EE', // matches the cream in the mockup's footer artwork
+
   green: '#1F3A2B',
   gold: '#B8913F',
   ink: '#2B271F',
@@ -106,7 +107,7 @@ function rwShell({ title, preheader, headline, bodyHtml, contactsNote = false })
     ${contactsNote ? `<tr><td align="center" class="rw-pad" style="padding:8px 40px 0;font-family:${RW.sans};font-size:12.5px;line-height:1.5;color:${RW.muted};">Add this address to your contacts so our emails always reach your inbox.</td></tr>` : ''}
 
     <tr><td style="padding:22px 0 0;font-size:0;line-height:0;">
-      <img src="${RW_ASSET_BASE}/rewards-mountains.jpg" width="560" alt="" style="display:block;width:100%;max-width:560px;height:auto;border:0;">
+      <img src="${RW_ASSET_BASE}/rewards-mountains.jpg?v=2" width="560" alt="" style="display:block;width:100%;max-width:560px;height:auto;border:0;">
     </td></tr>
     <tr><td height="2" bgcolor="${RW.gold}" style="background:${RW.gold};font-size:0;line-height:0;">&nbsp;</td></tr>
     <tr><td height="10" bgcolor="${RW.green}" style="background:${RW.green};font-size:0;line-height:0;">&nbsp;</td></tr>

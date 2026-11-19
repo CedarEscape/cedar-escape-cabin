@@ -451,6 +451,8 @@ VALLEY_CSS = '''
   .vl-arow p { font-size: 13.5px; line-height: 1.55; color: #4b453b; }
   .vl-arow .vl-link { margin-top: 10px; font-size: 13px; }
   .vl-next { margin-top: 24px; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: var(--forest-deep); }
+  .vl-next a { color: var(--ac-deep); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+  .vl-next a:hover { color: var(--forest-deep); }
 
   /* J. closing */
   .vl-close { background: var(--forest-deep); color: var(--cream); }
@@ -478,6 +480,14 @@ def _img(im, w, h, cls='', lazy=True, extra=''):
     cap = f'<span class="vl-cap">{esc(im["caption"])}</span>' if im.get('caption') else ''
     lz = 'loading="lazy" ' if lazy else ''
     return f'<img src="/{im["src"]}" width="{w}" height="{h}" {lz}alt="{esc(im["alt"])}"{extra}>{cap}'
+
+def _next_line(a):
+    # Optional "next_link": {"text": <words inside "next">, "url": ...}. Only add it once the
+    # next edition is published, so the link never points to a draft.
+    s, lk = esc(a['next']), a.get('next_link')
+    if lk and esc(lk['text']) in s:
+        s = s.replace(esc(lk['text']), f'<a href="{esc(lk["url"])}">{esc(lk["text"])}</a>', 1)
+    return s
 
 def valley_page(d, live):
     c = chrome()
@@ -650,7 +660,7 @@ def valley_page(d, live):
   <p class="vl-body" style="max-width:62ch;margin-top:10px;font-size:15.5px;line-height:1.65;color:#3f3a30;">{esc(a['lead'])}</p>
   <div class="vl-arows">{rows}
   </div>
-  <p class="vl-next">{esc(a['next'])}</p>
+  <p class="vl-next">{_next_line(a)}</p>
 </div></section>
 
 <section class="vl-close" aria-labelledby="closing-title"><div class="vl-wrap vl-sec">

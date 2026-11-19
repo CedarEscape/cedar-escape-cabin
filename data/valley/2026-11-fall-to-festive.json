@@ -286,7 +286,11 @@
         "link": null
       }
     ],
-    "next": "Our next edition of The Valley Edit will explore these celebrations and more in Holiday Magic in the Shenandoah Valley."
+    "next": "Our next edition of The Valley Edit will explore these celebrations and more in Holiday Magic in the Shenandoah Valley.",
+    "next_link": {
+      "text": "Holiday Magic in the Shenandoah Valley",
+      "url": "/guides/valley-edit-holiday-magic-2026"
+    }
   },
   "closing": {
     "eyebrow": "Your Mountain Home Base",

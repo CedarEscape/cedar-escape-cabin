@@ -1,0 +1,320 @@
+{
+  "slug": "valley-edit-holiday-magic-2026",
+  "title": "Holiday Magic: December Happenings Near Massanutten",
+  "seo_title": "December Events Near Massanutten | The Valley Edit",
+  "h1": "Holiday Magic",
+  "subtitle": "December Happenings & Local Favorites in the Shenandoah Valley",
+  "edition": {
+    "month": "Dec",
+    "year": "2026",
+    "label": "December 2026 Edition",
+    "number": "02"
+  },
+  "season": "holiday",
+  "published": "2026-11-19",
+  "updated": "2026-11-19",
+  "hero": {
+    "src": "images/guides/five-winter-hero-1600.jpg",
+    "src_small": "images/guides/five-winter-hero-800.jpg",
+    "alt": "Snow-covered boulders and bare trees on a Shenandoah ridge as the sun rises over the valley",
+    "position": "50% 55%"
+  },
+  "intro": [
+    "December in the Shenandoah Valley has a way of slowing everything down in the best possible way. Frost settles on the ridgelines, downtown Harrisonburg glows after dark, and every weekend seems to bring another reason to gather.",
+    "From carriage rides and a tree lighting on Court Square to holiday concerts, handmade gifts, and evenings under the lights at Massanutten, this is the month for making traditions, whether they're old favorites or brand new.",
+    "Here's what we're looking forward to this December."
+  ],
+  "toc": {
+    "title": "In This Edition",
+    "lead": "Your guide to the best of December in and around Massanutten.",
+    "items": [
+      {
+        "id": "upcoming-events",
+        "label": "Upcoming Events",
+        "desc": "Dates worth saving",
+        "icon": "calendar"
+      },
+      {
+        "id": "in-season",
+        "label": "In Season",
+        "desc": "Wreaths, gifts, and Saturday markets",
+        "icon": "leaf"
+      },
+      {
+        "id": "featured-experience",
+        "label": "Featured Experience",
+        "desc": "An evening under the lights at Massanutten",
+        "icon": "star"
+      },
+      {
+        "id": "eat-sip-sweet",
+        "label": "Eat, Sip & Something Sweet",
+        "desc": "Cookies, cocoa, and a downtown stroll",
+        "icon": "cup"
+      },
+      {
+        "id": "worth-the-detour",
+        "label": "Worth the Detour",
+        "desc": "Holiday cards made by hand",
+        "icon": "pin"
+      },
+      {
+        "id": "plan-ahead",
+        "label": "Plan Ahead",
+        "desc": "A preview of the new year",
+        "icon": "binoculars"
+      }
+    ]
+  },
+  "events": {
+    "kicker": "Upcoming Events",
+    "title": "Put It on Your Calendar",
+    "items": [
+      {
+        "month": "Dec",
+        "day": "3",
+        "title": "Macbeth at the Forbes Center",
+        "time": "Dec 3–5 at 7:30 PM; Dec 5–6 at 2 PM",
+        "place": "Forbes Center Mainstage Theatre, JMU",
+        "desc": "Shakespeare's darkest drama takes the Mainstage at JMU's Forbes Center for the Performing Arts. A dramatic counterpoint to a month full of tinsel.",
+        "link": {
+          "label": "Forbes Center season",
+          "url": "https://jmuforbescenter.com/news/2026/12-forbes-26-27-season.shtml"
+        }
+      },
+      {
+        "month": "Dec",
+        "day": "5",
+        "title": "Winter Wonderfest",
+        "time": "1–5:30 PM",
+        "place": "Downtown Harrisonburg",
+        "desc": "Free horse and carriage rides down Main Street, visits with Santa at the Springhouse on Court Square, a cookie tour, and a gingerbread house competition fill downtown for the afternoon.",
+        "link": {
+          "label": "Official event link",
+          "url": "https://www.downtownharrisonburg.org/winter-wonderfest"
+        }
+      },
+      {
+        "month": "Dec",
+        "day": "5",
+        "title": "Holiday Parade & Tree Lighting",
+        "time": "7 PM",
+        "place": "Main Street & Court Square, Harrisonburg",
+        "desc": "Stay downtown after Winter Wonderfest for the city's \"Festival of Lights\" parade down Main Street, followed by the tree lighting ceremony in Court Square.",
+        "link": {
+          "label": "Official parade link",
+          "url": "https://www.harrisonburgva.gov/holiday-parade"
+        }
+      },
+      {
+        "month": "Dec",
+        "day": "6",
+        "title": "Ink the Season: Christmas Cards",
+        "time": "12:30–4:30 PM",
+        "place": "Friendly City Clay & Art Center, Harrisonburg",
+        "desc": "An intergenerational card-making workshop for ages 5 and up. Each ticket covers one adult and one child, so it's a sweet way to make something together.",
+        "link": {
+          "label": "Official workshop link",
+          "url": "https://www.friendlycityclay.com/current-classes"
+        }
+      },
+      {
+        "month": "Dec",
+        "day": "12",
+        "title": "HolidayFest: Magic and Memories",
+        "time": "Dec 12 at 7:30 PM; Dec 13 at 2 PM",
+        "place": "Forbes Center Concert Hall, JMU",
+        "desc": "The JMU Choral Area and Wind Symphony welcome the season with a festive concert, including music by John Rutter. Tickets are listed at $17–25.",
+        "link": {
+          "label": "Official event link",
+          "url": "https://www.jmu.edu/events/music/2026/holidayfest-12-12.shtml"
+        }
+      },
+      {
+        "month": "Dec",
+        "day": "19",
+        "title": "Last Holiday Market Before Christmas",
+        "time": "9 AM–1 PM",
+        "place": "Harrisonburg Farmers Market, Turner Pavilion",
+        "desc": "The final Holiday Market of the season, with an expanded lineup of local artisans. Handmade wreaths, jewelry, and gifts are ideal for last-minute shopping.",
+        "link": {
+          "label": "Official market link",
+          "url": "https://www.harrisonburgfarmersmarket.com/events"
+        }
+      }
+    ]
+  },
+  "in_season": {
+    "kicker": "In Season",
+    "title": "Saturdays at the Holiday Market",
+    "lead": "Skip the mall. December's best gifts are handmade a few miles down the road.",
+    "chip": "Dec 5, 12 & 19 · 9 AM–1 PM",
+    "chip_label": "December Holiday Markets",
+    "body": [
+      "For the first three Saturdays of December, the Harrisonburg Farmers Market turns into a Holiday Market, rain, snow, or shine.",
+      "Alongside the regular growers and makers, expect an expanded selection of artisan goods: handmade wreaths, herbal self-care, jewelry, and more.",
+      "It's an easy morning outing from Massanutten. Grab a coffee downtown, wander Turner Pavilion, and take home a little piece of the valley for everyone on your list.",
+      "Still in town after Christmas? A Winter Market follows on Saturday, December 26, from 9 AM–1 PM."
+    ],
+    "link": {
+      "label": "See the market schedule",
+      "url": "https://www.harrisonburgfarmersmarket.com/events"
+    },
+    "image": {
+      "src": "images/guides/valley-dec-wreaths-900.jpg",
+      "alt": "Fresh evergreen wreaths with red and plaid bows hanging at an outdoor holiday market stall",
+      "caption": "Holiday wreaths (file photo)"
+    }
+  },
+  "featured": {
+    "kicker": "Featured Experience",
+    "title": "An Evening Under the Lights",
+    "event": "Light Up the Park at Massanutten Resort",
+    "facts": [
+      {
+        "icon": "calendar",
+        "text": "Select nights through January 3"
+      },
+      {
+        "icon": "clock",
+        "text": "Evening sessions"
+      },
+      {
+        "icon": "pin",
+        "text": "Massanutten Resort"
+      }
+    ],
+    "body": [
+      "Some holiday traditions are worth staying in for. This one is worth bundling up for.",
+      "Massanutten's Light Up the Park returns on select nights through January 3, with sparkling lights, music, s'mores by the firepit, and Santa appearances on select nights.",
+      "Because it's right at the resort, it's an easy addition to an evening at Cedar Escape: dinner at the cabin, a walk under the lights, then home to the hot tub.",
+      "Advance tickets are sold online at least one day ahead and cost less than tickets at the door. Kids 2 and under are free. Sessions can sell out, especially on holiday dates, so book early and check the resort's schedule for exact nights."
+    ],
+    "why": "It's the easiest holiday outing of the season. There's no long drive and no packed itinerary, just a magical hour or two a few minutes from the cabin.",
+    "close": "Go early in the trip, and you may find yourselves going back.",
+    "link": {
+      "label": "See dates & tickets",
+      "url": "https://www.massresort.com/events/light-up-the-park/"
+    },
+    "image": {
+      "src": "images/guides/valley-dec-lights-1000.jpg",
+      "alt": "A tall Christmas tree glowing with white lights and ornaments beside lighted gift boxes at night",
+      "caption": "Holiday lights (file photo)"
+    },
+    "stamp": {
+      "month": "Thru",
+      "day": "Jan 3"
+    }
+  },
+  "eat": {
+    "kicker": "Eat, Sip & Something Sweet",
+    "title": "A Little Taste of December",
+    "lead": "Winter Wonderfest is as much about the treats as the twinkle lights.",
+    "vendors_intro": "On December 5, the downtown Harrisonburg lineup includes:",
+    "vendors": [
+      "The Winter Wonderfest Cookie Tour",
+      "Sip & Stroll (21+, last call 5:30 PM)",
+      "The Gingerbread House Gallery at Nest Realty"
+    ],
+    "body": [
+      "Follow the cookie tour through downtown, stop for a seasonal sip at participating spots, and duck into the gingerbread gallery on West Wolfe Street to admire the competition entries.",
+      "Pace yourself and you'll still have room for dinner downtown before the 7 PM parade."
+    ],
+    "tip": "Bring a tote for cookies and gifts, and wear comfortable shoes. Main Street is closed to traffic for the day, so the best way to see it all is on foot.",
+    "image": {
+      "src": "images/guides/valley-dec-gingerbread-900.jpg",
+      "alt": "An elaborate gingerbread Victorian house with frosted trees on display among other gingerbread entries",
+      "caption": "Gingerbread house display (file photo)"
+    }
+  },
+  "detour": {
+    "kicker": "Worth the Detour",
+    "title": "Make Your Holiday Cards by Hand",
+    "lead": "The cards you send this year could be the ones people keep.",
+    "badge": "Cedar Escape Local Partner",
+    "chip": "Dec 6 · 12:30–4:30 PM · Ink the Season: Christmas Cards",
+    "body": [
+      "At Friendly City Clay & Art Center in Harrisonburg, creative workshops offer a chance to slow down, try something new, and leave with something you made yourself.",
+      "On Sunday, December 6, the studio has scheduled Ink the Season: Christmas Cards, an intergenerational workshop for ages 5 and up, with each ticket covering one adult and one child.",
+      "It's a lovely option for families, or for grandparents and grandkids looking for an afternoon together beyond the slopes.",
+      "Friendly City Clay is also one of Cedar Escape's local experience partners, with a guest benefit available on eligible scheduled workshops."
+    ],
+    "note": "Workshop availability and discount eligibility should be confirmed before booking.",
+    "link": {
+      "label": "Explore workshops",
+      "url": "https://www.friendlycityclay.com/current-classes"
+    },
+    "image": {
+      "src": "images/guides/five-clay-900.jpg",
+      "alt": "People shaping pottery on wheels during a workshop",
+      "caption": "Friendly City Clay workshop"
+    }
+  },
+  "ahead": {
+    "kicker": "Plan Ahead",
+    "title": "Into the New Year",
+    "lead": "The holidays wind down, but the valley keeps going. If you're already dreaming about a winter getaway, here are a few dates worth saving.",
+    "items": [
+      {
+        "when": "Through January 3",
+        "month": "Jan",
+        "day": "3",
+        "title": "Last Nights of Light Up the Park",
+        "desc": "Missed it in December? Massanutten's holiday light experience runs on select nights into the new year.",
+        "link": {
+          "label": "Event details",
+          "url": "https://www.massresort.com/events/light-up-the-park/"
+        }
+      },
+      {
+        "when": "January 22 · 7:30 PM",
+        "month": "Jan",
+        "day": "22",
+        "title": "PHILADANCO!",
+        "desc": "The acclaimed Philadelphia dance company brings its energy to the Forbes Center Mainstage Theatre.",
+        "link": {
+          "label": "Forbes Center season",
+          "url": "https://jmuforbescenter.com/news/2026/12-forbes-26-27-season.shtml"
+        }
+      },
+      {
+        "when": "February 5–7",
+        "month": "Feb",
+        "day": "5",
+        "title": "The Magic Flute",
+        "desc": "Mozart's beloved opera comes to the Forbes Center, a perfect excuse for a late-winter weekend in the valley.",
+        "link": {
+          "label": "Forbes Center season",
+          "url": "https://jmuforbescenter.com/news/2026/12-forbes-26-27-season.shtml"
+        }
+      }
+    ],
+    "next": "Our next edition of The Valley Edit arrives in January with more winter favorites from around the Shenandoah Valley."
+  },
+  "closing": {
+    "eyebrow": "Your Mountain Home Base",
+    "title": "Make Room for More Memories",
+    "body": [
+      "The holidays are better with room to spread out.",
+      "After a day of carriage rides, concerts, and holiday markets, return to Cedar Escape, a spacious five-bedroom retreat inside Massanutten Resort.",
+      "Gather for a movie, enjoy the game room, soak in the hot tub, or simply make time to be together.",
+      "Because sometimes the best part of a getaway is having nowhere else you need to be."
+    ],
+    "cta": "Explore Cedar Escape & Book Direct to Save on Fees",
+    "cta_url": "https://cedarescapecabin.com/",
+    "images": [
+      {
+        "src": "images/hot-tub-night.jpg",
+        "alt": "Private hot tub at Cedar Escape at night under string lights",
+        "position": "50% 60%"
+      },
+      {
+        "src": "images/guides/five-living-room-900.jpg",
+        "alt": "A living room with leather sofas and a stone fireplace under a vaulted ceiling",
+        "position": "72% 55%"
+      }
+    ]
+  },
+  "disclaimer": "The Valley Edit is a seasonal editorial collection presented by Cedar Escape. Event details and schedules may change; check the linked organizer pages before attending.",
+  "credits": "Destination photos are used under their free licenses and were resized or cropped: hero photo from Shenandoah National Park (National Park Service, public domain); “Byward Market Wreaths” by Ross Dunn (<a href=\"https://commons.wikimedia.org/wiki/File:Byward_Market_Wreaths_(30583828863).jpg\" target=\"_blank\" rel=\"noopener\">CC BY-SA 2.0</a>); “Unity park, Christmas 2023” by Mjrmtg (<a href=\"https://commons.wikimedia.org/wiki/File:Unity_park,_Christmas_2023_1.jpg\" target=\"_blank\" rel=\"noopener\">CC BY 4.0</a>); “National Gingerbread House Competition entries at the Omni Grove Park Inn” by Harrison Keely (<a href=\"https://commons.wikimedia.org/wiki/File:National_Gingerbread_House_Competition_entries_at_the_Omni_Grove_Park_Inn_in_Asheville,_N.C._02.jpg\" target=\"_blank\" rel=\"noopener\">CC BY 4.0</a>). The wreath, lights, and gingerbread photos are file photos and do not show the December events. The Cedar Escape photos show the actual property."
+}

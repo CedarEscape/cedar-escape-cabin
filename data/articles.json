@@ -84,6 +84,27 @@
       "cta": "Read the Edition",
       "image_large": "images/guides/valley-hero-1600.jpg",
       "hub_blurb": "November happenings, local experiences, and reasons to explore the Shenandoah Valley."
+    },
+    {
+      "slug": "valley-edit-holiday-magic-2026",
+      "title": "Holiday Magic: December Happenings Near Massanutten",
+      "subtitle": "December happenings & local favorites in the Shenandoah Valley",
+      "collection": "valley-edit",
+      "description": "Discover December 2026 events near Massanutten, including Winter Wonderfest, Light Up the Park, holiday markets, JMU HolidayFest, and local favorites.",
+      "image": "images/guides/five-winter-hero-800.jpg",
+      "imageAlt": "Snow-covered boulders and bare trees on a Shenandoah ridge as the sun rises over the valley",
+      "tag": "Edition 02 · December 2026",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "seasonal": "winter",
+      "status": "draft",
+      "built": "valley",
+      "source": "data/valley/2026-12-holiday-magic.json",
+      "card_title": "Holiday Magic",
+      "card_blurb": "December happenings near Massanutten, including Winter Wonderfest, holiday markets, and evenings under the lights.",
+      "cta": "Read the Edition",
+      "image_large": "images/guides/five-winter-hero-1600.jpg",
+      "hub_blurb": "December happenings, holiday traditions, and reasons to explore the Shenandoah Valley."
     }
   ],
   "listing_banner": {
